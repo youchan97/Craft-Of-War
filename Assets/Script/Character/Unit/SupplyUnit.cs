@@ -22,9 +22,11 @@ public class SupplyUnit : Unit
     public new void Awake()
     {
         base.Awake();
+    }
+    private void Start()
+    {
         StartCoroutine(ResourseCo());
     }
-
 
 
 
@@ -39,7 +41,7 @@ public class SupplyUnit : Unit
         {
             get
             {
-                return supplyUnit.isResourseClicked;
+                return !supplyUnit.IsResourseClicked;
             }
         }
     }
@@ -50,9 +52,12 @@ public class SupplyUnit : Unit
 
         while (true)
         {
+            yield return null;
             //자원옮기면서 순환하는 코드
-            //이걸로 클릭했을때만 코루틴을 돌려주면됌
+            
+            Debug.LogWarning("sdsdsd");
             yield return new WaitForClickedTarget(this);
+
 
             Collider[] cols = Physics.OverlapSphere(resourseTf, 50f);
             //주변 넥서스 찾기, 범위를 넓게 줘야함
@@ -86,7 +91,9 @@ public class SupplyUnit : Unit
                     GameManager.Instance.Gold += 10;
                     //디버깅용
                 }
+                yield return null;
             }
+
         }
     }
 
