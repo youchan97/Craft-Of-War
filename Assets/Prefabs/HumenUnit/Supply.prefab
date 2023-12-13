@@ -3262,6 +3262,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   agent: {fileID: 0}
   coolTime: 3
+  isDetect: 0
+  detectRange: 3
+  target:
+    serializedVersion: 2
+    m_Bits: 2048
   resourseTf: {x: 0, y: 0, z: 0}
   nexusTf: {x: 0, y: 0, z: 0}
 --- !u!114 &-6524607718604983960

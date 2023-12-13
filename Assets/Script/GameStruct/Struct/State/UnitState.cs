@@ -8,17 +8,20 @@ public class UnitIdleState : UnitState
 {
     public override void Enter()
     {
+        Debug.Log("IDle Enter");
     }
 
     public override void Exit()
     {
+        Debug.Log("IDle Exit");
     }
 
     public override void Update()
     {
+        Debug.Log(owner.agent.velocity);
         if (owner.agent.velocity != Vector3.zero)
             sm.SetState((int)UNIT_STATE.Move);
-        if (owner.DetectiveComponent.IsRangeDetection)
+        if (owner.isDetect)
             sm.SetState((int)UNIT_STATE.Attack);
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
@@ -38,7 +41,7 @@ public class UnitMoveState : UnitState
     {
         if (owner.agent.velocity == Vector3.zero)
             sm.SetState((int)UNIT_STATE.Idle);
-        if (owner.DetectiveComponent.IsRangeDetection)
+        if (owner.isDetect)
             sm.SetState((int)UNIT_STATE.Attack);
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
@@ -58,7 +61,9 @@ public class UnitAttackState : UnitState
 
     public override void Update()
     {
-        if (!owner.DetectiveComponent.IsRangeDetection)
+        if (owner.agent.velocity != Vector3.zero)
+            sm.SetState((int)UNIT_STATE.Move);
+        if (owner.isDetect == false)
             sm.SetState((int)UNIT_STATE.Idle);
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
