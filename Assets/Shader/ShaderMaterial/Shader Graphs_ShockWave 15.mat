@@ -52,7 +52,7 @@ Material:
     - _Cull: 0
     - _Distortion: 0
     - _DstBlend: 1
-    - _Fade: 1
+    - _Fade: 0.24
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
@@ -62,7 +62,7 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 3.9533494, g: 3.9533494, b: 3.9533494, a: 1}
+    - _Color: {r: 31.626787, g: 31.626787, b: 31.626787, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5520429983475817698
 MonoBehaviour:
