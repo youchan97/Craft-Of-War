@@ -139,7 +139,7 @@ public class SlotManager : SingleTon<SlotManager>
         Transform selectBuilding = GameManager.Instance.rtsController.SelectBuilding.gameObject.transform;
         TextMeshProUGUI[] buildInfoTexts  = UIManager.Instance.buildingModeUI.GetComponentsInChildren<TextMeshProUGUI>();
         //진행도
-        buildInfoTexts[1].text = "건설중";
+        buildInfoTexts[1].text = "생산중";
         //유닛생산 쿨타임
         while (cool > 0f)
         {

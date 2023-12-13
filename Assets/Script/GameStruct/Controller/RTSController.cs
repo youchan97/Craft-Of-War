@@ -108,7 +108,7 @@ public class RTSController : MonoBehaviour
         {
             for (int i = 0; i < selectedUnitList.Count; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < 3; j++)
                 {
                     list.Add(firstPoint + new Vector3(i * 4, 0, j * 4));
                 }
