@@ -25,12 +25,6 @@ public class ClickMoveController : MonoBehaviour
     public Vector3 TargetPoint
     {get => targetPoint; set => targetPoint = value;}
 
-    private bool storeUse;
-    public bool StoreUse
-    {
-        get => storeUse;
-        set => storeUse = value;
-    }
     public ShopDetection shopDetection;
     public LayerMask shopLayer;
 
@@ -108,7 +102,7 @@ public class ClickMoveController : MonoBehaviour
                 Ray ray = viewCam.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, shopLayer))
                 {
-                        StoreUse = true;
+                    shopDetection.StoreUse = true;
                         Debug.Log("상점이 열린다!");
                    
                 }

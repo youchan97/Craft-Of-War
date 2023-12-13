@@ -1381,7 +1381,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   agent: {fileID: 0}
-  skills: []
+  level: 0
+  curExp: 0
+  aimExp: 0
+  curState: 0
 --- !u!136 &-6485946883107209529
 CapsuleCollider:
   m_ObjectHideFlags: 0

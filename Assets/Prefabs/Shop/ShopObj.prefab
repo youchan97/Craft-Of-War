@@ -61,7 +61,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  leavingStoreTime: 120
   index: 0
 --- !u!114 &2471098552841528734
 MonoBehaviour:

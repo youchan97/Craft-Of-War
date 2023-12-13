@@ -16,6 +16,13 @@ public class ShopDetection : MonoBehaviour
         get => storeAvailability;
         set { storeAvailability = value; }
     }
+    private bool storeUse;
+    public bool StoreUse
+    {
+        get { return storeUse; }
+        set { storeUse = value; }
+    }
+
     private bool shopStop;
     private void Start()
     {
