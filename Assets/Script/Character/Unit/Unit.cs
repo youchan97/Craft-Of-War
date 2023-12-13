@@ -17,20 +17,30 @@ public enum UNIT_STATE
 public abstract class Unit : Character
 {
     public float coolTime;
-    DetectiveComponent detectiveComponent;
-    public DetectiveComponent DetectiveComponent
-    { get { return detectiveComponent; } }
+    public bool isDetect;
+    public float detectRange;
+    public LayerMask target;
+    
 
     public new void Awake()
     {
         base.Awake();
-        detectiveComponent = GetComponent<DetectiveComponent>();
+        isDetect = false;
         InitSm();
     }
     public void Update()
     {
+        Collider[] cols = Physics.OverlapSphere(gameObject.transform.position, detectRange, target);
         sm.UpdateState();
         animator.SetInteger("State", sm.stateEnumInt);
+        if(cols.Length > 0 )
+        {
+            isDetect = true;
+        }
+        else
+        {
+            isDetect = false;
+        }
     }
 
     private void InitSm()

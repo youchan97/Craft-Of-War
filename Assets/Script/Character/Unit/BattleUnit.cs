@@ -78,7 +78,7 @@ public class BattleUnit : Unit
 
     private void Start()
     {
-        Hp = 100;
+        Hp = 0;
         StragyInit();
     }
 

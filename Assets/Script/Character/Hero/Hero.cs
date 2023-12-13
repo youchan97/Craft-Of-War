@@ -11,14 +11,16 @@ public enum SKILL_TYPE
 public enum HERO_STATE
 { IDLE, MOVE, ATTACK, STUN, DIE}
 
+
 public abstract class Hero : Character, IControllable
 {
     [SerializeField] private int level;
     [SerializeField] private float curExp;
     [SerializeField] private float aimExp;
+
+    protected Dictionary<int, Skill> skillDic;
+
     public HERO_STATE curState;
-    
-    
 
     //Property 부분 변경시 포톤뷰를 통해 업데이트
     public int Level
@@ -32,11 +34,6 @@ public abstract class Hero : Character, IControllable
     public NavMeshAgent Agent
     { get => agent; set => agent = value; }
 
-    private void Start()
-    {
-        sm = new StateMachine<Character>(this);
-        InitStats();
-    }
 
     public override void InitStats() 
     { 
@@ -59,7 +56,7 @@ public abstract class Hero : Character, IControllable
         //  3-2. 어택 땅의 경우 : 적 건물, 유닛, 영웅 공격 가능
     }
 
-    public abstract void UseSkill(Skill skill);
+    public abstract void UseSkill(SKILL_TYPE skillType,KeyCode keyCode);
 
     private void FixedUpdate()
     {

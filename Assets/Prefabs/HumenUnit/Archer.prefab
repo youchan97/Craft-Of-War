@@ -3238,7 +3238,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9051467776319564582}
   - component: {fileID: 9051467776328910064}
-  - component: {fileID: -1296669566766871360}
   - component: {fileID: -2960456454230451840}
   - component: {fileID: -2058180744903222714}
   - component: {fileID: 3855637067024655820}
@@ -3314,18 +3313,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-1296669566766871360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9051467776319534918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36257043a3b84054c87d252c5e5023df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-2960456454230451840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3340,7 +3327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 0
   isRangeDetection: 0
   detectiveRange: 3
 --- !u!114 &-2058180744903222714
@@ -3358,6 +3345,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   agent: {fileID: 0}
   coolTime: 3
+  isDetect: 0
+  detectRange: 3
+  target:
+    serializedVersion: 2
+    m_Bits: 4096
   unitType: 2
 --- !u!195 &3855637067024655820
 NavMeshAgent:
