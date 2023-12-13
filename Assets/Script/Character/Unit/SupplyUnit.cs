@@ -55,11 +55,10 @@ public class SupplyUnit : Unit
             yield return null;
             //자원옮기면서 순환하는 코드
             
-            Debug.LogWarning("sdsdsd");
+            //클릭될때 불변수가 바뀌고 껏다 켜주는 역할
             yield return new WaitForClickedTarget(this);
 
-
-            Collider[] cols = Physics.OverlapSphere(resourseTf, 50f);
+            Collider[] cols = Physics.OverlapSphere(resourseTf, 100f);
             //주변 넥서스 찾기, 범위를 넓게 줘야함
             foreach (var targetBuilding in cols)
             {
@@ -73,9 +72,11 @@ public class SupplyUnit : Unit
 
             while (true)
             {
+                Debug.LogWarning("코루틴 첫 while 도착");
                 //리소스에서 도착했을때
-                if (Vector3.Distance(transform.position, resourseTf) <= 0.5f)
+                if (Vector3.Distance(transform.position, resourseTf) <= 5f)
                 {
+                    Debug.LogWarning(nexusTf);
                     curCool -= Time.fixedDeltaTime;
                     if (curCool <= 0)
                     {
@@ -85,10 +86,10 @@ public class SupplyUnit : Unit
                 }
 
                 //넥서스에 도착했을때
-                if (Vector3.Distance(transform.position, nexusTf) <= 0.5f)
+                if (Vector3.Distance(transform.position, nexusTf) <= 8f)
                 {
                     agent.SetDestination(resourseTf);
-                    GameManager.Instance.Gold += 10;
+                    GameManager.Instance.Tree += 10;
                     //디버깅용
                 }
                 yield return null;
