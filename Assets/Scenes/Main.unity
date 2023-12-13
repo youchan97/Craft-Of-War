@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07049093, g: 0.35360757, b: 0.97003746, a: 1}
+  m_IndirectSpecularColor: {r: 0.07049091, g: 0.35360757, b: 0.97003746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -524,6 +524,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572320659137428145, guid: aefa4d00b53198c4db19d30a485ff7c4,
+        type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 934398395}
+    - target: {fileID: 3572320659137428148, guid: aefa4d00b53198c4db19d30a485ff7c4,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572320659137428148, guid: aefa4d00b53198c4db19d30a485ff7c4,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
+      value: 140.10834
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572320659137428148, guid: aefa4d00b53198c4db19d30a485ff7c4,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572320659137428148, guid: aefa4d00b53198c4db19d30a485ff7c4,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.x
+      value: 203.6099
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572320659137428148, guid: aefa4d00b53198c4db19d30a485ff7c4,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.y
+      value: 2.976614
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572320659137428148, guid: aefa4d00b53198c4db19d30a485ff7c4,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Value.z
+      value: 489.41327
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572320659137428148, guid: aefa4d00b53198c4db19d30a485ff7c4,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572320659137428148, guid: aefa4d00b53198c4db19d30a485ff7c4,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3603486110144106976, guid: aefa4d00b53198c4db19d30a485ff7c4,
         type: 3}
@@ -1854,6 +1899,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 3
+--- !u!4 &934398395 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1868113621094856338, guid: aefa4d00b53198c4db19d30a485ff7c4,
+    type: 3}
+  m_PrefabInstance: {fileID: 174411888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &945903767 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7761918933332884190, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
