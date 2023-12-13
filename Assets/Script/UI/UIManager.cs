@@ -19,6 +19,7 @@ public class UIManager : SingleTon<UIManager>
     [Header("»óÁ¡ °ü·Ã UI")]
     public GameObject shopUI;
     public GameObject leavingStore;
+    public TextMeshProUGUI storeClosingTime;
     //ºôµåÀ¯´Ö º¯¼ö
     [Header("ºôµå À¯´Ö °ü·Ã")]
     public Image buildProgressImg;
@@ -60,7 +61,11 @@ public class UIManager : SingleTon<UIManager>
         if(GameManager.Instance.PlayerHero.TryGetComponent(out ClickMoveController component))
         {
             if(component.StoreUse == true)
+            {
                 shopUI.SetActive(true);
+                if(component.shopDetection.TryGetComponent(out ShopController shopController))
+                    storeClosingTime.text = "³²Àº½Ã°£ : " + shopController.RemainingTime;
+            }
             else
             {
                 leavingStore.SetActive(true);

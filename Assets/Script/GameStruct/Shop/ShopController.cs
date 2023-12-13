@@ -11,8 +11,19 @@ public class ShopController: MonoBehaviour
     private NavMeshAgent shopAgent;
     public Transform[] shopMovePoint;
     [SerializeField]
-    public float leavingStoreTime;
-    public float remainingTime;
+    private float leavingStoreTime;
+    private float remainingTime;
+    public float RemainingTime
+    {
+        get { return remainingTime; }
+        set 
+        {
+            remainingTime = value;
+            StartCoroutine(RemainingTimeCo());
+            if (remainingTime <= 0)
+                remainingTime = leavingStoreTime;
+        }
+    }
     private int shopStopIndex; // 상점이 정지할 위치
     private int addValue; //변화값
     [SerializeField]
@@ -58,7 +69,11 @@ public class ShopController: MonoBehaviour
             shopStopIndex = Random.Range(0, shopMovePoint.Length);
         StartCoroutine(ShopStopCo(shopStopIndex));
     }
-
+    IEnumerator RemainingTimeCo()
+    {
+        yield return new WaitForSeconds(1);
+        RemainingTime--;
+    }
     IEnumerator ShopStopCo(int stopIndex)
     {
         Index += addValue;
