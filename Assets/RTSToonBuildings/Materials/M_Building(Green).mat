@@ -109,6 +109,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _Fade: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossinessSource: 0
@@ -136,6 +137,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _InstallColor: {r: 0, g: 0, b: 0, a: 0}
     - _PlayerColor: {r: 0.31372547, g: 0.78431374, b: 0.23529407, a: 1}
     - _SpecColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 0}
   m_BuildTextureStacks: []
