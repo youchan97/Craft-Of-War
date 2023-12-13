@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ashe : Hero
 {
-    public SOSkill[] skills;
+    public Skill skills;
 
     public override void Die()
     {
@@ -30,7 +30,7 @@ public class Ashe : Hero
         Agent.angularSpeed = 300f;
     }
 
-    public override void UseSkill(SOSkill skill)
+    public override void UseSkill(Skill skill)
     {
         
     }
