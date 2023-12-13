@@ -18,8 +18,9 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI PopulationText;
     [Header("상점 관련 UI")]
     public GameObject shopUI;
+    public GameObject shop;
     public GameObject leavingStore;
-    public TextMeshProUGUI storeClosingTime;
+    public TextMeshProUGUI shopClosingTime;
     //빌드유닛 변수
     [Header("빌드 유닛 관련")]
     public Image buildProgressImg;
@@ -62,12 +63,12 @@ public class UIManager : SingleTon<UIManager>
 
     public void SetStoreUI() // 상점 UI를 켜고 끄는 UI설정
     {
-        if(GameManager.Instance.PlayerHero.TryGetComponent(out ClickMoveController component))
+        if (GameManager.Instance.PlayerHero.TryGetComponent(out ClickMoveController component))
         {
-            if(component.StoreUse == true)
+            if (component.StoreUse == true)
             {
                 shopUI.SetActive(true);
-                if(component.shopDetection.TryGetComponent(out ShopController shopController))
+                if (component.shopDetection.TryGetComponent(out ShopController shopController))
                     storeClosingTime.text = "남은시간 : " + shopController.RemainingTime;
             }
             else
