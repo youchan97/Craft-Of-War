@@ -26,6 +26,10 @@ public class UIManager : SingleTon<UIManager>
     public GameObject bottomInfoRTSUI;
     public GameObject buildingModeUI;
 
+    [Header("¿µ¿õ AOS¸ðµå UI")]
+    public SkillSlot[] skillSlots;
+    public Image heroImg;
+
     public void ChangeMod()
     {
         if (transitionSystem != null)
