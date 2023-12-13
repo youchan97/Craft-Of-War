@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public struct CharacterInfo
 {
     private int maxHp;
-    private int curentHp;
+    public int curentHp;
     private int atk;
     private int def;
     private float moveSpeed;

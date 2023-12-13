@@ -10,16 +10,21 @@ public enum UNIT_STATE
     Idle,
     Move,
     Attack,
-    Work
+    Work,
+    Die
 }
 
 public abstract class Unit : Character
 {
     public float coolTime;
+    DetectiveComponent detectiveComponent;
+    public DetectiveComponent DetectiveComponent
+    { get { return detectiveComponent; } }
 
     public new void Awake()
     {
         base.Awake();
+        detectiveComponent = GetComponent<DetectiveComponent>();
         InitSm();
     }
     public void Update()
@@ -34,6 +39,7 @@ public abstract class Unit : Character
         sm.AddState((int)UNIT_STATE.Move, new UnitMoveState());
         sm.AddState((int)UNIT_STATE.Attack, new UnitAttackState());
         sm.AddState((int)UNIT_STATE.Work, new UnitMoveState());
+        sm.AddState((int)UNIT_STATE.Die, new UnitDieState());
         //기본상태로 돌려놈
         sm.SetState((int)UNIT_STATE.Idle);
     }

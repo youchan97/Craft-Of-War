@@ -20,6 +20,8 @@ public class GameManager : SingleTon<GameManager>
     public Transform buildSpawnPoint;
     public int index;
 
+    public PhotonView pv;
+
     //옵저버
     public event Action onRoundStart;
     public event Action onRoundEnd;
@@ -65,6 +67,7 @@ public class GameManager : SingleTon<GameManager>
     {
         base.Awake();
 
+        pv = GetComponent<PhotonView>();
         //Player 찾기
         //--- 몇가지 문제가 있어 보인다. 적이랑 같은 태그에 같은 스크립트일텐데 이렇게 찾는게 맞을까?
         playerHero = GameObject.FindGameObjectWithTag("PlayerHero").GetComponent<Character>();
@@ -74,7 +77,10 @@ public class GameManager : SingleTon<GameManager>
         Debug.Log(DropDownManager.selectHeroName);
         //캐릭터 생성
         PhotonNetwork.Instantiate(DropDownManager.selectHeroName, points[index].position, points[index].rotation, 0);
-        PhotonNetwork.Instantiate("Nexus", buildSpawnPoint.position, buildSpawnPoint.rotation, 0);
+     //   if(pv.ViewID == 1)
+            PhotonNetwork.Instantiate("Nexus", buildSpawnPoint.position, buildSpawnPoint.rotation, 0);
+     //   else
+     //       PhotonNetwork.Instantiate("Nexus", buildSpawnPoint.position, buildSpawnPoint.rotation, 0);
     }
     void Start()
     {

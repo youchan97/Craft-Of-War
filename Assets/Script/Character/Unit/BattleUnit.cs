@@ -78,6 +78,7 @@ public class BattleUnit : Unit
 
     private void Start()
     {
+        Hp = 100;
         StragyInit();
     }
 
@@ -115,6 +116,6 @@ public class BattleUnit : Unit
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        Destroy(this.gameObject);
     }
 }
