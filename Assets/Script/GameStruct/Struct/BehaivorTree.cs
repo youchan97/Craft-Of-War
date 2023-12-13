@@ -47,6 +47,11 @@ public class SelectorNode : BTNode
         }
         return BTNode.State.FAIL;
     }
+
+    public void Add(BTNode bTNode)
+    {
+        childs.Add(bTNode);
+    }
 }
 
 public class SequenceNode : BTNode
@@ -71,6 +76,11 @@ public class SequenceNode : BTNode
             }
         }
         return BTNode.State.SUCCESS;
+    }
+
+    public void Add(BTNode bTNode)
+    {
+        childs.Add(bTNode);
     }
 }
 

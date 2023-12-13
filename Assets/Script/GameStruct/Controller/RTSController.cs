@@ -136,7 +136,7 @@ public class RTSController : MonoBehaviour
             List<UnitController> supplyList = SelectedSupplyUnitList();
             for (int i = 0; i < supplyList.Count; i++)
             {
-                supplyList[i].GetComponent<SupplyUnit>().IsResourseClicked = true;
+                supplyList[i].GetComponent<SupplyUnit>().IsMineClicked = true;
                 supplyList[i].GetComponent<SupplyUnit>().resourseTf = hit.point;
             }
         }

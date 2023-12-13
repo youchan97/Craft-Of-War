@@ -8,16 +8,19 @@ using UnityEngine.AI;
 
 public class SupplyUnit : Unit
 {
-    float resourseCool = 3f;
+    //행동트리
+    SelectorNode btRootNode;
+    ////////
+    float miningCool = 3f;
     public Vector3 resourseTf = Vector3.zero;//시작, 클릭될때 자원클릭되면 rts컨트롤러해서 벡터를 넣어줌
     public Vector3 nexusTf = Vector3.zero;//끝
 
 
-    private bool isResourseClicked;
-    public bool IsResourseClicked
+    private bool isMineClicked;
+    public bool IsMineClicked
     {
-        get { return isResourseClicked; }
-        set { isResourseClicked = value; }
+        get { return isMineClicked; }
+        set { isMineClicked = value; }
     }
     public new void Awake()
     {
@@ -25,10 +28,34 @@ public class SupplyUnit : Unit
     }
     private void Start()
     {
-        StartCoroutine(ResourseCo());
+        StartCoroutine(miningCo());
     }
 
+    public new void Update()
+    {
+        base.Update();
+        btRootNode.Evaluate();
+    }
 
+    //채굴루틴 행동트리
+    public void MiningBTInit()
+    {
+        btRootNode = new SelectorNode();
+
+        SequenceNode miningNode = new SequenceNode();
+        ActionNode clickedCheck = new ActionNode();
+        ActionNode miningAction = new ActionNode();
+        miningNode.Add(clickedCheck);
+
+        clickedCheck.action = () =>
+        {
+            if (IsMineClicked)
+            {
+                return BTNode.State.SUCCESS;
+            }
+            return BTNode.State.FAIL;
+        };
+    }
 
     public class WaitForClickedTarget : CustomYieldInstruction
     {
@@ -41,14 +68,14 @@ public class SupplyUnit : Unit
         {
             get
             {
-                return !supplyUnit.IsResourseClicked;
+                return !supplyUnit.IsMineClicked;
             }
         }
     }
 
-    public IEnumerator ResourseCo()
+    public IEnumerator miningCo()
     {
-        float curCool = resourseCool;
+        float curCool = miningCool;
 
         while (true)
         {
@@ -81,7 +108,7 @@ public class SupplyUnit : Unit
                     if (curCool <= 0)
                     {
                         agent.SetDestination(nexusTf);
-                        curCool = resourseCool;
+                        curCool = miningCool;
                     }
                 }
 
