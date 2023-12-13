@@ -196,10 +196,9 @@ ModelImporter:
       curves: []
       events:
       - time: 0.9440149
-        functionName: UnitDie
+        functionName: Die
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 36257043a3b84054c87d252c5e5023df,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

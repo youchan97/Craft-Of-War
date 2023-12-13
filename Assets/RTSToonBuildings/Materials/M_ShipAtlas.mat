@@ -140,6 +140,7 @@ Material:
     - _DstBlendAlpha: 0
     - _ENABLEPLAYERCOLOR: 1
     - _EnvironmentReflections: 1
+    - _Fade: 0
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
     - _GlossMapScale: 1
