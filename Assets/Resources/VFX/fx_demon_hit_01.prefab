@@ -29221,7 +29221,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 5
+      - m_Value: 3
         m_Name: Duration
         m_Overridden: 1
       - m_Value: 0.58
@@ -29229,6 +29229,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: 0.23
         m_Name: MinorRadius
+        m_Overridden: 1
+      - m_Value: 0.59
+        m_Name: Fade
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -29247,7 +29250,10 @@ VisualEffect:
     m_Gradient:
       m_Array: []
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Name: MainTex
+        m_Overridden: 1
     m_Bool:
       m_Array: []
 --- !u!73398921 &170438510292747423

@@ -50,7 +50,7 @@ Material:
     - _Cull: 0
     - _Distortion: 0.003
     - _DstBlend: 10
-    - _Fade: 1
+    - _Fade: 0.46
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5

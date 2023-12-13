@@ -61,7 +61,7 @@ Material:
     - _DissolveAmount: 30
     - _DstBlend: 10
     - _Fade: 0.97
-    - _Lenght: 0.89
+    - _Lenght: 1
     - _QueueControl: 0
     - _QueueOffset: 1
     - _SrcBlend: 5
