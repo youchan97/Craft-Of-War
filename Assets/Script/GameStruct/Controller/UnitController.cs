@@ -37,12 +37,5 @@ public class UnitController : MonoBehaviour
     //아직 이상함 수정해야함
 
 
-    private void FixedUpdate() 
-    {
-        // velocity 값이 변하면 run, 아니면 idle - 보람
-        if (NavMeshAgent.velocity != Vector3.zero)
-            anim.SetBool("IsMove", true);
-        else
-            anim.SetBool("IsMove", false);
-    }
+
 }

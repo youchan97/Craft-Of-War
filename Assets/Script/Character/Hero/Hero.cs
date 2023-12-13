@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 
 public enum SKILL_TYPE
 { QSkill, WSkill, ESkill, RSkill}
 
+public enum HERO_STATE
+{ IDLE, MOVE, ATTACK, STUN, DIE}
+
 public abstract class Hero : Character, IControllable
 {
-    private int level;
-    private float curExp;
-    private float aimExp;
+    [SerializeField] private int level;
+    [SerializeField] private float curExp;
+    [SerializeField] private float aimExp;
+    public HERO_STATE curState;
     
+    
+
     //Property 부분 변경시 포톤뷰를 통해 업데이트
     public int Level
     { get => level; set => level = value; }
@@ -27,6 +34,7 @@ public abstract class Hero : Character, IControllable
 
     private void Start()
     {
+        sm = new StateMachine<Character>(this);
         InitStats();
     }
 
@@ -34,6 +42,7 @@ public abstract class Hero : Character, IControllable
     { 
         level = 1;
         curExp = 0;
+        curState = HERO_STATE.IDLE;
     }
 
     /// <summary>
@@ -51,4 +60,13 @@ public abstract class Hero : Character, IControllable
     }
 
     public abstract void UseSkill(SOSkill skill);
+
+    private void FixedUpdate()
+    {
+        // velocity 값이 변하면 run, 아니면 idle - 보람
+        if (agent.velocity != Vector3.zero)
+            animator.SetBool("IsMove", true);
+        else
+            animator.SetBool("IsMove", false);
+    }
 }
