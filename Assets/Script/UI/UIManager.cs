@@ -63,24 +63,22 @@ public class UIManager : SingleTon<UIManager>
 
     public void SetStoreUI() // 상점 UI를 켜고 끄는 UI설정
     {
-        if (GameManager.Instance.PlayerHero.TryGetComponent(out ClickMoveController component))
+        if (shop.TryGetComponent(out ShopDetection shopDetection))
         {
-            if (component.StoreUse == true)
-            {
-                shopUI.SetActive(true);
-                if (component.shopDetection.TryGetComponent(out ShopController shopController))
-                    storeClosingTime.text = "남은시간 : " + shopController.RemainingTime;
-            }
-            else
-            {
-                leavingStore.SetActive(true);
-            }
+            shopUI.SetActive(shopDetection.StoreUse);
+            leavingStore.SetActive(!shopDetection.StoreUse);
+            if (shop.TryGetComponent(out ShopController shopController))
+                shopClosingTime.text = "남은시간 : " + shopController.CurCoolTime;
         }
     }
     public void CloseStore()
     {
-        leavingStore.SetActive(false);
-        shopUI.SetActive(false);
+        if (shop.TryGetComponent(out ShopDetection shopDetection))
+        {
+            shopDetection.StoreUse = false;
+            leavingStore.SetActive(false);
+            shopUI.SetActive(false);
+        }
     }
 
 
