@@ -27,6 +27,10 @@ public class UIManager : SingleTon<UIManager>
     public GameObject bottomInfoRTSUI;
     public GameObject buildingModeUI;
 
+    [Header("영웅 AOS모드 UI")]
+    public SkillSlot[] skillSlots;
+    public Image heroImg;
+
     public void ChangeMod()
     {
         if (transitionSystem != null)
@@ -59,22 +63,24 @@ public class UIManager : SingleTon<UIManager>
 
     public void SetStoreUI() // 상점 UI를 켜고 끄는 UI설정
     {
-        if (shop.TryGetComponent(out ShopDetection shopDetection))
+        if (GameManager.Instance.PlayerHero.TryGetComponent(out ClickMoveController component))
         {
-            shopUI.SetActive(shopDetection.StoreUse);
-            leavingStore.SetActive(!shopDetection.StoreUse);
-            if (shop.TryGetComponent(out ShopController shopController))
-                shopClosingTime.text = "남은시간 : " + shopController.CurCoolTime;
+            if (component.StoreUse == true)
+            {
+                shopUI.SetActive(true);
+                if (component.shopDetection.TryGetComponent(out ShopController shopController))
+                    storeClosingTime.text = "남은시간 : " + shopController.RemainingTime;
+            }
+            else
+            {
+                leavingStore.SetActive(true);
+            }
         }
     }
     public void CloseStore()
     {
-        if (shop.TryGetComponent(out ShopDetection shopDetection))
-        {
-            shopDetection.StoreUse = false;
-            leavingStore.SetActive(false);
-            shopUI.SetActive(false);
-        }
+        leavingStore.SetActive(false);
+        shopUI.SetActive(false);
     }
 
 
