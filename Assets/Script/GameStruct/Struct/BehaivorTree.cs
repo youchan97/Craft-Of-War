@@ -18,6 +18,14 @@ public interface BTNode
 public class ActionNode : BTNode
 {
     public Func<BTNode.State> action = null;
+    public ActionNode()
+    {
+
+    }
+    public ActionNode(Func<BTNode.State> action)
+    {
+        this.action = action;
+    }
     public BTNode.State Evaluate()
     {
         return action();

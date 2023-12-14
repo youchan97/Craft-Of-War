@@ -74,7 +74,7 @@ public class UnitDieState : UnitState
 {
     public override void Enter()
     {
-
+        GameManager.Instance.unitObjectPool.ReturnPool(owner.gameObject,0);
     }
     public override void Exit()
     {
@@ -82,7 +82,9 @@ public class UnitDieState : UnitState
     }
     public override void Update()
     {
+
     }
+
 }
 public class UnitWorkState : UnitState
 {
