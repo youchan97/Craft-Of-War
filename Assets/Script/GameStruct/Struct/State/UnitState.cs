@@ -74,7 +74,6 @@ public class UnitDieState : UnitState
 {
     public override void Enter()
     {
-        GameManager.Instance.unitObjectPool.ReturnPool(owner.gameObject,0);
     }
     public override void Exit()
     {
@@ -82,7 +81,10 @@ public class UnitDieState : UnitState
     }
     public override void Update()
     {
-
+        //if (owner.animator.GetCurrentAnimatorStateInfo(0).length > 0.9f)
+        //{
+        //    GameManager.Instance.unitObjectPool.ReturnPool(owner.gameObject, 0);//¿Œµ¶Ω∫πŸ≤„æﬂ«‘
+        //}
     }
 
 }

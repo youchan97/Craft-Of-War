@@ -56,7 +56,6 @@ public abstract class Unit : Character
 
     public override void Die()
     {
-        if(animator.GetCurrentAnimatorStateInfo(0).length > 0.9f && animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         Destroy(this.gameObject);
     }
 }
