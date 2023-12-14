@@ -53,8 +53,10 @@ Shader "Custom/Outline Fill" {
         UNITY_VERTEX_OUTPUT_STEREO
       };
 
+      CBUFFER_START(UnityPerMaterial)
       uniform fixed4 _OutlineColor;
       uniform float _OutlineWidth;
+      CBUFFER_END
 
       v2f vert(appdata input) {
         v2f output;

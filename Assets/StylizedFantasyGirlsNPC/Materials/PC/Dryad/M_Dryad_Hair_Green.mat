@@ -8,12 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Dryad_Hair_Green
-  m_Shader: {fileID: 4800000, guid: b115a004d94cd84449c5eaf04541220f, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 0f9509b761dd8214abf76f537de0ec55,
+    type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _GLOSSYREFLECTIONS_OFF
-  - _NORMALMAP
-  - _SPECULARHIGHLIGHTS_OFF
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -33,6 +31,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_CE5D5DBE:
         m_Texture: {fileID: 2800000, guid: 58cd53890d989d5499655c2931dc8b9d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoPlayerColor:
+        m_Texture: {fileID: 2800000, guid: 679354185917f204b8419bea797e7f7b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -116,6 +118,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 0
+    - _Fade: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -123,6 +126,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RimAmount: 0
@@ -141,6 +145,8 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _InstallColor: {r: 0, g: 0, b: 0, a: 0}
+    - _PlayerColor: {r: 0.8196079, g: 0.18823525, b: 0.18039218, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _dissolveColor: {r: 1, g: 1, b: 1, a: 1}
@@ -157,4 +163,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
+  version: 5
