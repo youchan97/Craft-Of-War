@@ -53,4 +53,9 @@ public abstract class Unit : Character
         //기본상태로 돌려놈
         sm.SetState((int)UNIT_STATE.Idle);
     }
+
+    public override void Die()
+    {
+        Destroy(this.gameObject);
+    }
 }

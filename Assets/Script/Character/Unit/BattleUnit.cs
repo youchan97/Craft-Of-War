@@ -116,6 +116,6 @@ public class BattleUnit : Unit
 
     public override void Die()
     {
-        Destroy(this.gameObject);
+        
     }
 }

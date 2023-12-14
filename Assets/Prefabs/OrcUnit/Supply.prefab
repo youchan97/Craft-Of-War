@@ -2760,7 +2760,7 @@ Animator:
   m_GameObject: {fileID: 4113703306187733924}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e4305b028a1f42c4f9d34545844691e7, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e4f2f709670c5f745af6f7eb3efeb229, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2783,6 +2783,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8ade5ab759eb34b8b60278fd87895a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  agent: {fileID: 0}
+  coolTime: 0
+  isDetect: 0
+  detectRange: 0
+  target:
+    serializedVersion: 2
+    m_Bits: 0
+  resourseTf: {x: 0, y: 0, z: 0}
+  nexusTf: {x: 0, y: 0, z: 0}
 --- !u!195 &-8036321261739898526
 NavMeshAgent:
   m_ObjectHideFlags: 0

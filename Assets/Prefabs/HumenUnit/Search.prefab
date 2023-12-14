@@ -2947,7 +2947,7 @@ Animator:
   m_GameObject: {fileID: 1234759034580599769}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 26b0b465439dcd84cb4971737ab4b8ca, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9031d92292eee5746934df2c61473801, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2970,7 +2970,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36404c185cad4c0459e2c33956c81a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  agent: {fileID: 0}
   coolTime: 3
+  isDetect: 0
+  detectRange: 0
+  target:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!195 &5269075596055844550
 NavMeshAgent:
   m_ObjectHideFlags: 0
