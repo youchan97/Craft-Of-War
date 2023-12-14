@@ -96,7 +96,7 @@ public class ClickMoveController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Debug.Log("´­·¶´Ù");
-            if (shopDetection)
+            if (shopDetection.StoreAvailability)
             {
                 RaycastHit hit;
                 Ray ray = viewCam.ScreenPointToRay(Input.mousePosition);

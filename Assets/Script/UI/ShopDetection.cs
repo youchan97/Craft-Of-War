@@ -23,14 +23,15 @@ public class ShopDetection : MonoBehaviour
         set { storeUse = value; }
     }
 
-    private bool shopStop;
+    public ShopController shopControlle;
     private void Start()
     {
-        shopStop =  GetComponent<ShopController>().ShopStop;
+        shopControlle =  GetComponent<ShopController>();
     }
     private void Update()
     {
-        StoreAvailability = (IsDetection() && shopStop && GameManager.Instance.playMode == PLAY_MODE.AOS_MODE);
+        Debug.Log("상점 이용가능" + StoreAvailability);
+        StoreAvailability = (IsDetection() && shopControlle.ShopStop && GameManager.Instance.playMode == PLAY_MODE.AOS_MODE);
     }
     public bool IsDetection()
     {
