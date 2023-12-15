@@ -17,10 +17,7 @@ public class ShopDetection : MonoBehaviour
         set 
         { 
             shopAvailability = value; 
-            if(ShopAvailability == false)
-            {
-                UIManager.Instance.leavingShop.SetActive(true);
-            }
+            UIManager.Instance.leavingShop.SetActive(!shopAvailability);
         }
     }
     private bool shopUse;
