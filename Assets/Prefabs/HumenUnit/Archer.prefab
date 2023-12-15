@@ -3344,6 +3344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   agent: {fileID: 0}
+  obpId: 3
   coolTime: 3
   isDetect: 0
   detectRange: 3

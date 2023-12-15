@@ -81,10 +81,10 @@ public class UnitDieState : UnitState
     }
     public override void Update()
     {
-        //if (owner.animator.GetCurrentAnimatorStateInfo(0).length > 0.9f)
-        //{
-        //    GameManager.Instance.unitObjectPool.ReturnPool(owner.gameObject, 0);//¿Œµ¶Ω∫πŸ≤„æﬂ«‘
-        //}
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        {
+            GameManager.Instance.unitObjectPool.ReturnPool(owner.gameObject, owner.obpId);//¿Œµ¶Ω∫πŸ≤„æﬂ«‘
+        }
     }
 
 }

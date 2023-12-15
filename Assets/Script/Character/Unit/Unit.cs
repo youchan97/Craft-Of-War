@@ -16,6 +16,8 @@ public enum UNIT_STATE
 
 public abstract class Unit : Character
 {
+    public int obpId;
+
     public float coolTime;
     public bool isDetect;
     public float detectRange;
@@ -52,10 +54,5 @@ public abstract class Unit : Character
         sm.AddState((int)UNIT_STATE.Die, new UnitDieState());
         //기본상태로 돌려놈
         sm.SetState((int)UNIT_STATE.Idle);
-    }
-
-    public override void Die()
-    {
-        Destroy(this.gameObject);
     }
 }
