@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AsheWSkill : ActiveSkill
 {
+    public AsheWSkill(Hero owner) : base(owner)
+    {
+    }
+
     public override void Active()
     {
         base.Active();

@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class SkillSlot : MonoBehaviour
 {
     public Skill skill;
-    public Sprite skillImg;
-    public Sprite skillCoolImg;
+    public Image skillImg;
+    public Image skillCoolImg;
     public TextMeshProUGUI coolTimeTxt;
 
 
