@@ -5,7 +5,11 @@ using UnityEngine.AI;
 
 public class ClickMoveController : MonoBehaviour
 {
+    [SerializeField]
+    float camSpeed;
+    bool camModSwitch;
     Camera viewCam;
+    Transform cameraTrans; //이동시
     IControllable target;
     Vector3 clickPoint;
     public bool isMove;
@@ -39,6 +43,8 @@ public class ClickMoveController : MonoBehaviour
         target.Agent = GetComponent<NavMeshAgent>();
         target.Agent.speed = target.MoveSpeed;
         viewCam = Camera.main; // mainCam 태그를 통해 가져옴
+        cameraTrans = viewCam.transform.parent;
+
         target.Agent.acceleration = 240f;
         isMove = false;
 
@@ -89,7 +95,7 @@ public class ClickMoveController : MonoBehaviour
         }
 
         StoreAvailability();
-
+        CamModChange();
     }
     void StoreAvailability()
     {
@@ -103,11 +109,17 @@ public class ClickMoveController : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, shopLayer))
                 {
                     shopDetection.ShopUse = true;
-                        Debug.Log("상점이 열린다!");
-                   
+                        Debug.Log("상점이 열린다!");               
                 }
             }
         }
+    }
+    void CamModChange()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+            camModSwitch = !camModSwitch;
+        if(camModSwitch)
+            cameraTrans.position = Vector3.MoveTowards(cameraTrans.position, new Vector3(transform.position.x, cameraTrans.position.y, transform.position.z - 50f), camSpeed * Time.deltaTime);      
     }
     void TryMove()
     {
