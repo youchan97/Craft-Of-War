@@ -10,6 +10,9 @@ public class Ashe : Hero
         sm = new StateMachine<Character>(this);
         skillDic = new Dictionary<int, Skill>();
         skillDic.Add((int)SKILL_TYPE.QSkill, new AsheQSkill());
+        skillDic.Add((int)SKILL_TYPE.WSkill, new AsheWSkill());
+        skillDic.Add((int)SKILL_TYPE.ESkill, new AsheESkill());
+        skillDic.Add((int)SKILL_TYPE.RSkill, new AsheRSkill());
         InitStats();
     }
 
@@ -17,7 +20,19 @@ public class Ashe : Hero
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            UseSkill(SKILL_TYPE.QSkill, KeyCode.Q);
+            UseSkill(SKILL_TYPE.QSkill);
+        }
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            UseSkill(SKILL_TYPE.WSkill);
+        }
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            UseSkill(SKILL_TYPE.ESkill);
+        }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            UseSkill(SKILL_TYPE.RSkill);
         }
     }
     public override void InitStats()
@@ -35,7 +50,7 @@ public class Ashe : Hero
     }
 
 
-    public override void UseSkill(SKILL_TYPE skillType, KeyCode keyCode)
+    public override void UseSkill(SKILL_TYPE skillType)
     {
         skillDic[(int)skillType].Active();
     }

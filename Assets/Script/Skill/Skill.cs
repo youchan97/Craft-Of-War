@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
+    private float coolTime;
+    [SerializeField] private bool isCool;
     public abstract void Active();
 }
 
