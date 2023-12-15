@@ -30,7 +30,7 @@ public class ObjectPool : MonoBehaviourPunCallbacks
                 if (prefabList[0] == null)//예외처리
                 break;
 
-                GameObject temp = PhotonNetwork.Instantiate(prefabList[j].name, transform.position, Quaternion.identity);
+                GameObject temp = PhotonNetwork.Instantiate(prefabList[j].name, transform.position, prefabList[j].transform.rotation);
                 temp.transform.SetParent(transform);//오브젝트풀링 부모로
                 temp.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.All, false);
                 GameManager.Instance.onRoundEnd += () => { ReturnPool(temp); };// 게임종료하면 필드 오브젝트 전부 풀로 반환댐 이벤트라 알아서

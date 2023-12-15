@@ -7,6 +7,7 @@ public class AsheQSkill : ToggleSkill
 
     public AsheQSkill(Hero owner) : base(owner)
     {
+        
     }
 
     public override void Active()

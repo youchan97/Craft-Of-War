@@ -5,15 +5,16 @@ using UnityEngine;
 public class Ashe : Hero
 {
     [SerializeField] int concentraction; // Q 스킬 스택
-    
+    [SerializeField] List<Skill> skillList;
     private void Start()
     {
         sm = new StateMachine<Character>(this);
+
         skillDic = new Dictionary<int, Skill>();
-        skillDic.Add((int)SKILL_TYPE.QSkill, new AsheQSkill(this));
-        skillDic.Add((int)SKILL_TYPE.WSkill, new AsheWSkill(this));
-        skillDic.Add((int)SKILL_TYPE.ESkill, new AsheESkill(this));
-        skillDic.Add((int)SKILL_TYPE.RSkill, new AsheRSkill(this));
+        skillDic.Add((int)SKILL_TYPE.QSkill, skillList[(int)SKILL_TYPE.QSkill]);
+        skillDic.Add((int)SKILL_TYPE.WSkill, skillList[(int)SKILL_TYPE.WSkill]);
+        skillDic.Add((int)SKILL_TYPE.ESkill, skillList[(int)SKILL_TYPE.ESkill]);
+        skillDic.Add((int)SKILL_TYPE.RSkill, skillList[(int)SKILL_TYPE.RSkill]);
         InitStats();
     }
 

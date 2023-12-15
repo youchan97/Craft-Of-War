@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-public class TimelineControler : MonoBehaviour
+public class TimelineController : MonoBehaviour
 {
     public TimelineAsset timeline;
-    TrackAsset[] track = new TrackAsset[3];
-    PlayableDirector playable;
-    void Start()
+    public TrackAsset[] track = new TrackAsset[3];
+    public PlayableDirector playable;
+    void Awake()
     {
         playable = GetComponent<PlayableDirector>();
         for (int i = 0; i < track.Length; i++)

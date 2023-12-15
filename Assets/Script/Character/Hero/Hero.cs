@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public enum SKILL_TYPE
@@ -13,14 +14,15 @@ public enum HERO_STATE
 
 public abstract class Hero : Character, IControllable
 {
-    [Header("Hero's Stats")]
+    [Header("Hero's Info")]
     [SerializeField] private int level;
     [SerializeField] private float curExp;
     [SerializeField] private float aimExp;
     [SerializeField] private float curMp;
     [SerializeField] private float maxMp;
+    [SerializeField] private Sprite heroImage;
 
-    protected Dictionary<int, Skill> skillDic;
+    public Dictionary<int, Skill> skillDic;
     public HERO_STATE curState;
 
     //Property 부분 변경시 포톤뷰를 통해 업데이트
@@ -40,6 +42,8 @@ public abstract class Hero : Character, IControllable
     public float MaxMp
     { get => maxMp; set => maxMp = value; }
 
+    public Sprite HeroImage
+    { get=> heroImage; set => heroImage = value; }
 
     public override void InitStats() 
     { 
