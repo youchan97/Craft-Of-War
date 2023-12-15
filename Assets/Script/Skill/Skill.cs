@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public abstract class Skill : MonoBehaviour
 {
     Hero owner;
-    int level;
+    public int level;
+    public Sprite img;
 
     public Skill(Hero owner)
     {

@@ -13,12 +13,16 @@ public class SkillSlot : MonoBehaviour
     public Image skillCoolImg;
     public TextMeshProUGUI coolTimeTxt;
 
+    private void Start()
+    {
+        Init(hero);
+    }
 
     public void Init(Hero hero)
     {
         this.hero = hero;
         skill = hero.skillDic[(int)type];
-        //skillImg = skill.img
+        skillImg.sprite = skill.img;
     }
 
     public void TrySkillActive()
