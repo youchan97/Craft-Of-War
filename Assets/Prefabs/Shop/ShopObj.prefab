@@ -162,8 +162,8 @@ MonoBehaviour:
   unitLayer:
     serializedVersion: 2
     m_Bits: 4096
-  storeAvailability: 0
-  shopControlle: {fileID: 3515702388852665838}
+  shopAvailability: 0
+  shopController: {fileID: 0}
 --- !u!54 &8847709793757071156
 Rigidbody:
   m_ObjectHideFlags: 0

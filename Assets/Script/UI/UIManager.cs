@@ -20,6 +20,7 @@ public class UIManager : SingleTon<UIManager>
     public GameObject shopUI;
     public GameObject leavingShop;
     public TextMeshProUGUI shopClosingTime;
+
     //ºôµåÀ¯´Ö º¯¼ö
     [Header("ºôµå À¯´Ö °ü·Ã")]
     public Image buildProgressImg;
@@ -62,8 +63,8 @@ public class UIManager : SingleTon<UIManager>
     }
     public void CloseStore()
     {
-            leavingShop.SetActive(false);
-            shopUI.SetActive(false);
+        leavingShop.SetActive(false);
+        shopUI.SetActive(false);
     }
 
 

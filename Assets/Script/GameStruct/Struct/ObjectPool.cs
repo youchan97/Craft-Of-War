@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool : MonoBehaviourPunCallbacks
 { 
     Dictionary<int, Stack<GameObject>> poolDict;//프리팹리스트 인덱스에 맞는 스텍딕셔너리 
     //인트부분을 바깥에서 이넘에서 인트로 캐스팅하여 주면 이넘형으로 넘겨받기 가능
@@ -10,7 +11,7 @@ public class ObjectPool : MonoBehaviour
     public int initSize;//넣을갯수
     private void Start()
     {
-        Init();
+         Init();
     }
 
     void Init()
@@ -29,13 +30,15 @@ public class ObjectPool : MonoBehaviour
                 if (prefabList[0] == null)//예외처리
                 break;
 
-                GameObject temp = Instantiate(prefabList[j],transform);//오브젝트풀링 부모로
-                temp.SetActive(false);
+                GameObject temp = PhotonNetwork.Instantiate(prefabList[j].name, transform.position, Quaternion.identity);
+                temp.transform.SetParent(transform);//오브젝트풀링 부모로
+                temp.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.All, false);
                 GameManager.Instance.onRoundEnd += () => { ReturnPool(temp); };// 게임종료하면 필드 오브젝트 전부 풀로 반환댐 이벤트라 알아서
                 poolDict[j].Push(temp);
             }
         }
     }
+    
     public GameObject Pop(int prefabListIndex = 0)
     {
         if (poolDict[prefabListIndex].Count <= 0)
@@ -43,18 +46,18 @@ public class ObjectPool : MonoBehaviour
             for (int i = 0; i < 5; i++)//예외처리
                 //풀 비어있으면 5개씩 추가생성해서 넣기
             {
-                GameObject temp = Instantiate(prefabList[prefabListIndex], transform);
-                temp.SetActive(false);
+                GameObject temp = PhotonNetwork.Instantiate(prefabList[prefabListIndex].name, transform.position, Quaternion.identity);
+                temp.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.All, false);
                 poolDict[prefabListIndex].Push(temp);
             }
         }
         GameObject outObj = poolDict[prefabListIndex].Pop();
-        outObj.SetActive(true);
+        outObj.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.All, true);
         return outObj;
     }
     public void ReturnPool(GameObject targetObj,int prefabListIndex = 0)
     {
-        targetObj.SetActive(false);
+        targetObj.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.All, false);
         poolDict[prefabListIndex].Push(targetObj);
     }
 
@@ -63,5 +66,7 @@ public class ObjectPool : MonoBehaviour
         GameObject outObj = poolDict[prefabListIndex].Peek();
         return outObj;
     }
+
+
 
 }
