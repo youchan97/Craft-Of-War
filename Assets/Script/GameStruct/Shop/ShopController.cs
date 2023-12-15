@@ -11,12 +11,16 @@ public class ShopController: MonoBehaviour
     private NavMeshAgent shopAgent;
     public Transform[] shopMovePoint;
     [SerializeField]
-    private const float leavingStoreTime = 60f;
+    private const float leavingShopTime = 60f;
     private float curCoolTime;
     public float CurCoolTime
     {
         get { return curCoolTime; }
-        set { curCoolTime = value; }
+        set 
+        {
+            curCoolTime = value;
+            UIManager.Instance.shopClosingTime.text = "남은시간 : " + curCoolTime;
+        }
     }
 
     private int shopStopIndex; // 상점이 정지할 위치
@@ -74,7 +78,7 @@ public class ShopController: MonoBehaviour
             ShopStop = true;
             shopAgent.enabled = false;
             Debug.Log("나 멈출꺼야");
-            CurCoolTime = leavingStoreTime;
+            CurCoolTime = leavingShopTime;
             while (CurCoolTime >= 0)
             {
                 CurCoolTime -= Time.fixedDeltaTime;

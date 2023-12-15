@@ -56,7 +56,7 @@ public abstract class Hero : Character, IControllable
         //  3-2. 어택 땅의 경우 : 적 건물, 유닛, 영웅 공격 가능
     }
 
-    public abstract void UseSkill(SKILL_TYPE skillType,KeyCode keyCode);
+    public abstract void UseSkill(SKILL_TYPE skillType);
 
     private void FixedUpdate()
     {

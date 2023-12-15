@@ -5,17 +5,9 @@ using UnityEngine;
 
 public class MonsterAttackState : MonsterState
 {
-    List<string> attackList; 
     float curTime = 0f;
     IEnumerator attackCo;
 
-    public override void Init(IStateMachine stateMachine)
-    {
-        base.Init(stateMachine);
-        attackList = new List<string>();
-        attackList.Add("Attack");
-        attackList.Add("Attack04");
-    }
 
     public override void Enter()
     {
@@ -46,21 +38,17 @@ public class MonsterAttackState : MonsterState
 
     IEnumerator AttackProcess()
     {
+        curTime = 1f;
         while (true)
         {
             curTime += Time.deltaTime;
-            Debug.Log(curTime);
+
             if (curTime > monster.CharInfo.AtkSpeed)
             {
-                monster.Anim.Play(attackList[0]);
-                
+                monster.Anim.Play("Attack");
+                curTime = 0;
             }
-           
-            if (curTime > monster.CharInfo.AtkSpeed * 2)
-            {
-                monster.Anim.Play(attackList[1]);                
-                curTime = 0f;
-            }
+
             
             yield return null;
         }

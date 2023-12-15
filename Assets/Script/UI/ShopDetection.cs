@@ -10,28 +10,39 @@ public class ShopDetection : MonoBehaviour
     [SerializeField]
     private LayerMask unitLayer; // 유닛 레이어
     [SerializeField]
-    private bool storeAvailability; // 상점을 이용가는한지 여부
-    public bool StoreAvailability
+    private bool shopAvailability; // 상점을 이용가는한지 여부
+    public bool ShopAvailability
     {
-        get => storeAvailability;
-        set { storeAvailability = value; }
+        get => shopAvailability;
+        set 
+        { 
+            shopAvailability = value; 
+            if(!shopAvailability)
+            {
+                UIManager.Instance.leavingShop.SetActive(true);
+            }
+        }
     }
-    private bool storeUse;
-    public bool StoreUse
+    private bool shopUse;
+    public bool ShopUse
     {
-        get { return storeUse; }
-        set { storeUse = value; }
+        get { return shopUse; }
+        set 
+        { 
+            shopUse = value;
+            UIManager.Instance.shopUI.SetActive(shopUse);
+        }
     }
 
-    public ShopController shopControlle;
+    public ShopController shopController;
     private void Start()
     {
-        shopControlle =  GetComponent<ShopController>();
+        shopController =  GetComponent<ShopController>();
     }
     private void Update()
     {
-        Debug.Log("상점 이용가능" + StoreAvailability);
-        StoreAvailability = (IsDetection() && shopControlle.ShopStop && GameManager.Instance.playMode == PLAY_MODE.AOS_MODE);
+        Debug.Log("상점 이용가능" + ShopAvailability);
+        ShopAvailability = (IsDetection() && shopController.ShopStop && GameManager.Instance.playMode == PLAY_MODE.AOS_MODE);
     }
     public bool IsDetection()
     {
