@@ -44,6 +44,9 @@ public class SlotManager : SingleTon<SlotManager>
     public Sprite[] nexusIconArr;
     public Sprite[] armyMoveModeIconArr;
 
+    public GameObject buildingProgressprefab;
+    public GameObject buildingEFTprefab;
+
     public const int slotsCount = 9;
     //각 슬롯에 맞는 기능과 이미지 전달
     [SerializeField]
@@ -104,7 +107,6 @@ public class SlotManager : SingleTon<SlotManager>
         //뒤로가기 처음 메뉴로
         slotsDic[SLOTTYPE.Supply_Build].actionButtonArr[8] += () => { SlotType = SLOTTYPE.SupplyUnit; };
         //넥서스빌딩 행동 액션
-        //정찰,생산유닛
         UnitProductAction(SLOTTYPE.NexusBuilding,0,5);
         UnitProductAction(SLOTTYPE.NexusBuilding,1,6);
 
@@ -131,6 +133,7 @@ public class SlotManager : SingleTon<SlotManager>
             StartCoroutine(UnitCoolTimeCo(popIndex));
         };
     }
+
 
     IEnumerator UnitCoolTimeCo(int popIndex)
     {

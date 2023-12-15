@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07052275, g: 0.35373604, b: 0.97078824, a: 1}
+  m_IndirectSpecularColor: {r: 0.07049093, g: 0.35360757, b: 0.97003746, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2044,6 +2044,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c17821fee2f0244aa3e47cb0e2777a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1181591455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8110516915332047137, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7761918932395369033}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1317546466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2702,6 +2708,17 @@ PrefabInstance:
       propertyPath: miniMapCam
       value: 
       objectReference: {fileID: 1623594619}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: buildingEFTprefab
+      value: 
+      objectReference: {fileID: 4864530189948750367, guid: c60d9bf4f4f58b647a5c2e5310a96d0d,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: buildingProgressprefab
+      value: 
+      objectReference: {fileID: 1181591455}
     - target: {fileID: 6871663971920881955, guid: 060655396d4820548aef45e9660b247f,
         type: 3}
       propertyPath: moveCam
