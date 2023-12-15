@@ -101,6 +101,7 @@ public class SlotManager : SingleTon<SlotManager>
             slotsDic[SLOTTYPE.Supply_Build].actionButtonArr[index] += () =>
             {
                 slotArr[index].targetObj = GameManager.Instance.buildingObjectPool.Pop(index);
+                slotArr[index].isBuildClicked = true;
                 slotArr[index].meshRenderer = slotArr[index].targetObj.GetComponent<MeshRenderer>();
             };
         }

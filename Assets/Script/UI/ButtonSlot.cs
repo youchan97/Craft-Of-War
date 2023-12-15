@@ -29,6 +29,7 @@ public class ButtonSlot : MonoBehaviour
 
     public SlotManager slotManager;
 
+    public bool isBuildClicked; 
 
     //그래픽
     public MeshRenderer meshRenderer;
@@ -61,7 +62,7 @@ public class ButtonSlot : MonoBehaviour
 
     void BuildCheck()
     {
-        if (targetObj != null)
+        if (isBuildClicked)
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, 150f, ~(1 << 13 | 1 << 8)))//빌딩을 제외한 레이어
             {
@@ -80,7 +81,7 @@ public class ButtonSlot : MonoBehaviour
 
                     //targetObj.GetComponent<MeshRenderer>().material.SetColor("_InstallColor", Color.black);
                     targetObj.GetComponent<FieldOfView>().fov.GetComponent<MeshRenderer>().enabled = true;
-
+                    isBuildClicked = false;
                     StartCoroutine(BuildProgressCo());
                 }
 
@@ -98,17 +99,27 @@ public class ButtonSlot : MonoBehaviour
     //빌딩 짓는 진행과정 코루틴
     IEnumerator BuildProgressCo()
     {
+        float coolTime = 6f;
+
         targetObj.gameObject.SetActive(false);
 
         GameObject temp = Instantiate(slotManager.buildingProgressprefab,targetObj.transform.position,targetObj.transform.rotation);
         TimelineController tc = temp.GetComponent<TimelineController>();
         TCPlay(tc, 1);
-        yield return new WaitForSeconds(3);
-        TCPlay(tc, 2);
-        yield return new WaitForSeconds(3);
-        TCPlay(tc, 3);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(coolTime / 3);
 
+        //while(dsad)
+        //{
+        //    yield return new WaitForEndOfFrame();
+        //}
+
+        //일꾼이 도착하면 다음단계
+        TCPlay(tc, 2);
+        yield return new WaitForSeconds(coolTime / 3);
+        TCPlay(tc, 3);
+        yield return new WaitForSeconds(coolTime / 3);
+
+        Destroy(temp.gameObject);
         Instantiate(slotManager.buildingEFTprefab,targetObj.transform);
         //그래픽
         SetMPB("_InstallColor", Color.black);
