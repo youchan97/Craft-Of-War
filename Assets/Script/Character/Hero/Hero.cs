@@ -45,16 +45,18 @@ public abstract class Hero : Character, IControllable
     /// <summary>
     /// Attack 메서드는 모든 영웅 공통으로 적용
     /// </summary>
-    public override void Attack(IHitAble target)
+    /// // 공격 함수 호출되는 경우
+    // 1. 직접 타겟 설정
+    // 2. 어택 땅
+    // 3. 자동 공격
+    // 4. 공격 가능 대상
+    //  3-1. 직접 타겟 설정의 경우 : 자기 자신을 제외한 모든 유닛, 건물, 영웅 공격 가능(아군 포함)
+    //  3-2. 어택 땅의 경우 : 적 건물, 유닛, 영웅 공격 가능
+    public override void Attack(IHitAble target) 
     {
-        // 공격 함수 호출되는 경우
-        // 1. 직접 타겟 설정
-        // 2. 어택 땅
-        // 3. 자동 공격
-        // 4. 공격 가능 대상
-        //  3-1. 직접 타겟 설정의 경우 : 자기 자신을 제외한 모든 유닛, 건물, 영웅 공격 가능(아군 포함)
-        //  3-2. 어택 땅의 경우 : 적 건물, 유닛, 영웅 공격 가능
+
     }
+
 
     public abstract void UseSkill(SKILL_TYPE skillType);
 

@@ -875,8 +875,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5273483194874293895}
   - component: {fileID: 2292052736977712381}
-  - component: {fileID: 6825267453406217450}
   - component: {fileID: 6427480566448487918}
+  - component: {fileID: 6825267453406217450}
   - component: {fileID: 4495857108883118702}
   - component: {fileID: 5639178756149400261}
   m_Layer: 11
@@ -926,19 +926,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!135 &6825267453406217450
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784227611126084669}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 1.01, z: 0}
 --- !u!195 &6427480566448487918
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -961,6 +948,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &6825267453406217450
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4784227611126084669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 1.01, z: 0}
 --- !u!114 &4495857108883118702
 MonoBehaviour:
   m_ObjectHideFlags: 0

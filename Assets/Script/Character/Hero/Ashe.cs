@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Ashe : Hero
 {
-
+    [SerializeField] int asheQSkillStack;
     private void Start()
     {
         sm = new StateMachine<Character>(this);
         skillDic = new Dictionary<int, Skill>();
-        skillDic.Add((int)SKILL_TYPE.QSkill, new AsheQSkill());
-        skillDic.Add((int)SKILL_TYPE.WSkill, new AsheWSkill());
-        skillDic.Add((int)SKILL_TYPE.ESkill, new AsheESkill());
-        skillDic.Add((int)SKILL_TYPE.RSkill, new AsheRSkill());
+        skillDic.Add((int)SKILL_TYPE.QSkill, new AsheQSkill(this));
+        skillDic.Add((int)SKILL_TYPE.WSkill, new AsheWSkill(this));
+        skillDic.Add((int)SKILL_TYPE.ESkill, new AsheESkill(this));
+        skillDic.Add((int)SKILL_TYPE.RSkill, new AsheRSkill(this));
         InitStats();
     }
 
@@ -47,8 +47,12 @@ public class Ashe : Hero
         info.AtkRange = 10f;
         Agent.speed = MoveSpeed;
         Agent.angularSpeed = 1200f;
+        asheQSkillStack = 0;
     }
+    public override void Attack(IHitAble target)
+    {
 
+    }
 
     public override void UseSkill(SKILL_TYPE skillType)
     {
