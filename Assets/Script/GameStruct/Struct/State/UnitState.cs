@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Photon.Pun;
 
 public class UnitIdleState : UnitState
 {
+    
     public override void Enter()
     {
         Debug.Log("IDle Enter");
@@ -18,7 +20,7 @@ public class UnitIdleState : UnitState
 
     public override void Update()
     {
-        Debug.Log(owner.agent.velocity);
+      //  Debug.Log(owner.agent.velocity);
         if (owner.agent.velocity != Vector3.zero)
             sm.SetState((int)UNIT_STATE.Move);
         if (owner.isDetect)
@@ -49,6 +51,7 @@ public class UnitMoveState : UnitState
 }
 public class UnitAttackState : UnitState
 {
+    public GameObject weapon;
     public override void Enter()
     {
 
@@ -61,12 +64,18 @@ public class UnitAttackState : UnitState
 
     public override void Update()
     {
+        owner.transform.forward = (owner.cols[0].transform.position - owner.transform.position).normalized;
         /*if (owner.agent.velocity != Vector3.zero)
             sm.SetState((int)UNIT_STATE.Move);*/
         if (owner.isDetect == false)
             sm.SetState((int)UNIT_STATE.Idle);
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            if (owner.cols[0].GetComponent<IHitAble>() != null)
+                owner.photonView.RPC("Attack", RpcTarget.AllBuffered, owner.cols[0]);
+        }
     }
 }
 

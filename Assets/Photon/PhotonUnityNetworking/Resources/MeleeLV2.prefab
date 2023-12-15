@@ -2289,6 +2289,7 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 0
+  cols: []
   unitType: 1
 --- !u!195 &-7395948567998999693
 NavMeshAgent:

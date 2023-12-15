@@ -3268,6 +3268,7 @@ MonoBehaviour:
   target:
     serializedVersion: 2
     m_Bits: 2048
+  cols: []
   mineTf: {x: 0, y: 0, z: 0}
   nexusTf: {x: 0, y: 0, z: 0}
 --- !u!114 &-6524607718604983960

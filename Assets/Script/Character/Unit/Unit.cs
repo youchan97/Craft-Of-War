@@ -23,6 +23,7 @@ public abstract class Unit : Character
     public bool isDetect;
     public float detectRange;
     public LayerMask target;
+    public Collider[] cols;
     
 
     public new void Awake()
@@ -34,7 +35,7 @@ public abstract class Unit : Character
     }
     public virtual void Update()
     {
-        Collider[] cols = Physics.OverlapSphere(gameObject.transform.position, detectRange, target);
+        cols = Physics.OverlapSphere(gameObject.transform.position, detectRange, target);
         sm.UpdateState();
         animator.SetInteger("State", sm.stateEnumInt);
         if(cols.Length > 0 )
@@ -58,9 +59,22 @@ public abstract class Unit : Character
         sm.SetState((int)UNIT_STATE.Idle);
     }
 
+
+    [PunRPC]
+    public override void Attack(IHitAble target)
+    {
+        target.Hp -= Atk;
+    }
+
+
+
     [PunRPC]
     public void RPCSetActive(bool active)
     {
         gameObject.SetActive(active);
+        if(active)
+        {
+            Debug.Log("DebugID : 11,,,,"+ photonView.ViewID + ":" + photonView.Owner.NickName);
+        }
     }
 }

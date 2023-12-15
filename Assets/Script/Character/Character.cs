@@ -32,7 +32,7 @@ public struct CharacterInfo
 
 }
 
-public abstract class Character : MonoBehaviour, IAttackAble, IHitAble
+public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAble
 {
     protected CharacterInfo info;
     public StateMachine<Character> sm;
