@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsheQSkill : PassiveSkill
+public class AsheQSkill : ToggleSkill
 {
-    private float lastTime;
-
 
     public AsheQSkill(Hero owner) : base(owner)
     {

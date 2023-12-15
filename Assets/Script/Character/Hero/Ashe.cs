@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Ashe : Hero
 {
-    [SerializeField] int asheQSkillStack;
+    [SerializeField] int concentraction; // Q 스킬 스택
+    
     private void Start()
     {
         sm = new StateMachine<Character>(this);
@@ -47,7 +48,7 @@ public class Ashe : Hero
         info.AtkRange = 10f;
         Agent.speed = MoveSpeed;
         Agent.angularSpeed = 1200f;
-        asheQSkillStack = 0;
+        concentraction = 0;
     }
     public override void Attack(IHitAble target)
     {

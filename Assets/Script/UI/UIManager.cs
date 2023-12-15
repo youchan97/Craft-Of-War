@@ -74,4 +74,9 @@ public class UIManager : SingleTon<UIManager>
         setTarget.SetActive(true);
     }
 
+    public void OnClickSkillSlot(int index)
+    {
+        skillSlots[index].TrySkillActive();
+    }
+
 }

@@ -14,12 +14,14 @@ public enum HERO_STATE
 
 public abstract class Hero : Character, IControllable
 {
+    [Header("Hero's Stats")]
     [SerializeField] private int level;
     [SerializeField] private float curExp;
     [SerializeField] private float aimExp;
+    [SerializeField] private float curMp;
+    [SerializeField] private float maxMp;
 
     protected Dictionary<int, Skill> skillDic;
-
     public HERO_STATE curState;
 
     //Property 부분 변경시 포톤뷰를 통해 업데이트
@@ -33,6 +35,11 @@ public abstract class Hero : Character, IControllable
     { get => info.MoveSpeed; set => info.MoveSpeed = value; }
     public NavMeshAgent Agent
     { get => agent; set => agent = value; }
+
+    public float CurMp
+    { get => curMp; set => curMp = value; }
+    public float MaxMp
+    { get => maxMp; set => maxMp = value; }
 
 
     public override void InitStats() 
