@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 1986824417738607127}
   - component: {fileID: 4356785146443153117}
   - component: {fileID: 3150264229783198657}
-  - component: {fileID: 924673192}
   m_Layer: 0
   m_Name: Dryer_1
   m_TagString: Untagged
@@ -197,20 +196,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3793773141234428544}
   m_Enabled: 1
---- !u!64 &924673192
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2843624531034021640}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4043136830456713986, guid: 999b39a53fa62c746bbbf2a64cc14f06, type: 3}
 --- !u!1 &6602876772863068654
 GameObject:
   m_ObjectHideFlags: 0

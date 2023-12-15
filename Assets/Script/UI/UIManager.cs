@@ -18,8 +18,7 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI PopulationText;
     [Header("상점 관련 UI")]
     public GameObject shopUI;
-    public GameObject shop;
-    public GameObject leavingStore;
+    public GameObject leavingShop;
     public TextMeshProUGUI shopClosingTime;
     //빌드유닛 변수
     [Header("빌드 유닛 관련")]
@@ -58,27 +57,11 @@ public class UIManager : SingleTon<UIManager>
     {
         ResourcesUpdate();
         ChangeMod();
-        SetStoreUI();
-    }
-
-    public void SetStoreUI() // 상점 UI를 켜고 끄는 UI설정
-    {
-        if (shop.TryGetComponent(out ShopDetection shopDetection))
-        {
-            shopUI.SetActive(shopDetection.StoreUse);
-            leavingStore.SetActive(!shopDetection.StoreUse);
-            if (shop.TryGetComponent(out ShopController shopController))
-                shopClosingTime.text = "남은시간 : " + shopController.CurCoolTime;
-        }
     }
     public void CloseStore()
     {
-        if (shop.TryGetComponent(out ShopDetection shopDetection))
-        {
-            shopDetection.StoreUse = false;
-            leavingStore.SetActive(false);
+            leavingShop.SetActive(false);
             shopUI.SetActive(false);
-        }
     }
 
 
