@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public abstract class Building : MonoBehaviour, IHitAble
 {
@@ -18,5 +19,11 @@ public abstract class Building : MonoBehaviour, IHitAble
     public virtual void Hit(IAttackAble attacker)
     {
         Hp -= attacker.Atk;
+    }
+
+    [PunRPC]
+    public void RPCSetActive(bool active)
+    {
+        gameObject.SetActive(active);
     }
 }
