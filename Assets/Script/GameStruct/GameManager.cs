@@ -78,7 +78,7 @@ public class GameManager : SingleTon<GameManager>
         //캐릭터 생성
         PhotonNetwork.Instantiate(DropDownManager.selectHeroName, points[index].position, points[index].rotation, 0);
      //   if(pv.ViewID == 1)
-            PhotonNetwork.Instantiate("Nexus", buildSpawnPoint.position, buildSpawnPoint.rotation, 0);
+        PhotonNetwork.Instantiate("Nexus", buildSpawnPoint.position, buildSpawnPoint.rotation, 0);
      //   else
      //       PhotonNetwork.Instantiate("Nexus", buildSpawnPoint.position, buildSpawnPoint.rotation, 0);
     }

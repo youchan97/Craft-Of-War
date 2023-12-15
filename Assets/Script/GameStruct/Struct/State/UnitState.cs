@@ -61,8 +61,8 @@ public class UnitAttackState : UnitState
 
     public override void Update()
     {
-        if (owner.agent.velocity != Vector3.zero)
-            sm.SetState((int)UNIT_STATE.Move);
+        /*if (owner.agent.velocity != Vector3.zero)
+            sm.SetState((int)UNIT_STATE.Move);*/
         if (owner.isDetect == false)
             sm.SetState((int)UNIT_STATE.Idle);
         if (owner.Hp <= 0)

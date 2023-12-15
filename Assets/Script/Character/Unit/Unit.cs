@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public enum UNIT_STATE
 {
@@ -26,11 +27,12 @@ public abstract class Unit : Character
 
     public new void Awake()
     {
+        Hp = 100;
         base.Awake();
         isDetect = false;
         InitSm();
     }
-    public void Update()
+    public virtual void Update()
     {
         Collider[] cols = Physics.OverlapSphere(gameObject.transform.position, detectRange, target);
         sm.UpdateState();
@@ -54,5 +56,11 @@ public abstract class Unit : Character
         sm.AddState((int)UNIT_STATE.Die, new UnitDieState());
         //기본상태로 돌려놈
         sm.SetState((int)UNIT_STATE.Idle);
+    }
+
+    [PunRPC]
+    public void RPCSetActive(bool active)
+    {
+        gameObject.SetActive(active);
     }
 }

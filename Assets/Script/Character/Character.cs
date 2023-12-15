@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +32,6 @@ public struct CharacterInfo
 
 }
 
-
 public abstract class Character : MonoBehaviour, IAttackAble, IHitAble
 {
     protected CharacterInfo info;
@@ -50,4 +50,5 @@ public abstract class Character : MonoBehaviour, IAttackAble, IHitAble
     public abstract void Attack(IHitAble target);
     public abstract void Hit(IAttackAble attacker);
     public abstract void Die();
+
 }
