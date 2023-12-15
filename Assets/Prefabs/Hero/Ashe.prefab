@@ -1385,7 +1385,11 @@ MonoBehaviour:
   level: 0
   curExp: 0
   aimExp: 0
+  curMp: 0
+  maxMp: 0
+  heroImage: {fileID: 21300000, guid: 96a85b1ad3aa2fd4aa8715f4fa00318d, type: 3}
   curState: 0
+  concentraction: 0
 --- !u!136 &-6485946883107209529
 CapsuleCollider:
   m_ObjectHideFlags: 0

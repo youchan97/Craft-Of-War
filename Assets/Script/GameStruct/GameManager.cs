@@ -58,8 +58,8 @@ public class GameManager : SingleTon<GameManager>
     }
 
     //Player 관련
-    Character playerHero;
-    public Character PlayerHero
+    Hero playerHero;
+    public Hero PlayerHero
     {
         get { return playerHero; } set { playerHero = value; }
     }
@@ -70,7 +70,7 @@ public class GameManager : SingleTon<GameManager>
         pv = GetComponent<PhotonView>();
         //Player 찾기
         //--- 몇가지 문제가 있어 보인다. 적이랑 같은 태그에 같은 스크립트일텐데 이렇게 찾는게 맞을까?
-        playerHero = GameObject.FindGameObjectWithTag("PlayerHero").GetComponent<Character>();
+        playerHero = GameObject.FindGameObjectWithTag("PlayerHero").GetComponent<Hero>();
         playMode = PLAY_MODE.RTS_MODE;
         //캐릭터 출현 정보를 배열에 저장
         index = UnityEngine.Random.Range(0, points.Length);

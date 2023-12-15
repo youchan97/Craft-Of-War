@@ -12,4 +12,8 @@ public class ToggleSkill : Skill
     {
         Debug.Log("ToggleSkill Invoke!");
     }
+    public override void SkillInit()
+    {
+        throw new System.NotImplementedException();
+    }
 }

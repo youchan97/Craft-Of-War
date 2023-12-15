@@ -57,6 +57,8 @@ public class UIManager : SingleTon<UIManager>
     {
         ResourcesUpdate();
         ChangeMod();
+        if (GameManager.Instance.playMode == PLAY_MODE.AOS_MODE)
+            heroImg.sprite = GameManager.Instance.PlayerHero.HeroImage;
     }
     public void CloseStore()
     {

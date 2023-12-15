@@ -12,4 +12,9 @@ public class PassiveSkill : Skill
     {
         Debug.Log("PassiveSkill Invoke!");
     }
+
+    public override void SkillInit()
+    {
+        throw new System.NotImplementedException();
+    }
 }
