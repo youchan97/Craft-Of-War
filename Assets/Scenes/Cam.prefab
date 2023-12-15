@@ -42,8 +42,8 @@ Camera:
   m_GameObject: {fileID: 5918283827552196889}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -64,7 +64,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 29495
+    m_Bits: 2114049
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: b9024082e09e52b4d8685344839f7338, type: 2}
   m_TargetDisplay: 0
@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 8705431330830156889, guid: ee31855acb0d3eb4cb8254a6a91c0b0b,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 64823
+      value: 130359
       objectReference: {fileID: 0}
     - target: {fileID: 8705431330830156891, guid: ee31855acb0d3eb4cb8254a6a91c0b0b,
         type: 3}
