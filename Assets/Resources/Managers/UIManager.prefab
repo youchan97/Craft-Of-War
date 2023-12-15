@@ -226,7 +226,7 @@ MonoBehaviour:
   goldText: {fileID: 3605048505407836018}
   PopulationText: {fileID: 9222720332189752497}
   shopUI: {fileID: 598484852017019380}
-  leavingShop: {fileID: 0}
+  leavingShop: {fileID: 3108216536182210967}
   shopClosingTime: {fileID: 88807143}
   buildProgressImg: {fileID: 4663535512557227737}
   bottomInfoRTSUI: {fileID: 4440668306571446430}
@@ -2621,6 +2621,12 @@ GameObject:
 --- !u!224 &598484852017019381 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4697316164208213541, guid: 40d056b185fbd24459b553cb0ae6ee11,
+    type: 3}
+  m_PrefabInstance: {fileID: 5295677791289313232}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3108216536182210967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7087712107513988679, guid: 40d056b185fbd24459b553cb0ae6ee11,
     type: 3}
   m_PrefabInstance: {fileID: 5295677791289313232}
   m_PrefabAsset: {fileID: 0}
