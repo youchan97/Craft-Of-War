@@ -66,12 +66,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Building..
-
-'
+  m_text: "\uAC74\uC124\uC911.."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 56f4eb1c1df8a2b4e91e6e8f2836ef49, type: 2}
+  m_sharedMaterial: {fileID: 8537222088256338285, guid: 56f4eb1c1df8a2b4e91e6e8f2836ef49,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -232,7 +231,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 8.0713, y: 1.5846}
+  m_SizeDelta: {x: 5.87, y: 1.5846}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &880095010644757533
 CanvasRenderer:
@@ -262,12 +261,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Need Worker
-
-'
+  m_text: "\uC77C\uAFBC\uC774\n\uD544\uC694\uD569\uB2C8\uB2E4."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 56f4eb1c1df8a2b4e91e6e8f2836ef49, type: 2}
+  m_sharedMaterial: {fileID: 8537222088256338285, guid: 56f4eb1c1df8a2b4e91e6e8f2836ef49,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -449,6 +447,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeline: {fileID: 11400000, guid: 2f52313c61cc22842a33d9ac45218940, type: 2}
+  track:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playable: {fileID: 0}
 --- !u!1 &1961801477546470794
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +478,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961801477546470794}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -672,7 +675,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
+      maxColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -734,8 +737,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4.57
-      minScalar: 2.21
+      scalar: 5
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5318,7 +5321,7 @@ Transform:
   m_GameObject: {fileID: 1961801477903616222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1961801477749885148}
@@ -5352,7 +5355,7 @@ Transform:
   m_GameObject: {fileID: 1961801478116357401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 81915011849963648}
@@ -5387,7 +5390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961801478173602410}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5584,7 +5587,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
+      maxColor: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5646,8 +5649,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4.57
-      minScalar: 2.87
+      scalar: 5
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6109,7 +6112,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 2.19
+      value: 1.68
       mode: 0
       spread: 0
       speed:
@@ -10357,12 +10360,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Building..
-
-'
+  m_text: "\uAC74\uC124\uC911"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 56f4eb1c1df8a2b4e91e6e8f2836ef49, type: 2}
+  m_sharedMaterial: {fileID: 8537222088256338285, guid: 56f4eb1c1df8a2b4e91e6e8f2836ef49,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10453,7 +10455,7 @@ Transform:
   m_GameObject: {fileID: 7918125903994444737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3814941885087251667}
