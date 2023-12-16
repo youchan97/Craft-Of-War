@@ -6,8 +6,9 @@ public class Ashe : Hero
 {
     [SerializeField] int concentraction; // Q 스킬 스택
     [SerializeField] List<Skill> skillList;
-    private void Start()
+    public override void Awake()
     {
+        base.Awake();
         sm = new StateMachine<Character>(this);
 
         skillDic = new Dictionary<int, Skill>();

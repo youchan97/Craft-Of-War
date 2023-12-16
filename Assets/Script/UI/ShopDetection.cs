@@ -41,7 +41,7 @@ public class ShopDetection : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("상점 이용가능" + ShopAvailability);
+
         ShopAvailability = (IsDetection() && shopController.ShopStop && GameManager.Instance.playMode == PLAY_MODE.AOS_MODE);
     }
     public bool IsDetection()

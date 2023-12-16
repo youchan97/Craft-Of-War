@@ -74,7 +74,6 @@ public class GameManager : SingleTon<GameManager>
         playMode = PLAY_MODE.RTS_MODE;
         //캐릭터 출현 정보를 배열에 저장
         index = UnityEngine.Random.Range(0, points.Length);
-        Debug.Log(DropDownManager.selectHeroName);
         //캐릭터 생성
         PhotonNetwork.Instantiate(DropDownManager.selectHeroName, points[index].position, points[index].rotation, 0);
      //   if(pv.ViewID == 1)
@@ -97,7 +96,7 @@ public class GameManager : SingleTon<GameManager>
 
         for (int i = 0; i < 4; i++)
         {
-            Debug.Log(priorityQueue.Dequeue());
+            //Debug.Log(priorityQueue.Dequeue());
         }
 
         //FSM 디버깅

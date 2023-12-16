@@ -72,12 +72,10 @@ public class ShopController: MonoBehaviour
     {
         Index += addValue;
         shopAgent.SetDestination(shopMovePoint[Index].position);
-        Debug.Log(shopStopIndex);
         if (Index == stopIndex)
         {
             ShopStop = true;
             shopAgent.enabled = false;
-            Debug.Log("³ª ¸ØÃâ²¨¾ß");
             CurCoolTime = leavingShopTime;
             while (CurCoolTime >= 0)
             {

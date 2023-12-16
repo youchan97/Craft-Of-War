@@ -101,15 +101,14 @@ public class ClickMoveController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("눌렀다");
+
             if (shopDetection.ShopAvailability)
             {
                 RaycastHit hit;
                 Ray ray = viewCam.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, shopLayer))
                 {
-                    shopDetection.ShopUse = true;
-                        Debug.Log("상점이 열린다!");               
+                    shopDetection.ShopUse = true;              
                 }
             }
         }
