@@ -10,10 +10,10 @@ public class ToggleSkill : Skill
 
     public override void Active()
     {
-        Debug.Log("ToggleSkill Invoke!");
+       
     }
     public override void SkillInit()
     {
-        throw new System.NotImplementedException();
+        
     }
 }

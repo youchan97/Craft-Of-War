@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 public abstract class Skill : MonoBehaviour
 {
-    Hero owner;
-    public int level;
+    protected Hero owner;
     public Sprite img;
 
     public Skill(Hero owner)
     {
         this.owner = owner;
-        this.level = 1;
     }
 
     public abstract void SkillInit();

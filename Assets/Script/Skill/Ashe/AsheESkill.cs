@@ -10,7 +10,6 @@ public class AsheESkill : ActiveSkill
 
     public override void Active()
     {
-        base.Active();
-        Debug.Log("Ashe E skill");
+       base.Active();
     }
 }

@@ -54,7 +54,7 @@ public class Ashe : Hero
     }
     public override void Attack(IHitAble target)
     {
-
+        base.Attack(target);
     }
 
     public override void UseSkill(SKILL_TYPE skillType)

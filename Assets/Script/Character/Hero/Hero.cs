@@ -24,6 +24,8 @@ public abstract class Hero : Character, IControllable
 
     public Dictionary<int, Skill> skillDic;
     public HERO_STATE curState;
+    public IHitAble target;
+
 
     //Property 부분 변경시 포톤뷰를 통해 업데이트
     public int Level
@@ -64,7 +66,7 @@ public abstract class Hero : Character, IControllable
     //  3-2. 어택 땅의 경우 : 적 건물, 유닛, 영웅 공격 가능
     public override void Attack(IHitAble target) 
     {
-
+        this.target = target;
     }
 
 
