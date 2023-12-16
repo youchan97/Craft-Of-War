@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,11 +28,30 @@ public class SkillSlot : MonoBehaviour
         skillImg.sprite = skill.img;
         skillCoolImg.sprite = skill.img;
         coolTimeTxt.enabled = false;
+        skillCoolImg.type = Image.Type.Filled;
+        skillCoolImg.fillAmount = 0;
     }
 
     public void TrySkillActive()
     {
+
         hero.UseSkill(type);
-       // skill.Active();
+        StartCoroutine(skillCoolCo());
+    }
+
+    IEnumerator skillCoolCo()
+    {
+        float tick = 1f / skill.CoolTime;
+        float t = 0;
+
+        skillCoolImg.fillAmount = 1;
+
+        while(skillCoolImg.fillAmount >0)
+        {
+            skillCoolImg.fillAmount = Mathf.Lerp(1, 0, t);
+            t += Time.deltaTime * tick;
+
+            yield return null;
+        }
     }
 }
