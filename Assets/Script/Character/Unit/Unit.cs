@@ -20,32 +20,32 @@ public abstract class Unit : Character
     public int obpId;
 
     public float coolTime;
-    public bool isDetect;
-    public float detectRange;
-    public LayerMask target;
-    public Collider[] cols;
+    //public bool isDetect;
+    //public float detectRange;
+    //public LayerMask target;
+    //public Collider[] cols;
     
 
     public new void Awake()
     {
         Hp = 100;
         base.Awake();
-        isDetect = false;
+        //isDetect = false;
         InitSm();
     }
     public virtual void Update()
     {
-        cols = Physics.OverlapSphere(gameObject.transform.position, detectRange, target);
+        //cols = Physics.OverlapSphere(gameObject.transform.position, detectRange, target);
         sm.UpdateState();
         animator.SetInteger("State", sm.stateEnumInt);
-        if(cols.Length > 0 )
+/*        if(cols.Length > 0 )
         {
             isDetect = true;
         }
         else
         {
             isDetect = false;
-        }
+        }*/
     }
 
     private void InitSm()
@@ -58,13 +58,7 @@ public abstract class Unit : Character
         //기본상태로 돌려놈
         sm.SetState((int)UNIT_STATE.Idle);
     }
-
-
-    [PunRPC]
-    public override void Attack(IHitAble target)
-    {
-        target.Hp -= Atk;
-    }
+    
 
 
 

@@ -3178,6 +3178,7 @@ GameObject:
   - component: {fileID: 554819690053005113}
   - component: {fileID: 2133143322493512863}
   - component: {fileID: -867004045401535294}
+  - component: {fileID: 8504978789140931732}
   m_Layer: 12
   m_Name: Supply
   m_TagString: Untagged
@@ -3261,14 +3262,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   agent: {fileID: 0}
+  pv: {fileID: 0}
+  detectiveComponent: {fileID: 0}
   obpId: 6
   coolTime: 3
-  isDetect: 0
-  detectRange: 3
-  target:
-    serializedVersion: 2
-    m_Bits: 2048
-  cols: []
   mineTf: {x: 0, y: 0, z: 0}
   nexusTf: {x: 0, y: 0, z: 0}
 --- !u!114 &-6524607718604983960
@@ -3389,6 +3386,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 341928988989291377}
   - {fileID: 2133143322493512863}
   - {fileID: -867004045401535294}
   sceneViewId: 0
@@ -3431,6 +3429,23 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &8504978789140931732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136913503570933307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  detectiveRange: 0
 --- !u!1 &8136913503570933309
 GameObject:
   m_ObjectHideFlags: 0

@@ -1346,6 +1346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbe6e99a9a556a47807dfdce26d01f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camSpeed: 0
   isMove: 0
   lineRenderer: {fileID: 444519048294955580}
   anim: {fileID: 0}
@@ -1384,13 +1385,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   agent: {fileID: 0}
+  pv: {fileID: 0}
+  detectiveComponent: {fileID: 0}
   level: 0
   curExp: 0
   aimExp: 0
   curMp: 0
   maxMp: 0
+  heroImage: {fileID: 0}
   curState: 0
   concentraction: 0
+  skillList: []
 --- !u!136 &-6485946883107209529
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class UnitIdleState : UnitState
       //  Debug.Log(owner.agent.velocity);
         if (owner.agent.velocity != Vector3.zero)
             sm.SetState((int)UNIT_STATE.Move);
-        if (owner.isDetect)
+        if (owner.DetectiveComponent.IsRangeDetection)
             sm.SetState((int)UNIT_STATE.Attack);
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
@@ -43,7 +43,7 @@ public class UnitMoveState : UnitState
     {
         if (owner.agent.velocity == Vector3.zero)
             sm.SetState((int)UNIT_STATE.Idle);
-        if (owner.isDetect)
+        if (owner.DetectiveComponent.IsRangeDetection)
             sm.SetState((int)UNIT_STATE.Attack);
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
@@ -64,17 +64,16 @@ public class UnitAttackState : UnitState
 
     public override void Update()
     {
-        owner.transform.forward = (owner.cols[0].transform.position - owner.transform.position).normalized;
+        //owner.transform.forward = (owner.DetectiveComponent..transform.position - owner.transform.position).normalized;
         /*if (owner.agent.velocity != Vector3.zero)
             sm.SetState((int)UNIT_STATE.Move);*/
-        if (owner.isDetect == false)
+        if (owner.DetectiveComponent.IsRangeDetection == false)
             sm.SetState((int)UNIT_STATE.Idle);
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.6f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            if (owner.cols[0].GetComponent<IHitAble>() != null)
-                owner.photonView.RPC("Attack", RpcTarget.AllBuffered, owner.cols[0]);
+            //if(owner.cols.Length
         }
     }
 }
