@@ -32,7 +32,7 @@ public class ObjectPool : MonoBehaviourPunCallbacks
 
                 GameObject temp = PhotonNetwork.Instantiate(prefabList[j].name, transform.position, prefabList[j].transform.rotation);
                 temp.transform.SetParent(transform);//오브젝트풀링 부모로
-                temp.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.All, false);
+                temp.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.AllBuffered, false);
                 GameManager.Instance.onRoundEnd += () => { ReturnPool(temp); };// 게임종료하면 필드 오브젝트 전부 풀로 반환댐 이벤트라 알아서
                 poolDict[j].Push(temp);
             }
@@ -47,7 +47,7 @@ public class ObjectPool : MonoBehaviourPunCallbacks
                 //풀 비어있으면 5개씩 추가생성해서 넣기
             {
                 GameObject temp = PhotonNetwork.Instantiate(prefabList[prefabListIndex].name, transform.position, Quaternion.identity);
-                temp.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.All, false);
+                temp.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.AllBuffered, false);
                 poolDict[prefabListIndex].Push(temp);
             }
         }
@@ -57,7 +57,7 @@ public class ObjectPool : MonoBehaviourPunCallbacks
     }
     public void ReturnPool(GameObject targetObj,int prefabListIndex = 0)
     {
-        targetObj.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.All, false);
+        targetObj.GetComponent<PhotonView>().RPC("RPCSetActive", RpcTarget.AllBuffered, false);
         poolDict[prefabListIndex].Push(targetObj);
     }
 

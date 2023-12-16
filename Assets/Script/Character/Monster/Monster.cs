@@ -10,7 +10,7 @@ public enum MONSTER_STATE
 public class Monster : Character
 {
     StateMachine<Monster> stateMachine;
-    DetectiveComponent detectiveComponent;
+    //DetectiveComponent detectiveComponent;
     Animator anim;
     [SerializeField] Vector3 originPos;
     
@@ -25,7 +25,7 @@ public class Monster : Character
     public Animator Anim { get { return anim; } }
     public CharacterInfo CharInfo { get { return info; }}
     public NavMeshAgent Agent { get { return agent; } }
-    public DetectiveComponent DetectiveComponent { get {  return detectiveComponent; } }
+    //public DetectiveComponent DetectiveComponent { get {  return detectiveComponent; } }
 
     public override void Awake()
     {
@@ -33,7 +33,7 @@ public class Monster : Character
 
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        detectiveComponent = GetComponent<DetectiveComponent>();
+        //detectiveComponent = GetComponent<DetectiveComponent>();
 
         stateMachine = new StateMachine<Monster>(this);
         stateMachine.AddState((int)MONSTER_STATE.IDLE, new MonsterIdleState());

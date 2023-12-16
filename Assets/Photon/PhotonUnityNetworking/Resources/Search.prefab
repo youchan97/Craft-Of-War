@@ -2890,6 +2890,7 @@ GameObject:
   - component: {fileID: 8936055821107277484}
   - component: {fileID: 4913244191849299692}
   - component: {fileID: 6711745181691334259}
+  - component: {fileID: -7734940537070016048}
   m_Layer: 12
   m_Name: Search
   m_TagString: Untagged
@@ -2975,14 +2976,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   agent: {fileID: 0}
+  pv: {fileID: 0}
+  detectiveComponent: {fileID: 0}
   obpId: 5
   coolTime: 3
-  isDetect: 0
-  detectRange: 0
-  target:
-    serializedVersion: 2
-    m_Bits: 0
-  cols: []
 --- !u!195 &5269075596055844550
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3068,6 +3065,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 7060437525524584393}
   - {fileID: 4913244191849299692}
   - {fileID: 6711745181691334259}
   sceneViewId: 0
@@ -3110,6 +3108,23 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &-7734940537070016048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234759034580599769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  detectiveRange: 0
 --- !u!1 &1234759034580599773
 GameObject:
   m_ObjectHideFlags: 0

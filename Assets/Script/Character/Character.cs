@@ -32,17 +32,24 @@ public struct CharacterInfo
 
 }
 
-public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAble
+public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAble, IPunObservable
 {
     protected CharacterInfo info;
     public StateMachine<Character> sm;
     public Animator animator;
     public NavMeshAgent agent;
+    public PhotonView pv;
+    [SerializeField]
+    protected DetectiveComponent detectiveComponent;
+
+    public DetectiveComponent DetectiveComponent { get { return detectiveComponent; } }
     public virtual void Awake()
     {
         sm = new StateMachine<Character>(this);
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        pv = GetComponent<PhotonView>();
+        detectiveComponent = GetComponent<DetectiveComponent>();
     }
     public int Atk { get => info.Atk; set => info.Atk = value; }
     public int Hp { get => info.CurentHp; set => info.CurentHp = value; }
@@ -50,5 +57,15 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
     public abstract void Attack(IHitAble target);
     public abstract void Hit(IAttackAble attacker);
     public abstract void Die();
-
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting)
+        {
+            stream.SendNext(Hp);
+        }
+        else
+        {
+            this.Hp = (int)stream.ReceiveNext();
+        }
+    }
 }

@@ -2199,6 +2199,7 @@ GameObject:
   - component: {fileID: 1942002770775274}
   - component: {fileID: -7028549968492227854}
   - component: {fileID: 321558534580516289}
+  - component: {fileID: 1184509161060816985}
   m_Layer: 12
   m_Name: MeleeLV2
   m_TagString: Untagged
@@ -2282,14 +2283,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   agent: {fileID: 0}
+  pv: {fileID: 0}
+  detectiveComponent: {fileID: 0}
   obpId: 1
   coolTime: 3
-  isDetect: 0
-  detectRange: 0
-  target:
-    serializedVersion: 2
-    m_Bits: 0
-  cols: []
   unitType: 1
 --- !u!195 &-7395948567998999693
 NavMeshAgent:
@@ -2412,10 +2409,30 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -8331112170430300282}
+  - {fileID: 1942002770775274}
+  - {fileID: -7028549968492227854}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1184509161060816985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573984351696906012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  detectiveRange: 0
 --- !u!1 &4573984351696906014
 GameObject:
   m_ObjectHideFlags: 0
