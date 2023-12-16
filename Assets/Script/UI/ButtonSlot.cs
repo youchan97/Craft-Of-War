@@ -29,7 +29,8 @@ public class ButtonSlot : MonoBehaviour
 
     public SlotManager slotManager;
 
-    public bool isBuildClicked; 
+    public bool isBuildClicked;
+
 
     //그래픽
     public MeshRenderer meshRenderer;
@@ -82,7 +83,7 @@ public class ButtonSlot : MonoBehaviour
                     //targetObj.GetComponent<MeshRenderer>().material.SetColor("_InstallColor", Color.black);
                     targetObj.GetComponent<FieldOfView>().fov.GetComponent<MeshRenderer>().enabled = true;
                     isBuildClicked = false;
-                    StartCoroutine(BuildProgressCo());
+                    StartCoroutine(BuildProgressCo(hitInfo.point));
                 }
 
                 //빌드 취소 우클릭 미완
@@ -96,28 +97,30 @@ public class ButtonSlot : MonoBehaviour
         }
     }
 
+
     //빌딩 짓는 진행과정 코루틴
-    IEnumerator BuildProgressCo()
+    IEnumerator BuildProgressCo(Vector3 hitpoint)
     {
         float coolTime = 6f;
+        slotManager.selectedSupplyUnit.agent.SetDestination(hitpoint);
 
         targetObj.gameObject.SetActive(false);
 
         GameObject temp = Instantiate(slotManager.buildingProgressprefab,targetObj.transform.position,targetObj.transform.rotation);
         TimelineController tc = temp.GetComponent<TimelineController>();
         TCPlay(tc, 1);
-        yield return new WaitForSeconds(coolTime / 3);
 
-        //while(dsad)
-        //{
-        //    yield return new WaitForEndOfFrame();
-        //}
+        //일꾼 도착까지 기다림
+        while (slotManager.selectedSupplyUnit.agent.remainingDistance >= 0.1f)
+        {
+            yield return new WaitForEndOfFrame();
+        }
 
         //일꾼이 도착하면 다음단계
         TCPlay(tc, 2);
-        yield return new WaitForSeconds(coolTime / 3);
+        yield return new WaitForSeconds(coolTime / 2);
         TCPlay(tc, 3);
-        yield return new WaitForSeconds(coolTime / 3);
+        yield return new WaitForSeconds(coolTime / 2);
 
         Destroy(temp.gameObject);
         Instantiate(slotManager.buildingEFTprefab,targetObj.transform);

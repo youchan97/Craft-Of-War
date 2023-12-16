@@ -47,6 +47,9 @@ public class SlotManager : SingleTon<SlotManager>
     public GameObject buildingProgressprefab;
     public GameObject buildingEFTprefab;
 
+    //유닛 이동건설땜에 받아옴
+    public SupplyUnit selectedSupplyUnit;
+
     public const int slotsCount = 9;
     //각 슬롯에 맞는 기능과 이미지 전달
     [SerializeField]

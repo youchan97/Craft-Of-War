@@ -11,7 +11,7 @@ public class MouseClick : MonoBehaviour
     [SerializeField] private LayerMask layerBuilding;
     private Camera mainCamera;
     private RTSController controller;
-    public SlotManager behaviourSlotManager;
+    public SlotManager slotManager;
 
     private void Awake()
     {
@@ -43,19 +43,19 @@ public class MouseClick : MonoBehaviour
                     //생산빌딩 선택했으면
                     if (hit.collider.gameObject.TryGetComponent(out ProductBuilding productBuilding))
                     {
-                        behaviourSlotManager.SlotType = SLOTTYPE.ProductBuilding;
+                        slotManager.SlotType = SLOTTYPE.ProductBuilding;
                     }
                     //넥서스 선택했으면
                     if (hit.collider.gameObject.TryGetComponent(out NexusBuilding nexusBuilding))
                     {
-                        behaviourSlotManager.SlotType = SLOTTYPE.NexusBuilding;
+                        slotManager.SlotType = SLOTTYPE.NexusBuilding;
                     }
                 }
             }
             else
             {
                 controller.DeselctBuliding();
-                behaviourSlotManager.SlotType = SLOTTYPE.None;
+                slotManager.SlotType = SLOTTYPE.None;
             }
 
             //유닛 클릭할떄
@@ -74,7 +74,8 @@ public class MouseClick : MonoBehaviour
                     //생산유닛 클릭 했을때
                     if(hit.collider.gameObject.TryGetComponent(out SupplyUnit supplyUnit))
                     {
-                        behaviourSlotManager.SlotType = SLOTTYPE.SupplyUnit;
+                        slotManager.SlotType = SLOTTYPE.SupplyUnit;
+                        slotManager.selectedSupplyUnit = supplyUnit;
                     }
                 }
             }
