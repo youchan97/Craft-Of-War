@@ -69,7 +69,7 @@ MonoBehaviour:
   layerBuilding:
     serializedVersion: 2
     m_Bits: 8192
-  behaviourSlotManager: {fileID: 0}
+  slotManager: {fileID: 0}
 --- !u!114 &7761918933120702298
 MonoBehaviour:
   m_ObjectHideFlags: 0
