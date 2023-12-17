@@ -19,7 +19,7 @@ public class ShopController: MonoBehaviour
         set 
         {
             curCoolTime = value;
-            UIManager.Instance.shopClosingTime.text = "남은시간 : " + curCoolTime;
+            UIManager.Instance.shopClosingTime.text = "남은시간 : " + (int)curCoolTime;
         }
     }
 

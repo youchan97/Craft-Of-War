@@ -33,6 +33,7 @@ public class InventoryManager : SingleTon<InventoryManager>
         //        }
         //    }
         //}
+        Debug.Log("ADD 아이템 호출됨");
         if (inven.curItemCount == inven.maxSlotCount)   //아이템 슬룻이 꽉차 있을때
             return;
         if (inven.curItemCount == 0)                    //아이템 슬룻에 아이템이 없을때
