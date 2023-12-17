@@ -111,16 +111,24 @@ public class ButtonSlot : MonoBehaviour
         TCPlay(tc, 1);
 
         //일꾼 도착까지 기다림
-        while (slotManager.selectedSupplyUnit.agent.remainingDistance >= 0.1f)
+        //매번 남은 거리가 0이되는 이유 찾음
+        //코루틴에서는 이동에 있어 다른 업데이트로 넘겨주지 않으면
+        //남은거리가 요원을 근거하기에 갱신이 안됨
+        yield return null;
+        while (slotManager.selectedSupplyUnit.agent.remainingDistance >= 0.05f)
         {
+            //Debug.Log("일꾼 거리" + slotManager.selectedSupplyUnit.agent.remainingDistance);
             yield return new WaitForEndOfFrame();
         }
+        slotManager.selectedSupplyUnit.sm.SetState((int)UNIT_STATE.Work);
 
         //일꾼이 도착하면 다음단계
         TCPlay(tc, 2);
         yield return new WaitForSeconds(coolTime / 2);
         TCPlay(tc, 3);
         yield return new WaitForSeconds(coolTime / 2);
+
+        slotManager.selectedSupplyUnit.sm.SetState((int)UNIT_STATE.Move);
 
         Destroy(temp.gameObject);
         Instantiate(slotManager.buildingEFTprefab,targetObj.transform);

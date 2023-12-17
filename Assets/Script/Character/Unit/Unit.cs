@@ -53,7 +53,7 @@ public abstract class Unit : Character
         sm.AddState((int)UNIT_STATE.Idle, new UnitIdleState());
         sm.AddState((int)UNIT_STATE.Move, new UnitMoveState());
         sm.AddState((int)UNIT_STATE.Attack, new UnitAttackState());
-        sm.AddState((int)UNIT_STATE.Work, new UnitMoveState());
+        sm.AddState((int)UNIT_STATE.Work, new UnitWorkState());
         sm.AddState((int)UNIT_STATE.Die, new UnitDieState());
         //기본상태로 돌려놈
         sm.SetState((int)UNIT_STATE.Idle);
