@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c1606e8baf4044a98c2fe77e6d9ee2, type: 3}
   m_Name: PotionHP
   m_EditorClassIdentifier: 
-  ID: 200
-  image: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  ID: 1
+  image: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}
   type: 0
   stackable: 1
