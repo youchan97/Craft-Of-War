@@ -3268,6 +3268,8 @@ MonoBehaviour:
   coolTime: 3
   mineTf: {x: 0, y: 0, z: 0}
   nexusTf: {x: 0, y: 0, z: 0}
+  isRunMineCoroutine: 0
+  isMineClicked: 0
 --- !u!114 &-6524607718604983960
 MonoBehaviour:
   m_ObjectHideFlags: 0
