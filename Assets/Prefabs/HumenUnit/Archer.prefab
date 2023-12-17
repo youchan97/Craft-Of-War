@@ -3428,13 +3428,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   agent: {fileID: 0}
+  pv: {fileID: 0}
+  detectiveComponent: {fileID: 0}
   obpId: 3
   coolTime: 3
-  isDetect: 0
-  detectRange: 3
-  target:
-    serializedVersion: 2
-    m_Bits: 4096
   unitType: 2
 --- !u!195 &3855637067024655820
 NavMeshAgent:

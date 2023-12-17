@@ -31,12 +31,12 @@ public class RTSController : MonoBehaviour
             selectBuilding = value;
             if (value == null)
             {
-                UIManager.Instance.buildingModeUI.SetActive(false);
+                UIManager.Instance.unitProductModeUI.SetActive(false);
                 return;
             }
 
-            UIManager.Instance.BottomRTSUISetActive(UIManager.Instance.buildingModeUI);
-            TextMeshProUGUI[] buildInfoTexts = UIManager.Instance.buildingModeUI.GetComponentsInChildren<TextMeshProUGUI>();
+            UIManager.Instance.BottomRTSUISetActive(UIManager.Instance.unitProductModeUI);
+            TextMeshProUGUI[] buildInfoTexts = UIManager.Instance.unitProductModeUI.GetComponentsInChildren<TextMeshProUGUI>();
             //이름
             buildInfoTexts[0].text = selectBuilding.gameObject.GetComponent<Building>().buildingName;
             //건설중인지

@@ -144,7 +144,7 @@ public class SlotManager : SingleTon<SlotManager>
         float cool = GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().coolTime;
         //쿨타임동안 다른걸 선택할수 있어 미리 위치받음
         Transform selectBuilding = GameManager.Instance.rtsController.SelectBuilding.gameObject.transform;
-        TextMeshProUGUI[] buildInfoTexts  = UIManager.Instance.buildingModeUI.GetComponentsInChildren<TextMeshProUGUI>();
+        TextMeshProUGUI[] buildInfoTexts  = UIManager.Instance.unitProductModeUI.GetComponentsInChildren<TextMeshProUGUI>();
         //진행도
         buildInfoTexts[1].text = "생산중";
         //유닛생산 쿨타임

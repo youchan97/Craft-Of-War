@@ -25,7 +25,7 @@ public class UIManager : SingleTon<UIManager>
     [Header("ºôµå À¯´Ö °ü·Ã")]
     public Image buildProgressImg;
     public GameObject bottomInfoRTSUI;
-    public GameObject buildingModeUI;
+    public GameObject unitProductModeUI;
 
     [Header("¿µ¿õ AOS¸ðµå UI")]
     public SkillSlot[] skillSlots;
