@@ -16,9 +16,8 @@ public enum PLAY_MODE
 public class GameManager : SingleTon<GameManager>
 {
     public PLAY_MODE playMode = PLAY_MODE.RTS_MODE;
-    public Transform[] points= new Transform[2];
-    public Transform buildSpawnPoint;
-    public int index;
+    public Transform[] heroPoints= new Transform[2];
+    public Transform[] buildPoints = new Transform[2];
 
     public PhotonView pv;
 
@@ -73,17 +72,21 @@ public class GameManager : SingleTon<GameManager>
         playerHero = GameObject.FindGameObjectWithTag("PlayerHero").GetComponent<Hero>();
         playMode = PLAY_MODE.RTS_MODE;
         //캐릭터 출현 정보를 배열에 저장
-        index = UnityEngine.Random.Range(0, points.Length);
-        //캐릭터 생성
-        PhotonNetwork.Instantiate(DropDownManager.selectHeroName, points[index].position, points[index].rotation, 0);
-     //   if(pv.ViewID == 1)
-        PhotonNetwork.Instantiate("Nexus", buildSpawnPoint.position, buildSpawnPoint.rotation, 0);
-     //   else
-     //       PhotonNetwork.Instantiate("Nexus", buildSpawnPoint.position, buildSpawnPoint.rotation, 0);
+        //캐릭터, 넥서스 랜덤 포인트에 생성
+        if(PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
+            PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.masterIndexPoint].position, buildPoints[MatchManager.masterIndexPoint].rotation, 0);
+        }   
+        else
+        {
+            PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
+            PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.userIndexPoint].position, buildPoints[MatchManager.userIndexPoint].rotation, 0);
+        }
     }
     void Start()
     {
-        StartCoroutine(PlayerInitCo());
+        //StartCoroutine(PlayerInitCo());
 
         //우선큐
         adapterPriorityQueue = new PriorityQueue<string, int>();
@@ -111,7 +114,7 @@ public class GameManager : SingleTon<GameManager>
     }
 
     //게임시작하고 플레이어 관련 초기화
-    IEnumerator PlayerInitCo()
+    /*IEnumerator PlayerInitCo()
     {
         //플레이어 처음 진영 유닛과 넥서스 소환
         GameObject nexus =  buildingObjectPool.Pop(0);
@@ -128,5 +131,5 @@ public class GameManager : SingleTon<GameManager>
             yield return null;
             supply.GetComponent<NavMeshAgent>().ResetPath();
         }
-    }
+    }*/
 }

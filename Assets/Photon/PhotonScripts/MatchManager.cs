@@ -17,13 +17,13 @@ public class MatchManager : MonoBehaviourPunCallbacks
     private int maxPlayer = 2;
     public GameObject loadingObj;
     public GameObject currentPlayerCount;
-    public static int indexpoint;
+    public static int masterIndexPoint;
+    public static int userIndexPoint;
     PhotonView pv;
 
 
     private void Awake()
     {
-        Screen.SetResolution(1920, 1080, false);
         PhotonNetwork.AutomaticallySyncScene = true;
         loadingObj.SetActive(false);
         pv = GetComponent<PhotonView>();
@@ -92,10 +92,10 @@ public class MatchManager : MonoBehaviourPunCallbacks
         print("방 참가 완료.");
         if(PhotonNetwork.IsMasterClient)
         {
-            indexpoint = UnityEngine.Random.Range(0, 2);
-            Debug.Log("주인 스폰"+ indexpoint);
-            pv.RPC("SpawnIndex", RpcTarget.AllBuffered, indexpoint);
-            Debug.Log("손님 스폰" + indexpoint);
+            masterIndexPoint = UnityEngine.Random.Range(0, PhotonNetwork.CurrentRoom.MaxPlayers);
+            Debug.Log("주인 스폰"+ masterIndexPoint);
+            pv.RPC("SpawnIndex", RpcTarget.AllBuffered, masterIndexPoint);
+            Debug.Log("손님 스폰" + userIndexPoint);
         }
         Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}은 인원수 {PhotonNetwork.CurrentRoom.MaxPlayers} 매칭 기다리는 중.");
         UpdatePlayerCounts();
@@ -137,8 +137,8 @@ public class MatchManager : MonoBehaviourPunCallbacks
     public int SpawnIndex(int index)
     {
         if (index == 0)
-            return indexpoint = 1;
+            return userIndexPoint = 1;
         else
-            return indexpoint = 0;
+            return userIndexPoint = 0;
     }
 }
