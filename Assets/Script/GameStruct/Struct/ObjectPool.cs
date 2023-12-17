@@ -66,7 +66,4 @@ public class ObjectPool : MonoBehaviourPunCallbacks
         GameObject outObj = poolDict[prefabListIndex].Peek();
         return outObj;
     }
-
-
-
 }
