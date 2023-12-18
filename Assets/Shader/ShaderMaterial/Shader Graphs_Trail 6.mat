@@ -23,18 +23,15 @@ Material:
   m_Name: Shader Graphs_Trail 6
   m_Shader: {fileID: -6465566751694194690, guid: 890371e0bfa1d4c4293d1fef61de839c,
     type: 3}
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _SURFACE_TYPE_TRANSPARENT
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3001
-  stringTagMap:
-    RenderType: Transparent
-  disabledShaderPasses:
-  - DepthOnly
-  - SHADOWCASTER
+  m_CustomRenderQueue: 2451
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -63,6 +60,7 @@ Material:
     - _Cull: 2
     - _DissolveAmount: 30
     - _DstBlend: 10
+    - _Fade: 2.27
     - _Lenght: 2.04
     - _QueueControl: 0
     - _QueueOffset: 1
