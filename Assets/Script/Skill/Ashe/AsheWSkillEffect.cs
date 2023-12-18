@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class AsheWSkillEffect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float moveSpeed;
+    [SerializeField] private Vector3 direction;
+    [SerializeField] GameObject hitEffect;
+
+
+    private void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

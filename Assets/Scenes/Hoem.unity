@@ -2145,6 +2145,8 @@ MonoBehaviour:
   isCool: 0
   img: {fileID: 21300000, guid: 3de1a0eeeddf7204f8c324e2fcdd8c6f, type: 3}
   level: 1
+  skillEffect: {fileID: 7711079991872236346, guid: 43f3976191d58784dbf76c29212e3bc7,
+    type: 3}
 --- !u!1 &407369693
 GameObject:
   m_ObjectHideFlags: 0
@@ -5383,6 +5385,8 @@ MonoBehaviour:
   - {fileID: 386262820}
   - {fileID: 1924687799}
   - {fileID: 1151353861}
+  skillTransform:
+  - {fileID: 1151353860}
 --- !u!136 &1545829985
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5447,6 +5451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitMaker: {fileID: 1428736660}
+  unit: {fileID: 0}
 --- !u!195 &1545829989
 NavMeshAgent:
   m_ObjectHideFlags: 0

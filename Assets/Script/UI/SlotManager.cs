@@ -103,6 +103,21 @@ public class SlotManager : SingleTon<SlotManager>
         ActionInit();
     }
 
+    //private void Update()
+    //{
+    //    for(int i=0;i<5;i++)
+    //    {
+    //        unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
+    //        unitProductProgressFaceSlots[i].SetActive(false);
+    //    }
+    //    for (int i = 0; i < unitCoolTimeCos.Count; i++)
+    //    {
+    //        unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = ;
+    //        unitProductProgressFaceSlots[i].SetActive(false);
+    //    }
+
+    //}
+
     //유닛 다중생산 초기화 부분
     public void FaceListButtonInit()
     {
@@ -114,10 +129,15 @@ public class SlotManager : SingleTon<SlotManager>
         for (int i = 0; i < unitProductProgressFaceSlots.Count; i++)
         {
             //유닛생산중 아이콘들 누르면 리스트에서 빼고 이미지 제거하기
-            unitProductProgressFaceSlots[i].GetComponentInParent<Button>().onClick.AddListener(() => 
+            int index = i;
+            unitProductProgressFaceSlots[index].GetComponentInParent<Button>().onClick.AddListener(() => 
             { 
-                unitCoolTimeCos.RemoveAt(i);
-                unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
+                //StopCoroutine(unitCoolTimeCos[index]);//생산기능 멈춰야함
+                unitCoolTimeCos.RemoveAt(index);
+                
+                //선생님 UI 주석
+              //  unitProductProgressFaceSlots[index].GetComponent<Image>().sprite = null;
+              //  unitProductProgressFaceSlots[index].SetActive(false);
             });
         }
     }
@@ -171,9 +191,13 @@ public class SlotManager : SingleTon<SlotManager>
 
             Transform selectBuildingTf = GameManager.Instance.rtsController.SelectBuilding.gameObject.transform;
             unitCoolTimeCos.Add(UnitCoolTimeCo(popIndex, selectBuildingTf));
-            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(true);
-            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite =
-            GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().faceSprite;
+
+
+            //선생님 UI 주석
+            //이미지 대기열 표시
+            //     unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(true);
+            //     unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite =
+            //     GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().faceSprite;
         };
     }
 
@@ -226,7 +250,8 @@ public class SlotManager : SingleTon<SlotManager>
         
         unit.GetComponent<NavMeshAgent>().ResetPath();
 
-        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite = null;
-        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(false);
+        //선생님 UI 주석
+        // unitProductProgressFaceSlots[unitCoolTimeCos.Count].GetComponent<Image>().sprite = null;
+        //  unitProductProgressFaceSlots[unitCoolTimeCos.Count].SetActive(false);
     }
 }

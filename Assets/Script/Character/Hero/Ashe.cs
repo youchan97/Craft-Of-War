@@ -8,6 +8,9 @@ public class Ashe : Hero
     [SerializeField] List<Skill> skillList;
 
     public List<Transform> skillTransform;
+
+    public int Concentraction { get => concentraction; set { concentraction = value; } }
+
     public override void Awake()
     {
         base.Awake();
