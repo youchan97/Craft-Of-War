@@ -2371,7 +2371,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 3
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: State
   m_SynchronizeLayers:
   - SynchronizeType: 0
