@@ -3349,7 +3349,6 @@ MonoBehaviour:
   obpId: 6
   faceSprite: {fileID: 21300000, guid: 9c2401eb5c5030c408cf3a4ab0c6966a, type: 3}
   coolTime: 3
-  curHp: 0
   mineTf: {x: 0, y: 0, z: 0}
   nexusTf: {x: 0, y: 0, z: 0}
   isRunMineCoroutine: 0
@@ -3366,9 +3365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0
   isRangeDetection: 0
   isCutomTargetLayer: 0
   cols: []
@@ -3497,7 +3493,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 3
-    SynchronizeType: 2
+    SynchronizeType: 1
     Name: State
   m_SynchronizeLayers:
   - SynchronizeType: 0

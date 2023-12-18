@@ -53,7 +53,8 @@ public class UnitAttackState : UnitState
 {
     public override void Enter()
     {
-
+        if (owner.DetectiveComponent.cols[0].GetComponent<Character>() != null)
+            owner.DetectiveComponent.cols[0].GetComponent<Character>().Hp -= owner.Atk;
     }
 
     public override void Exit()
@@ -70,10 +71,6 @@ public class UnitAttackState : UnitState
             sm.SetState((int)UNIT_STATE.Idle);
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
-       /* if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            owner.DetectiveComponent.AttackMethod();
-        }*/
     }
 }
 
