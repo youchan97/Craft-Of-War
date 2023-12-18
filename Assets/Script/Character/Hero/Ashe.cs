@@ -16,6 +16,11 @@ public class Ashe : Hero
         skillDic.Add((int)SKILL_TYPE.WSkill, skillList[(int)SKILL_TYPE.WSkill]);
         skillDic.Add((int)SKILL_TYPE.ESkill, skillList[(int)SKILL_TYPE.ESkill]);
         skillDic.Add((int)SKILL_TYPE.RSkill, skillList[(int)SKILL_TYPE.RSkill]);
+
+        foreach(var keyValue in skillDic)
+        {
+            keyValue.Value.SetOwner(this);
+        }
         InitStats();
     }
 

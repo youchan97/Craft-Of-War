@@ -12,9 +12,9 @@ public class ActiveSkill : Skill
     
     public int Level { get { return level; } set { level = value; } }
     public int ReqMp { get => reqMp; set { reqMp = value; } }
-   
 
-    public ActiveSkill(Hero owner) : base(owner)
+
+    private void Start()
     {
         Level = 1;
         IsCool = false;
@@ -22,6 +22,7 @@ public class ActiveSkill : Skill
 
     public override void Active()
     {
+        
         if (owner.CurMp < ReqMp || owner.curState == HERO_STATE.STUN || owner.curState == HERO_STATE.DIE || IsCool) return;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

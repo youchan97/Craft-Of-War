@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class EvelynnRSkill : ActiveSkill
 {
-    public EvelynnRSkill(Hero owner) : base(owner)
-    {
-    }
+
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,8 +34,8 @@ public class SkillSlot : MonoBehaviour
 
     public void TrySkillActive()
     {
-
-        hero.UseSkill(type);
+        skill.Active();
+     //   hero.UseSkill(type);
         StartCoroutine(skillCoolCo());
     }
 

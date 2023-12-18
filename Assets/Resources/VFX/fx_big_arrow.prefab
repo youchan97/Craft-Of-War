@@ -5175,10 +5175,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 14
-  direction: {x: 0, y: 0, z: 0}
+  direction: {x: -1, y: 0, z: 0}
   radius: 0
   hitEffect: {fileID: 1280810077217925919, guid: bf2964db9d88cfe4b9f82ec368d4a6b8,
     type: 3}
+  owner: {fileID: 0}
 --- !u!1 &8118217362182156393
 GameObject:
   m_ObjectHideFlags: 0

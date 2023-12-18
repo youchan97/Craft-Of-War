@@ -5,16 +5,15 @@ using UnityEngine;
 public class AsheRSkill : ActiveSkill
 {
     [SerializeField] private GameObject skillEffect;
-    public AsheRSkill(Hero owner) : base(owner)
-    {
 
-    }
 
     public override void Active()
     {
-        Instantiate(skillEffect,transform.position,transform.rotation);
-        base.Active();
-        Debug.Log("Ashe R skill");
+       
+        Instantiate(skillEffect,transform.position + Vector3.up*0.5f,transform.rotation).GetComponent<AsheRSkillEffect>().owner = (Ashe)owner;
+
+     //   base.Active();
+        Debug.Log(owner.name + "Ashe R skill");
         
     }
 }

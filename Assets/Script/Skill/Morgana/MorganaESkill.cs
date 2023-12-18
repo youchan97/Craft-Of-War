@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class MorganaESkill : ActiveSkill
 {
-    public MorganaESkill(Hero owner) : base(owner)
-    {
-    }
+
 }

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class ToggleSkill : Skill
 {
-    public ToggleSkill(Hero owner) : base(owner)
-    {
-    }
+
 
     public override void Active()
     {

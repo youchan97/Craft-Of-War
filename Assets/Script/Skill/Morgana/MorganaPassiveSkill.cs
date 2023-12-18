@@ -4,7 +4,4 @@ using UnityEngine;
 
 public class MorganaPassiveSkill : PassiveSkill
 {
-    public MorganaPassiveSkill(Hero owner) : base(owner)
-    {
-    }
 }

@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class AshePassiveSkill : PassiveSkill
 {
-    public AshePassiveSkill(Hero owner) : base(owner)
-    {
-    }
+
 }
