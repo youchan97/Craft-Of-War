@@ -22,21 +22,21 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI shopClosingTime;
     [Header("Ä³¸¯ÅÍ ½½·í UI")]
     public CharacterSlot characterSlot;
-    [Header("ÀÏ¹Ý À¯´Ö Á¤º¸ UI")]
-    public GameObject unitStatUI;
-    public Image unitHp;
-    public TextMeshProUGUI unitNameText;
-    public TextMeshProUGUI unitAtkText;
-    public TextMeshProUGUI unitShieldText;
-    [Header("¿µ¿õ À¯´Ö Á¤º¸ UI")]
-    public GameObject heroStatUI;
-    public Image heroHp;
-    public Image heroMp;
-    public Image heroExp;
-    public TextMeshProUGUI heroNameText;
-    public TextMeshProUGUI heroLvText;
-    public TextMeshProUGUI heroAtkText;
-    public TextMeshProUGUI heroShieldText;
+    //[Header("ÀÏ¹Ý À¯´Ö Á¤º¸ UI")]
+    //public GameObject unitStatUI;
+    //public Image unitHp;
+    //public TextMeshProUGUI unitNameText;
+    //public TextMeshProUGUI unitAtkText;
+    //public TextMeshProUGUI unitShieldText;
+    //[Header("¿µ¿õ À¯´Ö Á¤º¸ UI")]
+    //public GameObject heroStatUI;
+    //public Image heroHp;
+    //public Image heroMp;
+    //public Image heroExp;
+    //public TextMeshProUGUI heroNameText;
+    //public TextMeshProUGUI heroLvText;
+    //public TextMeshProUGUI heroAtkText;
+    //public TextMeshProUGUI heroShieldText;
 
     //ºôµåÀ¯´Ö º¯¼ö
     [Header("ºôµå À¯´Ö °ü·Ã")]
