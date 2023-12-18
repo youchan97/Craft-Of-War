@@ -35,7 +35,7 @@ public class UIManager : SingleTon<UIManager>
 
     [Header("종민// 유닛 여럿생산 관련 아이콘/배열")]
     public SlotManager slotManager;
-    public GameObject unitFaceGO;
+    public UnitFaceListUI unitFaceUI;
 
     public void ChangeMod()
     {
