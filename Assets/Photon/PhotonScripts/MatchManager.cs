@@ -118,7 +118,6 @@ public class MatchManager : MonoBehaviourPunCallbacks
         }
     }
 
-
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
