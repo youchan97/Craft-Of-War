@@ -2259,6 +2259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitMaker: {fileID: 5773935548412618177}
+  unit: {fileID: 0}
 --- !u!114 &6696962742273598220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2350,10 +2351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0
   isRangeDetection: 0
+  isCutomTargetLayer: 0
+  cols: []
   detectiveRange: 0
 --- !u!1 &8726071526014405776
 GameObject:

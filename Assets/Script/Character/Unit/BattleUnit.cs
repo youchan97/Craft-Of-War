@@ -72,6 +72,7 @@ public enum BATTLE_UNIT
 
 public class BattleUnit : Unit
 {
+    
     BattleUnitStragy unitStragy;
     public BATTLE_UNIT unitType;
     public Dictionary<BATTLE_UNIT, BattleUnitStragy> stragyDic;

@@ -20,22 +20,37 @@ public abstract class Unit : Character
     public int obpId;
 
     public Sprite faceSprite;
+    public MeshRenderer meshRenderer;
+    MaterialPropertyBlock mpb;
 
     public float coolTime;
     //public bool isDetect;
     //public float detectRange;
     //public LayerMask target;
     //public Collider[] cols;
-    
+    private void SetMPB(string propertyName, Color color)
+    {
+        meshRenderer.GetPropertyBlock(mpb);
+        mpb.SetColor(propertyName, color);
+        meshRenderer.SetPropertyBlock(mpb);
+    }
 
-    public new void Awake()
+    public override void Awake()
     {
         Hp = 100;
         base.Awake();
         pv.RPC("UnitLayer", RpcTarget.AllBuffered);
-        
+        mpb = new MaterialPropertyBlock();
         //isDetect = false;
         InitSm();
+    }
+
+    private void Start()
+    {
+        if (pv.IsMine)
+            SetMPB("_PlayerColor", Color.green);
+        else
+            SetMPB("_PlayerColor", Color.red);
     }
     public virtual void Update()
     {

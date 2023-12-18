@@ -32,9 +32,9 @@ public class BuildingManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         if(pv.IsMine)
-            SetMPB("_PlayerColor", Color.red);
-        else
             SetMPB("_PlayerColor", Color.green);
+        else
+            SetMPB("_PlayerColor", Color.red);
     }
 
     

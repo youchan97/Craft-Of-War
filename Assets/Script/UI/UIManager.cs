@@ -22,10 +22,15 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI shopClosingTime;
     [Header("Ä³¸¯ÅÍ ½½·í UI")]
     public CharacterSlot characterSlot;
+    [Header("ÀÏ¹Ý À¯´Ö Á¤º¸ UI")]
+    public GameObject unitStatUI;
+    [Header("¿µ¿õ À¯´Ö Á¤º¸ UI")]
+    public GameObject heroStatUI;
 
     //ºôµåÀ¯´Ö º¯¼ö
     [Header("ºôµå À¯´Ö °ü·Ã")]
-    public Image buildProgressImg;
+    public Image buildProgressFill;
+    public TextMeshProUGUI buildProgressCountText;
     public GameObject bottomInfoRTSUI;
     public GameObject unitProductModeUI;
 
@@ -35,7 +40,7 @@ public class UIManager : SingleTon<UIManager>
 
     [Header("Á¾¹Î// À¯´Ö ¿©·µ»ý»ê °ü·Ã ¾ÆÀÌÄÜ/¹è¿­")]
     public SlotManager slotManager;
-    public GameObject unitFaceGO;
+    public UnitFaceListUI unitFaceUI;
 
     public void ChangeMod()
     {
@@ -88,4 +93,28 @@ public class UIManager : SingleTon<UIManager>
         skillSlots[index].TrySkillActive();
     }
 
+
+    
+   
+    public void SelectUnitUIChange(RTSController controller)
+    {
+        //for (int i = 0; i < controller.selectedUnitList.Count; i++)
+        //{
+        //    if(controller.selectedUnitList[i].gameObject == GameManager.Instance.PlayerHero.gameObject)
+        //    {
+        //        Swap(controller.selectedUnitList, controller.selectedUnitList);
+        //    }
+        //}
+        for (int i = 0; i < controller.selectedUnitList.Count; i++)
+        {
+            characterSlot.faceSlot[i].SetActive(true);
+            characterSlot.hpImage[i].fillAmount = (float)controller.selectedUnitList[i].unit.Hp / (float)100; // ÀÓ½Ã·Î 100À¸·Î ³ª´²¼­ Ã¼·Â Ç¥½Ã
+            characterSlot.faceImage[i].sprite = controller.selectedUnitList[i].unit.faceSprite;
+        }        
+    }
+    public void Swap(RTSController controller, int aValue, int bValue)
+    {
+
+    }
+    
 }

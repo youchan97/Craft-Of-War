@@ -3365,10 +3365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0
   isRangeDetection: 0
+  isCutomTargetLayer: 0
+  cols: []
   detectiveRange: 3
 --- !u!195 &-1934131999187091146
 NavMeshAgent:
@@ -3419,6 +3418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitMaker: {fileID: 5830306779168498481}
+  unit: {fileID: 0}
 --- !u!114 &-68107217147720457
 MonoBehaviour:
   m_ObjectHideFlags: 0

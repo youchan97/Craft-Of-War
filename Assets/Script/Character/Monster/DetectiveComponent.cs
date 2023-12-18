@@ -1,13 +1,19 @@
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DetectiveComponent : MonoBehaviour
+public class DetectiveComponent : MonoBehaviourPunCallbacks
 {
-    [SerializeField] LayerMask targetLayer;
+    LayerMask targetLayer;
     [SerializeField] bool isRangeDetection;
+    PhotonView pv;
+
+    public bool isCutomTargetLayer;
+    public Collider[] cols;
+
     
     [SerializeField] private float detectiveRange; // 감지 범위(시야보다 클 수 없음)
 
@@ -18,9 +24,24 @@ public class DetectiveComponent : MonoBehaviour
 
     public bool IsRangeDetection { get { return isRangeDetection; } }
 
+    private void Awake()
+    {
+        pv = GetComponent<PhotonView>();
+        if(isCutomTargetLayer)
+        {
+            targetLayer = (1 << 17) | (1 << 18);
+        }
+        else
+        {
+            pv.RPC("DetectLayer", RpcTarget.AllBuffered);
+        }
+    
+    }
+
+
     private void Update()
     {
-        Collider[] cols = Physics.OverlapSphere(transform.position, detectiveRange, targetLayer);
+        cols = Physics.OverlapSphere(transform.position, detectiveRange, targetLayer);
         isRangeDetection = (bool)(cols.Length > 0);
 
         if(isRangeDetection)
@@ -42,7 +63,16 @@ public class DetectiveComponent : MonoBehaviour
             }
         }
     }
-
+    [PunRPC]
+    public void DetectLayer()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            targetLayer = (1 << 7) | (1 << 13) | (1 << 18);
+        }
+        else
+            targetLayer = (1 << 6) | (1 << 12) | (1 << 17);
+    }
 
     private void OnDrawGizmos()
     {

@@ -65,7 +65,7 @@ public class ButtonSlot : MonoBehaviour
     {
         if (isBuildClicked)
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, 150f, ~(1 << 13 | 1 << 8)))//빌딩을 제외한 레이어
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo, 150f, ~(1 << 13 | 1 << 8 | 1 << 12)))//빌딩을 제외한 레이어
             {
                 targetObj.transform.position = hitInfo.point;
                 targetObj.GetComponent<NavMeshObstacle>().enabled = false;
