@@ -22,7 +22,7 @@ public class AsheRSkillEffect : MonoBehaviour
 
     private void Update()
     {
-        rb.MovePosition(owner.skillTransform[0].transform.position - Input.mousePosition  * moveSpeed * Time.deltaTime);
+        //rb.MovePosition(owner.skillTransform[0].transform.position - Input.mousePosition  * moveSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -64,6 +64,13 @@ public class ClickMoveController : MonoBehaviour
 
     private void Update()
     {
+        if (target.Agent.isStopped)
+        {
+            isAutoMove = false;
+            isMove = false;
+            target.Agent.SetDestination(this.transform.position);
+        }
+
         if (lineRenderer.enabled)
         {
             NavMesh.CalculatePath(transform.position, targetPoint, NavMesh.AllAreas, path);
@@ -130,8 +137,11 @@ public class ClickMoveController : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hitInfo))
             {
-                target.Agent.SetDestination(hitInfo.point);
-                isMove = true;
+                if (hitInfo.transform.gameObject.layer == 14)
+                {
+                    target.Agent.SetDestination(hitInfo.point);
+                    isMove = true;
+                }
             }
         }
     }

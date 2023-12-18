@@ -86,4 +86,9 @@ public class Morgana : Hero
     {
 
     }
+
+    public override void Attack(IHitAble target, Transform targetTrans)
+    {
+        //throw new System.NotImplementedException();
+    }
 }

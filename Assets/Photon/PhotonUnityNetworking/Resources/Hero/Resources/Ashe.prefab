@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503386626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,8 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbbafa7b30fcc046bc418677081c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   isCool: 0
   img: {fileID: 21300000, guid: de9025ddab2d9364c9894839f8960f37, type: 3}
+  range: 30
+  speed: 30
 --- !u!1 &1485256928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,6 +1382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitMaker: {fileID: 1485256928}
+  unit: {fileID: 0}
 --- !u!114 &1342130739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1439,12 +1443,18 @@ MonoBehaviour:
   maxMp: 0
   heroImage: {fileID: 21300000, guid: 96a85b1ad3aa2fd4aa8715f4fa00318d, type: 3}
   curState: 0
+  clickTarget: {fileID: 0}
   concentraction: 0
   skillList:
   - {fileID: 503386628}
   - {fileID: 2052687697622716709}
   - {fileID: 6097932119379929782}
   - {fileID: 5637484274564519653}
+  defaultTrans: {fileID: 503386627}
+  qSkillTrans: []
+  wSkillTrans: []
+  eSkillTrans: []
+  rSkillTrans: []
 --- !u!136 &-6485946883107209529
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1630,9 +1640,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c57e904da17ee4da1cc8bcb8b6ed9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   isCool: 0
   img: {fileID: 21300000, guid: 3de1a0eeeddf7204f8c324e2fcdd8c6f, type: 3}
+  range: 0
+  speed: 0
   level: 1
+  skillEffect: {fileID: 0}
 --- !u!1 &3361648788724464244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,9 +2245,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb493868da521124fbda75fec46b484e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   isCool: 0
   img: {fileID: 21300000, guid: 9c811f672800a6e429308eae7fc81429, type: 3}
+  range: 0
+  speed: 0
   level: 1
+  skillEffect: {fileID: 0}
 --- !u!1 &4079315524280669420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3926,8 +3944,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f4e6732861f9c4f820cff740056175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   isCool: 0
   img: {fileID: 21300000, guid: d197d11c0d40de340a6e11a279c5c8a0, type: 3}
+  range: 0
+  speed: 0
   level: 1
 --- !u!1 &8738861965054772413
 GameObject:
