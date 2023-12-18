@@ -32,6 +32,11 @@ public class Ashe : Hero
         {
             keyValue.Value.SetOwner(this);
         }
+
+        for(int i = 0; i < UIManager.Instance.skillSlots.Length; i++)
+        {
+            UIManager.Instance.skillSlots[i].Init(this);
+        }
         InitStats();
     }
 
@@ -55,8 +60,11 @@ public class Ashe : Hero
                 }
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Q))
+    }
+    public override void Update()
+    {
+        base.Update();
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             UseSkill(SKILL_TYPE.QSkill);
         }
@@ -113,7 +121,7 @@ public class Ashe : Hero
 
     public override void UseSkill(SKILL_TYPE skillType)
     {
-        skillDic[(int)skillType].Active();
+        UIManager.Instance.skillSlots[(int)skillType].TrySkillActive();
     }
 
 

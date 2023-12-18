@@ -34,7 +34,7 @@ public struct CharacterInfo
 
 public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAble, IPunObservable
 {
-    protected CharacterInfo info;
+    public CharacterInfo info;
     public StateMachine<Character> sm;
     public Animator animator;
     public NavMeshAgent agent;

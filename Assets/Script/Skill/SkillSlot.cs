@@ -33,8 +33,8 @@ public class SkillSlot : MonoBehaviour
 
     public void TrySkillActive()
     {
+        if (skillCoolImg.fillAmount > 0) return;
         skill.Active();
-     //   hero.UseSkill(type);
         StartCoroutine(skillCoolCo());
     }
 
@@ -45,7 +45,7 @@ public class SkillSlot : MonoBehaviour
 
         skillCoolImg.fillAmount = 1;
 
-        while(skillCoolImg.fillAmount >0)
+        while (skillCoolImg.fillAmount > 0)
         {
             skillCoolImg.fillAmount = Mathf.Lerp(1, 0, t);
             t += Time.deltaTime * tick;

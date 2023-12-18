@@ -3328,6 +3328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
   isRangeDetection: 0
   isCutomTargetLayer: 0
   cols: []
@@ -3351,6 +3354,8 @@ MonoBehaviour:
   obpId: 3
   faceSprite: {fileID: 21300000, guid: a97a0483392a83346b1d2edb79c41e61, type: 3}
   coolTime: 3
+  curHp: 0
+  attack: 0
   unitType: 2
 --- !u!195 &3855637067024655820
 NavMeshAgent:
@@ -3435,7 +3440,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 3
-    SynchronizeType: 1
+    SynchronizeType: 2
     Name: State
   m_SynchronizeLayers:
   - SynchronizeType: 0

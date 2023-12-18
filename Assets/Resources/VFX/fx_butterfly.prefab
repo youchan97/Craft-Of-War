@@ -14758,6 +14758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 466128591109552464}
   - component: {fileID: 8148960042471673379}
+  - component: {fileID: 6799825736119960906}
   m_Layer: 0
   m_Name: fx_butterfly
   m_TagString: Untagged
@@ -14800,6 +14801,18 @@ MonoBehaviour:
   discardSkinnedObject:
   - {fileID: 7315473241297422833}
   - {fileID: 6537931729697698003}
+--- !u!114 &6799825736119960906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466128591109552465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6423d7aed9dab0248b357c93b7c57012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &466128591182212400
 GameObject:
   m_ObjectHideFlags: 0
