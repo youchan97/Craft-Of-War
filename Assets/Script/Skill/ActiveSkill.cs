@@ -17,8 +17,7 @@ public class ActiveSkill : Skill
 
     private void Start()
     {
-        Level = 1;
-        IsCool = false;
+        SkillInit();
     }
 
     public override void Active()
@@ -32,7 +31,8 @@ public class ActiveSkill : Skill
 
     public override void SkillInit()
     {
-        
+        Level = 1;
+        IsCool = false;
     }
 
     IEnumerator CoolTimeCor()

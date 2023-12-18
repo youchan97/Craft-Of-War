@@ -12,8 +12,5 @@ public class AsheRSkill : ActiveSkill
         owner.animator.Play("Attack_Ultimate");
         Instantiate(skillEffect,transform.position,transform.rotation).GetComponent<AsheRSkillEffect>().owner = (Ashe)owner;
 
-     //   base.Active();
-        Debug.Log(owner.name + "Ashe R skill");
-        
     }
 }
