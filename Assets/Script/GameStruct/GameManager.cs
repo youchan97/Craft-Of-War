@@ -73,6 +73,7 @@ public class GameManager : SingleTon<GameManager>
         playMode = PLAY_MODE.RTS_MODE;
         //캐릭터 출현 정보를 배열에 저장
         //캐릭터, 넥서스 랜덤 포인트에 생성
+
         if(PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
@@ -104,6 +105,11 @@ public class GameManager : SingleTon<GameManager>
 
         //FSM 디버깅
         stateMachine = new StateMachine<GameManager>(this);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        PhotonNetwork.CurrentRoom.IsOpen = true;
     }
 
     // Update is called once per frame

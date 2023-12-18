@@ -69,7 +69,6 @@ MonoBehaviour:
   layerBuilding:
     serializedVersion: 2
     m_Bits: 8192
-  slotManager: {fileID: 0}
 --- !u!114 &7761918933120702298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,10 +172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabList:
-  - {fileID: 8240184688935440637, guid: 90fd0bd064d3aa7489039f7fab61a85e, type: 3}
-  - {fileID: 2944838222301640406, guid: 87ae9f5ea47108e409db8e62fa2d7dd0, type: 3}
-  - {fileID: 2134524521000029446, guid: eee9ddf10726ac1488534a9110709dee, type: 3}
-  - {fileID: 360450826840771944, guid: 4a5a370502c72604a894eddff981cc2c, type: 3}
+  - {fileID: 8240184688935440637, guid: 6802e3b6fd7984043a3b98249a4c77b6, type: 3}
+  - {fileID: 2944838222301640406, guid: 475de04ddd45f5d47a430b60a1b32d1a, type: 3}
+  - {fileID: 2134524521000029446, guid: 7b7d934fe2940e94db8e1bc3852649ca, type: 3}
+  - {fileID: 360450826840771944, guid: fed1b4740a0d10a40b73f3f93cd6b1d1, type: 3}
   initSize: 10
 --- !u!1 &7761918933575942984
 GameObject:
@@ -228,11 +227,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playMode: 0
-  points:
+  heroPoints:
   - {fileID: 0}
   - {fileID: 0}
-  buildSpawnPoint: {fileID: 0}
-  index: 0
+  buildPoints:
+  - {fileID: 0}
+  - {fileID: 0}
   pv: {fileID: 0}
   unitObjectPool: {fileID: 7761918934345454505}
   buildingObjectPool: {fileID: 7761918933342080110}
@@ -282,13 +282,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabList:
-  - {fileID: 7918981313826021795, guid: 1116f0b866dd6244a9c1acc8376dc93e, type: 3}
-  - {fileID: 4573984351696906012, guid: b1b0e49731074f74abc82614572428b5, type: 3}
-  - {fileID: 8726071526014405772, guid: f7c35a664dbd5ee4db0a1f55e7021325, type: 3}
-  - {fileID: 9051467776319534918, guid: 78654aa4db3308a429c6d39092b4ef43, type: 3}
-  - {fileID: 4956073739007431384, guid: 7d2b473d82e817643a2ddc70f1f8d81a, type: 3}
-  - {fileID: 1234759034580599769, guid: b748118aa5fb2b14fba24e52f2e82a14, type: 3}
-  - {fileID: 8136913503570933307, guid: 63ce628234c986541989a8832c599fbd, type: 3}
+  - {fileID: 7918981313826021795, guid: 10dfdc021909db648a0b829e60320185, type: 3}
+  - {fileID: 4573984351696906012, guid: 0011aa27812f29d4aba5b246def42ecd, type: 3}
+  - {fileID: 8726071526014405772, guid: d1a286e28ae36c44d8076ee944c7995f, type: 3}
+  - {fileID: 9051467776319534918, guid: 982c5d151bd4a4c4baa9e095cca5b79b, type: 3}
+  - {fileID: 4956073739007431384, guid: 2a1105ae3e4319c4aac40fd1a9032606, type: 3}
+  - {fileID: 1234759034580599769, guid: 566b61585b9f97e4fbe47c3b42e4f038, type: 3}
+  - {fileID: 8136913503570933307, guid: b195cc747fbbeb74b8ecc14d00fa8bec, type: 3}
   initSize: 10
 --- !u!1001 &7761918933707061653
 PrefabInstance:
