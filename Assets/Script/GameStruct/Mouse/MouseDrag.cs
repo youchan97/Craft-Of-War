@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,11 +45,21 @@ public class MouseDrag : MonoBehaviour
             // 마우스 드래그를 종료할 때 드래그 범위 내에 있는 유닛 선택
             CalculateDragRect();
             SelectUnits();
-
+            SelectUnitUIChange();
             dragStartPos = dragEndPos = Vector2.zero;
             DrawDragRectangle();
         }
     }
+    public void SelectUnitUIChange()
+    {
+        for (int i = 0; i < controller.selectedUnitList.Count; i++)
+        { 
+            UIManager.Instance.characterSlot.faceSlot[i].SetActive(true);
+            UIManager.Instance.characterSlot.hpImage[i].fillAmount = (float)controller.selectedUnitList[i].unit.Hp / (float)100; // 임시로 100으로 나눠서 체력 표시
+            UIManager.Instance.characterSlot.faceImage[i].sprite = controller.selectedUnitList[i].unit.faceSprite;
+        }
+    }
+
     private void DrawDragRectangle()
     {
         dragRectangle.position = (dragStartPos + dragEndPos) * 0.5f; // 드래그 범위를 나타내는 이미지UI 위치
