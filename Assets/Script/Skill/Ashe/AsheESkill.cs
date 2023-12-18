@@ -11,6 +11,6 @@ public class AsheESkill : ActiveSkill
 
     public override void SkillInit()
     {
-        CoolTime = 3f;
+        CoolTime = 5f;
     }
 }
