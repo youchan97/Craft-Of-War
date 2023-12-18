@@ -26,7 +26,7 @@ public class ActiveSkill : Skill
         
         if (owner.CurMp < ReqMp || owner.curState == HERO_STATE.STUN || owner.curState == HERO_STATE.DIE || IsCool) return;
         
-
+        
         
     }
 

@@ -9,7 +9,7 @@ public class AsheRSkill : ActiveSkill
 
     public override void Active()
     {
-       
+        owner.animator.Play("Attack_Ultimate");
         Instantiate(skillEffect,transform.position,transform.rotation).GetComponent<AsheRSkillEffect>().owner = (Ashe)owner;
 
      //   base.Active();
