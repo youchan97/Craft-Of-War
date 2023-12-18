@@ -32,6 +32,8 @@ public abstract class Unit : Character
     {
         Hp = 100;
         base.Awake();
+        pv.RPC("UnitLayer", RpcTarget.AllBuffered);
+        
         //isDetect = false;
         InitSm();
     }
@@ -60,7 +62,24 @@ public abstract class Unit : Character
         //기본상태로 돌려놈
         sm.SetState((int)UNIT_STATE.Idle);
     }
-    
+    [PunRPC]
+    public void UnitLayer()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (pv.IsMine)
+                this.gameObject.layer = 6;
+            else
+                this.gameObject.layer = 7;
+        }
+        else
+        {
+            if(pv.IsMine)
+                this.gameObject.layer = 7;
+            else
+                this.gameObject.layer = 6;
+        }
+    }
 
 
 

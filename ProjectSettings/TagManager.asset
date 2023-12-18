@@ -15,14 +15,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - MasterUnit
+  - UserUnit
   - FOV
   - LineRenderer
   - MinimapBan
   - Monster
-  - Unit
-  - Buliding
+  - MasterBuilding
+  - UserBuliding
   - Ground
   - Resources
   - Shop

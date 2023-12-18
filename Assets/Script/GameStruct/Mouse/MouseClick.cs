@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Photon.Pun;
 
-public class MouseClick : MonoBehaviour
+public class MouseClick : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private LayerMask layerUnit;
+    private LayerMask layerUnit;
     [SerializeField] private LayerMask layerGround;
-    [SerializeField] private LayerMask layerBuilding;
+    private LayerMask layerBuilding;
     private Camera mainCamera;
     private RTSController controller;
 
@@ -16,6 +17,16 @@ public class MouseClick : MonoBehaviour
     {
         mainCamera = Camera.main;
         controller = GetComponent< RTSController>();
+        if(PhotonNetwork.IsMasterClient)
+        {
+            layerUnit = 1 << 6;
+            layerBuilding = 1 << 12;
+        }
+        else
+        {
+            layerUnit = 1 << 7;
+            layerBuilding = 1 << 13;
+        }
     }
 
     private void Update()
