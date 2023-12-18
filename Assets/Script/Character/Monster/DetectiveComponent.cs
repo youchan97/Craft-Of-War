@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class DetectiveComponent : MonoBehaviour
+public class DetectiveComponent : MonoBehaviourPunCallbacks
 {
     LayerMask targetLayer;
     [SerializeField] bool isRangeDetection;
+    PhotonView pv;
 
     public bool isCutomTargetLayer;
     public Collider[] cols;
@@ -25,18 +26,14 @@ public class DetectiveComponent : MonoBehaviour
 
     private void Awake()
     {
+        pv = GetComponent<PhotonView>();
         if(isCutomTargetLayer)
         {
             targetLayer = (1 << 17) | (1 << 18);
         }
         else
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                targetLayer = (1 << 7) | (1 << 13) | (1 << 18);
-            }
-            else
-                targetLayer = (1 << 6) | (1 << 12) | (1 << 17);
+            pv.RPC("DetectLayer", RpcTarget.AllBuffered);
         }
     
     }
@@ -66,7 +63,16 @@ public class DetectiveComponent : MonoBehaviour
             }
         }
     }
-
+    [PunRPC]
+    public void DetectLayer()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            targetLayer = (1 << 7) | (1 << 13) | (1 << 18);
+        }
+        else
+            targetLayer = (1 << 6) | (1 << 12) | (1 << 17);
+    }
 
     private void OnDrawGizmos()
     {
