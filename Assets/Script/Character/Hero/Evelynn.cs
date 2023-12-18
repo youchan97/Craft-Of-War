@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Morgana : Hero
+public class Evelynn : Hero
 {
-   
+
     [SerializeField] List<Skill> skillList;
     public List<Transform> skillTransform;
 

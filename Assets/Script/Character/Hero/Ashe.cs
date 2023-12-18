@@ -76,7 +76,7 @@ public class Ashe : Hero
 
     public override void UseSkill(SKILL_TYPE skillType)
     {
-        skillDic[(int)skillType].Active();
+        UIManager.Instance.skillSlots[(int)skillType].TrySkillActive();
     }
 
 

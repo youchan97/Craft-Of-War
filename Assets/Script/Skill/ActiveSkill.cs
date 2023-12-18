@@ -23,34 +23,13 @@ public class ActiveSkill : Skill
     public override void Active()
     {
         
-        if (owner.CurMp < ReqMp || owner.curState == HERO_STATE.STUN || owner.curState == HERO_STATE.DIE || IsCool) return;
-        
-        
+        if (owner.CurMp < ReqMp || owner.curState == HERO_STATE.STUN || owner.curState == HERO_STATE.DIE) return;
         
     }
 
     public override void SkillInit()
     {
         Level = 1;
-        IsCool = false;
     }
 
-    IEnumerator CoolTimeCor()
-    {
-        float curTime = 0f;
-        while (true)
-        {
-            curTime += Time.deltaTime;
-            if(curTime < CoolTime)
-            {
-                IsCool = true;
-            }
-            else
-            {
-                IsCool = false;
-            }
-            yield return null;
-        }
-
-    }
 }
