@@ -3350,6 +3350,7 @@ MonoBehaviour:
   pv: {fileID: 0}
   detectiveComponent: {fileID: 0}
   obpId: 3
+  faceSprite: {fileID: 21300000, guid: a97a0483392a83346b1d2edb79c41e61, type: 3}
   coolTime: 3
   unitType: 2
 --- !u!195 &3855637067024655820
@@ -3474,6 +3475,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: -2058180744903222714}
   - {fileID: -4705523686762115886}
   - {fileID: -1461936598232420883}
   sceneViewId: 0
