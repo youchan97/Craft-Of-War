@@ -3328,10 +3328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0
   isRangeDetection: 0
+  isCutomTargetLayer: 0
+  cols: []
   detectiveRange: 3
 --- !u!114 &-2058180744903222714
 MonoBehaviour:
@@ -3402,6 +3401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitMaker: {fileID: 649054215791035964}
+  unit: {fileID: 0}
 --- !u!114 &6126162983315067039
 MonoBehaviour:
   m_ObjectHideFlags: 0

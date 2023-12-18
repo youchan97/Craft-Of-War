@@ -976,6 +976,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2292052736977712381}
   agent: {fileID: 6427480566448487918}
+  pv: {fileID: 0}
+  detectiveComponent: {fileID: 0}
   originPos: {x: 0, y: 0, z: 0}
   monState: 0
 --- !u!114 &5639178756149400261
@@ -990,10 +992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 4096
   isRangeDetection: 0
+  isCutomTargetLayer: 1
   detectiveRange: 0
 --- !u!1 &4863403920621609306
 GameObject:
