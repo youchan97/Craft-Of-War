@@ -20,51 +20,37 @@ public abstract class Unit : Character
     public int obpId;
 
     public Sprite faceSprite;
-    public MeshRenderer meshRenderer;
-    MaterialPropertyBlock mpb;
+/*    public MeshRenderer meshRenderer;
+    MaterialPropertyBlock mpb;*/
 
     public float coolTime;
-    //public bool isDetect;
-    //public float detectRange;
-    //public LayerMask target;
-    //public Collider[] cols;
-    private void SetMPB(string propertyName, Color color)
+    /*private void SetMPB(string propertyName, Color color)
     {
         meshRenderer.GetPropertyBlock(mpb);
         mpb.SetColor(propertyName, color);
         meshRenderer.SetPropertyBlock(mpb);
-    }
+    }*/
 
     public override void Awake()
     {
         Hp = 100;
         base.Awake();
         pv.RPC("UnitLayer", RpcTarget.AllBuffered);
-        mpb = new MaterialPropertyBlock();
-        //isDetect = false;
+        //mpb = new MaterialPropertyBlock();
         InitSm();
     }
 
-    private void Start()
+    /*private void Start()
     {
         if (pv.IsMine)
             SetMPB("_PlayerColor", Color.green);
         else
             SetMPB("_PlayerColor", Color.red);
-    }
+    }*/
     public virtual void Update()
     {
-        //cols = Physics.OverlapSphere(gameObject.transform.position, detectRange, target);
         sm.UpdateState();
         animator.SetInteger("State", sm.stateEnumInt);
-/*        if(cols.Length > 0 )
-        {
-            isDetect = true;
-        }
-        else
-        {
-            isDetect = false;
-        }*/
     }
 
     private void InitSm()
