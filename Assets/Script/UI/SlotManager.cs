@@ -206,11 +206,13 @@ public class SlotManager : SingleTon<SlotManager>
         while (cool > 0f)
         {
             cool -= Time.fixedDeltaTime;
-            UIManager.Instance.buildProgressImg.fillAmount = (1 / cool) - cool/10;
+            UIManager.Instance.buildProgressCountText.text = cool.ToString();
+            UIManager.Instance.buildProgressFill.fillAmount = (1 / cool) - cool/10;
             yield return new WaitForFixedUpdate();
         }
         buildInfoTexts[1].text = null;
-        UIManager.Instance.buildProgressImg.fillAmount = 0;
+        UIManager.Instance.buildProgressCountText.text = null;
+        UIManager.Instance.buildProgressFill.fillAmount = 0;
 
         GameObject unit = GameManager.Instance.unitObjectPool.Pop(popIndex).gameObject;
         GameManager.Instance.rtsController.fieldUnitList.Add(unit.GetComponent<UnitController>());

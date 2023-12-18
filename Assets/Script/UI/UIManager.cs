@@ -25,7 +25,8 @@ public class UIManager : SingleTon<UIManager>
 
     //ºôµåÀ¯´Ö º¯¼ö
     [Header("ºôµå À¯´Ö °ü·Ã")]
-    public Image buildProgressImg;
+    public Image buildProgressFill;
+    public TextMeshProUGUI buildProgressCountText;
     public GameObject bottomInfoRTSUI;
     public GameObject unitProductModeUI;
 
