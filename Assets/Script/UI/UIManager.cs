@@ -20,6 +20,8 @@ public class UIManager : SingleTon<UIManager>
     public GameObject shopUI;
     public GameObject leavingShop;
     public TextMeshProUGUI shopClosingTime;
+    [Header("Ä³¸¯ÅÍ ½½·í UI")]
+    public CharacterSlot characterSlot;
 
     //ºôµåÀ¯´Ö º¯¼ö
     [Header("ºôµå À¯´Ö °ü·Ã")]
