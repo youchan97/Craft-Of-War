@@ -7,11 +7,12 @@ public class ActiveSkill : Skill
     [SerializeField] private int level;
    
     private Character target;
-    private Vector3 dir;
+    
     private int reqMp;
     
     public int Level { get { return level; } set { level = value; } }
     public int ReqMp { get => reqMp; set { reqMp = value; } }
+    
 
 
     private void Start()
@@ -24,9 +25,9 @@ public class ActiveSkill : Skill
     {
         
         if (owner.CurMp < ReqMp || owner.curState == HERO_STATE.STUN || owner.curState == HERO_STATE.DIE || IsCool) return;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
 
-        dir = owner.transform.position - Input.mousePosition;
+        
     }
 
     public override void SkillInit()
