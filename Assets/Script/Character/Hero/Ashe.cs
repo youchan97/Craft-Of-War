@@ -36,8 +36,9 @@ public class Ashe : Hero
         InitStats();
     }
 
-    private void Update()
+    public override void Update()
     {
+        base.Update();
         if(Input.GetKeyDown(KeyCode.Q))
         {
             UseSkill(SKILL_TYPE.QSkill);

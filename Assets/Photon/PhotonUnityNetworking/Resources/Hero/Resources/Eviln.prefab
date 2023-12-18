@@ -2559,17 +2559,20 @@ GameObject:
   m_Component:
   - component: {fileID: 7023411724174209803}
   - component: {fileID: 1149024843126218353}
+  - component: {fileID: 4928157229472521504}
   - component: {fileID: 7481401149007298385}
   - component: {fileID: 795337576383781578}
   - component: {fileID: 8005137182417472159}
   - component: {fileID: 7150140372076328012}
+  - component: {fileID: 8740929022988377531}
+  - component: {fileID: 6824982825391339031}
   m_Layer: 12
   m_Name: Eviln
   m_TagString: PlayerHero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7023411724174209803
 Transform:
   m_ObjectHideFlags: 0
@@ -2619,6 +2622,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &4928157229472521504
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278987755257151768}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &7481401149007298385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2691,7 +2716,7 @@ MonoBehaviour:
   curExp: 0
   aimExp: 0
   curMp: 0
-  maxMp: 0
+  maxMp: 100
   heroImage: {fileID: 21300000, guid: daf6d125a9b17b24bbd2262100d31007, type: 3}
   curState: 0
   skillList:
@@ -2700,6 +2725,40 @@ MonoBehaviour:
   - {fileID: 6816733893108935200}
   - {fileID: 865702789887437740}
   skillTransform: []
+--- !u!114 &8740929022988377531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278987755257151768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfb731fa7b644b4795c73e79a7257bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitMaker: {fileID: 0}
+  unit: {fileID: 0}
+--- !u!114 &6824982825391339031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278987755257151768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbe6e99a9a556a47807dfdce26d01f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camSpeed: 0
+  isMove: 0
+  lineRenderer: {fileID: 0}
+  anim: {fileID: 0}
+  shopDetection: {fileID: 0}
+  shopLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &6545384847419414690
 GameObject:
   m_ObjectHideFlags: 0

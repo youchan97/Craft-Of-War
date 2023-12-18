@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  img: {fileID: 0}
+  img: {fileID: 21300000, guid: cb1680d0891e39f42b36289b7398ed6c, type: 3}
   level: 0
 --- !u!1 &3265325452955473604
 GameObject:
@@ -2335,19 +2335,22 @@ GameObject:
   m_Component:
   - component: {fileID: 8239496369111600613}
   - component: {fileID: 2076882402999804063}
+  - component: {fileID: 3582215117518892322}
   - component: {fileID: 220110269723898712}
   - component: {fileID: 5715211707473417074}
   - component: {fileID: 4164031213168254894}
   - component: {fileID: -2951045890167234231}
   - component: {fileID: 5437356158798371924}
   - component: {fileID: 7831997416926603495}
+  - component: {fileID: 985111255144957130}
+  - component: {fileID: 6096148733592823572}
   m_Layer: 12
   m_Name: Morgana
   m_TagString: PlayerHero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8239496369111600613
 Transform:
   m_ObjectHideFlags: 0
@@ -2398,6 +2401,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &3582215117518892322
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900984655732441078}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &220110269723898712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,6 +2542,40 @@ MonoBehaviour:
   - {fileID: 2691404168728137392}
   - {fileID: 65527939059336270}
   skillTransform: []
+--- !u!114 &985111255144957130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900984655732441078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbe6e99a9a556a47807dfdce26d01f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camSpeed: 0
+  isMove: 0
+  lineRenderer: {fileID: 0}
+  anim: {fileID: 0}
+  shopDetection: {fileID: 0}
+  shopLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &6096148733592823572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900984655732441078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfb731fa7b644b4795c73e79a7257bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitMaker: {fileID: 0}
+  unit: {fileID: 0}
 --- !u!1 &4931730597332954316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,7 +2780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  img: {fileID: 0}
+  img: {fileID: 21300000, guid: a46b1409c1990d643b69a19dcd0470ec, type: 3}
   level: 0
 --- !u!1 &5618349699750070702
 GameObject:
@@ -3352,7 +3411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  img: {fileID: 0}
+  img: {fileID: 21300000, guid: 51987898dadd9ab42a79103a203ebac7, type: 3}
   level: 0
 --- !u!1 &6672542868460323216
 GameObject:
@@ -3908,7 +3967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  img: {fileID: 0}
+  img: {fileID: 21300000, guid: 0878838d3996a0a41b835bc6a2888d86, type: 3}
   level: 0
 --- !u!1 &7563352861624439466
 GameObject:

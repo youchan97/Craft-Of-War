@@ -52,10 +52,9 @@ public abstract class Hero : Character, IControllable
         sm.AddState((int)HERO_STATE.IDLE, new HeroIdleState());
         sm.AddState((int)HERO_STATE.MOVE, new HeroMoveState());
         sm.SetState((int)HERO_STATE.IDLE);
-        
     }
 
-    private void Update()
+    public virtual void Update()
     {
         sm.UpdateState();
     }
