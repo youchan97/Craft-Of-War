@@ -8,7 +8,6 @@ public class MonsterAttackState : MonsterState
     float curTime = 0f;
     IEnumerator attackCo;
 
-
     public override void Enter()
     {
         monster.monState = MONSTER_STATE.ATTACK;
@@ -32,8 +31,6 @@ public class MonsterAttackState : MonsterState
             sm.SetState((int)MONSTER_STATE.IDLE);
         }
 
-        
-
     }
 
     IEnumerator AttackProcess()
@@ -48,8 +45,6 @@ public class MonsterAttackState : MonsterState
                 monster.Anim.Play("Attack");
                 curTime = 0;
             }
-
-            
             yield return null;
         }
             

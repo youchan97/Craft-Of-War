@@ -2234,6 +2234,8 @@ MonoBehaviour:
   isCool: 0
   img: {fileID: 21300000, guid: 9c811f672800a6e429308eae7fc81429, type: 3}
   level: 1
+  skillEffect: {fileID: 6209623319924203570, guid: c56ae9658baa25149a2ba0ee9b8835ed,
+    type: 3}
 --- !u!1 &4079315524280669420
 GameObject:
   m_ObjectHideFlags: 0
