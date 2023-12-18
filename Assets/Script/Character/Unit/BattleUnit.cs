@@ -72,14 +72,16 @@ public enum BATTLE_UNIT
 
 public class BattleUnit : Unit
 {
-    
+    public int attack;
     BattleUnitStragy unitStragy;
     public BATTLE_UNIT unitType;
     public Dictionary<BATTLE_UNIT, BattleUnitStragy> stragyDic;
 
     private void Start()
     {
+        Atk = 30;
         StragyInit();
+        attack = Atk;
     }
 
     public void Proceed()
