@@ -30,10 +30,11 @@ public abstract class Unit : Character
         mpb.SetColor(propertyName, color);
         meshRenderer.SetPropertyBlock(mpb);
     }*/
-
+    public int curHp;
     public override void Awake()
     {
         Hp = 100;
+        curHp = Hp;
         base.Awake();
         pv.RPC("UnitLayer", RpcTarget.AllBuffered);
         //mpb = new MaterialPropertyBlock();

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class DetectiveComponent : MonoBehaviourPunCallbacks
 {
-    LayerMask targetLayer;
+    public LayerMask targetLayer;
     [SerializeField] bool isRangeDetection;
     PhotonView pv;
 
@@ -47,8 +47,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         if(isRangeDetection)
         {
             RaycastHit hit;
-            int index = 0;
-
+            int index = 0;           
             while (cols[index] == null)
             {
                 index++;
@@ -63,10 +62,21 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
             }
         }
     }
+
+    public void AttackMethod()
+    {
+        if (cols[0].GetComponent<IHitAble>() != null)
+        {
+            Debug.Log(this.gameObject.name + this.gameObject.GetComponent<IAttackAble>().Atk +"때렸다");
+            cols[0].GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
+            Debug.Log(cols[0].name + cols[0].GetComponent<IHitAble>().Hp + "맞았다.");
+        }
+    }
+
     [PunRPC]
     public void DetectLayer()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (this.gameObject.layer == 6)
         {
             targetLayer = (1 << 7) | (1 << 13) | (1 << 18);
         }
