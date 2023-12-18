@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 
 public enum SKILL_TYPE
-{ QSkill, WSkill, ESkill, RSkill}
+{  QSkill, WSkill, ESkill, RSkill}
 
 public enum HERO_STATE
 { IDLE, MOVE, ATTACK, STUN, DIE}
@@ -25,6 +25,7 @@ public abstract class Hero : Character, IControllable
     public Dictionary<int, Skill> skillDic;
     public HERO_STATE curState;
     public IHitAble target;
+    public Character clickTarget; // 인터페이스 target 이 계속 갱신되는 transform을 가지고 있으면 없어도 됌
 
 
     //Property 부분 변경시 포톤뷰를 통해 업데이트
@@ -69,6 +70,7 @@ public abstract class Hero : Character, IControllable
         this.target = target;
     }
 
+    public abstract void Attack(IHitAble target, Transform targetTrans);
 
     public abstract void UseSkill(SKILL_TYPE skillType);
 
@@ -76,8 +78,15 @@ public abstract class Hero : Character, IControllable
     {
         // velocity 값이 변하면 run, 아니면 idle - 보람
         if (agent.velocity != Vector3.zero)
+        {
+            curState = HERO_STATE.MOVE;
             animator.SetBool("IsMove", true);
-        else
+        }   
+        else if(!agent.isStopped)
+        {
+            curState = HERO_STATE.IDLE;
             animator.SetBool("IsMove", false);
+        }
+            
     }
 }
