@@ -47,11 +47,23 @@ public abstract class Hero : Character, IControllable
     public Sprite HeroImage
     { get=> heroImage; set => heroImage = value; }
 
+    private void Start()
+    {
+        sm.AddState((int)HERO_STATE.IDLE, new HeroIdleState());
+        sm.AddState((int)HERO_STATE.MOVE, new HeroMoveState());
+        sm.SetState((int)HERO_STATE.IDLE);
+        
+    }
+
+    private void Update()
+    {
+        sm.UpdateState();
+    }
+
     public override void InitStats() 
     { 
         level = 1;
         curExp = 0;
-        curState = HERO_STATE.IDLE;
     }
 
     /// <summary>
