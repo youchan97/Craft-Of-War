@@ -7,7 +7,7 @@ public abstract class Skill : MonoBehaviour
 {
     public Hero owner;
     public Sprite img;
-    private float coolTime;
+    [SerializeField]private float coolTime;
     public float range;
     public float speed;
     public float CoolTime { get => coolTime; set => coolTime = value; }

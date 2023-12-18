@@ -2441,36 +2441,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1628068878}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1679253211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6278987755257151768, guid: 0a222ce5f54de0945a3ad4104092292d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1868412768}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1679253212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679253211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b3dde8e0165b8941a1f1964c3aeb0d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  agent: {fileID: 0}
-  pv: {fileID: 0}
-  detectiveComponent: {fileID: 0}
-  level: 0
-  curExp: 0
-  aimExp: 0
-  curMp: 0
-  maxMp: 0
-  heroImage: {fileID: 0}
-  curState: 0
-  clickTarget: {fileID: 0}
 --- !u!4 &1680061160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 503386627, guid: aba97eab67c11e34ca2b20aa582209ca,

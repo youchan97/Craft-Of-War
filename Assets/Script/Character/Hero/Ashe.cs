@@ -13,7 +13,10 @@ public class Ashe : Hero
     public Transform[] eSkillTrans;
     public Transform[] rSkillTrans;
 
-    Coroutine delayCo;
+    Coroutine attackdelayCo;
+    public Coroutine qSkilldelayCo;
+    public int attackCount;
+    float time = 0;
     public int Concentraction { get => concentraction; set { concentraction = value; } }
 
     public override void Awake()
@@ -22,7 +25,6 @@ public class Ashe : Hero
         sm = new StateMachine<Character>(this);
 
         skillDic = new Dictionary<int, Skill>();
-
         skillDic.Add((int)SKILL_TYPE.QSkill, skillList[(int)SKILL_TYPE.QSkill]);
         skillDic.Add((int)SKILL_TYPE.WSkill, skillList[(int)SKILL_TYPE.WSkill]);
         skillDic.Add((int)SKILL_TYPE.ESkill, skillList[(int)SKILL_TYPE.ESkill]);
@@ -38,25 +40,62 @@ public class Ashe : Hero
             UIManager.Instance.skillSlots[i].Init(this);
         }
         InitStats();
+
+        attackCount = 0;
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (time > skillDic[0].CoolTime)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            time = 0;
+            attackCount = 0;
+        }
 
-            if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        if (attackCount >= 3)
+        {
+            time += Time.deltaTime;
+
+            if(Input.GetMouseButtonDown(1))
             {
-                if (Vector3.Distance(hitInfo.transform.position, transform.position) > skillDic[0].range)
-                    return;
+                Debug.Log("Q스킬 시작");
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (hitInfo.transform.gameObject.TryGetComponent<Character>(out Character target))
+                if (Physics.Raycast(ray, out RaycastHit hitInfo))
                 {
-                    clickTarget = target;
-                    curState = HERO_STATE.ATTACK;
-                    agent.isStopped = true;
-                    Attack(target, target.transform);
+                    if (Vector3.Distance(hitInfo.transform.position, transform.position) > skillDic[0].range)
+                        return;
+
+                    if (hitInfo.transform.gameObject.TryGetComponent<Character>(out Character target))
+                    {
+                        clickTarget = target;
+                        curState = HERO_STATE.ATTACK;
+                        agent.isStopped = true;
+                        UseSkill(SKILL_TYPE.QSkill);
+                    }
+                }
+            }
+        }
+        else
+        {
+            
+            if (Input.GetMouseButtonDown(1))
+            {
+                Debug.Log("일반 공격");
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out RaycastHit hitInfo))
+                {
+                    if (Vector3.Distance(hitInfo.transform.position, transform.position) > skillDic[0].range)
+                        return;
+
+                    if (hitInfo.transform.gameObject.TryGetComponent<Character>(out Character target))
+                    {
+                        clickTarget = target;
+                        curState = HERO_STATE.ATTACK;
+                        agent.isStopped = true;
+                        Attack(target, target.transform);
+                    }
                 }
             }
         }
@@ -64,10 +103,7 @@ public class Ashe : Hero
     public override void Update()
     {
         base.Update();
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            UseSkill(SKILL_TYPE.QSkill);
-        }
+        
         if(Input.GetKeyDown(KeyCode.W))
         {
             UseSkill(SKILL_TYPE.WSkill);
@@ -105,14 +141,15 @@ public class Ashe : Hero
         base.Attack(target);
         animator.SetBool("AttackBasic", true);
         transform.forward = (targetTrans.position - this.transform.position).normalized;
-        GameObject temp = InstantiateVFX("fx_small_arrow", true);
-        temp.transform.forward = (targetTrans.position - this.transform.position).normalized;
-        delayCo = StartCoroutine(AttackDelayCo());
+        GameObject temp = InstantiateVFX("fx_small_arrow", defaultTrans, true);
+        temp.transform.forward = (targetTrans.position - defaultTrans.position).normalized;
+        attackCount++;
+        attackdelayCo = StartCoroutine(AttackDelayCo());
     }
 
-    GameObject InstantiateVFX(string prefabName, bool setPanrentNull = false)
+    public GameObject InstantiateVFX(string prefabName, Transform transform, bool setPanrentNull = false)
     {
-        GameObject temp = (GameObject)Instantiate(Resources.Load("VFX/" + prefabName), defaultTrans, false); //옵젝풀로 바꿔주는게 좋을까나
+        GameObject temp = (GameObject)Instantiate(Resources.Load("VFX/" + prefabName), transform, false); //옵젝풀로 바꿔주는게 좋을까나
         if(setPanrentNull)
             temp.transform.SetParent(null);
 
@@ -141,7 +178,17 @@ public class Ashe : Hero
         curState = HERO_STATE.IDLE;
         animator.SetBool("AttackBasic", false);
         agent.isStopped = false;
-        StopCoroutine(delayCo);
+        StopCoroutine(attackdelayCo);
+        yield return null;
+    }
+
+    public IEnumerator QSkillDelayCo()
+    {
+        yield return new WaitForSeconds(animator.playbackTime);
+        curState = HERO_STATE.IDLE;
+        animator.SetBool("QSkill", false);
+        agent.isStopped = false;
+        StopCoroutine(qSkilldelayCo);
         yield return null;
     }
 }

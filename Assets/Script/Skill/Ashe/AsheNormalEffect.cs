@@ -16,9 +16,9 @@ public class AsheNormalEffect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == owner.clickTarget.gameObject) //null 에러 남
-        {
-            Destroy(this.gameObject);
-        }
+        //if(other.gameObject == owner.clickTarget.gameObject) //null 에러 남
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 }
