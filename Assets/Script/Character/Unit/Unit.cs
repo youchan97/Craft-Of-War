@@ -19,6 +19,8 @@ public abstract class Unit : Character
 {
     public int obpId;
 
+    public Sprite faceSprite;
+
     public float coolTime;
     //public bool isDetect;
     //public float detectRange;

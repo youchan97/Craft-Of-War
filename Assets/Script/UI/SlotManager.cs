@@ -136,7 +136,7 @@ public class SlotManager : SingleTon<SlotManager>
         {
             int index = i;
             UnitProductAction(SLOTTYPE.ProductBuilding, index, index);
-            slotsDic[SLOTTYPE.ProductBuilding].actionButtonArr[index] += () =>
+            //slotsDic[SLOTTYPE.ProductBuilding].actionButtonArr[index] += () =>
         }
         //부대지정 행동 액션
         slotsDic[SLOTTYPE.ArmySelect].actionButtonArr[0] += () => { RTSController.armyMode = ARMYMOVEMODE.Horizontal; };
