@@ -5,26 +5,24 @@ using UnityEngine;
 public class AsheRSkillEffect : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    [SerializeField] Vector3 direction;
     [SerializeField] float radius;
+    [SerializeField] private Vector3 direction;
     [SerializeField] GameObject hitEffect;
     Rigidbody rb;
     public Ashe owner;
+
+    public Vector3 Direction { get { return direction; } set { direction = value; } }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         radius = gameObject.GetComponent<SphereCollider>().radius;
+        owner = (Ashe)GameManager.Instance.PlayerHero;
     }
 
-    private void OnEnable()
-    {
-
-            
-    }
 
     private void Update()
     {
-        rb.MovePosition(rb.transform.position + direction * moveSpeed * Time.deltaTime);
+        rb.MovePosition(owner.skillTransform[0].transform.position - Input.mousePosition  * moveSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

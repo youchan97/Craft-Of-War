@@ -10,7 +10,7 @@ public class AsheRSkill : ActiveSkill
     public override void Active()
     {
        
-        Instantiate(skillEffect,transform.position + Vector3.up*0.5f,transform.rotation).GetComponent<AsheRSkillEffect>().owner = (Ashe)owner;
+        Instantiate(skillEffect,transform.position,transform.rotation).GetComponent<AsheRSkillEffect>().owner = (Ashe)owner;
 
      //   base.Active();
         Debug.Log(owner.name + "Ashe R skill");
