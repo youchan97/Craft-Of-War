@@ -168,29 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 3
---- !u!1 &73095214 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6134922880539014590, guid: aefa4d00b53198c4db19d30a485ff7c4,
-    type: 3}
-  m_PrefabInstance: {fileID: 174411888}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &73095220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73095214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  isRangeDetection: 0
-  detectiveRange: 0
 --- !u!850595691 &144472208
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1354,6 +1331,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ashe
       objectReference: {fileID: 0}
+    - target: {fileID: 5637484274564519653, guid: 0612b033f760e18459b2759e7c6939ef,
+        type: 3}
+      propertyPath: skillEffect
+      value: 
+      objectReference: {fileID: 6209623319924203570, guid: c56ae9658baa25149a2ba0ee9b8835ed,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0612b033f760e18459b2759e7c6939ef, type: 3}
 --- !u!1 &472039185

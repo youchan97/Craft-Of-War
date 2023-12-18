@@ -51,6 +51,11 @@ public class SlotManager : SingleTon<SlotManager>
     public SupplyUnit selectedSupplyUnit;
 
     public const int slotsCount = 9;
+
+    //유닛 생산 목록 관련 변수
+    public List<GameObject> faceListSlots;
+
+    
     //각 슬롯에 맞는 기능과 이미지 전달
     [SerializeField]
     private SLOTTYPE slotType;
@@ -93,6 +98,18 @@ public class SlotManager : SingleTon<SlotManager>
         ActionInit();
     }
 
+    //유닛 다중생산 초기화 부분
+    public void FaceListButtonInit()
+    {
+        faceListSlots = UIManager.Instance.unitFaceGO.GetComponentsInChildren<GameObject>().ToList();
+
+        foreach (GameObject slot in faceListSlots)
+        {
+            slot.GetComponent<Button>().onClick.AddListener(() => { });
+        }
+    }
+
+
     public void ActionInit()
     {
         //생산유닛 행동 액션
@@ -119,6 +136,7 @@ public class SlotManager : SingleTon<SlotManager>
         {
             int index = i;
             UnitProductAction(SLOTTYPE.ProductBuilding, index, index);
+            //slotsDic[SLOTTYPE.ProductBuilding].actionButtonArr[index] += () =>
         }
         //부대지정 행동 액션
         slotsDic[SLOTTYPE.ArmySelect].actionButtonArr[0] += () => { RTSController.armyMode = ARMYMOVEMODE.Horizontal; };

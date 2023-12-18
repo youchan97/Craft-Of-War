@@ -20,6 +20,8 @@ public class UIManager : SingleTon<UIManager>
     public GameObject shopUI;
     public GameObject leavingShop;
     public TextMeshProUGUI shopClosingTime;
+    [Header("Ä³¸¯ÅÍ ½½·í UI")]
+    public CharacterSlot characterSlot;
 
     //ºôµåÀ¯´Ö º¯¼ö
     [Header("ºôµå À¯´Ö °ü·Ã")]
@@ -30,6 +32,10 @@ public class UIManager : SingleTon<UIManager>
     [Header("¿µ¿õ AOS¸ðµå UI")]
     public SkillSlot[] skillSlots;
     public Image heroImg;
+
+    [Header("Á¾¹Î// À¯´Ö ¿©·µ»ý»ê °ü·Ã ¾ÆÀÌÄÜ/¹è¿­")]
+    public SlotManager slotManager;
+    public GameObject unitFaceGO;
 
     public void ChangeMod()
     {

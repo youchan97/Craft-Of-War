@@ -23,9 +23,9 @@ public class ActiveSkill : Skill
     public override void Active()
     {
         if (owner.CurMp < ReqMp || owner.curState == HERO_STATE.STUN || owner.curState == HERO_STATE.DIE || IsCool) return;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-
-
+        dir = owner.transform.position - Input.mousePosition;
     }
 
     public override void SkillInit()
