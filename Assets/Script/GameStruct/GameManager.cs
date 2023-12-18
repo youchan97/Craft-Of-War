@@ -32,6 +32,10 @@ public class GameManager : SingleTon<GameManager>
     IPrioxyQueue<string, int> priorityQueue;//우선순위 큐의 기능만 사용가능한 진짜 큐
     StateMachine<GameManager> stateMachine;
 
+    public GameManager(ObjectPool buildingOjbectPool)
+    {
+        this.buildingObjectPool = buildingOjbectPool;
+    }
     //그래픽
     //public UniversalRendererData urData; //기능 봉인
 
@@ -74,19 +78,25 @@ public class GameManager : SingleTon<GameManager>
         //캐릭터 출현 정보를 배열에 저장
         //캐릭터, 넥서스 랜덤 포인트에 생성
 
-        if(PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
-            PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.masterIndexPoint].position, buildPoints[MatchManager.masterIndexPoint].rotation, 0);
-        }   
-        else
-        {
-            PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
-            PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.userIndexPoint].position, buildPoints[MatchManager.userIndexPoint].rotation, 0);
-        }
+        
     }
     void Start()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
+            GameObject firstNexus = this.buildingObjectPool.Pop();
+            firstNexus.transform.position = buildPoints[MatchManager.masterIndexPoint].position;
+
+            //PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.masterIndexPoint].position, buildPoints[MatchManager.masterIndexPoint].rotation, 0);
+        }
+        else
+        {
+            PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
+            GameObject firstNexus = this.buildingObjectPool.Pop();
+            firstNexus.transform.position = buildPoints[MatchManager.userIndexPoint].position;
+            //PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.userIndexPoint].position, buildPoints[MatchManager.userIndexPoint].rotation, 0);
+        }
         //StartCoroutine(PlayerInitCo());
 
         //우선큐

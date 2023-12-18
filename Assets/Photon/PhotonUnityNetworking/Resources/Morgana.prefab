@@ -2258,6 +2258,7 @@ GameObject:
   - component: {fileID: 4164031213168254894}
   - component: {fileID: -2951045890167234231}
   - component: {fileID: 5437356158798371924}
+  - component: {fileID: 7831997416926603495}
   m_Layer: 12
   m_Name: Morgana
   m_TagString: PlayerHero
@@ -2365,6 +2366,8 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: -2951045890167234231}
+  - {fileID: 5437356158798371924}
+  - {fileID: 7831997416926603495}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2399,7 +2402,33 @@ MonoBehaviour:
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
   m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &7831997416926603495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900984655732441078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ede9804956327c46837278bd702dc54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  agent: {fileID: 0}
+  pv: {fileID: 0}
+  detectiveComponent: {fileID: 0}
+  level: 0
+  curExp: 0
+  aimExp: 0
+  curMp: 0
+  maxMp: 0
+  heroImage: {fileID: 0}
+  curState: 0
+  skillList: []
 --- !u!1 &4931730597332954316
 GameObject:
   m_ObjectHideFlags: 0
