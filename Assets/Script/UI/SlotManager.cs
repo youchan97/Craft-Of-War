@@ -53,7 +53,7 @@ public class SlotManager : SingleTon<SlotManager>
     public const int slotsCount = 9;
 
     //유닛 생산 목록 관련 변수
-    public List<GameObject> faceListSlots;
+    public List<GameObject> unitProductProgressFaceSlots;
 
     
     //각 슬롯에 맞는 기능과 이미지 전달
@@ -82,9 +82,13 @@ public class SlotManager : SingleTon<SlotManager>
             }
         }
     }
+    List<IEnumerator> unitCoolTimeCos;
     private void Start()
     {
+        unitCoolTimeCos = new List<IEnumerator>();
+        unitProductProgressFaceSlots = new List<GameObject>();
         Init();
+        StartCoroutine(unitProductManagerCo());
     }
     public void Init()//딕셔너리 초기화와 이미지,기능 연결부
     {
@@ -95,17 +99,26 @@ public class SlotManager : SingleTon<SlotManager>
         slotsDic.Add(SLOTTYPE.SupplyUnit, new SlotArg(supplyUnitIconArr, new Action[slotsCount]));
         slotsDic.Add(SLOTTYPE.Supply_Build, new SlotArg(supply_BuildIconArr, new Action[slotsCount]));
         slotsDic.Add(SLOTTYPE.ArmySelect, new SlotArg(armyMoveModeIconArr, new Action[slotsCount]));
+        FaceListButtonInit();
         ActionInit();
     }
 
     //유닛 다중생산 초기화 부분
     public void FaceListButtonInit()
     {
-        faceListSlots = UIManager.Instance.unitFaceGO.GetComponentsInChildren<GameObject>().ToList();
-
-        foreach (GameObject slot in faceListSlots)
+        GameObject[] facesObj = UIManager.Instance.unitFaceUI.faceObjArr;
+        foreach (var go in facesObj)
         {
-            slot.GetComponent<Button>().onClick.AddListener(() => { });
+            unitProductProgressFaceSlots.Add(go);
+        }
+        for (int i = 0; i < unitProductProgressFaceSlots.Count; i++)
+        {
+            //유닛생산중 아이콘들 누르면 리스트에서 빼고 이미지 제거하기
+            unitProductProgressFaceSlots[i].GetComponentInParent<Button>().onClick.AddListener(() => 
+            { 
+                unitCoolTimeCos.RemoveAt(i);
+                unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
+            });
         }
     }
 
@@ -136,7 +149,6 @@ public class SlotManager : SingleTon<SlotManager>
         {
             int index = i;
             UnitProductAction(SLOTTYPE.ProductBuilding, index, index);
-            //slotsDic[SLOTTYPE.ProductBuilding].actionButtonArr[index] += () =>
         }
         //부대지정 행동 액션
         slotsDic[SLOTTYPE.ArmySelect].actionButtonArr[0] += () => { RTSController.armyMode = ARMYMOVEMODE.Horizontal; };
@@ -148,20 +160,45 @@ public class SlotManager : SingleTon<SlotManager>
         SlotType = SLOTTYPE.None;
     }
 
+
     void UnitProductAction(SLOTTYPE slotType, int buttonIndex, int popIndex)
     {
         slotsDic[slotType].actionButtonArr[buttonIndex] += () =>
         {
-            StartCoroutine(UnitCoolTimeCo(popIndex));
+            //5개만 대기열 조정
+            if (unitCoolTimeCos.Count == 5)
+                return;
+
+            Transform selectBuildingTf = GameManager.Instance.rtsController.SelectBuilding.gameObject.transform;
+            unitCoolTimeCos.Add(UnitCoolTimeCo(popIndex, selectBuildingTf));
+            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(true);
+            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite =
+            GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().faceSprite;
         };
     }
 
+    //유닛 대기열 검사해주는 코루틴
+    IEnumerator unitProductManagerCo()
+    {
+        while(true)
+        {
+            if(unitCoolTimeCos.Count > 0)
+            {
+                IEnumerator currentCo = unitCoolTimeCos[0];
 
-    IEnumerator UnitCoolTimeCo(int popIndex)
+                yield return StartCoroutine(currentCo);
+                
+                unitCoolTimeCos.RemoveAt(0);
+            }
+            yield return null;
+        }
+    }
+
+
+    IEnumerator UnitCoolTimeCo(int popIndex, Transform selectBuildingTf)
     {
         float cool = GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().coolTime;
         //쿨타임동안 다른걸 선택할수 있어 미리 위치받음
-        Transform selectBuilding = GameManager.Instance.rtsController.SelectBuilding.gameObject.transform;
         TextMeshProUGUI[] buildInfoTexts  = UIManager.Instance.unitProductModeUI.GetComponentsInChildren<TextMeshProUGUI>();
         //진행도
         buildInfoTexts[1].text = "생산중";
@@ -169,15 +206,17 @@ public class SlotManager : SingleTon<SlotManager>
         while (cool > 0f)
         {
             cool -= Time.fixedDeltaTime;
-            UIManager.Instance.buildProgressImg.fillAmount = (1 / cool) - cool/10;
+            UIManager.Instance.buildProgressCountText.text = cool.ToString();
+            UIManager.Instance.buildProgressFill.fillAmount = (1 / cool) - cool/10;
             yield return new WaitForFixedUpdate();
         }
         buildInfoTexts[1].text = null;
-        UIManager.Instance.buildProgressImg.fillAmount = 0;
+        UIManager.Instance.buildProgressCountText.text = null;
+        UIManager.Instance.buildProgressFill.fillAmount = 0;
 
         GameObject unit = GameManager.Instance.unitObjectPool.Pop(popIndex).gameObject;
         GameManager.Instance.rtsController.fieldUnitList.Add(unit.GetComponent<UnitController>());
-        unit.transform.position = selectBuilding.position;
+        unit.transform.position = selectBuildingTf.position;
         unit.transform.Translate(new Vector3(0, 0, -6), Space.Self);
         unit.GetComponent<NavMeshAgent>().enabled = true;
 
@@ -186,5 +225,8 @@ public class SlotManager : SingleTon<SlotManager>
         yield return null;
         
         unit.GetComponent<NavMeshAgent>().ResetPath();
+
+        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite = null;
+        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(false);
     }
 }

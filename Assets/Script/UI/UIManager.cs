@@ -29,7 +29,8 @@ public class UIManager : SingleTon<UIManager>
 
     //ºôµåÀ¯´Ö º¯¼ö
     [Header("ºôµå À¯´Ö °ü·Ã")]
-    public Image buildProgressImg;
+    public Image buildProgressFill;
+    public TextMeshProUGUI buildProgressCountText;
     public GameObject bottomInfoRTSUI;
     public GameObject unitProductModeUI;
 
@@ -39,7 +40,7 @@ public class UIManager : SingleTon<UIManager>
 
     [Header("Á¾¹Î// À¯´Ö ¿©·µ»ý»ê °ü·Ã ¾ÆÀÌÄÜ/¹è¿­")]
     public SlotManager slotManager;
-    public GameObject unitFaceGO;
+    public UnitFaceListUI unitFaceUI;
 
     public void ChangeMod()
     {

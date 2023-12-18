@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AsheWSkill : ActiveSkill
 {
+    [SerializeField] private GameObject skillEffect;
 
     public override void Active()
     {

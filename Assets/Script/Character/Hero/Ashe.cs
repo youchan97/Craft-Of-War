@@ -6,6 +6,8 @@ public class Ashe : Hero
 {
     [SerializeField] int concentraction; // Q 스킬 스택
     [SerializeField] List<Skill> skillList;
+
+    public List<Transform> skillTransform;
     public override void Awake()
     {
         base.Awake();
@@ -17,7 +19,9 @@ public class Ashe : Hero
         skillDic.Add((int)SKILL_TYPE.ESkill, skillList[(int)SKILL_TYPE.ESkill]);
         skillDic.Add((int)SKILL_TYPE.RSkill, skillList[(int)SKILL_TYPE.RSkill]);
 
-        foreach(var keyValue in skillDic)
+        skillTransform = new List<Transform>();
+
+        foreach (var keyValue in skillDic)
         {
             keyValue.Value.SetOwner(this);
         }
