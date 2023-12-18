@@ -24,8 +24,19 @@ public class UIManager : SingleTon<UIManager>
     public CharacterSlot characterSlot;
     [Header("일반 유닛 정보 UI")]
     public GameObject unitStatUI;
+    public Image unitHp;
+    public TextMeshProUGUI unitNameText;
+    public TextMeshProUGUI unitAtkText;
+    public TextMeshProUGUI unitShieldText;
     [Header("영웅 유닛 정보 UI")]
     public GameObject heroStatUI;
+    public Image heroHp;
+    public Image heroMp;
+    public Image heroExp;
+    public TextMeshProUGUI heroNameText;
+    public TextMeshProUGUI heroLvText;
+    public TextMeshProUGUI heroAtkText;
+    public TextMeshProUGUI heroShieldText;
 
     //빌드유닛 변수
     [Header("빌드 유닛 관련")]
@@ -95,26 +106,53 @@ public class UIManager : SingleTon<UIManager>
 
 
     
-   
+   // 1개만 선택시 에는 추가 해야됨. 
     public void SelectUnitUIChange(RTSController controller)
     {
-        //for (int i = 0; i < controller.selectedUnitList.Count; i++)
+        //if(controller.selectedUnitList.Count == 1)
         //{
-        //    if(controller.selectedUnitList[i].gameObject == GameManager.Instance.PlayerHero.gameObject)
+        //    if (controller.selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
         //    {
-        //        Swap(controller.selectedUnitList, controller.selectedUnitList);
+        //        heroStatUI.SetActive(true);
+        //        unitStatUI.SetActive(false);
+        //        Hero hero =controller.selectedUnitList[0].GetComponent<Hero>();
+        //        heroHp.fillAmount = hero.Hp / hero.MaxMp;
+        //        heroMp.fillAmount = hero.CurMp / hero.MaxMp;
+        //        heroExp.fillAmount = hero.CurExp / hero.AimExp;   // 맥스 경험치 받는 부분
+        //        heroLvText.text = hero.Level.ToString();
+        //        heroNameText.text = hero.name;
+        //        heroAtkText.text = hero.Atk.ToString();
+        //        heroShieldText.text = "999";
+
+        //    }
+        //    else
+        //    {
+        //        heroStatUI.SetActive(false);
+        //        unitStatUI.SetActive(true);
         //    }
         //}
-        for (int i = 0; i < controller.selectedUnitList.Count; i++)
+        //else
         {
-            characterSlot.faceSlot[i].SetActive(true);
-            characterSlot.hpImage[i].fillAmount = (float)controller.selectedUnitList[i].unit.Hp / (float)100; // 임시로 100으로 나눠서 체력 표시
-            characterSlot.faceImage[i].sprite = controller.selectedUnitList[i].unit.faceSprite;
-        }        
+            for (int i = 0; i < controller.selectedUnitList.Count; i++)
+            {
+                if(controller.selectedUnitList[i].gameObject == GameManager.Instance.PlayerHero.gameObject)
+                {
+                    Swap(controller, 0, i);
+                }
+            }
+            for (int i = 0; i < controller.selectedUnitList.Count; i++)
+            {
+                characterSlot.faceSlot[i].SetActive(true);
+                characterSlot.hpImage[i].fillAmount = (float)controller.selectedUnitList[i].unit.Hp / (float)100; // 임시로 100으로 나눠서 체력 표시
+                characterSlot.faceImage[i].sprite = controller.selectedUnitList[i].unit.faceSprite;
+            }        
+        }
     }
     public void Swap(RTSController controller, int aValue, int bValue)
     {
-
+        UnitController temp = controller.selectedUnitList[aValue];
+        controller.selectedUnitList[aValue] = controller.selectedUnitList[bValue];
+        controller.selectedUnitList[bValue] = temp;
     }
     
 }
