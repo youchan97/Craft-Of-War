@@ -108,6 +108,8 @@ public class UnitWorkState : UnitState
 
     public override void Update()
     {
+        if (owner.agent.velocity != Vector3.zero)
+            sm.SetState((int)UNIT_STATE.Move);
     }
 }
 

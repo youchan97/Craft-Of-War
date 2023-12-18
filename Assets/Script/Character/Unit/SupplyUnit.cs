@@ -15,12 +15,15 @@ public class SupplyUnit : Unit
     public Vector3 mineTf = Vector3.zero;//시작, 클릭될때 자원클릭되면 rts컨트롤러해서 벡터를 넣어줌
     public Vector3 nexusTf = Vector3.zero;//끝
 
+    bool isMineEnd = false;
     public bool isRunMineCoroutine;
     public bool isMineClicked;
+    public IEnumerator mineCo;
     public new void Awake()
     {
         base.Awake();
         MiningBTInit();
+        mineCo = MiningCo();
     }
     private void Start()
     {
@@ -46,7 +49,7 @@ public class SupplyUnit : Unit
         //액션 구현부
         miningReadyCheckAction.action = () =>
         {
-            if (isMineClicked && isRunMineCoroutine == false)
+            if (isMineClicked)
             {
                 return BTNode.State.SUCCESS;
             }
@@ -66,42 +69,25 @@ public class SupplyUnit : Unit
                     nexusTf = nexusBuilding.transform.position;
                 }
             }
-
+            isMineEnd = false;
             agent.SetDestination(mineTf);
-            StartCoroutine(MiningCo());
+            StartCoroutine(mineCo);
             return BTNode.State.RUN;
         };
 
     }
 
-    //public class WaitForClickedTarget : CustomYieldInstruction
-    //{
-    //    public SupplyUnit supplyUnit;
-    //    public WaitForClickedTarget(SupplyUnit supplyUnit)
-    //    {
-    //        this.supplyUnit = supplyUnit;
-    //    }
-    //    public override bool keepWaiting
-    //    {
-    //        get
-    //        {
-    //            return !supplyUnit.isMineClicked;
-    //        }
-    //    }
-    //}
-
     public IEnumerator MiningCo()
     {
-        isRunMineCoroutine = true;
 
+        //isRunMineCoroutine = true;
         float curCool = miningCool;
 
         //여기 루틴 수정해야됌
         while (true)
         {
-
             //리소스에서 도착했을때
-            if (Vector3.Distance(transform.position, mineTf) <= 3f)
+            if (Vector3.Distance(transform.position, mineTf) <= 3f && isMineEnd == false)
             {
                 agent.ResetPath();
                 sm.SetState((int)UNIT_STATE.Work);
@@ -109,27 +95,29 @@ public class SupplyUnit : Unit
                 if (curCool <= 0)
                 {
                     agent.SetDestination(nexusTf);
-                    sm.SetState((int)UNIT_STATE.Move);
+                    isMineEnd = true;
                     curCool = miningCool;
                 }
+                yield return null;
             }
 
             //넥서스에 도착했을때
-            if (Vector3.Distance(transform.position, nexusTf) <= 8f)
+            if (Vector3.Distance(transform.position, nexusTf) <= 8f && isMineEnd == true)
             {
                 agent.ResetPath();
                 agent.SetDestination(mineTf);
                 GameManager.Instance.Tree += 10;
+                isMineEnd = false;
                 //디버깅용
             }
 
-            //일하는상태 탈출~에 이거
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                sm.SetState((int)UNIT_STATE.Work);
-                isRunMineCoroutine = false;
-                break;
-            }
+            ////목적지가 둘다가 아니게 되면
+            //if (agent.pathEndPosition != nexusTf && agent.pathEndPosition != mineTf)
+            //{
+            //    sm.SetState((int)UNIT_STATE.Move);
+            //    isRunMineCoroutine = false;
+            //    break;
+            //}
             yield return null;
         }
     }
