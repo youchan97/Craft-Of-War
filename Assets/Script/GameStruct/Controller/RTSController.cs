@@ -189,6 +189,7 @@ public class RTSController : MonoBehaviour
     {
         for (int i = 0; i < selectedUnitList.Count; i++)
         {
+            UIManager.Instance.characterSlot.faceSlot[i].SetActive(false);
             selectedUnitList[i].DeselectUnit();
         }
         selectedUnitList.Clear();

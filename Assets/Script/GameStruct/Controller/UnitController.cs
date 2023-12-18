@@ -8,12 +8,14 @@ public class UnitController : MonoBehaviour
     [SerializeField] private GameObject unitMaker;
     private NavMeshAgent navMeshAgent;
     private Animator anim;
+    public Unit unit;
 
     public NavMeshAgent NavMeshAgent { get { return navMeshAgent; } }
 
     private void Start()
     {
         //인스펙터 창에 컴포넌트 활성화 버튼이 사라지는 버그가 있어서 빈 Start를 넣어놨습니다.
+        unit = GetComponent<Unit>();   
         navMeshAgent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
