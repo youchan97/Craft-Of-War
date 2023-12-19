@@ -5,9 +5,11 @@ using UnityEngine;
 public abstract class BattleUnitStragy
 {
     public Unit owner;
+    public bool isAttack;
     public BattleUnitStragy(Unit owner)
     {
         this.owner = owner;
+        isAttack = false;
     }
 
     public abstract void Proceed();//공격이나,힐
@@ -25,10 +27,22 @@ public class MeleeUnitStragy : BattleUnitStragy
 
     public override void Init()
     {
+        
     }
 
     public override void Proceed()
     {
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == false)
+        {
+            owner.DetectiveComponent.AttackMethod();
+            isAttack = true;
+            Debug.Log(isAttack);
+        }
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == true)
+        {
+            isAttack = false;
+            Debug.Log(isAttack);
+        }
     }
 }
 
@@ -44,6 +58,17 @@ public class RangeUnitStragy : BattleUnitStragy
 
     public override void Proceed()
     {
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == false)
+        {
+            owner.DetectiveComponent.AttackMethod();
+            isAttack = true;
+            Debug.Log(isAttack);
+        }
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == true)
+        {
+            isAttack = false;
+            Debug.Log(isAttack);
+        }
     }
 }
 
@@ -59,6 +84,17 @@ public class HealerStragy : BattleUnitStragy
 
     public override void Proceed()
     {
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == false)
+        {
+            owner.DetectiveComponent.HealMethod();
+            isAttack = true;
+            Debug.Log(isAttack);
+        }
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == true)
+        {
+            isAttack = false;
+            Debug.Log(isAttack);
+        }
     }
 }
 
@@ -72,8 +108,7 @@ public enum BATTLE_UNIT
 
 public class BattleUnit : Unit
 {
-    public int attack;
-    BattleUnitStragy unitStragy;
+    public BattleUnitStragy battleStragy;
     public BATTLE_UNIT unitType;
     public Dictionary<BATTLE_UNIT, BattleUnitStragy> stragyDic;
 
@@ -81,12 +116,11 @@ public class BattleUnit : Unit
     {
         Atk = 30;
         StragyInit();
-        attack = Atk;
     }
 
     public void Proceed()
     {
-        unitStragy.Proceed();
+        battleStragy.Proceed();
     }
 
     void StragyInit()//전략 연결
@@ -97,8 +131,8 @@ public class BattleUnit : Unit
             { BATTLE_UNIT.Range, new RangeUnitStragy (this) },
             { BATTLE_UNIT.Healer, new HealerStragy (this) },
         };
-        unitStragy = stragyDic[unitType];
-        unitStragy.Init();
+        battleStragy = stragyDic[unitType];
+        battleStragy.Init();
     }
 
     public override void InitStats()
