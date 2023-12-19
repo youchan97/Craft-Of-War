@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public enum MONSTER_STATE
 { IDLE = 0, MOVE, ATTACK, DIE }
 
 public class Monster : Character
 {
+    public int dropGold;
+    public int dropExp;
+
     StateMachine<Monster> stateMachine;
     Animator anim;
     [SerializeField] Vector3 originPos;
@@ -67,15 +71,27 @@ public class Monster : Character
 
     public override void Hit(IAttackAble attacker)
     {
+        if(Hp < 0)
+        {
+            ((Hero)attacker).info.Gold += dropGold;
+            ((Hero)attacker).CurExp += dropExp;
+            Die();
+        }
+
         int damage = attacker.Atk;
         Hp -= damage;
     }
 
     public override void Die()
     {
+
         monState = MONSTER_STATE.DIE;
         anim.SetTrigger("DeathTrigger");
     }
 
-
+    [PunRPC]
+    public void RPCSetActive(bool active)
+    {
+        gameObject.SetActive(active);
+    }
 }

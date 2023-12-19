@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 562467414133351075}
   - component: {fileID: 2270677877177084869}
   - component: {fileID: 343898013904887118}
+  - component: {fileID: 5289950786233565842}
   m_Layer: 0
   m_Name: fx_small_arrow
   m_TagString: Untagged
@@ -462,6 +463,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5289950786233565842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7711079991872236346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c832b93da52165459e608d22086f4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  discardRate: 0.03
+  discardRefreshRate: 0.01
+  discardDelay: 1.25
+  discardMeshObject:
+  - {fileID: 6244952550382785609}
+  - {fileID: 6244952550382785609}
 --- !u!1001 &4982040116956255868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -761,6 +780,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 937cb43636f8c6d4aa8ddb02a1ef2db0, type: 3}
+--- !u!23 &6244952550382785609 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4780072770720950627, guid: 937cb43636f8c6d4aa8ddb02a1ef2db0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7711079992575476436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7821058310796748095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 937cb43636f8c6d4aa8ddb02a1ef2db0,

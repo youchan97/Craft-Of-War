@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: de9025ddab2d9364c9894839f8960f37, type: 3}
-  coolTime: 0
+  coolTime: 5
   range: 30
   speed: 30
   isActive: 0
@@ -1240,7 +1240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2274228825122365163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.121, z: 0.383}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0.383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1334,7 +1334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2785796645102586225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.335, z: 0.383}
+  m_LocalPosition: {x: 0.92, y: -0.31, z: 0.383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1510,6 +1510,7 @@ MonoBehaviour:
   heroImage: {fileID: 21300000, guid: 96a85b1ad3aa2fd4aa8715f4fa00318d, type: 3}
   curState: 0
   clickTarget: {fileID: 0}
+  clickPos: {x: 0, y: 0, z: 0}
   concentraction: 0
   skillList:
   - {fileID: 503386628}
@@ -1521,9 +1522,6 @@ MonoBehaviour:
   - {fileID: 5042893340956218935}
   - {fileID: 3573820171220741096}
   - {fileID: 12325369183703453}
-  wSkillTrans: []
-  eSkillTrans: []
-  rSkillTrans: []
   attackCount: 0
 --- !u!136 &-6485946883107209529
 CapsuleCollider:
@@ -3498,7 +3496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6387939005187550861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.476, z: 0.383}
+  m_LocalPosition: {x: -0.7, y: -0.17, z: 0.383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4051,9 +4049,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: d197d11c0d40de340a6e11a279c5c8a0, type: 3}
-  coolTime: 0
-  range: 0
-  speed: 0
+  coolTime: 30
+  range: 10
+  speed: 20
   isActive: 0
   level: 1
 --- !u!1 &8738861965054772413

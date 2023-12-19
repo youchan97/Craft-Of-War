@@ -28,9 +28,7 @@ public class GameManager : SingleTon<GameManager>
     //자료구조
     public ObjectPool unitObjectPool;
     public ObjectPool buildingObjectPool;
-    PriorityQueue<string, int> adapterPriorityQueue;
-    IPrioxyQueue<string, int> priorityQueue;//우선순위 큐의 기능만 사용가능한 진짜 큐
-    StateMachine<GameManager> stateMachine;
+    public ObjectPool monsterObjectPool;
 
     public GameManager(ObjectPool buildingOjbectPool)
     {
@@ -99,22 +97,11 @@ public class GameManager : SingleTon<GameManager>
         }
         //StartCoroutine(PlayerInitCo());
 
-        //우선큐
-        adapterPriorityQueue = new PriorityQueue<string, int>();
-        priorityQueue = adapterPriorityQueue;
-
-        priorityQueue.Enqueue("궁병유닛", 1);
-        priorityQueue.Enqueue("보병유닛", 2);
-        priorityQueue.Enqueue("영웅", 3);
-        priorityQueue.Enqueue("건물", 4);
 
         for (int i = 0; i < 4; i++)
         {
             //Debug.Log(priorityQueue.Dequeue());
         }
-
-        //FSM 디버깅
-        stateMachine = new StateMachine<GameManager>(this);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

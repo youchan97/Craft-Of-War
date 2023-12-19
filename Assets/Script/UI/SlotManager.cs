@@ -55,7 +55,8 @@ public class SlotManager : SingleTon<SlotManager>
     //유닛 생산 목록 관련 변수
     public List<GameObject> unitProductProgressFaceSlots;
 
-    
+    private List<IEnumerator> unitCoolTimeCos;
+
     //각 슬롯에 맞는 기능과 이미지 전달
     [SerializeField]
     private SLOTTYPE slotType;
@@ -82,13 +83,12 @@ public class SlotManager : SingleTon<SlotManager>
             }
         }
     }
-    List<IEnumerator> unitCoolTimeCos;
     private void Start()
     {
         unitCoolTimeCos = new List<IEnumerator>();
         unitProductProgressFaceSlots = new List<GameObject>();
         Init();
-        StartCoroutine(unitProductManagerCo());
+        StartCoroutine(UnitProductManagerCo());
     }
     public void Init()//딕셔너리 초기화와 이미지,기능 연결부
     {
@@ -103,21 +103,6 @@ public class SlotManager : SingleTon<SlotManager>
         ActionInit();
     }
 
-    //private void Update()
-    //{
-    //    for(int i=0;i<5;i++)
-    //    {
-    //        unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
-    //        unitProductProgressFaceSlots[i].SetActive(false);
-    //    }
-    //    for (int i = 0; i < unitCoolTimeCos.Count; i++)
-    //    {
-    //        unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = ;
-    //        unitProductProgressFaceSlots[i].SetActive(false);
-    //    }
-
-    //}
-
     //유닛 다중생산 초기화 부분
     public void FaceListButtonInit()
     {
@@ -126,6 +111,7 @@ public class SlotManager : SingleTon<SlotManager>
         {
             unitProductProgressFaceSlots.Add(go);
         }
+        UIManager.Instance.unitProductModeUI.SetActive(true);
         for (int i = 0; i < unitProductProgressFaceSlots.Count; i++)
         {
             //유닛생산중 아이콘들 누르면 리스트에서 빼고 이미지 제거하기
@@ -134,12 +120,14 @@ public class SlotManager : SingleTon<SlotManager>
             { 
                 //StopCoroutine(unitCoolTimeCos[index]);//생산기능 멈춰야함
                 unitCoolTimeCos.RemoveAt(index);
-                
+
                 //선생님 UI 주석
-              //  unitProductProgressFaceSlots[index].GetComponent<Image>().sprite = null;
-              //  unitProductProgressFaceSlots[index].SetActive(false);
+                unitProductProgressFaceSlots[index].GetComponent<Image>().sprite = null;
+                unitProductProgressFaceSlots[index].SetActive(false);
+
             });
         }
+        UIManager.Instance.unitProductModeUI.SetActive(false);
     }
 
 
@@ -195,23 +183,21 @@ public class SlotManager : SingleTon<SlotManager>
 
             //선생님 UI 주석
             //이미지 대기열 표시
-            //     unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(true);
-            //     unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite =
-            //     GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().faceSprite;
+            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(true);
+            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite =
+            GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().faceSprite;
         };
     }
 
     //유닛 대기열 검사해주는 코루틴
-    IEnumerator unitProductManagerCo()
+    IEnumerator UnitProductManagerCo()
     {
         while(true)
         {
             if(unitCoolTimeCos.Count > 0)
             {
                 IEnumerator currentCo = unitCoolTimeCos[0];
-
                 yield return StartCoroutine(currentCo);
-                
                 unitCoolTimeCos.RemoveAt(0);
             }
             yield return null;
@@ -251,7 +237,7 @@ public class SlotManager : SingleTon<SlotManager>
         unit.GetComponent<NavMeshAgent>().ResetPath();
 
         //선생님 UI 주석
-        // unitProductProgressFaceSlots[unitCoolTimeCos.Count].GetComponent<Image>().sprite = null;
-        //  unitProductProgressFaceSlots[unitCoolTimeCos.Count].SetActive(false);
+        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite = null;
+        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(false);
     }
 }

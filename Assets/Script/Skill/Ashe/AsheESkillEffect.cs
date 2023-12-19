@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class AsheESkillEffect : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Ashe owner;
     void Start()
     {
-        
+        owner = (Ashe)GameManager.Instance.PlayerHero;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.position += transform.forward * owner.skillDic[2].speed * Time.deltaTime;
     }
 }

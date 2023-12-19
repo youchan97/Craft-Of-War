@@ -26,22 +26,27 @@ public abstract class Hero : Character, IControllable
     public HERO_STATE curState;
     public IHitAble target;
     public Character clickTarget; // 인터페이스 target 이 계속 갱신되는 transform을 가지고 있으면 없어도 됌
+    public Vector3 clickPos;
 
-
-    //Property 부분 변경시 포톤뷰를 통해 업데이트
     public int Level
-    { get => level; set => level = value; }
+    { get => level; set { level = value; UIManager.Instance.heroLvText.text = level.ToString(); } }
     public float CurExp
-    { get => curExp; set => curExp = value; }
+    { get => curExp; set 
+        { 
+            curExp = value; 
+            UIManager.Instance.heroExp.fillAmount = CurExp / AimExp; 
+            UIManager.Instance.heroExpText.text = curExp + "/" + AimExp; 
+        } 
+    }
     public float AimExp
-    { get => aimExp; set => aimExp = value; }
+    { get => aimExp; set => aimExp = value;  }
     public float MoveSpeed
     { get => info.MoveSpeed; set => info.MoveSpeed = value; }
     public NavMeshAgent Agent
     { get => agent; set => agent = value; }
 
     public float CurMp
-    { get => curMp; set => curMp = value; }
+    { get => curMp; set { curMp = value; UIManager.Instance.heroMp.fillAmount = curMp/maxMp;  UIManager.Instance.heroMpText.text = CurMp + "/" + MaxMp; } }
     public float MaxMp
     { get => maxMp; set => maxMp = value; }
 
@@ -50,6 +55,8 @@ public abstract class Hero : Character, IControllable
 
     private void Start()
     {
+        //info.onChangeHp += () => { UIManager.Instance.heroHp.fillAmount = (float)Hp / (float)maxMp; };
+        //info.onChangeAtk += () => { UIManager.Instance.heroAtkText.text = Atk.ToString(); };
         sm.AddState((int)HERO_STATE.IDLE, new HeroIdleState());
         sm.AddState((int)HERO_STATE.MOVE, new HeroMoveState());
         sm.SetState((int)HERO_STATE.IDLE);
