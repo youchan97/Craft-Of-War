@@ -23,9 +23,11 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI shopClosingTime;
     [Header("캐릭터 슬룻 UI")]
     public CharacterSlot characterSlot;
+    public Image[] characterSlotHp;
     [Header("일반 유닛 정보 UI")]
     public GameObject unitStatUI;
     public Image unitHp;
+    public TextMeshProUGUI unitHpText;
     public TextMeshProUGUI unitNameText;
     public TextMeshProUGUI unitAtkText;
     public TextMeshProUGUI unitShieldText;
@@ -122,15 +124,15 @@ public class UIManager : SingleTon<UIManager>
                 heroStatUI.SetActive(true);
                 unitStatUI.SetActive(false);
                 Hero hero = controller.selectedUnitList[0].GetComponent<Hero>();
-                heroNameText.text = hero.name;
-                heroAtkText.text = hero.Atk.ToString();
-                heroShieldText.text = "999";                                //방어력을 받는 부분
+                heroNameText.text = hero.name;                            
             }
             else
             {
                 heroStatUI.SetActive(false);
                 unitStatUI.SetActive(true); 
-
+                unitNameText.text = controller.selectedUnitList[0].name;
+                unitAtkText.text = controller.selectedUnitList[0].unit.info.Atk.ToString();
+                unitShieldText.text = controller.selectedUnitList[0].unit.info.Def.ToString();
             }
         }
         else
@@ -145,7 +147,6 @@ public class UIManager : SingleTon<UIManager>
             for (int i = 0; i < controller.selectedUnitList.Count; i++)
             {
                 characterSlot.faceSlot[i].SetActive(true);
-                characterSlot.hpImage[i].fillAmount = (float)controller.selectedUnitList[i].unit.Hp / (float)100; // 임시로 100으로 나눠서 체력 표시
                 characterSlot.faceImage[i].sprite = controller.selectedUnitList[i].unit.faceSprite;
             }        
         }

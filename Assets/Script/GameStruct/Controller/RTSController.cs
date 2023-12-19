@@ -5,6 +5,7 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using Unity.VisualScripting;
 
 public enum ARMYMOVEMODE
 {
@@ -44,6 +45,7 @@ public class RTSController : MonoBehaviour
         }
     }
     UnitController hero;
+    Hero heroStat;
 
     private void Awake()
     {
@@ -51,12 +53,50 @@ public class RTSController : MonoBehaviour
     }
     private void Start()
     {
+        heroStat = GameManager.Instance.PlayerHero.GetComponent<Hero>(); 
         hero = GameManager.Instance.PlayerHero.GetComponent<UnitController>();
         GameManager.Instance.rtsController.fieldUnitList.Add(hero);
         InitArmyDic();
         armyMode = ARMYMOVEMODE.Square;
     }
+    private void Update()
+    {
+        SelectUnitUI();
+    }
 
+    public void SelectUnitUI()
+    {
+        if (selectedUnitList.Count == 1)
+        {
+            if (selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
+            {
+                UIManager.Instance.heroHp.fillAmount = (float)heroStat.info.CurentHp/ (float)heroStat.info.MaxHp;
+                UIManager.Instance.heroHpText.text = heroStat.info.curentHp +"/" + heroStat.info.MaxHp;
+                UIManager.Instance.heroMp.fillAmount = (float)heroStat.CurMp / (float)heroStat.MaxMp;
+                UIManager.Instance.heroMpText.text = heroStat.CurMp +"/" + heroStat.MaxMp;
+                UIManager.Instance.heroExp.fillAmount = heroStat.CurExp / heroStat.AimExp;
+                UIManager.Instance.heroExpText.text = heroStat.CurExp +"/" + heroStat.AimExp;
+                UIManager.Instance.heroLvText.text = heroStat.Level.ToString();
+                UIManager.Instance.heroAtkText.text = heroStat.info.Atk.ToString();
+                UIManager.Instance.heroShieldText.text = heroStat.info.Def.ToString();
+            }
+            else
+            {
+                UnitController selectedUnit = selectedUnitList[0];
+                UIManager.Instance.unitHp.fillAmount = (float)selectedUnit.unit.info.CurentHp / (float)selectedUnit.unit.info.MaxHp;
+                UIManager.Instance.unitHpText.text = selectedUnitList[0].unit.info.curentHp + "/" + selectedUnitList[0].unit.info.MaxHp;
+                UIManager.Instance.unitAtkText.text = selectedUnitList[0].unit.info.Atk.ToString();
+                UIManager.Instance.unitShieldText.text = selectedUnitList[0].unit.info.Def.ToString();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < selectedUnitList.Count; i++)
+            {
+                UIManager.Instance.characterSlotHp[i].fillAmount = selectedUnitList[i].unit.info.CurentHp / selectedUnitList[i].unit.info.MaxHp;
+            }
+        }
+    }
     public void ClickSelectUnit(UnitController newUnit)
     {
         DeselectAll();
