@@ -55,7 +55,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
             }    
 
             Vector3 dir = ((cols[index].transform.position) - transform.position).normalized;
-            
+            transform.forward = dir;
             if(Physics.Raycast(transform.position,dir,out hit,detectiveRange))
             {
                 LastDetectivePos = hit.transform.position;
@@ -65,11 +65,25 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     public void AttackMethod()
     {
+        if (cols.Length <= 0)
+            return;
         if (cols[0].GetComponent<IHitAble>() != null)
         {
             Debug.Log(this.gameObject.name + this.gameObject.GetComponent<IAttackAble>().Atk +"때렸다");
             cols[0].GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
             Debug.Log(cols[0].name + cols[0].GetComponent<IHitAble>().Hp + "맞았다.");
+        }
+    }
+    
+    public void HealMethod()
+    {
+        if (cols[0] == null)
+            return;
+
+        if (cols[0].GetComponent<IHitAble>() != null)
+        {
+            cols[0].GetComponent<IHitAble>().Hp += this.gameObject.GetComponent<IAttackAble>().Atk;
+            Debug.Log(cols[0].name + "회복");
         }
     }
 

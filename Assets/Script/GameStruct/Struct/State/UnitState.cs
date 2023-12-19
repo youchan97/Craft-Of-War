@@ -51,14 +51,14 @@ public class UnitMoveState : UnitState
 }
 public class UnitAttackState : UnitState
 {
+    bool isAttack = false;
     public override void Enter()
     {
-
     }
 
     public override void Exit()
     {
-       
+        isAttack = false;
     }
 
     public override void Update()
@@ -66,14 +66,11 @@ public class UnitAttackState : UnitState
         //owner.transform.forward = (owner.DetectiveComponent..transform.position - owner.transform.position).normalized;
         /*if (owner.agent.velocity != Vector3.zero)
             sm.SetState((int)UNIT_STATE.Move);*/
+        ((BattleUnit)owner).battleStragy.Proceed();
         if (owner.DetectiveComponent.IsRangeDetection == false)
             sm.SetState((int)UNIT_STATE.Idle);
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
-       /* if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            owner.DetectiveComponent.AttackMethod();
-        }*/
     }
 }
 
@@ -88,6 +85,10 @@ public class UnitDieState : UnitState
     }
     public override void Update()
     {
+        if(owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        {
+            owner.GetComponent<Collider>().enabled = false;
+        }
         if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             GameManager.Instance.unitObjectPool.ReturnPool(owner.gameObject, owner.obpId);//¿Œµ¶Ω∫πŸ≤„æﬂ«‘

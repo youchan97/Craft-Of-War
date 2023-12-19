@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,21 +23,24 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI shopClosingTime;
     [Header("캐릭터 슬룻 UI")]
     public CharacterSlot characterSlot;
-    //[Header("일반 유닛 정보 UI")]
-    //public GameObject unitStatUI;
-    //public Image unitHp;
-    //public TextMeshProUGUI unitNameText;
-    //public TextMeshProUGUI unitAtkText;
-    //public TextMeshProUGUI unitShieldText;
-    //[Header("영웅 유닛 정보 UI")]
-    //public GameObject heroStatUI;
-    //public Image heroHp;
-    //public Image heroMp;
-    //public Image heroExp;
-    //public TextMeshProUGUI heroNameText;
-    //public TextMeshProUGUI heroLvText;
-    //public TextMeshProUGUI heroAtkText;
-    //public TextMeshProUGUI heroShieldText;
+    [Header("일반 유닛 정보 UI")]
+    public GameObject unitStatUI;
+    public Image unitHp;
+    public TextMeshProUGUI unitNameText;
+    public TextMeshProUGUI unitAtkText;
+    public TextMeshProUGUI unitShieldText;
+    [Header("영웅 유닛 정보 UI")]
+    public GameObject heroStatUI;
+    public Image heroHp; // 최소 HP/최대 HP
+    public TextMeshProUGUI heroHpText;
+    public Image heroMp; // 최소 MP/최대MP
+    public TextMeshProUGUI heroMpText;
+    public Image heroExp;
+    public TextMeshProUGUI heroLvText;
+    public TextMeshProUGUI heroExpText; //현재 Exp / 최대 Exp
+    public TextMeshProUGUI heroNameText;
+    public TextMeshProUGUI heroAtkText;
+    public TextMeshProUGUI heroShieldText;
 
     //빌드유닛 변수
     [Header("빌드 유닛 관련")]
@@ -83,6 +87,7 @@ public class UIManager : SingleTon<UIManager>
         if (GameManager.Instance.playMode == PLAY_MODE.AOS_MODE)
             heroImg.sprite = GameManager.Instance.PlayerHero.HeroImage;
     }
+
     public void CloseStore()
     {
         leavingShop.SetActive(false);
@@ -104,34 +109,31 @@ public class UIManager : SingleTon<UIManager>
         skillSlots[index].TrySkillActive();
     }
 
+   
 
     
    // 1개만 선택시 에는 추가 해야됨. 
     public void SelectUnitUIChange(RTSController controller)
     {
-        //if(controller.selectedUnitList.Count == 1)
-        //{
-        //    if (controller.selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
-        //    {
-        //        heroStatUI.SetActive(true);
-        //        unitStatUI.SetActive(false);
-        //        Hero hero =controller.selectedUnitList[0].GetComponent<Hero>();
-        //        heroHp.fillAmount = hero.Hp / hero.MaxMp;
-        //        heroMp.fillAmount = hero.CurMp / hero.MaxMp;
-        //        heroExp.fillAmount = hero.CurExp / hero.AimExp;   // 맥스 경험치 받는 부분
-        //        heroLvText.text = hero.Level.ToString();
-        //        heroNameText.text = hero.name;
-        //        heroAtkText.text = hero.Atk.ToString();
-        //        heroShieldText.text = "999";
+        if (controller.selectedUnitList.Count == 1)
+        {
+            if (controller.selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
+            {
+                heroStatUI.SetActive(true);
+                unitStatUI.SetActive(false);
+                Hero hero = controller.selectedUnitList[0].GetComponent<Hero>();
+                heroNameText.text = hero.name;
+                heroAtkText.text = hero.Atk.ToString();
+                heroShieldText.text = "999";                                //방어력을 받는 부분
+            }
+            else
+            {
+                heroStatUI.SetActive(false);
+                unitStatUI.SetActive(true); 
 
-        //    }
-        //    else
-        //    {
-        //        heroStatUI.SetActive(false);
-        //        unitStatUI.SetActive(true);
-        //    }
-        //}
-        //else
+            }
+        }
+        else
         {
             for (int i = 0; i < controller.selectedUnitList.Count; i++)
             {
