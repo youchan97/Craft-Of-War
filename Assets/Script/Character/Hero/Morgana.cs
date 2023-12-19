@@ -52,6 +52,7 @@ public class Morgana : Hero
         {
             UseSkill(SKILL_TYPE.RSkill);
         }
+
     }
     public override void InitStats()
     {

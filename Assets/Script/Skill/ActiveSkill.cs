@@ -14,7 +14,6 @@ public class ActiveSkill : Skill
     public int ReqMp { get => reqMp; set { reqMp = value; } }
     
 
-
     private void Start()
     {
         SkillInit();
@@ -22,7 +21,6 @@ public class ActiveSkill : Skill
 
     public override void Active()
     {
-        
         if (owner.CurMp < ReqMp || owner.curState == HERO_STATE.STUN || owner.curState == HERO_STATE.DIE) return;
         
     }

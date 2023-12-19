@@ -130,19 +130,19 @@ public class Ashe : Hero
     public override void Update()
     {
         base.Update();
-        
-        //if(Input.GetKeyDown(KeyCode.W))
-        //{
-        //    UseSkill(SKILL_TYPE.WSkill);
-        //}
-        //if(Input.GetKeyDown(KeyCode.E))
-        //{
-        //    UseSkill(SKILL_TYPE.ESkill);
-        //}
-        //if(Input.GetKeyDown(KeyCode.R))
-        //{
-        //    UseSkill(SKILL_TYPE.RSkill);
-        //}
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            UseSkill(SKILL_TYPE.WSkill);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UseSkill(SKILL_TYPE.ESkill);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            UseSkill(SKILL_TYPE.RSkill);
+        }
+
     }
     public override void InitStats()
     {
