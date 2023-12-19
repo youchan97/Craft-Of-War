@@ -9,13 +9,11 @@ public class Ashe : Hero
 
     public Transform defaultTrans;
     public Transform[] qSkillTrans;
-    public Transform[] wSkillTrans;
-    public Transform[] eSkillTrans;
-    public Transform[] rSkillTrans;
 
     Coroutine attackdelayCo;
     public Coroutine qSkilldelayCo;
     public Coroutine wSkilldelayCo;
+    public Coroutine eSkilldelayCo;
     public int attackCount;
     float time = 0;
     public int Concentraction { get => concentraction; set { concentraction = value; } }
@@ -107,7 +105,27 @@ public class Ashe : Hero
                 }
             }
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            clickTarget = null;
+            curState = HERO_STATE.ATTACK;
+            agent.isStopped = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("애쉬 E 사용");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hitInfo))
+            {
+                clickPos = hitInfo.point;
+                curState = HERO_STATE.ATTACK;
+                agent.isStopped = true;
+                //UseSkill(SKILL_TYPE.ESkill);
+            }
+        }
     }
     public override void Update()
     {
@@ -210,4 +228,14 @@ public class Ashe : Hero
         StopCoroutine(wSkilldelayCo);
         yield return null;
     }
+    public IEnumerator ESkillDelayCo()
+    {
+        yield return new WaitForSeconds(0.5f);
+        curState = HERO_STATE.IDLE;
+        animator.SetBool("QSkill", false);
+        agent.isStopped = false;
+        StopCoroutine(eSkilldelayCo);
+        yield return null;
+    }
+
 }

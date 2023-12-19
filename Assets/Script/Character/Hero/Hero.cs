@@ -26,7 +26,7 @@ public abstract class Hero : Character, IControllable
     public HERO_STATE curState;
     public IHitAble target;
     public Character clickTarget; // 인터페이스 target 이 계속 갱신되는 transform을 가지고 있으면 없어도 됌
-
+    public Vector3 clickPos;
 
     public int Level
     { get => level; set { level = value; UIManager.Instance.heroLvText.text = level.ToString(); } }
