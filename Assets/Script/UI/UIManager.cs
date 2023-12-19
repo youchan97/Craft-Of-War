@@ -149,7 +149,14 @@ public class UIManager : SingleTon<UIManager>
             for (int i = 0; i < controller.selectedUnitList.Count; i++)
             {
                 characterSlot.faceSlot[i].SetActive(true);
-                characterSlot.faceImage[i].sprite = controller.selectedUnitList[i].unit.faceSprite;
+                if (controller.selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
+                {
+                    //히어로의 스프라이트 가져오기
+                }
+                else
+                {
+                    characterSlot.faceImage[i].sprite = controller.selectedUnitList[i].unit.faceSprite;
+                }
             }        
         }
     }
