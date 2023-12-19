@@ -4497,6 +4497,7 @@ GameObject:
   - component: {fileID: -6262046347198488208}
   - component: {fileID: -3729801160873745659}
   - component: {fileID: 6580281328991176860}
+  - component: {fileID: -1932164800767430412}
   m_Layer: 12
   m_Name: OrcMeleeLV3
   m_TagString: Untagged
@@ -4668,10 +4669,32 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -5381218252887535857}
+  - {fileID: -6262046347198488208}
+  - {fileID: -3729801160873745659}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-1932164800767430412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880000736108573682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  isCutomTargetLayer: 0
+  cols: []
+  detectiveRange: 4
 --- !u!1 &3880000736108573684
 GameObject:
   m_ObjectHideFlags: 0

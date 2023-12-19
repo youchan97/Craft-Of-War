@@ -2549,6 +2549,7 @@ GameObject:
   - component: {fileID: -6843610161621390989}
   - component: {fileID: -6465507494641144308}
   - component: {fileID: 871287085042573304}
+  - component: {fileID: -7206296213135973620}
   m_Layer: 12
   m_Name: OrcArcher
   m_TagString: Untagged
@@ -2686,6 +2687,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: -293113398945299310}
   - {fileID: -6465507494641144308}
+  - {fileID: 871287085042573304}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2726,6 +2728,25 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &-7206296213135973620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833755455673379213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  isCutomTargetLayer: 0
+  cols: []
+  detectiveRange: 7
 --- !u!1 &5833755455673379215
 GameObject:
   m_ObjectHideFlags: 0

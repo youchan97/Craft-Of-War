@@ -2357,7 +2357,7 @@ MonoBehaviour:
   isRangeDetection: 0
   isCutomTargetLayer: 0
   cols: []
-  detectiveRange: 3
+  detectiveRange: 4
 --- !u!1 &8726071526014405776
 GameObject:
   m_ObjectHideFlags: 0

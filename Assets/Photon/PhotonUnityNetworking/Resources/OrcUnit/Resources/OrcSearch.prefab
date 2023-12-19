@@ -2815,6 +2815,7 @@ GameObject:
   - component: {fileID: 5665632011135376104}
   - component: {fileID: 4976283633310842014}
   - component: {fileID: -1174113054929995185}
+  - component: {fileID: -8574585704365288357}
   m_Layer: 12
   m_Name: OrcSearch
   m_TagString: Untagged
@@ -2951,6 +2952,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: -3115482574087250002}
   - {fileID: 4976283633310842014}
+  - {fileID: -1174113054929995185}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2984,8 +2986,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeParameters:
+  - Type: 3
+    SynchronizeType: 0
+    Name: State
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &-8574585704365288357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2227561248473582332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  isCutomTargetLayer: 0
+  cols: []
+  detectiveRange: 0
 --- !u!1 &2227561248473582334
 GameObject:
   m_ObjectHideFlags: 0

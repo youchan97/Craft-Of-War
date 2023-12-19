@@ -6,10 +6,12 @@ public abstract class BattleUnitStragy
 {
     public Unit owner;
     public bool isAttack;
+    public bool isHeal;
     public BattleUnitStragy(Unit owner)
     {
         this.owner = owner;
         isAttack = false;
+        isHeal = false;
     }
 
     public abstract void Proceed();//°ø°ÝÀÌ³ª,Èú
@@ -36,12 +38,10 @@ public class MeleeUnitStragy : BattleUnitStragy
         {
             owner.DetectiveComponent.AttackMethod();
             isAttack = true;
-            Debug.Log(isAttack);
         }
         if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == true)
         {
             isAttack = false;
-            Debug.Log(isAttack);
         }
     }
 }
@@ -62,12 +62,10 @@ public class RangeUnitStragy : BattleUnitStragy
         {
             owner.DetectiveComponent.AttackMethod();
             isAttack = true;
-            Debug.Log(isAttack);
         }
         if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == true)
         {
             isAttack = false;
-            Debug.Log(isAttack);
         }
     }
 }
@@ -84,16 +82,14 @@ public class HealerStragy : BattleUnitStragy
 
     public override void Proceed()
     {
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == false)
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Heal") && isHeal == false)
         {
             owner.DetectiveComponent.HealMethod();
-            isAttack = true;
-            Debug.Log(isAttack);
+            isHeal = true;
         }
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == true)
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Heal") && isHeal == true)
         {
-            isAttack = false;
-            Debug.Log(isAttack);
+            isHeal = false;
         }
     }
 }

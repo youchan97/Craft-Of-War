@@ -48,10 +48,9 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         {
             RaycastHit hit;
             int index = 0;           
-            while (cols[index] == null)
+            while (cols[index].gameObject == this.gameObject)
             {
                 index++;
-                continue;
             }    
 
             Vector3 dir = ((cols[index].transform.position) - transform.position).normalized;
@@ -69,21 +68,20 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
             return;
         if (cols[0].GetComponent<IHitAble>() != null)
         {
-            Debug.Log(this.gameObject.name + this.gameObject.GetComponent<IAttackAble>().Atk +"¶§·È´Ù");
             cols[0].GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
-            Debug.Log(cols[0].name + cols[0].GetComponent<IHitAble>().Hp + "¸Â¾Ò´Ù.");
+            Debug.Log("¶§·È´Ù");
         }
     }
     
     public void HealMethod()
     {
-        if (cols[0] == null)
+        if (cols.Length <= 0)
             return;
 
         if (cols[0].GetComponent<IHitAble>() != null)
         {
             cols[0].GetComponent<IHitAble>().Hp += this.gameObject.GetComponent<IAttackAble>().Atk;
-            Debug.Log(cols[0].name + "È¸º¹");
+            Debug.Log(cols[0].name + cols[0].GetComponent<IHitAble>().Hp + "Èú");
         }
     }
 
@@ -92,10 +90,18 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     {
         if (this.gameObject.layer == 6)
         {
-            targetLayer = (1 << 7) | (1 << 13) | (1 << 18);
+            if (this.gameObject.GetComponent<BattleUnit>() != null && this.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
+                targetLayer = 1 << 6;
+            else
+                targetLayer = (1 << 7) | (1 << 13) | (1 << 18);
         }
         else
-            targetLayer = (1 << 6) | (1 << 12) | (1 << 17);
+        {
+            if (this.gameObject.GetComponent<BattleUnit>() != null && this.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
+                targetLayer = 1 << 7;
+            else
+                targetLayer = (1 << 6) | (1 << 12) | (1 << 17);
+        }
     }
 
     private void OnDrawGizmos()

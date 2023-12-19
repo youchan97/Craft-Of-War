@@ -3972,6 +3972,7 @@ GameObject:
   - component: {fileID: -6690832275742450351}
   - component: {fileID: 4088778264372407374}
   - component: {fileID: -8125343433422062788}
+  - component: {fileID: -3694684768564335321}
   m_Layer: 12
   m_Name: OrcMeleeLV2
   m_TagString: Untagged
@@ -4109,6 +4110,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3824797460324429713}
   - {fileID: 4088778264372407374}
+  - {fileID: -8125343433422062788}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -4142,8 +4144,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeParameters:
+  - Type: 3
+    SynchronizeType: 0
+    Name: State
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
+--- !u!114 &-3694684768564335321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6808943230117525116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  isCutomTargetLayer: 0
+  cols: []
+  detectiveRange: 3
 --- !u!1 &6808943230117525118
 GameObject:
   m_ObjectHideFlags: 0

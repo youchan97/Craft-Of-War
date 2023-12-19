@@ -42,7 +42,7 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
     [SerializeField]
     protected DetectiveComponent detectiveComponent;
 
-    private void OnEnable()
+    private new void OnEnable()
     {
         this.Hp = 100;
         this.sm.SetState((int)UNIT_STATE.Idle);

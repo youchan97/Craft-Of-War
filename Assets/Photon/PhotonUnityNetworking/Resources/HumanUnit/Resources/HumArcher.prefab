@@ -3334,7 +3334,7 @@ MonoBehaviour:
   isRangeDetection: 0
   isCutomTargetLayer: 0
   cols: []
-  detectiveRange: 3
+  detectiveRange: 7
 --- !u!114 &-2058180744903222714
 MonoBehaviour:
   m_ObjectHideFlags: 0

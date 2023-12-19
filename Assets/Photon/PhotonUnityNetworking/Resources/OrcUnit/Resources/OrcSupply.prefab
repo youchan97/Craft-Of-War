@@ -2784,6 +2784,7 @@ GameObject:
   - component: {fileID: 4402703964130934277}
   - component: {fileID: -7422533484748695964}
   - component: {fileID: 1501110261094335060}
+  - component: {fileID: -2990179731009510196}
   m_Layer: 12
   m_Name: OrcSupply
   m_TagString: Untagged
@@ -2958,10 +2959,32 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 29258521025570529}
+  - {fileID: 4402703964130934277}
+  - {fileID: -7422533484748695964}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-2990179731009510196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4113703306187733924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  isCutomTargetLayer: 0
+  cols: []
+  detectiveRange: 3
 --- !u!1 &4113703306187733926
 GameObject:
   m_ObjectHideFlags: 0
