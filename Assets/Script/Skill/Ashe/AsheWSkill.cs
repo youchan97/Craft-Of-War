@@ -36,7 +36,7 @@ public class AsheWSkill : ActiveSkill
         GetPoints();
         Ashe realOwner = (Ashe)owner;
         realOwner.animator.SetBool("AttackBasic", true);
-        realOwner.transform.forward = (realOwner.clickTarget.transform.position - realOwner.transform.position).normalized;
+        //realOwner.transform.forward = (realOwner.clickTarget.transform.position - realOwner.transform.position).normalized;
         for (int i = 0; i < attackPoints.Count; i++)
         {
             GameObject temp = realOwner.InstantiateVFX("fx_small_arrow", realOwner.defaultTrans, true);
@@ -44,7 +44,7 @@ public class AsheWSkill : ActiveSkill
             temp.transform.forward = (attackPoints[i] - realOwner.defaultTrans.position).normalized;
         }
         attackPoints.Clear();
-        realOwner.qSkilldelayCo = StartCoroutine(realOwner.WSkillDelayCo());
+        realOwner.wSkilldelayCo = StartCoroutine(realOwner.WSkillDelayCo());
     }
 
     public Vector3 DirFromAngle(float angleDegrees, bool angleIsGlobal)
