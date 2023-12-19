@@ -981,6 +981,8 @@ MonoBehaviour:
   agent: {fileID: 6427480566448487918}
   pv: {fileID: 0}
   detectiveComponent: {fileID: 0}
+  dropGold: 0
+  dropExp: 0
   originPos: {x: 0, y: 0, z: 0}
   monState: 0
 --- !u!114 &5639178756149400261

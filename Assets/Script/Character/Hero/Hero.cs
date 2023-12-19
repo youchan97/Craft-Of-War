@@ -31,7 +31,13 @@ public abstract class Hero : Character, IControllable
     public int Level
     { get => level; set { level = value; UIManager.Instance.heroLvText.text = level.ToString(); } }
     public float CurExp
-    { get => curExp; set { curExp = value; UIManager.Instance.heroExp.fillAmount = CurExp / AimExp; UIManager.Instance.heroExpText.text = curExp + "/" + AimExp; } }
+    { get => curExp; set 
+        { 
+            curExp = value; 
+            UIManager.Instance.heroExp.fillAmount = CurExp / AimExp; 
+            UIManager.Instance.heroExpText.text = curExp + "/" + AimExp; 
+        } 
+    }
     public float AimExp
     { get => aimExp; set => aimExp = value;  }
     public float MoveSpeed

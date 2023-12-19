@@ -673,6 +673,8 @@ MonoBehaviour:
   agent: {fileID: -7254532494351539966}
   pv: {fileID: 0}
   detectiveComponent: {fileID: 0}
+  dropGold: 0
+  dropExp: 0
   originPos: {x: 0, y: 0, z: 0}
   monState: 0
 --- !u!114 &5306996924004171806
@@ -715,6 +717,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: -7516814084146265678}
   - {fileID: 7927177879023949541}
+  - {fileID: 2474058765206237411}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

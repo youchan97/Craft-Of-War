@@ -41,6 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3207369288660415353}
   - component: {fileID: 7761918932395369035}
+  - component: {fileID: 4463159609269035144}
+  - component: {fileID: 2181074273310818813}
   m_Layer: 0
   m_Name: MonsterObjectPool
   m_TagString: Untagged
@@ -79,6 +81,45 @@ MonoBehaviour:
   - {fileID: 4784227611126084669, guid: 595d06b0cb4a29342bba15d85e20074f, type: 3}
   - {fileID: 4341038371074976723, guid: 0173e15049b06db4aa03759e9da2f19e, type: 3}
   initSize: 10
+--- !u!114 &4463159609269035144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933337787811034582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2181074273310818813}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &2181074273310818813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933337787811034582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &2472877971681524562
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +285,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5933868284573579797}
   - component: {fileID: 7761918932395369044}
+  - component: {fileID: 6233114513030335640}
+  - component: {fileID: 4771978972321015404}
   m_Layer: 0
   m_Name: MonsterSpawnPoints
   m_TagString: Untagged
@@ -300,6 +343,45 @@ MonoBehaviour:
   monsterPrefab:
   - {fileID: 4784227611126084669, guid: 595d06b0cb4a29342bba15d85e20074f, type: 3}
   - {fileID: 4341038371074976723, guid: 0173e15049b06db4aa03759e9da2f19e, type: 3}
+--- !u!114 &6233114513030335640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6376814344813259893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 4771978972321015404}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &4771978972321015404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6376814344813259893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &6419845971472106046
 GameObject:
   m_ObjectHideFlags: 0
