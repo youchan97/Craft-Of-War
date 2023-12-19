@@ -137,6 +137,8 @@ public class UIManager : SingleTon<UIManager>
         }
         else
         {
+            heroStatUI.SetActive(false);
+            unitStatUI.SetActive(false);
             for (int i = 0; i < controller.selectedUnitList.Count; i++)
             {
                 if(controller.selectedUnitList[i].gameObject == GameManager.Instance.PlayerHero.gameObject)
