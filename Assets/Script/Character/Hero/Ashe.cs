@@ -15,6 +15,7 @@ public class Ashe : Hero
 
     Coroutine attackdelayCo;
     public Coroutine qSkilldelayCo;
+    public Coroutine wSkilldelayCo;
     public int attackCount;
     float time = 0;
     public int Concentraction { get => concentraction; set { concentraction = value; } }
@@ -50,15 +51,16 @@ public class Ashe : Hero
         {
             time = 0;
             attackCount = 0;
+            skillDic[0].isActive = false;
         }
 
-        if (attackCount >= 3)
+        if(skillDic[0].isActive)
         {
             time += Time.deltaTime;
+            Debug.Log("Q스킬 시작");
 
-            if(Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
-                Debug.Log("Q스킬 시작");
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 if (Physics.Raycast(ray, out RaycastHit hitInfo))
@@ -72,50 +74,57 @@ public class Ashe : Hero
                         curState = HERO_STATE.ATTACK;
                         agent.isStopped = true;
                         UseSkill(SKILL_TYPE.QSkill);
+                        Debug.Log("Q 스킬 사용됌");
                     }
                 }
             }
         }
-        else
+
+        if (attackCount >= 3)
         {
-            
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                Debug.Log("일반 공격");
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                skillDic[0].isActive = true;
+            }
+        }
 
-                if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        if (!skillDic[0].isActive && Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("일반 공격");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hitInfo))
+            {
+                if (Vector3.Distance(hitInfo.transform.position, transform.position) > skillDic[0].range)
+                    return;
+
+                if (hitInfo.transform.gameObject.TryGetComponent<Character>(out Character target))
                 {
-                    if (Vector3.Distance(hitInfo.transform.position, transform.position) > skillDic[0].range)
-                        return;
-
-                    if (hitInfo.transform.gameObject.TryGetComponent<Character>(out Character target))
-                    {
-                        clickTarget = target;
-                        curState = HERO_STATE.ATTACK;
-                        agent.isStopped = true;
-                        Attack(target, target.transform);
-                    }
+                    clickTarget = target;
+                    curState = HERO_STATE.ATTACK;
+                    agent.isStopped = true;
+                    Attack(target, target.transform);
                 }
             }
         }
+        
     }
     public override void Update()
     {
         base.Update();
         
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            UseSkill(SKILL_TYPE.WSkill);
-        }
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            UseSkill(SKILL_TYPE.ESkill);
-        }
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            UseSkill(SKILL_TYPE.RSkill);
-        }
+        //if(Input.GetKeyDown(KeyCode.W))
+        //{
+        //    UseSkill(SKILL_TYPE.WSkill);
+        //}
+        //if(Input.GetKeyDown(KeyCode.E))
+        //{
+        //    UseSkill(SKILL_TYPE.ESkill);
+        //}
+        //if(Input.GetKeyDown(KeyCode.R))
+        //{
+        //    UseSkill(SKILL_TYPE.RSkill);
+        //}
     }
     public override void InitStats()
     {
@@ -174,7 +183,7 @@ public class Ashe : Hero
 
     IEnumerator AttackDelayCo()
     {
-        yield return new WaitForSeconds(animator.playbackTime);
+        yield return new WaitForSeconds(0.5f);
         curState = HERO_STATE.IDLE;
         animator.SetBool("AttackBasic", false);
         agent.isStopped = false;
@@ -184,11 +193,21 @@ public class Ashe : Hero
 
     public IEnumerator QSkillDelayCo()
     {
-        yield return new WaitForSeconds(animator.playbackTime);
+        yield return new WaitForSeconds(0.5f);
         curState = HERO_STATE.IDLE;
         animator.SetBool("QSkill", false);
         agent.isStopped = false;
         StopCoroutine(qSkilldelayCo);
+        yield return null;
+    }
+
+    public IEnumerator WSkillDelayCo()
+    {
+        yield return new WaitForSeconds(0.5f);
+        curState = HERO_STATE.IDLE;
+        animator.SetBool("AttackBasic", false);
+        agent.isStopped = false;
+        StopCoroutine(wSkilldelayCo);
         yield return null;
     }
 }

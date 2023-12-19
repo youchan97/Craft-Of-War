@@ -96,7 +96,7 @@ public abstract class Hero : Character, IControllable
         else if(!agent.isStopped)
         {
             curState = HERO_STATE.IDLE;
-            animator.SetBool("IsMove", false);
+            //animator.SetBool("IsMove", false);
         }
             
     }
