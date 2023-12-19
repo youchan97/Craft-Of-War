@@ -36,8 +36,9 @@ public class UIManager : SingleTon<UIManager>
     public Image heroMp; // 최소 MP/최대MP
     public TextMeshProUGUI heroMpText;
     public Image heroExp;
-    public TextMeshProUGUI heroNameText;
+    public TextMeshProUGUI heroLvText;
     public TextMeshProUGUI heroExpText; //현재 Exp / 최대 Exp
+    public TextMeshProUGUI heroNameText;
     public TextMeshProUGUI heroAtkText;
     public TextMeshProUGUI heroShieldText;
 
@@ -128,8 +129,7 @@ public class UIManager : SingleTon<UIManager>
             else
             {
                 heroStatUI.SetActive(false);
-                unitStatUI.SetActive(true);
-                unitHp.fillAmount = controller.selectedUnitList[0].unit.Hp / controller.selectedUnitList[0].unit.curHp; 
+                unitStatUI.SetActive(true); 
 
             }
         }

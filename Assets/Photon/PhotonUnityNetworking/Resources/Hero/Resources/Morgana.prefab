@@ -1335,6 +1335,7 @@ MonoBehaviour:
   coolTime: 0
   range: 0
   speed: 0
+  isActive: 0
   level: 0
 --- !u!1 &3265325452955473604
 GameObject:
@@ -2788,6 +2789,7 @@ MonoBehaviour:
   coolTime: 0
   range: 0
   speed: 0
+  isActive: 0
   level: 0
 --- !u!1 &5618349699750070702
 GameObject:
@@ -3422,6 +3424,7 @@ MonoBehaviour:
   coolTime: 0
   range: 0
   speed: 0
+  isActive: 0
   level: 0
 --- !u!1 &6672542868460323216
 GameObject:
@@ -3981,6 +3984,7 @@ MonoBehaviour:
   coolTime: 0
   range: 0
   speed: 0
+  isActive: 0
   level: 0
 --- !u!1 &7563352861624439466
 GameObject:
