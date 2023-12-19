@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,9 @@ public class MonsterSpawnManager : SingleTon<MonsterSpawnManager>
 
     private void Start()
     {
-        SpawnMonster();
+        if(PhotonNetwork.IsMasterClient)
+            SpawnMonster();
+
     }
 
     public void SpawnMonster()

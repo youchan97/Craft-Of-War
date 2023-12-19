@@ -49,8 +49,8 @@ public abstract class Hero : Character, IControllable
 
     private void Start()
     {
-        info.onChangeHp += () => { UIManager.Instance.heroHp.fillAmount = (float)Hp / (float)maxMp; };
-        info.onChangeAtk += () => { UIManager.Instance.heroAtkText.text = Atk.ToString(); };
+        //info.onChangeHp += () => { UIManager.Instance.heroHp.fillAmount = (float)Hp / (float)maxMp; };
+        //info.onChangeAtk += () => { UIManager.Instance.heroAtkText.text = Atk.ToString(); };
         sm.AddState((int)HERO_STATE.IDLE, new HeroIdleState());
         sm.AddState((int)HERO_STATE.MOVE, new HeroMoveState());
         sm.SetState((int)HERO_STATE.IDLE);

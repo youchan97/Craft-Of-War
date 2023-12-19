@@ -20,9 +20,9 @@ public struct CharacterInfo
     private float atkRange;
     private int gold;
 
-    public event Action onChangeHp;
-    public event Action onChangeAtk;
-    public event Action onChangeDef;
+    //public event Action onChangeHp;
+    //public event Action onChangeAtk;
+    //public event Action onChangeDef;
 
 
     public int MaxHp { get => maxHp; set => maxHp = value; }
@@ -32,12 +32,12 @@ public struct CharacterInfo
         set
         {
             curentHp = value;
-            onChangeHp();
+            //onChangeHp();
         }
     }
 
-    public int Atk { get => atk; set { atk = value; onChangeAtk(); } }
-    public int Def { get => def; set { def = value; onChangeDef(); } }
+    public int Atk { get => atk; set { atk = value; /*onChangeAtk();*/ } }
+    public int Def { get => def; set { def = value; /*onChangeDef();*/ } }
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public float AtkSpeed { get => atkSpeed; set => atkSpeed = value; }
     public float SightRange { get => sightRange; set => sightRange = value; }
