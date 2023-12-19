@@ -7,6 +7,8 @@ using Photon.Pun;
 
 public class MouseClick : MonoBehaviourPunCallbacks
 {
+    public GameObject clickEffect;
+
     private LayerMask layerUnit;
     [SerializeField] private LayerMask layerGround;
     private LayerMask layerBuilding;
@@ -105,6 +107,8 @@ public class MouseClick : MonoBehaviourPunCallbacks
             Debug.Log("Å¬¸¯");
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~(1 << 8)))//FOV ¾ÈÂïÈ÷°Ô Àü´ÞÇÏ±âÀ§ÇÔ
             {
+                GameObject effect = Instantiate(clickEffect);
+                effect.transform.position = hit.transform.position;
                 Debug.Log("¶¥À» ÂïÀ½");
                 controller.MoveSelectedUnits(hit);
             }

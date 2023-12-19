@@ -93,8 +93,10 @@ MonoBehaviour:
   leavingShop: {fileID: 3108216536182210967}
   shopClosingTime: {fileID: 6565988825516858216}
   characterSlot: {fileID: 6034178395627865315}
+  characterSlotHp: {fileID: 517655957992653707}
   unitStatUI: {fileID: 3219840825185105918}
   unitHp: {fileID: 5088763581439734481}
+  unitHpText: {fileID: 8570090312159997860}
   unitNameText: {fileID: 5496626141145581285}
   unitAtkText: {fileID: 8872228690164682236}
   unitShieldText: {fileID: 6914987076994803994}
@@ -1409,6 +1411,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1170777926459451420, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1252530898200925620, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
       propertyPath: m_IsActive
@@ -1747,6 +1754,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5762591269748538770, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6212675724945509752, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1810,32 +1822,32 @@ PrefabInstance:
     - target: {fileID: 6913329144556096207, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6913329144556096207, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6913329144556096207, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 6913329144556096207, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 6913329144556096207, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 268
       objectReference: {fileID: 0}
     - target: {fileID: 6913329144556096207, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -113
       objectReference: {fileID: 0}
     - target: {fileID: 7300621405440834346, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
@@ -2059,6 +2071,18 @@ MonoBehaviour:
 --- !u!114 &276043636031848253 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4559024086782697695, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4364089717894848482}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &517655957992653707 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4305240171098070121, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
     type: 3}
   m_PrefabInstance: {fileID: 4364089717894848482}
   m_PrefabAsset: {fileID: 0}
@@ -2320,6 +2344,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4364089717894848482}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8570090312159997860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5368096977477087302, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4364089717894848482}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8647240185444274461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4940861502416293631, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
