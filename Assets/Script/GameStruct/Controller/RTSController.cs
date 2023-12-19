@@ -94,7 +94,16 @@ public class RTSController : MonoBehaviour
             for (int i = 0; i < selectedUnitList.Count; i++)
             {
                 if (selectedUnitList[i] != null)
-                    UIManager.Instance.characterSlotHp[i].fillAmount = (float)selectedUnitList[i].unit.info.CurentHp / (float)selectedUnitList[i].unit.info.MaxHp;
+                {
+                    if (selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
+                    {
+                        UIManager.Instance.characterSlotHp[0].fillAmount = (float)heroStat.info.CurentHp / (float)heroStat.info.MaxHp;
+                    }
+                    else
+                    {
+                        UIManager.Instance.characterSlotHp[i].fillAmount = (float)selectedUnitList[i].unit.info.CurentHp / (float)selectedUnitList[i].unit.info.MaxHp;
+                    }
+                }
             }
         }
     }
