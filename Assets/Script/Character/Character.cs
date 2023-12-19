@@ -56,6 +56,14 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
     [SerializeField]
     protected DetectiveComponent detectiveComponent;
 
+    private void OnEnable()
+    {
+        this.Hp = 100;
+        this.sm.SetState((int)UNIT_STATE.Idle);
+        this.gameObject.GetComponent<Collider>().enabled = true;
+        this.Atk = 30;
+    }
+
     public DetectiveComponent DetectiveComponent { get { return detectiveComponent; } }
     public virtual void Awake()
     {

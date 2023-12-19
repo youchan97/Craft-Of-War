@@ -11,8 +11,12 @@ public abstract class Skill : MonoBehaviour
     public float range;
     public float speed;
     public float CoolTime { get => coolTime; set => coolTime = value; }
+    public bool isActive;
 
-
+    private void Start()
+    {
+        isActive = false;
+    }
     public void SetOwner(Hero owner)
     {
         this.owner = owner;

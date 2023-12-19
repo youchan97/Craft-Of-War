@@ -3354,8 +3354,6 @@ MonoBehaviour:
   obpId: 3
   faceSprite: {fileID: 21300000, guid: a97a0483392a83346b1d2edb79c41e61, type: 3}
   coolTime: 3
-  curHp: 0
-  attack: 0
   unitType: 2
 --- !u!195 &3855637067024655820
 NavMeshAgent:
