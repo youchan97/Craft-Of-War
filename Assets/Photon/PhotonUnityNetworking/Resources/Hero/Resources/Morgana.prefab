@@ -1332,6 +1332,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: cb1680d0891e39f42b36289b7398ed6c, type: 3}
+  coolTime: 0
+  range: 0
+  speed: 0
+  isActive: 0
   level: 0
 --- !u!1 &3265325452955473604
 GameObject:
@@ -2476,7 +2480,7 @@ MonoBehaviour:
   - {fileID: -2951045890167234231}
   - {fileID: 5437356158798371924}
   - {fileID: 7831997416926603495}
-  sceneViewId: 1
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &-2951045890167234231
@@ -2536,6 +2540,7 @@ MonoBehaviour:
   maxMp: 0
   heroImage: {fileID: 21300000, guid: d7fa3b0c26e6cdf4d8be23b2a7a49a84, type: 3}
   curState: 0
+  clickTarget: {fileID: 0}
   skillList:
   - {fileID: 1987019056712532113}
   - {fileID: 784298352730443195}
@@ -2781,6 +2786,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: a46b1409c1990d643b69a19dcd0470ec, type: 3}
+  coolTime: 0
+  range: 0
+  speed: 0
+  isActive: 0
   level: 0
 --- !u!1 &5618349699750070702
 GameObject:
@@ -3412,6 +3421,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 51987898dadd9ab42a79103a203ebac7, type: 3}
+  coolTime: 0
+  range: 0
+  speed: 0
+  isActive: 0
   level: 0
 --- !u!1 &6672542868460323216
 GameObject:
@@ -3968,6 +3981,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 0878838d3996a0a41b835bc6a2888d86, type: 3}
+  coolTime: 0
+  range: 0
+  speed: 0
+  isActive: 0
   level: 0
 --- !u!1 &7563352861624439466
 GameObject:
