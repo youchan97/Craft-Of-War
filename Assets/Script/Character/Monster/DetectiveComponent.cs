@@ -17,6 +17,9 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     
     [SerializeField] private float detectiveRange; // 감지 범위(시야보다 클 수 없음)
 
+    public PriorityQueue<string, int> AdaptpriorityQueue;
+    public IPrioxyQueue<string, int> priorityQueue;
+
     public Vector3 LastDetectivePos // 감지된 오브젝트 위치
     {  get; private set; }
 
@@ -26,6 +29,9 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        AdaptpriorityQueue = new PriorityQueue<string, int>();
+        priorityQueue = AdaptpriorityQueue;
+        PriorityQueueInit();
         pv = GetComponent<PhotonView>();
         if(isCutomTargetLayer)
         {
@@ -62,8 +68,22 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         }
     }
 
+    public void PriorityQueueInit()
+    {
+        priorityQueue.Enqueue("", 1);
+        priorityQueue.Enqueue("", 2);
+        priorityQueue.Enqueue("", 3);
+        priorityQueue.Enqueue("", 4);
+        priorityQueue.Dequeue();
+    }
+
     public void AttackMethod()
     {
+        for (int i = 0; i < cols.Length; i++)
+        {
+            //priorityQueue.Enqueue();
+        }
+
         if (cols.Length <= 0)
             return;
         if (cols[0].GetComponent<IHitAble>() != null)
@@ -78,10 +98,10 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         if (cols.Length <= 0)
             return;
 
-        if (cols[0].GetComponent<IHitAble>() != null)
+        if (cols[0].GetComponent<Character>() != null)
         {
-            cols[0].GetComponent<IHitAble>().Hp += this.gameObject.GetComponent<IAttackAble>().Atk;
-            Debug.Log(cols[0].name + cols[0].GetComponent<IHitAble>().Hp + "힐");
+            cols[0].GetComponent<Character>().Hp += this.gameObject.GetComponent<IAttackAble>().Atk;
+            Debug.Log(cols[0].name + cols[0].GetComponent<Character>().Hp + "힐");
         }
     }
 

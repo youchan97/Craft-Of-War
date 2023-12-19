@@ -42,12 +42,9 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
     [SerializeField]
     protected DetectiveComponent detectiveComponent;
 
-    private new void OnEnable()
+    public override void OnEnable()
     {
-        this.Hp = 100;
-        this.sm.SetState((int)UNIT_STATE.Idle);
-        this.gameObject.GetComponent<Collider>().enabled = true;
-        this.Atk = 30;
+        pv.RPC("Initialize", RpcTarget.AllBuffered);       
     }
 
     public DetectiveComponent DetectiveComponent { get { return detectiveComponent; } }
@@ -75,5 +72,15 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
         {
             this.Hp = (int)stream.ReceiveNext();
         }
+    }
+
+    [PunRPC]
+    public void Initialize()
+    {
+        this.Hp = 100;
+        this.sm.SetState((int)UNIT_STATE.Idle);
+        this.gameObject.GetComponent<Collider>().enabled = true;
+        this.Atk = 30;
+        Debug.Log("초기화 완료" + this.Hp);
     }
 }

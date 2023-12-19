@@ -110,7 +110,6 @@ public class BattleUnit : Unit
 
     private void Start()
     {
-        Atk = 30;
         StragyInit();
     }
 
