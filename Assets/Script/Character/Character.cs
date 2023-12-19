@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
-
+using System;
 /// <summary>
 /// Basic Infomation of Characters.
 /// </summary>
@@ -20,10 +20,24 @@ public struct CharacterInfo
     private float atkRange;
     private int gold;
 
+    public event Action onChangeHp;
+    public event Action onChangeAtk;
+    public event Action onChangeDef;
+
+
     public int MaxHp { get => maxHp; set => maxHp = value; }
-    public int CurentHp { get => curentHp; set => curentHp = value; }
-    public int Atk { get => atk; set => atk = value; }
-    public int Def { get => def; set => def = value; }
+    public int CurentHp
+    {
+        get => curentHp;
+        set
+        {
+            curentHp = value;
+            onChangeHp();
+        }
+    }
+
+    public int Atk { get => atk; set { atk = value; onChangeAtk(); } }
+    public int Def { get => def; set { def = value; onChangeDef(); } }
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public float AtkSpeed { get => atkSpeed; set => atkSpeed = value; }
     public float SightRange { get => sightRange; set => sightRange = value; }
