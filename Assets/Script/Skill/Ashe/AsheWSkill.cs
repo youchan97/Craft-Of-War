@@ -44,7 +44,7 @@ public class AsheWSkill : ActiveSkill
             temp.transform.forward = (attackPoints[i] - realOwner.defaultTrans.position).normalized;
         }
         attackPoints.Clear();
-        realOwner.qSkilldelayCo = StartCoroutine(realOwner.QSkillDelayCo());
+        realOwner.qSkilldelayCo = StartCoroutine(realOwner.WSkillDelayCo());
     }
 
     public Vector3 DirFromAngle(float angleDegrees, bool angleIsGlobal)

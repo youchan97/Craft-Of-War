@@ -15,6 +15,7 @@ public class Ashe : Hero
 
     Coroutine attackdelayCo;
     public Coroutine qSkilldelayCo;
+    public Coroutine wSkilldelayCo;
     public int attackCount;
     float time = 0;
     public int Concentraction { get => concentraction; set { concentraction = value; } }
@@ -197,6 +198,16 @@ public class Ashe : Hero
         animator.SetBool("QSkill", false);
         agent.isStopped = false;
         StopCoroutine(qSkilldelayCo);
+        yield return null;
+    }
+
+    public IEnumerator WSkillDelayCo()
+    {
+        yield return new WaitForSeconds(0.5f);
+        curState = HERO_STATE.IDLE;
+        animator.SetBool("AttackBasic", false);
+        agent.isStopped = false;
+        StopCoroutine(wSkilldelayCo);
         yield return null;
     }
 }
