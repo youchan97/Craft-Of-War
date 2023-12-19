@@ -2604,7 +2604,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 503386628, guid: aba97eab67c11e34ca2b20aa582209ca, type: 3}
       propertyPath: coolTime
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 12325369183703453, guid: aba97eab67c11e34ca2b20aa582209ca,
         type: 3}
@@ -2684,7 +2684,7 @@ PrefabInstance:
     - target: {fileID: 2052687697622716709, guid: aba97eab67c11e34ca2b20aa582209ca,
         type: 3}
       propertyPath: attackRadius
-      value: 5
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2052687697622716709, guid: aba97eab67c11e34ca2b20aa582209ca,
         type: 3}
