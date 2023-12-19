@@ -55,7 +55,29 @@ public class SlotManager : SingleTon<SlotManager>
     //유닛 생산 목록 관련 변수
     public List<GameObject> unitProductProgressFaceSlots;
 
-    
+    private bool isUiChanged;
+    public bool IsUiChanged
+    {
+        get { return isUiChanged; }
+        set
+        {
+            isUiChanged = value;
+            for (int i = 0; i < unitCoolTimeCos.Count; i++)
+            {
+                unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
+                unitProductProgressFaceSlots[i].SetActive(false);
+            }
+            for (int i = 0; i < unitCoolTimeCos.Count; i++)
+            {
+                unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
+                unitProductProgressFaceSlots[i].SetActive(true);
+            }
+
+        }
+    }
+
+    private List<IEnumerator> unitCoolTimeCos;
+
     //각 슬롯에 맞는 기능과 이미지 전달
     [SerializeField]
     private SLOTTYPE slotType;
@@ -82,13 +104,12 @@ public class SlotManager : SingleTon<SlotManager>
             }
         }
     }
-    List<IEnumerator> unitCoolTimeCos;
     private void Start()
     {
         unitCoolTimeCos = new List<IEnumerator>();
         unitProductProgressFaceSlots = new List<GameObject>();
         Init();
-        StartCoroutine(unitProductManagerCo());
+        StartCoroutine(UnitProductManagerCo());
     }
     public void Init()//딕셔너리 초기화와 이미지,기능 연결부
     {
@@ -105,7 +126,7 @@ public class SlotManager : SingleTon<SlotManager>
 
     //private void Update()
     //{
-    //    for(int i=0;i<5;i++)
+    //    for (int i = 0; i < 5; i++)
     //    {
     //        unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
     //        unitProductProgressFaceSlots[i].SetActive(false);
@@ -134,10 +155,12 @@ public class SlotManager : SingleTon<SlotManager>
             { 
                 //StopCoroutine(unitCoolTimeCos[index]);//생산기능 멈춰야함
                 unitCoolTimeCos.RemoveAt(index);
-                
+
                 //선생님 UI 주석
-              //  unitProductProgressFaceSlots[index].GetComponent<Image>().sprite = null;
-              //  unitProductProgressFaceSlots[index].SetActive(false);
+                unitProductProgressFaceSlots[index].GetComponent<Image>().sprite = null;
+                unitProductProgressFaceSlots[index].SetActive(false);
+
+                IsUiChanged = !IsUiChanged;
             });
         }
     }
@@ -202,16 +225,16 @@ public class SlotManager : SingleTon<SlotManager>
     }
 
     //유닛 대기열 검사해주는 코루틴
-    IEnumerator unitProductManagerCo()
+    IEnumerator UnitProductManagerCo()
     {
         while(true)
         {
             if(unitCoolTimeCos.Count > 0)
             {
                 IEnumerator currentCo = unitCoolTimeCos[0];
-
+                IsUiChanged = true;
                 yield return StartCoroutine(currentCo);
-                
+                IsUiChanged = false;
                 unitCoolTimeCos.RemoveAt(0);
             }
             yield return null;
@@ -251,7 +274,7 @@ public class SlotManager : SingleTon<SlotManager>
         unit.GetComponent<NavMeshAgent>().ResetPath();
 
         //선생님 UI 주석
-        // unitProductProgressFaceSlots[unitCoolTimeCos.Count].GetComponent<Image>().sprite = null;
-        //  unitProductProgressFaceSlots[unitCoolTimeCos.Count].SetActive(false);
+        //unitProductProgressFaceSlots[unitCoolTimeCos.Count].GetComponent<Image>().sprite = null;
+        //unitProductProgressFaceSlots[unitCoolTimeCos.Count].SetActive(false);
     }
 }

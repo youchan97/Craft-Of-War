@@ -56,8 +56,9 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
     [SerializeField]
     protected DetectiveComponent detectiveComponent;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
         this.Hp = 100;
         this.sm.SetState((int)UNIT_STATE.Idle);
         this.gameObject.GetComponent<Collider>().enabled = true;
