@@ -55,27 +55,6 @@ public class SlotManager : SingleTon<SlotManager>
     //유닛 생산 목록 관련 변수
     public List<GameObject> unitProductProgressFaceSlots;
 
-    private bool isUiChanged;
-    public bool IsUiChanged
-    {
-        get { return isUiChanged; }
-        set
-        {
-            isUiChanged = value;
-            for (int i = 0; i < unitCoolTimeCos.Count; i++)
-            {
-                unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
-                unitProductProgressFaceSlots[i].SetActive(false);
-            }
-            for (int i = 0; i < unitCoolTimeCos.Count; i++)
-            {
-                unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
-                unitProductProgressFaceSlots[i].SetActive(true);
-            }
-
-        }
-    }
-
     private List<IEnumerator> unitCoolTimeCos;
 
     //각 슬롯에 맞는 기능과 이미지 전달
@@ -124,21 +103,6 @@ public class SlotManager : SingleTon<SlotManager>
         ActionInit();
     }
 
-    //private void Update()
-    //{
-    //    for (int i = 0; i < 5; i++)
-    //    {
-    //        unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = null;
-    //        unitProductProgressFaceSlots[i].SetActive(false);
-    //    }
-    //    for (int i = 0; i < unitCoolTimeCos.Count; i++)
-    //    {
-    //        unitProductProgressFaceSlots[i].GetComponent<Image>().sprite = ;
-    //        unitProductProgressFaceSlots[i].SetActive(false);
-    //    }
-
-    //}
-
     //유닛 다중생산 초기화 부분
     public void FaceListButtonInit()
     {
@@ -147,6 +111,7 @@ public class SlotManager : SingleTon<SlotManager>
         {
             unitProductProgressFaceSlots.Add(go);
         }
+        UIManager.Instance.unitProductModeUI.SetActive(true);
         for (int i = 0; i < unitProductProgressFaceSlots.Count; i++)
         {
             //유닛생산중 아이콘들 누르면 리스트에서 빼고 이미지 제거하기
@@ -160,9 +125,9 @@ public class SlotManager : SingleTon<SlotManager>
                 unitProductProgressFaceSlots[index].GetComponent<Image>().sprite = null;
                 unitProductProgressFaceSlots[index].SetActive(false);
 
-                IsUiChanged = !IsUiChanged;
             });
         }
+        UIManager.Instance.unitProductModeUI.SetActive(false);
     }
 
 
@@ -218,9 +183,9 @@ public class SlotManager : SingleTon<SlotManager>
 
             //선생님 UI 주석
             //이미지 대기열 표시
-            //     unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(true);
-            //     unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite =
-            //     GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().faceSprite;
+            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(true);
+            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite =
+            GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().faceSprite;
         };
     }
 
@@ -232,9 +197,7 @@ public class SlotManager : SingleTon<SlotManager>
             if(unitCoolTimeCos.Count > 0)
             {
                 IEnumerator currentCo = unitCoolTimeCos[0];
-                IsUiChanged = true;
                 yield return StartCoroutine(currentCo);
-                IsUiChanged = false;
                 unitCoolTimeCos.RemoveAt(0);
             }
             yield return null;
@@ -274,7 +237,7 @@ public class SlotManager : SingleTon<SlotManager>
         unit.GetComponent<NavMeshAgent>().ResetPath();
 
         //선생님 UI 주석
-        //unitProductProgressFaceSlots[unitCoolTimeCos.Count].GetComponent<Image>().sprite = null;
-        //unitProductProgressFaceSlots[unitCoolTimeCos.Count].SetActive(false);
+        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite = null;
+        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(false);
     }
 }
