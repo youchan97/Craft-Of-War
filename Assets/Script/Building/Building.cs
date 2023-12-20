@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using System;
+using Unity.VisualScripting;
 
 public class UnitList : List<Unit>
 {
@@ -26,7 +27,6 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
 {
     private int hp;
     PhotonView pv;
-    //���� Ŀ���� �ڷᱸ��, �ְ� ���� �̺�Ʈ �߻��� ����
     public UnitList spawnList;
     public List<IEnumerator> unitCoolTimeCos;
 
@@ -48,7 +48,9 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
 
     public override void OnEnable()
     {
+        base.OnEnable();
         pv.RPC("BuildingInitialize", RpcTarget.AllBuffered);
+        StartCoroutine(unitProductManagerCo);
     }
 
     public void Awake()
@@ -64,17 +66,11 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
         unitProductManagerCo = UnitProductManagerCo();
     }
 
-    private new void OnEnable()
-    {
-        base.OnEnable();
-        StartCoroutine(unitProductManagerCo);
-    }
     private new void OnDisable()
     {
         base.OnDisable();
         StopCoroutine(unitProductManagerCo);
     }
-    //���� ��⿭ �˻����ִ� �ڷ�ƾ
 
     IEnumerator UnitProductManagerCo()
     {
