@@ -5144,7 +5144,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0.69}
+  m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!114 &4778507978612871005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5174,7 +5174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d118d88c8a5795e4281cf38c62fe729b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
+  moveSpeed: 30
   radius: 0
   direction: {x: 0, y: 0, z: 1}
   hitEffect: {fileID: 1280810077217925919, guid: bf2964db9d88cfe4b9f82ec368d4a6b8,

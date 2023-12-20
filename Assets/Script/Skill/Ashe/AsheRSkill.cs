@@ -14,17 +14,14 @@ public class AsheRSkill : ActiveSkill
     }
     public override void Active()
     {
-
-      
+        base.Active();
         owner.animator.Play("Attack_Ultimate");
-
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
         {
-            AsheRSkillEffect se = Instantiate(skillEffect, owner.transform.position + new Vector3(0,0.2f,0), Quaternion.identity).GetComponent<AsheRSkillEffect>();
+            AsheRSkillEffect se = Instantiate(skillEffect, owner.transform.position + new Vector3(0,1.5f,0), Quaternion.identity).GetComponent<AsheRSkillEffect>();
             se.Direction = hit.point - owner.transform.position;
             se.transform.forward = se.Direction;
         }
