@@ -48,6 +48,8 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
 
     public override void OnEnable()
     {
+        base.OnEnable();
+        StartCoroutine(unitProductManagerCo);
         pv.RPC("BuildingInitialize", RpcTarget.AllBuffered);
     }
 
@@ -64,11 +66,6 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
         unitProductManagerCo = UnitProductManagerCo();
     }
 
-    private new void OnEnable()
-    {
-        base.OnEnable();
-        StartCoroutine(unitProductManagerCo);
-    }
     private new void OnDisable()
     {
         base.OnDisable();
