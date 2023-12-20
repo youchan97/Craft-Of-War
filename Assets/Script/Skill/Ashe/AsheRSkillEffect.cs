@@ -10,19 +10,30 @@ public class AsheRSkillEffect : MonoBehaviour
     [SerializeField] GameObject hitEffect;
     Rigidbody rb;
     public Ashe owner;
-
-    public Vector3 Direction { get { return direction; } set { direction = value; } }
+    public Vector3 Direction
+    {
+        get => direction;
+        set
+        {
+            direction = value.normalized;
+        }
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         radius = gameObject.GetComponent<SphereCollider>().radius;
         owner = (Ashe)GameManager.Instance.PlayerHero;
+        
     }
+
+    
 
 
     private void Update()
     {
-        //rb.MovePosition(owner.skillTransform[0].transform.position - Input.mousePosition  * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
+      //  rb.MovePosition(transform.position + Direction * moveSpeed * Time.deltaTime);
+        
     }
 
     private void OnTriggerEnter(Collider other)
