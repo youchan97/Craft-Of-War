@@ -12,12 +12,16 @@ using static UnityEngine.UI.CanvasScaler;
 public enum PLAY_MODE
 { RTS_MODE, AOS_MODE}
 
+public enum Tribe
+{ HUMAN, ORC}
+
 
 public class GameManager : SingleTon<GameManager>
 {
     public PLAY_MODE playMode = PLAY_MODE.RTS_MODE;
     public Transform[] heroPoints= new Transform[2];
     public Transform[] buildPoints = new Transform[2];
+    public Tribe tribe;
 
     public PhotonView pv;
 
@@ -67,6 +71,10 @@ public class GameManager : SingleTon<GameManager>
     protected override void Awake()
     {
         base.Awake();
+        if (DropDownManager.selectTribe == "Human")
+            tribe = Tribe.HUMAN;
+        else if (DropDownManager.selectTribe == "Orc")
+            tribe = Tribe.ORC;
 
         pv = GetComponent<PhotonView>();
         //Player Ã£±â

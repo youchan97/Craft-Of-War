@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963ed18ae59ba244e8b18b40906d4566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 3
   buildingName: "\uBC29\uC5B4\uBE4C\uB529"
 --- !u!114 &24807163973417876
 MonoBehaviour:
@@ -199,7 +200,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -4397734525619143325}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
