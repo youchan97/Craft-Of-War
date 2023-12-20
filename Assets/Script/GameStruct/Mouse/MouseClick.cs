@@ -12,6 +12,7 @@ public class MouseClick : MonoBehaviourPunCallbacks
     private LayerMask layerUnit;
     [SerializeField] private LayerMask layerGround;
     private LayerMask layerBuilding;
+    private LayerMask layerHero;
     private Camera mainCamera;
     private RTSController controller;
 
@@ -23,11 +24,13 @@ public class MouseClick : MonoBehaviourPunCallbacks
         {
             layerUnit = 1 << 6;
             layerBuilding = 1 << 12;
+            layerHero = 1 << 17;
         }
         else
         {
             layerUnit = 1 << 7;
             layerBuilding = 1 << 13;
+            layerHero = 1 << 18;
         }
     }
 

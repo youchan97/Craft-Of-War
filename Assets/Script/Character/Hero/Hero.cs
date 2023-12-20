@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public enum SKILL_TYPE
 {  QSkill, WSkill, ESkill, RSkill}
@@ -31,27 +32,33 @@ public abstract class Hero : Character, IControllable
     public int Level
     { get => level; set { level = value; UIManager.Instance.heroLvText.text = level.ToString(); } }
     public float CurExp
-    { get => curExp; set 
-        { 
-            curExp = value; 
-            UIManager.Instance.heroExp.fillAmount = CurExp / AimExp; 
-            UIManager.Instance.heroExpText.text = curExp + "/" + AimExp; 
-        } 
+    { get => curExp; set
+        {
+            curExp = value;
+            UIManager.Instance.heroExp.fillAmount = CurExp / AimExp;
+            UIManager.Instance.heroExpText.text = curExp + "/" + AimExp;
+        }
     }
     public float AimExp
-    { get => aimExp; set => aimExp = value;  }
+    { get => aimExp; set => aimExp = value; }
     public float MoveSpeed
     { get => info.MoveSpeed; set => info.MoveSpeed = value; }
     public NavMeshAgent Agent
     { get => agent; set => agent = value; }
 
     public float CurMp
-    { get => curMp; set { curMp = value; UIManager.Instance.heroMp.fillAmount = curMp/maxMp;  UIManager.Instance.heroMpText.text = CurMp + "/" + MaxMp; } }
+    { get => curMp; set { curMp = value; UIManager.Instance.heroMp.fillAmount = curMp / maxMp; UIManager.Instance.heroMpText.text = CurMp + "/" + MaxMp; } }
     public float MaxMp
     { get => maxMp; set => maxMp = value; }
 
     public Sprite HeroImage
-    { get=> heroImage; set => heroImage = value; }
+    { get => heroImage; set => heroImage = value; }
+
+    public override void Awake()
+    {
+        base.Awake();
+        pv.RPC("HeroLayer", RpcTarget.AllBuffered);
+    }
 
     private void Start()
     {
@@ -106,5 +113,45 @@ public abstract class Hero : Character, IControllable
             //animator.SetBool("IsMove", false);
         }
             
+    }
+
+    [PunRPC]
+    public void HeroLayer()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (pv.IsMine)
+            {
+                if(GameManager.Instance.playMode == PLAY_MODE.RTS_MODE)
+                    this.gameObject.layer = 6;
+                else
+                    this.gameObject.layer = 17;
+            }
+            else
+            {
+                if (GameManager.Instance.playMode == PLAY_MODE.RTS_MODE)
+                    this.gameObject.layer = 7;
+                else
+                    this.gameObject.layer = 18;
+            }
+        }
+        else
+        {
+            if (pv.IsMine)
+            {
+                if (GameManager.Instance.playMode == PLAY_MODE.RTS_MODE)
+                    this.gameObject.layer = 7;
+                else
+                    this.gameObject.layer = 18;
+            }
+            else
+            {
+                if (GameManager.Instance.playMode == PLAY_MODE.RTS_MODE)
+                    this.gameObject.layer = 6;
+                else
+                    this.gameObject.layer = 17;
+            }
+        }
+
     }
 }

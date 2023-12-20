@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e24318101d4f746b95753ba9ab49f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
+  index: 2
   buildingName: "\uC778\uAD6C\uBE4C\uB529"
 --- !u!114 &337942271873748289
 MonoBehaviour:

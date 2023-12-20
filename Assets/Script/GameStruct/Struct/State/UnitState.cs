@@ -93,9 +93,9 @@ public class UnitAttackState : UnitState
                 sm.SetState((int)UNIT_STATE.Idle);
             else
             {
+                int unitCount = 0;
                 for (int i = 0; i < owner.DetectiveComponent.cols.Length; i++)
                 {
-                    int unitCount = 0;
                     if (owner.DetectiveComponent.cols[i].gameObject.GetComponent<Character>().Hp > 80)
                     {
                         unitCount++;
