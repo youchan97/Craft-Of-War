@@ -12,7 +12,6 @@ using static UnityEngine.UI.CanvasScaler;
 public enum PLAY_MODE
 { RTS_MODE, AOS_MODE}
 
-
 public class GameManager : SingleTon<GameManager>
 {
     public PLAY_MODE playMode = PLAY_MODE.RTS_MODE;
