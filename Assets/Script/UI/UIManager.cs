@@ -20,7 +20,9 @@ public class UIManager : SingleTon<UIManager>
     [Header("상점 관련 UI")]
     public GameObject shopUI;
     public GameObject leavingShop;
+    public TextMeshProUGUI leavingLeavingText;
     public TextMeshProUGUI shopClosingTime;
+    public bool shopAvailability;
     [Header("캐릭터 슬룻 UI")]
     public CharacterSlot characterSlot;
     public Image[] characterSlotHp;
@@ -92,8 +94,15 @@ public class UIManager : SingleTon<UIManager>
 
     public void CloseStore()
     {
-        leavingShop.SetActive(false);
-        shopUI.SetActive(false);
+        if (!shopAvailability)
+        {
+            leavingShop.SetActive(false);
+            shopUI.SetActive(false);
+        }
+        else
+        {
+            leavingShop.SetActive(false);
+        }
     }
 
 
@@ -151,7 +160,8 @@ public class UIManager : SingleTon<UIManager>
                 characterSlot.faceSlot[i].SetActive(true);
                 if (controller.selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
                 {
-                    //히어로의 스프라이트 가져오기
+                    Hero hero = controller.selectedUnitList[0].GetComponent<Hero>();
+                    characterSlot.faceImage[0].sprite = hero.HeroImage;
                 }
                 else
                 {
