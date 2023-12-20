@@ -3792,7 +3792,7 @@ GameObject:
   - component: {fileID: 1545829985}
   m_Layer: 12
   m_Name: Ashe
-  m_TagString: Untagged
+  m_TagString: PlayerHero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7163,6 +7163,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 598484850840094498, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 598484851263695160, guid: 060655396d4820548aef45e9660b247f,
         type: 3}
       propertyPath: m_RootOrder
@@ -7238,6 +7243,11 @@ PrefabInstance:
       propertyPath: miniMapCam
       value: 
       objectReference: {fileID: 1623594619}
+    - target: {fileID: 598484852175152592, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 683002950873298558, guid: 060655396d4820548aef45e9660b247f,
         type: 3}
       propertyPath: m_RaycastTarget
@@ -7247,7 +7257,7 @@ PrefabInstance:
         type: 3}
       propertyPath: hero
       value: 
-      objectReference: {fileID: 1545829984}
+      objectReference: {fileID: 0}
     - target: {fileID: 1503063717991492171, guid: 060655396d4820548aef45e9660b247f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -7442,7 +7452,7 @@ PrefabInstance:
         type: 3}
       propertyPath: hero
       value: 
-      objectReference: {fileID: 1545829984}
+      objectReference: {fileID: 0}
     - target: {fileID: 3689006910752927800, guid: 060655396d4820548aef45e9660b247f,
         type: 3}
       propertyPath: m_AnchorMax.y

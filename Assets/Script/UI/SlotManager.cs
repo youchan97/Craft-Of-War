@@ -6,9 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+
+
 
 public enum SLOTTYPE
 {
@@ -55,7 +58,6 @@ public class SlotManager : SingleTon<SlotManager>
     //유닛 생산 목록 관련 변수
     public List<GameObject> unitProductProgressFaceSlots;
 
-    private List<IEnumerator> unitCoolTimeCos;
 
     //각 슬롯에 맞는 기능과 이미지 전달
     [SerializeField]
@@ -85,14 +87,15 @@ public class SlotManager : SingleTon<SlotManager>
     }
     private void Start()
     {
-        unitCoolTimeCos = new List<IEnumerator>();
-        unitProductProgressFaceSlots = new List<GameObject>();
         Init();
-        StartCoroutine(UnitProductManagerCo());
     }
     public void Init()//딕셔너리 초기화와 이미지,기능 연결부
     {
+        unitProductProgressFaceSlots = new List<GameObject>();
         slotArr = GetComponentsInChildren<ButtonSlot>();
+
+
+        //슬롯딕셔너리부
         slotsDic.Add(SLOTTYPE.None, new SlotArg(new Sprite[9], new Action[slotsCount]));//빈 유아이
         slotsDic.Add(SLOTTYPE.ProductBuilding, new SlotArg(productBuildingIconArr, new Action[slotsCount]));
         slotsDic.Add(SLOTTYPE.NexusBuilding, new SlotArg(nexusIconArr, new Action[slotsCount]));
@@ -101,6 +104,7 @@ public class SlotManager : SingleTon<SlotManager>
         slotsDic.Add(SLOTTYPE.ArmySelect, new SlotArg(armyMoveModeIconArr, new Action[slotsCount]));
         FaceListButtonInit();
         ActionInit();
+
     }
 
     //유닛 다중생산 초기화 부분
@@ -117,19 +121,17 @@ public class SlotManager : SingleTon<SlotManager>
             //유닛생산중 아이콘들 누르면 리스트에서 빼고 이미지 제거하기
             int index = i;
             unitProductProgressFaceSlots[index].GetComponentInParent<Button>().onClick.AddListener(() => 
-            { 
-                //StopCoroutine(unitCoolTimeCos[index]);//생산기능 멈춰야함
-                unitCoolTimeCos.RemoveAt(index);
+            {
+                Building ownerBuilding = GameManager.Instance.rtsController.SelectBuilding.GetComponent<Building>();
 
-                //선생님 UI 주석
-                unitProductProgressFaceSlots[index].GetComponent<Image>().sprite = null;
-                unitProductProgressFaceSlots[index].SetActive(false);
+                ownerBuilding.unitCoolTimeCos.RemoveAt(index);
 
+                //여기 문제없음 선택된 애 리스트에 지워져야함
+                ownerBuilding.spawnList.RemoveAt(index);
             });
         }
         UIManager.Instance.unitProductModeUI.SetActive(false);
     }
-
 
     public void ActionInit()
     {
@@ -173,62 +175,63 @@ public class SlotManager : SingleTon<SlotManager>
     {
         slotsDic[slotType].actionButtonArr[buttonIndex] += () =>
         {
+            Building ownerBuilding = GameManager.Instance.rtsController.SelectBuilding.GetComponent<Building>();
+
+
             //5개만 대기열 조정
-            if (unitCoolTimeCos.Count == 5)
+            
+            if(ownerBuilding.unitCoolTimeCos.Count >= 5)  
                 return;
 
             Transform selectBuildingTf = GameManager.Instance.rtsController.SelectBuilding.gameObject.transform;
-            unitCoolTimeCos.Add(UnitCoolTimeCo(popIndex, selectBuildingTf));
+            
+            //여기 문제없음 선택된 애 리스트에 추가해야함
+            // 이부분이 위로 올라가서
+            ownerBuilding.spawnList.Add(GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>());
 
+            ownerBuilding.unitCoolTimeCos.Add(UnitCoolTimeCo(popIndex, selectBuildingTf, ownerBuilding));
 
-            //선생님 UI 주석
-            //이미지 대기열 표시
-            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(true);
-            unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite =
-            GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().faceSprite;
+            Debug.LogError("DebugCode 1 : " + ownerBuilding.unitCoolTimeCos.Count);
         };
     }
 
-    //유닛 대기열 검사해주는 코루틴
-    IEnumerator UnitProductManagerCo()
-    {
-        while(true)
-        {
-            if(unitCoolTimeCos.Count > 0)
-            {
-                IEnumerator currentCo = unitCoolTimeCos[0];
-                yield return StartCoroutine(currentCo);
-                unitCoolTimeCos.RemoveAt(0);
-            }
-            yield return null;
-        }
-    }
 
 
-    IEnumerator UnitCoolTimeCo(int popIndex, Transform selectBuildingTf)
+
+    IEnumerator UnitCoolTimeCo(int popIndex, Transform selectBuildingTf,Building building)
     {
         float cool = GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().coolTime;
+
         //쿨타임동안 다른걸 선택할수 있어 미리 위치받음
         TextMeshProUGUI[] buildInfoTexts  = UIManager.Instance.unitProductModeUI.GetComponentsInChildren<TextMeshProUGUI>();
         //진행도
-        buildInfoTexts[1].text = "생산중";
         //유닛생산 쿨타임
         while (cool > 0f)
         {
             cool -= Time.fixedDeltaTime;
-            UIManager.Instance.buildProgressCountText.text = cool.ToString();
-            UIManager.Instance.buildProgressFill.fillAmount = (1 / cool) - cool/10;
+
+            if(GameManager.Instance.rtsController.SelectBuilding != null)
+            {
+                if(building == GameManager.Instance.rtsController.SelectBuilding.GetComponent<Building>())
+                {
+                    buildInfoTexts[1].text = "생산중";
+                    UIManager.Instance.buildProgressCountText.text = cool.ToString();
+                    UIManager.Instance.buildProgressFill.fillAmount = (1 / cool) - cool/10;
+                }
+            }
             yield return new WaitForFixedUpdate();
         }
         buildInfoTexts[1].text = null;
         UIManager.Instance.buildProgressCountText.text = null;
         UIManager.Instance.buildProgressFill.fillAmount = 0;
 
+        //생산부 유닛
         GameObject unit = GameManager.Instance.unitObjectPool.Pop(popIndex).gameObject;
         GameManager.Instance.rtsController.fieldUnitList.Add(unit.GetComponent<UnitController>());
         unit.transform.position = selectBuildingTf.position;
         unit.transform.Translate(new Vector3(0, 0, -6), Space.Self);
         unit.GetComponent<NavMeshAgent>().enabled = true;
+
 
         //유닛뽑고 겹치지 않기 위해 이동,
         unit.GetComponent<NavMeshAgent>().SetDestination(unit.transform.position + new Vector3(0, 0, -3));
@@ -236,8 +239,5 @@ public class SlotManager : SingleTon<SlotManager>
         
         unit.GetComponent<NavMeshAgent>().ResetPath();
 
-        //선생님 UI 주석
-        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].GetComponent<Image>().sprite = null;
-        unitProductProgressFaceSlots[unitCoolTimeCos.Count - 1].SetActive(false);
     }
 }

@@ -36,12 +36,18 @@ public class RTSController : MonoBehaviour
                 return;
             }
 
+
+
             UIManager.Instance.BottomRTSUISetActive(UIManager.Instance.unitProductModeUI);
             TextMeshProUGUI[] buildInfoTexts = UIManager.Instance.unitProductModeUI.GetComponentsInChildren<TextMeshProUGUI>();
-            //이름
             buildInfoTexts[0].text = selectBuilding.gameObject.GetComponent<Building>().buildingName;
-            //건설중인지
+            //전정보 없애주기
             buildInfoTexts[1].text = null;
+            UIManager.Instance.buildProgressCountText.text = null;
+            UIManager.Instance.buildProgressFill.fillAmount = 0;
+            SelectBuilding.GetComponent<Building>().UIMatch();
+
+
         }
     }
     UnitController hero;

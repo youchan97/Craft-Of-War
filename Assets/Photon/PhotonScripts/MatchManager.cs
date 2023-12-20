@@ -93,9 +93,7 @@ public class MatchManager : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsMasterClient)
         {
             masterIndexPoint = UnityEngine.Random.Range(0, PhotonNetwork.CurrentRoom.MaxPlayers);
-            Debug.Log("주인 스폰"+ masterIndexPoint);
             pv.RPC("SpawnIndex", RpcTarget.AllBuffered, masterIndexPoint);
-            Debug.Log("손님 스폰" + userIndexPoint);
         }
         Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}은 인원수 {PhotonNetwork.CurrentRoom.MaxPlayers} 매칭 기다리는 중.");
         UpdatePlayerCounts();

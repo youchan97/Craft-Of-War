@@ -7,7 +7,7 @@ public class MorganaQSkillEffect : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] private Vector3 direction;
     [SerializeField] GameObject hitEffect;
-    Rigidbody rb;
+
     public Morgana owner;
 
     public Vector3 Direction
@@ -21,10 +21,17 @@ public class MorganaQSkillEffect : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         owner = (Morgana)GameManager.Instance.PlayerHero;
     }
 
+    private void Update()
+    {
+        transform.Translate(Vector3.forward * moveSpeed *Time.deltaTime, Space.Self);
+    }
 
+    private void OnParticleTrigger()
+    {
+        
+    }
 
 }
