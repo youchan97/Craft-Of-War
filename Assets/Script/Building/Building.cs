@@ -7,10 +7,24 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
 {
     private int hp;
     PhotonView pv;
+    public int index;
     public int Hp 
     {
-        get => hp; 
-        set => hp = value; 
+        get => hp;
+        set
+        {
+            hp = value;
+            if (hp <= 0)
+            {
+                this.gameObject.GetComponent<Collider>().enabled = false;
+                GameManager.Instance.buildingObjectPool.ReturnPool(this.gameObject, this.index);
+            }
+        }
+    }
+
+    public override void OnEnable()
+    {
+        pv.RPC("BuildingInitialize", RpcTarget.AllBuffered);
     }
 
     private void Awake()
@@ -52,5 +66,12 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
     public void RPCSetActive(bool active)
     {
         gameObject.SetActive(active);
+    }
+
+    [PunRPC]
+    public void BuildingInitialize()
+    {
+        this.Hp = 300;
+        this.gameObject.GetComponent<Collider>().enabled = true;
     }
 }
