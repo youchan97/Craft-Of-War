@@ -83,8 +83,8 @@ public class RTSController : MonoBehaviour
             else
             {
                 UnitController selectedUnit = selectedUnitList[0];
-                UIManager.Instance.unitHp.fillAmount = (float)selectedUnit.unit.Hp / (float)selectedUnit.unit.info.MaxHp;
-                UIManager.Instance.unitHpText.text = selectedUnitList[0].unit.Hp + "/" + selectedUnitList[0].unit.info.MaxHp;
+                UIManager.Instance.unitHp.fillAmount = (float)selectedUnit.unit.Hp / (float)100;
+                UIManager.Instance.unitHpText.text = selectedUnitList[0].unit.Hp + "/" + 100;
                 UIManager.Instance.unitAtkText.text = selectedUnitList[0].unit.info.Atk.ToString();
                 UIManager.Instance.unitShieldText.text = selectedUnitList[0].unit.info.Def.ToString();
             }
@@ -101,7 +101,7 @@ public class RTSController : MonoBehaviour
                     }
                     else
                     {
-                        UIManager.Instance.characterSlotHp[i].fillAmount = (float)selectedUnitList[i].unit.info.CurentHp / (float)selectedUnitList[i].unit.info.MaxHp;
+                        UIManager.Instance.characterSlotHp[i].fillAmount = (float)selectedUnitList[i].unit.Hp / (float)100;
                     }
                 }
             }
