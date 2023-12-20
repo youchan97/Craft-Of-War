@@ -20,31 +20,19 @@ public abstract class Unit : Character
     public int obpId;
 
     public Sprite faceSprite;
-/*    public MeshRenderer meshRenderer;
-    MaterialPropertyBlock mpb;*/
 
     public float coolTime;
-    /*private void SetMPB(string propertyName, Color color)
-    {
-        meshRenderer.GetPropertyBlock(mpb);
-        mpb.SetColor(propertyName, color);
-        meshRenderer.SetPropertyBlock(mpb);
-    }*/
     public override void Awake()
     {
         base.Awake();
         pv.RPC("UnitLayer", RpcTarget.AllBuffered);
-        //mpb = new MaterialPropertyBlock();
         InitSm();
     }
 
-    /*private void Start()
+    public override void OnEnable()
     {
-        if (pv.IsMine)
-            SetMPB("_PlayerColor", Color.green);
-        else
-            SetMPB("_PlayerColor", Color.red);
-    }*/
+        pv.RPC("Initialize", RpcTarget.AllBuffered);
+    }
     public virtual void Update()
     {
         sm.UpdateState();

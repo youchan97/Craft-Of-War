@@ -42,10 +42,6 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
     [SerializeField]
     protected DetectiveComponent detectiveComponent;
 
-    public override void OnEnable()
-    {
-        pv.RPC("Initialize", RpcTarget.AllBuffered);       
-    }
 
     public DetectiveComponent DetectiveComponent { get { return detectiveComponent; } }
     public virtual void Awake()

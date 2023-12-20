@@ -49,24 +49,24 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     {
         cols = Physics.OverlapSphere(transform.position, detectiveRange, targetLayer);
         isRangeDetection = (bool)(cols.Length > 0);
-
-        if(isRangeDetection)
+        if (isRangeDetection)
         {
             RaycastHit hit;
-            int index = 0;           
+            int index = 0;
             while (cols[index].gameObject == this.gameObject)
             {
                 index++;
-            }    
+            }
 
             Vector3 dir = ((cols[index].transform.position) - transform.position).normalized;
             transform.forward = dir;
-            if(Physics.Raycast(transform.position,dir,out hit,detectiveRange))
+            if (Physics.Raycast(transform.position, dir, out hit, detectiveRange))
             {
                 LastDetectivePos = hit.transform.position;
             }
         }
     }
+
 
     public void PriorityQueueInit()
     {
@@ -89,6 +89,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         if (cols[0].GetComponent<IHitAble>() != null)
         {
             cols[0].GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
+            Debug.Log(cols[0].GetComponent<IHitAble>().Hp); 
             Debug.Log("¶§·È´Ù");
         }
     }

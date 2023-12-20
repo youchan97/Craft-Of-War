@@ -84,7 +84,7 @@ public class RTSController : MonoBehaviour
             {
                 UnitController selectedUnit = selectedUnitList[0];
                 UIManager.Instance.unitHp.fillAmount = (float)selectedUnit.unit.info.CurentHp / (float)selectedUnit.unit.info.MaxHp;
-                UIManager.Instance.unitHpText.text = selectedUnitList[0].unit.info.curentHp + "/" + selectedUnitList[0].unit.info.MaxHp;
+                UIManager.Instance.unitHpText.text = selectedUnitList[0].unit.info.CurentHp + "/" + selectedUnitList[0].unit.info.MaxHp;
                 UIManager.Instance.unitAtkText.text = selectedUnitList[0].unit.info.Atk.ToString();
                 UIManager.Instance.unitShieldText.text = selectedUnitList[0].unit.info.Def.ToString();
             }
