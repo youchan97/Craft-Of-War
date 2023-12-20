@@ -34,10 +34,10 @@ public class Ashe : Hero
             keyValue.Value.SetOwner(this);
         }
 
-        for(int i = 0; i < UIManager.Instance.skillSlots.Length; i++)
-        {
-            UIManager.Instance.skillSlots[i].Init(this);
-        }
+        //for(int i = 0; i < UIManager.Instance.skillSlots.Length; i++)
+        //{
+        //    UIManager.Instance.skillSlots[i].Init(GameManager.Instance.PlayerHero);
+        //}
         InitStats();
 
         attackCount = 0;
@@ -45,6 +45,8 @@ public class Ashe : Hero
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.PlayerHero != this) return;
+
         if (time > skillDic[0].CoolTime)
         {
             time = 0;
