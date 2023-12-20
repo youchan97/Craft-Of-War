@@ -51,6 +51,7 @@ public class ClickMoveController : MonoBehaviour
         lineRenderer.enabled = false;
         anim = GetComponent<Animator>();
         path = new NavMeshPath();
+        shopDetection = FindObjectOfType<ShopDetection>();
     }
 
     private void FixedUpdate()
