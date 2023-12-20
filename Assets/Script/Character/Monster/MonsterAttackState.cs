@@ -28,7 +28,7 @@ public class MonsterAttackState : MonsterState
         if (monster.DetectiveComponent.IsRangeDetection == false)
         {
             monster.Agent.SetDestination(monster.OriginPos);
-            sm.SetState((int)MONSTER_STATE.IDLE);
+            sm.SetState((int)MONSTER_STATE.MOVE);
         }
 
     }

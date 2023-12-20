@@ -26,22 +26,36 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
 {
     private int hp;
     PhotonView pv;
-    //À¯´Ö Ä¿½ºÅÒ ÀÚ·á±¸Á¶, ³Ö°í »¬¶§ ÀÌº¥Æ® ¹ß»ýÀ» À§ÇÔ
+    //ï¿½ï¿½ï¿½ï¿½ Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·á±¸ï¿½ï¿½, ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ® ï¿½ß»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public UnitList spawnList;
     public List<IEnumerator> unitCoolTimeCos;
 
     public IEnumerator unitProductManagerCo;
+    public int index;
     public int Hp 
     {
-        get => hp; 
-        set => hp = value; 
+        get => hp;
+        set
+        {
+            hp = value;
+            if (hp <= 0)
+            {
+                this.gameObject.GetComponent<Collider>().enabled = false;
+                GameManager.Instance.buildingObjectPool.ReturnPool(this.gameObject, this.index);
+            }
+        }
+    }
+
+    public override void OnEnable()
+    {
+        pv.RPC("BuildingInitialize", RpcTarget.AllBuffered);
     }
 
     public void Awake()
     {
         pv = GetComponent<PhotonView>();
         pv.RPC("BuildLayer", RpcTarget.AllBuffered);
-        //À¯¾ÆÀÌ ÀÚ·á±¸Á¶·Î ÃÖ½ÅÈ­ÇÏ±â ÃÊ±âÈ­ ºÎºÐ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·á±¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ö½ï¿½È­ï¿½Ï±ï¿½ ï¿½Ê±ï¿½È­ ï¿½Îºï¿½
         spawnList = new UnitList();
         spawnList.OnAddUnit += (Unit unit) => UIMatch();
         spawnList.OnRemoveUnit += (int index) => UIMatch();
@@ -60,7 +74,7 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
         base.OnDisable();
         StopCoroutine(unitProductManagerCo);
     }
-    //À¯´Ö ´ë±â¿­ °Ë»çÇØÁÖ´Â ÄÚ·çÆ¾
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½â¿­ ï¿½Ë»ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú·ï¿½Æ¾
 
     IEnumerator UnitProductManagerCo()
     {
@@ -133,5 +147,12 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
     public void RPCSetActive(bool active)
     {
         gameObject.SetActive(active);
+    }
+
+    [PunRPC]
+    public void BuildingInitialize()
+    {
+        this.Hp = 300;
+        this.gameObject.GetComponent<Collider>().enabled = true;
     }
 }

@@ -88,7 +88,6 @@ public class Ashe : Hero
 
         if (!skillDic[0].isActive && Input.GetMouseButtonDown(1))
         {
-            Debug.Log("일반 공격");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hitInfo))
@@ -98,6 +97,7 @@ public class Ashe : Hero
 
                 if (hitInfo.transform.gameObject.TryGetComponent<Character>(out Character target))
                 {
+                    if (target == this) return;
                     clickTarget = target;
                     curState = HERO_STATE.ATTACK;
                     agent.isStopped = true;
@@ -123,26 +123,12 @@ public class Ashe : Hero
                 clickPos = hitInfo.point;
                 curState = HERO_STATE.ATTACK;
                 agent.isStopped = true;
-                //UseSkill(SKILL_TYPE.ESkill);
             }
         }
     }
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            UseSkill(SKILL_TYPE.WSkill);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            UseSkill(SKILL_TYPE.ESkill);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            UseSkill(SKILL_TYPE.RSkill);
-        }
-
     }
     public override void InitStats()
     {

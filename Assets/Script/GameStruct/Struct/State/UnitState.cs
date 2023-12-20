@@ -29,8 +29,10 @@ public class UnitIdleState : UnitState
             {
                 for(int i = 0; i< owner.DetectiveComponent.cols.Length; i++)
                 {
-                    if(owner.DetectiveComponent.cols[i].gameObject.GetComponent<Character>().Hp < 50)
+                    if (owner.DetectiveComponent.cols[i].gameObject.GetComponent<Character>().Hp < 50)
                         sm.SetState((int)UNIT_STATE.Attack);
+                    else
+                        return;
                 }
             }
             else
@@ -58,11 +60,7 @@ public class UnitMoveState : UnitState
         {
             if (owner.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
             {
-                for (int i = 0; i < owner.DetectiveComponent.cols.Length; i++)
-                {
-                    if (owner.DetectiveComponent.cols[i].gameObject.GetComponent<Character>().Hp < 50)
-                        sm.SetState((int)UNIT_STATE.Attack);
-                }
+                return;
             }
             else
                 sm.SetState((int)UNIT_STATE.Attack);
@@ -73,14 +71,14 @@ public class UnitMoveState : UnitState
 }
 public class UnitAttackState : UnitState
 {
-    bool isAttack = false;
+    //bool isAttack = false;
     public override void Enter()
     {
     }
 
     public override void Exit()
     {
-        isAttack = false;
+        //isAttack = false;
     }
 
     public override void Update()
@@ -88,9 +86,29 @@ public class UnitAttackState : UnitState
         //owner.transform.forward = (owner.DetectiveComponent..transform.position - owner.transform.position).normalized;
         /*if (owner.agent.velocity != Vector3.zero)
             sm.SetState((int)UNIT_STATE.Move);*/
-        ((BattleUnit)owner).battleStragy.Proceed();
+        //((BattleUnit)owner).battleStragy.Proceed();
+        if (owner.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
+        {
+            if (owner.DetectiveComponent.IsRangeDetection == false)
+                sm.SetState((int)UNIT_STATE.Idle);
+            else
+            {
+                for (int i = 0; i < owner.DetectiveComponent.cols.Length; i++)
+                {
+                    int unitCount = 0;
+                    if (owner.DetectiveComponent.cols[i].gameObject.GetComponent<Character>().Hp > 80)
+                    {
+                        unitCount++;
+                        if (unitCount == owner.DetectiveComponent.cols.Length - 1)
+                            sm.SetState((int)UNIT_STATE.Idle);
+                    }
+                }
+            }
+        }
         if (owner.DetectiveComponent.IsRangeDetection == false)
+        {   
             sm.SetState((int)UNIT_STATE.Idle);
+        }
         if (owner.Hp <= 0)
             sm.SetState((int)UNIT_STATE.Die);
     }
