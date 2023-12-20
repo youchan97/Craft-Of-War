@@ -10,6 +10,8 @@ public class ScriptableItem : ScriptableObject
     public Sprite image;
     public EItemType type;
     public bool stackable = true;
+    public float value;
+    public int price;
 }
 
 public enum EItemType

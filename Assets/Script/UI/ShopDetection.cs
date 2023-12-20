@@ -18,6 +18,11 @@ public class ShopDetection : MonoBehaviour
         { 
             shopAvailability = value; 
             UIManager.Instance.leavingShop.SetActive(!shopAvailability);
+            if(!shopAvailability)
+            {
+                UIManager.Instance.shopAvailability = !shopAvailability;
+                UIManager.Instance.leavingLeavingText.text = "상점이 떠났습니다.";
+            }
         }
     }
     private bool shopUse;

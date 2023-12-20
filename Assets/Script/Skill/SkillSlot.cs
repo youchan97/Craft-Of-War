@@ -17,6 +17,7 @@ public class SkillSlot : MonoBehaviour
 
     private void Start()
     {
+        hero = GameManager.Instance.PlayerHero;
         Init(hero);
     }
 

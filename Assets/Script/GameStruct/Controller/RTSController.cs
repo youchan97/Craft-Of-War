@@ -212,27 +212,10 @@ public class RTSController : MonoBehaviour
 
     private void SelectUnit(UnitController newUnit)
     {
-        if(selectedUnitList.Count <= 12)
+        if(selectedUnitList.Count < 12)
         {
             newUnit.SelectUnit();
             selectedUnitList.Add(newUnit);
-            if(selectedUnitList.Count > 1)
-            {
-                UIManager.Instance.characterSlot.gameObject.SetActive(true);
-                for(int i = 0;i < selectedUnitList.Count; i++)
-                {
-                    if(GameManager.Instance.PlayerHero == newUnit.gameObject)
-                    {
-                        //¿µ¿õ ÀÌ¹ÌÁö, ¿µ¿õ hp
-                    }
-                    else
-                    {
-                        
-                    }
-
-                }
-            }
-
         }
     }
     private void DeselectUnit(UnitController newUnit)

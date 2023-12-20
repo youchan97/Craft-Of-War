@@ -11,7 +11,7 @@ public class ShopController: MonoBehaviour
     private NavMeshAgent shopAgent;
     public Transform[] shopMovePoint;
     [SerializeField]
-    private const float leavingShopTime = 60f;
+    private const float leavingShopTime = 120f;
     private float curCoolTime;
     public float CurCoolTime
     {
@@ -79,10 +79,9 @@ public class ShopController: MonoBehaviour
             CurCoolTime = leavingShopTime;
             while (CurCoolTime >= 0)
             {
-                CurCoolTime -= Time.fixedDeltaTime;
+                CurCoolTime -= Time.deltaTime;
                 yield return new WaitForFixedUpdate();
             }
-            Debug.Log("나 움직일꺼야");
             ShopStop = false;
             shopAgent.enabled = true;
             shopAgent.SetDestination(shopMovePoint[Index].position);

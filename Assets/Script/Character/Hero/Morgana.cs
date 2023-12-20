@@ -26,10 +26,10 @@ public class Morgana : Hero
             keyValue.Value.SetOwner(this);
         }
 
-        for (int i = 0; i < UIManager.Instance.skillSlots.Length; i++)
-        {
-            UIManager.Instance.skillSlots[i].Init(this);
-        }
+        //for (int i = 0; i < UIManager.Instance.skillSlots.Length; i++)
+        //{
+        //    UIManager.Instance.skillSlots[i].Init(this);
+        //}
         InitStats();
     }
 
