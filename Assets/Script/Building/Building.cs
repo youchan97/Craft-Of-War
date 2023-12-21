@@ -54,7 +54,11 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
         StartCoroutine(unitProductManagerCo);
         pv.RPC("BuildingInitialize", RpcTarget.AllBuffered);
     }
-
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        StopCoroutine(unitProductManagerCo);
+    }
     public void Awake()
     {
         pv = GetComponent<PhotonView>();
@@ -68,11 +72,7 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
         unitProductManagerCo = UnitProductManagerCo();
     }
 
-    private new void OnDisable()
-    {
-        base.OnDisable();
-        StopCoroutine(unitProductManagerCo);
-    }
+
 
     IEnumerator UnitProductManagerCo()
     {
