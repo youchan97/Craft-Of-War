@@ -20,13 +20,11 @@ public class MorganaWSkill : ActiveSkill
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit) && hit.collider != null)
         {
-            if (Physics.OverlapSphere(hit.point, skillRange).Length > 0)
-            {
-
-            }
+            GameObject eft = Instantiate(skillEffect, hit.point, transform.rotation);
         }
+       
 
         
 
