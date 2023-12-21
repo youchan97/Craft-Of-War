@@ -110,6 +110,7 @@ MonoBehaviour:
   index: 2
   cost: 20
   buildingName: "\uC778\uAD6C\uBE4C\uB529"
+  addPopulation: 0
 --- !u!114 &337942271873748289
 MonoBehaviour:
   m_ObjectHideFlags: 0

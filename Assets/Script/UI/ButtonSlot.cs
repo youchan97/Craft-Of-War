@@ -105,7 +105,12 @@ public class ButtonSlot : MonoBehaviour
         float coolTime = 6f;
         slotManager.selectedSupplyUnit.agent.SetDestination(hitpoint);
 
+        if (targetObj.TryGetComponent(out PopulationBuilding populationBuilding))
+        {
+            GameManager.Instance.MaxPopulation += populationBuilding.addPopulation;
+        }
         targetObj.gameObject.SetActive(false);
+
 
         GameObject temp = Instantiate(slotManager.buildingProgressprefab,targetObj.transform.position,targetObj.transform.rotation);
         TimelineController tc = temp.GetComponent<TimelineController>();

@@ -59,7 +59,7 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
         base.OnDisable();
         StopCoroutine(unitProductManagerCo);
     }
-    public void Awake()
+    public virtual void Awake()
     {
         pv = GetComponent<PhotonView>();
         pv.RPC("BuildLayer", RpcTarget.AllBuffered);

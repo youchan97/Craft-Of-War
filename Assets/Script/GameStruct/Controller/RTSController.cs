@@ -37,9 +37,10 @@ public class RTSController : MonoBehaviour
                 return;
             }
 
-
-
-            UIManager.Instance.BottomRTSUISetActive(UIManager.Instance.unitProductModeUI);
+            if (selectBuilding.TryGetComponent(out IProductAble building))
+            {
+                UIManager.Instance.BottomRTSUISetActive(UIManager.Instance.unitProductModeUI);
+            }
             TextMeshProUGUI[] buildInfoTexts = UIManager.Instance.unitProductModeUI.GetComponentsInChildren<TextMeshProUGUI>();
             buildInfoTexts[0].text = selectBuilding.gameObject.GetComponent<Building>().buildingName;
             //전정보 없애주기
@@ -59,8 +60,8 @@ public class RTSController : MonoBehaviour
     }
     private void Start()
     {
-        heroStat = GameManager.Instance.PlayerHero.GetComponent<Hero>(); 
-        hero = GameManager.Instance.PlayerHero.GetComponent<UnitController>();
+        //heroStat = GameManager.Instance.PlayerHero;
+        //hero = GameManager.Instance.PlayerHero.GetComponent<UnitController>();
         GameManager.Instance.rtsController.fieldUnitList.Add(hero);
         InitArmyDic();
         armyMode = ARMYMOVEMODE.Square;

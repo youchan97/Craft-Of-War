@@ -5,7 +5,7 @@ using UnityEngine;
 public class PopulationBuilding : Building
 {
     [SerializeField]
-    private int addPopulation;
+    public int addPopulation;
     private void Start()
     {
         addPopulation = 5;
@@ -21,12 +21,12 @@ public class PopulationBuilding : Building
     public override void OnEnable()
     {
         base.OnEnable();
-        GameManager.Instance.Population += addPopulation;
+        GameManager.Instance.MaxPopulation += addPopulation;
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
-        GameManager.Instance.Population -= addPopulation;
+        GameManager.Instance.MaxPopulation -= addPopulation;
     }
 }
