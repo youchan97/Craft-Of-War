@@ -60,8 +60,8 @@ public class RTSController : MonoBehaviour
     }
     private void Start()
     {
-        //heroStat = GameManager.Instance.PlayerHero;
-        //hero = GameManager.Instance.PlayerHero.GetComponent<UnitController>();
+        heroStat = GameManager.Instance.PlayerHero;
+        hero = GameManager.Instance.PlayerHero.GetComponent<UnitController>();
         GameManager.Instance.rtsController.fieldUnitList.Add(hero);
         InitArmyDic();
         armyMode = ARMYMOVEMODE.Square;
