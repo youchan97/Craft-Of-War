@@ -22,6 +22,7 @@ public abstract class Unit : Character
     public Sprite faceSprite;
 
     public float coolTime;
+    public int cost;
     public override void Awake()
     {
         base.Awake();

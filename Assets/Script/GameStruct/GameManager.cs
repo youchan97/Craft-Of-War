@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using static UnityEngine.UI.CanvasScaler;
 
 public enum PLAY_MODE
@@ -67,6 +68,19 @@ public class GameManager : SingleTon<GameManager>
     {
         get { return playerHero; } set { playerHero = value; }
     }
+
+    //씬관련
+    private void LoadedsceneEvent(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.name == "Main")
+        {
+            onRoundStart();
+        }
+        if (scene.name == "MainMenu")
+        {
+            onRoundEnd();
+        }
+    }
     protected override void Awake()
     {
         base.Awake();
@@ -83,7 +97,6 @@ public class GameManager : SingleTon<GameManager>
         //캐릭터 출현 정보를 배열에 저장
         //캐릭터, 넥서스 랜덤 포인트에 생성
 
-        
     }
     void Start()
     {
@@ -113,6 +126,9 @@ public class GameManager : SingleTon<GameManager>
         {
             //Debug.Log(priorityQueue.Dequeue());
         }
+
+        SceneManager.sceneLoaded += LoadedsceneEvent;
+
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

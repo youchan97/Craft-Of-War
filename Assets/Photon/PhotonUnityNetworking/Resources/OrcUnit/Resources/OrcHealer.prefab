@@ -3867,6 +3867,7 @@ MonoBehaviour:
   obpId: 11
   faceSprite: {fileID: 21300000, guid: 297f185c6bbd8b2419f9e8cf006c508b, type: 3}
   coolTime: 3
+  cost: 55
   unitType: 3
 --- !u!195 &-611815418453801225
 NavMeshAgent:
