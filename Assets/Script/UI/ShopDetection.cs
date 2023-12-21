@@ -18,11 +18,10 @@ public class ShopDetection : MonoBehaviour
         get => shopAvailability;
         set 
         { 
-            shopAvailability = value; 
-            UIManager.Instance.shopMessage.SetActive(!ShopAvailability);
-            if(!shopAvailability)
+            shopAvailability = value;
+            if (ShopUse && ShopAvailability == false)
             {
-                UIManager.Instance.shopAvailability = !ShopAvailability;
+                UIManager.Instance.shopMessage.SetActive(true);
                 UIManager.Instance.shopMessageText.text = "상점이 떠났습니다.";
             }
         }
@@ -49,24 +48,20 @@ public class ShopDetection : MonoBehaviour
     private void Update()
     {
         ShopAvailability = (IsDetection() && shopController.ShopStop && GameManager.Instance.playMode == PLAY_MODE.AOS_MODE);
-        Debug.Log(GameManager.Instance.playMode);
-        Debug.Log(shopController.ShopStop);
+        Debug.Log("게임모드"+GameManager.Instance.playMode);
+        Debug.Log("상점이 멈춤"+shopController.ShopStop);
+        Debug.Log("상점이용" + ShopAvailability);
     }
     public bool IsDetection()
     {
+        Debug.Log("들어왔다");
         Collider[] cols = Physics.OverlapSphere(transform.position, detectiveRadius, masterHeroLayer | userHeroLayer);
         if (cols.Length > 0)
         {
-            if (cols[0].gameObject.tag == ("PlayerHero"))
-            {
-                return true;               
-            }
-            else
-            {
-                return false;
-
-            }
+            Debug.Log("영웅 발견");
+            return true;
         }
+
         else
         {
             return false;

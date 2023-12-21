@@ -35,16 +35,32 @@ public class InventoryManager : SingleTon<InventoryManager>
         //}
         Item addItem = item.GetComponent<Item>();
         Debug.Log("ADD 아이템 호출됨");
-        if (inven.curItemCount == inven.maxSlotCount)   //아이템 슬룻이 꽉차 있을때
-            return;
         if(GameManager.Instance.Gold < addItem.itemData.price)
         {
+            Debug.Log("못산다");
             UIManager.Instance.shopMessage.SetActive(true);
             UIManager.Instance.shopMessageText.text = addItem.itemData.name + "을(를) 구매 할 골드가 부족합니다.";
+            return;
         }
         else
         {
             GameManager.Instance.Gold -= addItem.itemData.price;
+        }
+        if (inven.curItemCount == inven.maxSlotCount)   //아이템 슬룻이 꽉차 있을때
+        {
+            for (int k = 0; k < inven.slots.Length; k++)//아이템 슬룻에 스택이 가능할때
+            {
+                if (inven.slots[k].item != null)
+                {
+                    if (inven.slots[k].item.Stackable && inven.slots[k].item.ID == item.GetComponent<InventoryItem>().itemData.ID)
+                    {   //같은 아이템이 있을경우
+                        inven.slots[k].item.Count++;
+                        inven.slots[k].item.RefreshCount();
+                        return;
+                    }
+                }
+            }
+            return;
         }
         if (inven.curItemCount == 0)                    //아이템 슬룻에 아이템이 없을때
         {
