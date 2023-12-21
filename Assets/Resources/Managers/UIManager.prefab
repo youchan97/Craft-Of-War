@@ -90,8 +90,8 @@ MonoBehaviour:
   goldText: {fileID: 3605048505407836018}
   PopulationText: {fileID: 9222720332189752497}
   shopUI: {fileID: 598484852017019380}
-  leavingShop: {fileID: 3108216536182210967}
-  leavingLeavingText: {fileID: 3843456750047885765}
+  shopMessage: {fileID: 3108216536182210967}
+  shopMessageText: {fileID: 3843456750047885765}
   shopClosingTime: {fileID: 6565988825516858216}
   shopAvailability: 0
   characterSlot: {fileID: 6034178395627865315}
@@ -3178,6 +3178,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2460449241677389575, guid: 40d056b185fbd24459b553cb0ae6ee11,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 598484851263695161}
     - target: {fileID: 4167327097319795888, guid: 40d056b185fbd24459b553cb0ae6ee11,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -3417,6 +3422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087712107513988679, guid: 40d056b185fbd24459b553cb0ae6ee11,
+        type: 3}
+      propertyPath: m_Name
+      value: ShopMessage
       objectReference: {fileID: 0}
     - target: {fileID: 7087712107513988679, guid: 40d056b185fbd24459b553cb0ae6ee11,
         type: 3}

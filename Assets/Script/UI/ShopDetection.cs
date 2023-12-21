@@ -19,11 +19,11 @@ public class ShopDetection : MonoBehaviour
         set 
         { 
             shopAvailability = value; 
-            UIManager.Instance.leavingShop.SetActive(!shopAvailability);
+            UIManager.Instance.shopMessage.SetActive(!ShopAvailability);
             if(!shopAvailability)
             {
-                UIManager.Instance.shopAvailability = !shopAvailability;
-                UIManager.Instance.leavingLeavingText.text = "상점이 떠났습니다.";
+                UIManager.Instance.shopAvailability = !ShopAvailability;
+                UIManager.Instance.shopMessageText.text = "상점이 떠났습니다.";
             }
         }
     }
@@ -48,7 +48,6 @@ public class ShopDetection : MonoBehaviour
     }
     private void Update()
     {
-
         ShopAvailability = (IsDetection() && shopController.ShopStop && GameManager.Instance.playMode == PLAY_MODE.AOS_MODE);
         Debug.Log(GameManager.Instance.playMode);
         Debug.Log(shopController.ShopStop);
