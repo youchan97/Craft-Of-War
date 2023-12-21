@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07049091, g: 0.35360757, b: 0.97003746, a: 1}
+  m_IndirectSpecularColor: {r: 0.07052275, g: 0.35373604, b: 0.97078824, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3138,6 +3138,162 @@ PrefabInstance:
       propertyPath: buildingProgressprefab
       value: 
       objectReference: {fileID: 1181591455}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: OrcNexusIconArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: orcNexusIconArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: OrcNexusIconArr.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 09fa7fa9038634c40a1c63a4fe4e663c,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: OrcNexusIconArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3642d3de672399d4c88f7e54a00433da,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: orcNexusIconArr.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 09fa7fa9038634c40a1c63a4fe4e663c,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: orcNexusIconArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3642d3de672399d4c88f7e54a00433da,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1bc14d05961d9c04183cad9b15af8bcf,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c2401eb5c5030c408cf3a4ab0c6966a,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[8]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 14205814a2082ff499ef022f131ab8a5,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ca79b034bca9cee48aacf16541001038,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 41ba704f36515e941a0667063637ba0d,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3fe316b3fd21c69459dab55710189a0c,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 297f185c6bbd8b2419f9e8cf006c508b,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e5b34e78a1fc6049a6a0f42f7316a33,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 56d520278f0b133469d627740ed47c2c,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 84bcafe6c22696b449f12aa9b11f9e05,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: a97a0483392a83346b1d2edb79c41e61,
+        type: 3}
+    - target: {fileID: 3385435393033180381, guid: 060655396d4820548aef45e9660b247f,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f794436f6ddd984a99e3653441e95a5,
+        type: 3}
     - target: {fileID: 3689006910752927800, guid: 060655396d4820548aef45e9660b247f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4009,6 +4165,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7761918934345454505, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: prefabList.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761918934345454505, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: prefabList.Array.data[7]
+      value: 
+      objectReference: {fileID: 518109775088081841, guid: 326aa0b204da3e740b604364e6219ec3,
+        type: 3}
+    - target: {fileID: 7761918934345454505, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: prefabList.Array.data[8]
+      value: 
+      objectReference: {fileID: 6808943230117525116, guid: 2f1a82388d47e3d4088a121aae18f44a,
+        type: 3}
+    - target: {fileID: 7761918934345454505, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: prefabList.Array.data[9]
+      value: 
+      objectReference: {fileID: 3880000736108573682, guid: a6143a7143b9c6f48a2f3edc0ab2d74b,
+        type: 3}
+    - target: {fileID: 7761918934345454505, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: prefabList.Array.data[10]
+      value: 
+      objectReference: {fileID: 5833755455673379213, guid: a5766183496fe1c42902fb38a28ecf80,
+        type: 3}
+    - target: {fileID: 7761918934345454505, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: prefabList.Array.data[11]
+      value: 
+      objectReference: {fileID: 7899153867614673127, guid: 9504350c69b8bea4996333b8ede51978,
+        type: 3}
+    - target: {fileID: 7761918934345454505, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: prefabList.Array.data[12]
+      value: 
+      objectReference: {fileID: 2227561248473582332, guid: e6de266e685b217408364a00f4b91b64,
+        type: 3}
+    - target: {fileID: 7761918934345454505, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: prefabList.Array.data[13]
+      value: 
+      objectReference: {fileID: 4113703306187733924, guid: 738d6971852e6664985446c112240df8,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2385f02c4b3d09e49ba5217e3a8cbabb, type: 3}
 --- !u!4 &7761918932395369034 stripped

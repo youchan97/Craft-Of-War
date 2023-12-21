@@ -43,8 +43,10 @@ public class SlotManager : SingleTon<SlotManager>
     //버튼 아이콘 스프라이트들
     public Sprite[] supply_BuildIconArr;
     public Sprite[] supplyUnitIconArr;
-    public Sprite[] productBuildingIconArr;
-    public Sprite[] nexusIconArr;
+    public Sprite[] humanProductBuildingIconArr;
+    public Sprite[] orcProductBuildingIconArr;
+    public Sprite[] humanNexusIconArr;
+    public Sprite[] orcNexusIconArr;
     public Sprite[] armyMoveModeIconArr;
 
     public GameObject buildingProgressprefab;
@@ -79,7 +81,7 @@ public class SlotManager : SingleTon<SlotManager>
             for (int i = 0; i < slotsCount; i++)//스프라이트 전달
             {
                 if(slotsDic[slotType].spriteArr[i] != null)
-                slotArr[i].imageCompo.sprite = slotsDic[slotType].spriteArr[i];//+1은 부모오브젝트 이미지 컴포넌트 제외하기위해
+                slotArr[i].imageCompo.sprite = slotsDic[slotType].spriteArr[i];
                 if (slotsDic[slotType].actionButtonArr[i] != null)
                 slotArr[i].slotAction = slotsDic[slotType].actionButtonArr[i];
             }
@@ -97,11 +99,27 @@ public class SlotManager : SingleTon<SlotManager>
 
         //슬롯딕셔너리부
         slotsDic.Add(SLOTTYPE.None, new SlotArg(new Sprite[9], new Action[slotsCount]));//빈 유아이
-        slotsDic.Add(SLOTTYPE.ProductBuilding, new SlotArg(productBuildingIconArr, new Action[slotsCount]));
-        slotsDic.Add(SLOTTYPE.NexusBuilding, new SlotArg(nexusIconArr, new Action[slotsCount]));
         slotsDic.Add(SLOTTYPE.SupplyUnit, new SlotArg(supplyUnitIconArr, new Action[slotsCount]));
         slotsDic.Add(SLOTTYPE.Supply_Build, new SlotArg(supply_BuildIconArr, new Action[slotsCount]));
         slotsDic.Add(SLOTTYPE.ArmySelect, new SlotArg(armyMoveModeIconArr, new Action[slotsCount]));
+
+        //종족에 따른 유닛 생산 기능 갈래
+        //꼭 메인씬 와서정해줘야만함
+        //Init 이 함수가 인게임 들어와야 초기화해야함
+        //버튼 이미지 배열만 다름
+        switch (GameManager.Instance.tribe)
+        {
+            case Tribe.HUMAN:
+                slotsDic.Add(SLOTTYPE.NexusBuilding, new SlotArg(humanNexusIconArr, new Action[slotsCount]));
+                slotsDic.Add(SLOTTYPE.ProductBuilding, new SlotArg(humanProductBuildingIconArr, new Action[slotsCount]));
+                break;
+            case Tribe.ORC:
+                slotsDic.Add(SLOTTYPE.NexusBuilding, new SlotArg(orcNexusIconArr, new Action[slotsCount]));
+                slotsDic.Add(SLOTTYPE.ProductBuilding, new SlotArg(orcProductBuildingIconArr, new Action[slotsCount]));
+                break;
+            default:
+                break;
+        }
         FaceListButtonInit();
         ActionInit();
 
@@ -150,16 +168,43 @@ public class SlotManager : SingleTon<SlotManager>
         }
         //뒤로가기 처음 메뉴로
         slotsDic[SLOTTYPE.Supply_Build].actionButtonArr[8] += () => { SlotType = SLOTTYPE.SupplyUnit; };
-        //넥서스빌딩 행동 액션
-        UnitProductAction(SLOTTYPE.NexusBuilding,0,5);
-        UnitProductAction(SLOTTYPE.NexusBuilding,1,6);
 
-        //생산빌딩 행동 액션
-        for (int i = 0; i < 5; i++)//유닛 갯수 오브젝트풀에서 앞의 5개만
+
+        //(넥서스, 생산빌딩 액션은 종족에 따라 다른유닛 생산함달라짐)
+        ///////////////////////////////////////////////////////
+        switch (GameManager.Instance.tribe)
         {
-            int index = i;
-            UnitProductAction(SLOTTYPE.ProductBuilding, index, index);
+            case Tribe.HUMAN:
+                //넥서스빌딩 행동 액션
+                UnitProductAction(SLOTTYPE.NexusBuilding, 0, 5);
+                UnitProductAction(SLOTTYPE.NexusBuilding, 1, 6);
+
+                //생산빌딩 행동 액션
+                for (int i = 0; i < 5; i++)//유닛 갯수 오브젝트풀에서 앞의 5개만
+                {
+                    int index = i;
+                    int slotIndex = index;
+                    UnitProductAction(SLOTTYPE.ProductBuilding, slotIndex, index);
+                }
+                break;
+            case Tribe.ORC:
+                //넥서스빌딩 행동 액션
+                UnitProductAction(SLOTTYPE.NexusBuilding, 0, 12);
+                UnitProductAction(SLOTTYPE.NexusBuilding, 1, 13);
+
+                //생산빌딩 행동 액션
+                for (int i = 7; i < 12; i++)//유닛 갯수 오브젝트풀에서 앞의 5개만
+                {
+                    int index = i;
+                    int slotIndex = index - 7;
+                    UnitProductAction(SLOTTYPE.ProductBuilding, slotIndex, index);
+                }
+                break;
+            default:
+                break;
         }
+
+
         //부대지정 행동 액션
         slotsDic[SLOTTYPE.ArmySelect].actionButtonArr[0] += () => { RTSController.armyMode = ARMYMOVEMODE.Horizontal; };
         slotsDic[SLOTTYPE.ArmySelect].actionButtonArr[1] += () => { RTSController.armyMode = ARMYMOVEMODE.Vertical; };
@@ -191,7 +236,6 @@ public class SlotManager : SingleTon<SlotManager>
 
             ownerBuilding.unitCoolTimeCos.Add(UnitCoolTimeCo(popIndex, selectBuildingTf, ownerBuilding));
 
-            Debug.LogError("DebugCode 1 : " + ownerBuilding.unitCoolTimeCos.Count);
         };
     }
 
