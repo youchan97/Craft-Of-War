@@ -693,6 +693,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   isRangeDetection: 0
+  firstIndex: 0
   isCutomTargetLayer: 1
   cols: []
   detectiveRange: 0

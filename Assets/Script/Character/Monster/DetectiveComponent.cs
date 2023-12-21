@@ -10,6 +10,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     public LayerMask targetLayer;
     [SerializeField] bool isRangeDetection;
     PhotonView pv;
+    public int firstIndex;
 
     public bool isCutomTargetLayer;
     public Collider[] cols;
@@ -48,17 +49,17 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     private void Update()
     {
         cols = Physics.OverlapSphere(transform.position, detectiveRange, targetLayer);
-        isRangeDetection = (bool)(cols.Length > 0);
+        if (this.gameObject.GetComponent<BattleUnit>() != null && this.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
+            firstIndex = 1;
+        else
+            firstIndex = 0;
+
+        isRangeDetection = (bool)(cols.Length > firstIndex);
         if (isRangeDetection)
         {
             RaycastHit hit;
-            int index = 0;
-            while (cols[index].gameObject == this.gameObject)
-            {
-                index++;
-            }
 
-            Vector3 dir = ((cols[index].transform.position) - transform.position).normalized;
+            Vector3 dir = ((cols[firstIndex].transform.position) - transform.position).normalized;
             transform.forward = dir;
             if (Physics.Raycast(transform.position, dir, out hit, detectiveRange))
             {
@@ -98,11 +99,16 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     {
         if (cols.Length <= 0)
             return;
-
-        if (cols[0].GetComponent<Character>() != null)
+        else
         {
-            cols[0].GetComponent<Character>().Hp += this.gameObject.GetComponent<IAttackAble>().Atk;
-            Debug.Log(cols[0].name + cols[0].GetComponent<Character>().Hp + "Èú");
+            for(int i = 0; i< cols.Length; i++)
+            {
+                if (cols[i].GetComponent<Character>() != null && cols[i].GetComponent<Character>().Hp < 50)
+                {
+                    cols[i].GetComponent<Character>().Hp += this.gameObject.GetComponent<IAttackAble>().Atk;
+                    Debug.Log(cols[0].name + cols[0].GetComponent<Character>().Hp + "Èú");
+                }
+            }
         }
     }
 
