@@ -94,4 +94,10 @@ public class Monster : Character
     {
         gameObject.SetActive(active);
     }
+
+    [PunRPC]
+    public void NavMeshEnable()
+    {
+        this.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+    }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07052275, g: 0.35373604, b: 0.97078824, a: 1}
+  m_IndirectSpecularColor: {r: 0.110109255, g: 0.5522179, b: 1.5156624, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1009,6 +1009,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 190198383}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &228051063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 228051064}
+  m_Layer: 0
+  m_Name: ShopPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &228051064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228051063}
+  m_LocalRotation: {x: 0, y: 0.06869439, z: 0, w: 0.9976378}
+  m_LocalPosition: {x: 109.74, y: 0, z: 53.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 7.878, z: 0}
 --- !u!1001 &240773377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1159,6 +1190,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 265869561}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &291879373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7761918933575942984, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7761918932395369033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &291879374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291879373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 6
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &309966576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3569,6 +3628,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 722516019906542903, guid: 80500c31ab7d5f34895cb4b51dee4955,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3515702388852665838, guid: 80500c31ab7d5f34895cb4b51dee4955,
         type: 3}
       propertyPath: shopMovePoint.Array.data[0]
@@ -3703,6 +3767,11 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6376814344813259893, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: m_Name
+      value: MonsterSpawn
+      objectReference: {fileID: 0}
     - target: {fileID: 7761918932395369037, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
         type: 3}
       propertyPath: sceneViewId
@@ -3731,8 +3800,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
         type: 3}
+      propertyPath: shopPoint
+      value: 
+      objectReference: {fileID: 228051064}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
       propertyPath: maxPopulation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monster.Array.size
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
         type: 3}
@@ -3804,6 +3883,56 @@ PrefabInstance:
       propertyPath: buildPoints.Array.data[1]
       value: 
       objectReference: {fileID: 474289819}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 7761918932395369042}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 7761918932395369041}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 7761918932395369040}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 7761918932395369039}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 7761918932395369038}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 7761918932395369037}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 7761918932395369036}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 7761918932395369035}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
+      propertyPath: monsterSpawnPoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 7761918932395369034}
     - target: {fileID: 7761918933575942987, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
         type: 3}
       propertyPath: m_RootOrder

@@ -5,24 +5,20 @@ using UnityEngine;
 
 public class MonsterSpawnManager : SingleTon<MonsterSpawnManager> 
 {
-    [SerializeField] Transform[] spawnPoints;
+    /*[SerializeField] Transform[] spawnPoints;
     [SerializeField] GameObject[] monsterPrefab;
-    PhotonView pv;
-
-    private new void Awake()
-    {
-        pv = GetComponent<PhotonView>();
-    }
-
     private void Start()
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            GameObject monster;
-            monster = GameManager.Instance.monsterObjectPool.Pop(0);
-            monster.transform.position = spawnPoints[0].transform.position;
+            for(int i = 0; i< spawnPoints.Length; i++)
+            {
+                GameObject monster = GameManager.Instance.monsterObjectPool.Pop(0);
+                monster.transform.position = spawnPoints[i].position;
+            }
+            
         }
-    }
+    }*/
             
     /*public void SpawnMonster()
     {   

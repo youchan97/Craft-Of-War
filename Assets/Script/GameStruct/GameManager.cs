@@ -21,7 +21,10 @@ public class GameManager : SingleTon<GameManager>
     public PLAY_MODE playMode = PLAY_MODE.RTS_MODE;
     public Transform[] heroPoints = new Transform[2];
     public Transform[] buildPoints = new Transform[2];
+    public GameObject[] monster = new GameObject[9];
+    public Transform[] monsterSpawnPoints = new Transform[9];
     public Tribe tribe;
+    public Transform shopPoint;
 
     public PhotonView pv;
 
@@ -146,6 +149,21 @@ public class GameManager : SingleTon<GameManager>
             GameObject firstNexus = this.buildingObjectPool.Pop();
             firstNexus.transform.position = buildPoints[MatchManager.masterIndexPoint].position;
 
+            for (int i = 0; i < monsterSpawnPoints.Length; i++)
+            {
+                if(i >= 5)
+                {
+                    monster[i] = this.monsterObjectPool.Pop(1);
+                }
+                else
+                {
+                    monster[i] = this.monsterObjectPool.Pop(0);
+                }
+                monster[i].transform.position = monsterSpawnPoints[i].position;
+                pv.RPC("OriginPos", RpcTarget.AllBuffered);
+            }
+
+            //PhotonNetwork.Instantiate("ShopObj", shopPoint.position, shopPoint.rotation); //상점 생정 
             //PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.masterIndexPoint].position, buildPoints[MatchManager.masterIndexPoint].rotation, 0);
         }
         else
@@ -179,30 +197,19 @@ public class GameManager : SingleTon<GameManager>
         PhotonNetwork.CurrentRoom.IsOpen = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    [PunRPC]
+    public void OriginPos()
     {
-        //게임매니저 상태머신 안쓸거같음
-        //stateMachine.UpdateState();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            for(int i = 0; i< monsterSpawnPoints.Length; i++)
+            {
+                monster[i].GetComponent<Monster>().OriginPos = monsterSpawnPoints[i].position;
+                monster[i].GetComponent<PhotonView>().RPC("NavMeshEnable", RpcTarget.AllBuffered);
+            }
+           
+        }
+
     }
 
-    //게임시작하고 플레이어 관련 초기화
-    /*IEnumerator PlayerInitCo()
-    {
-        //플레이어 처음 진영 유닛과 넥서스 소환
-        GameObject nexus =  buildingObjectPool.Pop(0);
-        nexus.transform.position = new Vector3(20, 0, 480);//왼쪽 윗 진영 넥서스 스폰위치
-        for (int i = 0; i < 5; i++)
-        {
-            GameObject supply = unitObjectPool.Pop(6);
-            rtsController.fieldUnitList.Add(supply.GetComponent<UnitController>());
-            supply.transform.position = new Vector3(20, 0, 470);
-            supply.GetComponent<NavMeshAgent>().enabled = true;
-
-            //가상의 경로지정하고 바로해제해야 찔금 움직여서 안겹침
-            supply.GetComponent<NavMeshAgent>().SetDestination(supply.transform.position + new Vector3(0,0,-2));
-            yield return null;
-            supply.GetComponent<NavMeshAgent>().ResetPath();
-        }
-    }*/
 }
