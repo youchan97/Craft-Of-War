@@ -30,6 +30,6 @@ public class ShopUIManager : SingleTon<ShopUIManager>
             Destroy(item.gameObject);
             InventoryManager.Instance.inven.curItemCount--;
         }
-        Debug.Log("판매 금액 돌려주기");
+        GameManager.Instance.Gold += item.itemData.price; 
     }
 }

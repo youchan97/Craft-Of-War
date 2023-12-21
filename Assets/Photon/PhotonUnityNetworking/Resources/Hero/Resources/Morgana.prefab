@@ -2499,7 +2499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4835550748822206101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.3, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2565,7 +2565,7 @@ GameObject:
   - component: {fileID: 6096148733592823572}
   m_Layer: 12
   m_Name: Morgana
-  m_TagString: PlayerHero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2612,7 +2612,7 @@ Animator:
   m_GameObject: {fileID: 4900984655732441078}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 07081d9a5e6001c469524ece0246920b, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9f9d0a5b2f1d3564ead276556dcd2b0d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5e110dcf96d0f744f9793cfad4e9b70e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2698,7 +2698,7 @@ MonoBehaviour:
   - {fileID: -2951045890167234231}
   - {fileID: 5437356158798371924}
   - {fileID: 7831997416926603495}
-  sceneViewId: 0
+  sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &-2951045890167234231
@@ -2785,7 +2785,7 @@ MonoBehaviour:
   shopDetection: {fileID: 0}
   shopLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65536
 --- !u!114 &6096148733592823572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3645,7 +3645,8 @@ MonoBehaviour:
   speed: 0
   isActive: 0
   level: 0
-  skillEffect: {fileID: 0}
+  skillEffect: {fileID: 1392116369519108692, guid: 6063670b48aea4d46884eeb6efe3fe5a,
+    type: 3}
   skillRange: 0
 --- !u!1 &6672542868460323216
 GameObject:
@@ -4202,12 +4203,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 0878838d3996a0a41b835bc6a2888d86, type: 3}
-  coolTime: 0
-  range: 0
-  speed: 0
+  coolTime: 5
+  range: 5
+  speed: 5
   isActive: 0
-  level: 0
-  skillEffect: {fileID: 0}
+  level: 1
+  skillEffect: {fileID: 8303313567575359583, guid: cec6dd0edffa06d43833e474ac782624,
+    type: 3}
 --- !u!1 &7563352861624439466
 GameObject:
   m_ObjectHideFlags: 0

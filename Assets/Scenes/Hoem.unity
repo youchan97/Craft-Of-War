@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07049093, g: 0.35360757, b: 0.97003746, a: 1}
+  m_IndirectSpecularColor: {r: 0.110109255, g: 0.5522179, b: 1.5156624, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2845,6 +2845,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 51987898dadd9ab42a79103a203ebac7,
         type: 3}
+    - target: {fileID: 784298352730443195, guid: b436fed1fd9b71a4b8caf1933ca3c90d,
+        type: 3}
+      propertyPath: skillEffect
+      value: 
+      objectReference: {fileID: 1392116369519108692, guid: 6063670b48aea4d46884eeb6efe3fe5a,
+        type: 3}
     - target: {fileID: 1987019056712532113, guid: b436fed1fd9b71a4b8caf1933ca3c90d,
         type: 3}
       propertyPath: img
@@ -2907,6 +2913,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4900984655732441078, guid: b436fed1fd9b71a4b8caf1933ca3c90d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7124443741430597029, guid: b436fed1fd9b71a4b8caf1933ca3c90d,
         type: 3}
@@ -3792,7 +3803,7 @@ GameObject:
   - component: {fileID: 1545829985}
   m_Layer: 12
   m_Name: Ashe
-  m_TagString: PlayerHero
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8282,6 +8293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061765141853963662, guid: 0a222ce5f54de0945a3ad4104092292d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7150140372076328012, guid: 0a222ce5f54de0945a3ad4104092292d,
         type: 3}

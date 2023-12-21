@@ -86,7 +86,7 @@ public class UIManager : SingleTon<UIManager>
 
     public void CloseStore()
     {
-        if (!shopAvailability)
+        if (shopAvailability == false)
         {
             shopMessage.SetActive(false);
             shopUI.SetActive(false);

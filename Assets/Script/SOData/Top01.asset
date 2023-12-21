@@ -15,4 +15,7 @@ MonoBehaviour:
   ID: 301
   image: {fileID: 21300000, guid: 603e026921ee6c44ab5c48b149bb31e9, type: 3}
   type: 1
+  equipableItemType: 6
   stackable: 0
+  value: 10
+  price: 100

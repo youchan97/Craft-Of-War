@@ -57,7 +57,6 @@ public abstract class Hero : Character, IControllable
     public override void Awake()
     {
         base.Awake();
-        pv.RPC("HeroLayer", RpcTarget.AllBuffered);
     }
 
     private void Start()
@@ -68,10 +67,10 @@ public abstract class Hero : Character, IControllable
         sm.AddState((int)HERO_STATE.MOVE, new HeroMoveState());
         sm.SetState((int)HERO_STATE.IDLE);
     }
-
     public virtual void Update()
     {
         sm.UpdateState();
+        pv.RPC("HeroLayer", RpcTarget.AllBuffered);
     }
 
     public override void InitStats() 
