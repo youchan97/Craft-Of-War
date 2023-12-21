@@ -19,8 +19,8 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI PopulationText;
     [Header("상점 관련 UI")]
     public GameObject shopUI;
-    public GameObject leavingShop;
-    public TextMeshProUGUI leavingLeavingText;
+    public GameObject shopMessage;
+    public TextMeshProUGUI shopMessageText;
     public TextMeshProUGUI shopClosingTime;
     public bool shopAvailability;
     [Header("캐릭터 슬룻 UI")]
@@ -88,12 +88,12 @@ public class UIManager : SingleTon<UIManager>
     {
         if (!shopAvailability)
         {
-            leavingShop.SetActive(false);
+            shopMessage.SetActive(false);
             shopUI.SetActive(false);
         }
         else
         {
-            leavingShop.SetActive(false);
+            shopMessage.SetActive(false);
         }
     }
 
