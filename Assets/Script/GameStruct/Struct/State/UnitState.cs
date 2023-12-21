@@ -31,8 +31,6 @@ public class UnitIdleState : UnitState
                 {
                     if (owner.DetectiveComponent.cols[i].gameObject.GetComponent<Character>().Hp < 50)
                         sm.SetState((int)UNIT_STATE.Attack);
-                    else
-                        return;
                 }
             }
             else
