@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Photon.Pun;
+using Unity.VisualScripting;
 
 public class MouseClick : MonoBehaviourPunCallbacks
 {
@@ -50,6 +51,7 @@ public class MouseClick : MonoBehaviourPunCallbacks
             //빌딩 클릭할때
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerBuilding))
             {
+                controller.DeselectAll();
                 if (hit.transform.TryGetComponent(out BuildingController buildingCon))
                 {
                     controller.DeselctBuliding();
@@ -66,6 +68,7 @@ public class MouseClick : MonoBehaviourPunCallbacks
                         SlotManager.Instance.SlotType = SLOTTYPE.NexusBuilding;
                     }
                 }
+                return;
             }
             else
             {
@@ -93,9 +96,12 @@ public class MouseClick : MonoBehaviourPunCallbacks
                         SlotManager.Instance.selectedSupplyUnit = supplyUnit;
                     }
                 }
+                return;
             }
             else
             {
+                controller.DeselctBuliding();
+                SlotManager.Instance.SlotType = SLOTTYPE.None;
                 if (!Input.GetKey(KeyCode.LeftShift))
                 {
                     controller.DeselectAll();

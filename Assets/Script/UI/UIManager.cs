@@ -80,7 +80,7 @@ public class UIManager : SingleTon<UIManager>
 
     public void ResourcesUpdate()
     {
-        treeText.text = GameManager.Instance.Tree.ToString();
+        treeText.text = GameManager.Instance.Mine.ToString();
         goldText.text = GameManager.Instance.Gold.ToString();
         PopulationText.text = GameManager.Instance.Population.ToString();
     }

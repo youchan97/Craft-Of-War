@@ -106,7 +106,7 @@ public class SupplyUnit : Unit
             {
                 agent.ResetPath();
                 agent.SetDestination(mineTf);
-                GameManager.Instance.Tree += 10;
+                GameManager.Instance.Mine += 10;
                 isMineEnd = false;
                 //µð¹ö±ë¿ë
             }

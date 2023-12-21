@@ -84,6 +84,7 @@ public class ButtonSlot : MonoBehaviour
                     targetObj.GetComponent<FieldOfView>().fov.GetComponent<MeshRenderer>().enabled = true;
                     isBuildClicked = false;
                     StartCoroutine(BuildProgressCo(hitInfo.point));
+                    GameManager.Instance.rtsController.DeselctBuliding();
                 }
 
                 //빌드 취소 우클릭 미완

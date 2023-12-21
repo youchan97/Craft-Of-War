@@ -33,6 +33,7 @@ public class RTSController : MonoBehaviour
             if (value == null)
             {
                 UIManager.Instance.unitProductModeUI.SetActive(false);
+                SlotManager.Instance.SlotType = SLOTTYPE.None;
                 return;
             }
 
@@ -46,7 +47,6 @@ public class RTSController : MonoBehaviour
             UIManager.Instance.buildProgressCountText.text = null;
             UIManager.Instance.buildProgressFill.fillAmount = 0;
             SelectBuilding.GetComponent<Building>().UIMatch();
-
 
         }
     }

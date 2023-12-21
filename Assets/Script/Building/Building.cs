@@ -24,7 +24,6 @@ public class UnitList : List<Unit>
 }
 public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
 {
-    private int hp;
     PhotonView pv;
     //���� Ŀ���� �ڷᱸ��, �ְ� ���� �̺�Ʈ �߻��� ����
     public UnitList spawnList;
@@ -32,6 +31,7 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
 
     public IEnumerator unitProductManagerCo;
     public int index;
+    protected int hp;
     public int Hp 
     {
         get => hp;
@@ -45,6 +45,8 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
             }
         }
     }
+    public int cost;
+
 
     public override void OnEnable()
     {

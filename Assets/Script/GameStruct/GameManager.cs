@@ -41,11 +41,11 @@ public class GameManager : SingleTon<GameManager>
     //public UniversalRendererData urData; //±‚¥… ∫¿¿Œ
 
     public RTSController rtsController;
-    private int tree;
-    public int Tree
+    private int mine;
+    public int Mine
     {
-        get { return tree; }
-        set { tree = value; }
+        get { return mine; }
+        set { mine = value; }
     }
     private int gold;
     public int Gold
