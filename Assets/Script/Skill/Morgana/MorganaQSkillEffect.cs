@@ -29,9 +29,34 @@ public class MorganaQSkillEffect : MonoBehaviour
         transform.Translate(Vector3.forward * moveSpeed *Time.deltaTime, Space.Self);
     }
 
-    private void OnParticleTrigger()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.TryGetComponent(out Character character))
+        {
+            if(character != owner)
+            {
+                other.GetComponent<IHitAble>().Hit(owner);
+
+                Destroy(this.gameObject);
+                GameObject hit = Instantiate(hitEffect,other.gameObject.transform.position + new Vector3(0,2f,0),transform.rotation);
+                StartCoroutine(HitEffectCor(hit));
+            }
+        }
     }
 
+    IEnumerator HitEffectCor(GameObject hitEffect)
+    {
+        float curTime = 0;
+        while (true)
+        {
+            curTime += Time.deltaTime;
+            Debug.Log(curTime);
+            if(curTime > 5f)
+            {
+                Destroy(hitEffect);
+                curTime = 0;
+            }
+            yield return null;
+        }
+    }
 }

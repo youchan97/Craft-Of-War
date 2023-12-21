@@ -17,7 +17,7 @@ public class MorganaQSkill : ActiveSkill
     {
         base.Active();
         owner.animator.Play("SpellCast");
-        Ray ray = Camera.main.ScreenPointToRay(transform.position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
         {

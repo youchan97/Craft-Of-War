@@ -24,7 +24,10 @@ public class SkillSlot : MonoBehaviour
     public void Init(Hero hero)
     {
         this.hero = hero;
+        
+       
         skill = hero.skillDic[(int)type];
+        Debug.Log(skill);
         skillImg.sprite = skill.img;
         skillCoolImg.sprite = skill.img;
         coolTimeTxt.enabled = false;
