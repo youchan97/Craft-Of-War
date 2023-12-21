@@ -158,16 +158,10 @@ public class SlotManager : SingleTon<SlotManager>
         for (int i = 0; i < 4; i++)//빌딩 갯수
         {
             int index = i;
-            slotsDic[SLOTTYPE.Supply_Build].actionButtonArr[index] += () =>
-            {
-                slotArr[index].targetObj = GameManager.Instance.buildingObjectPool.Pop(index);
-                slotArr[index].isBuildClicked = true;
-                slotArr[index].meshRenderer = slotArr[index].targetObj.GetComponent<MeshRenderer>();
-            };
+            BuildingProductAction(SLOTTYPE.SupplyUnit, index, index);
         }
         //뒤로가기 처음 메뉴로
         slotsDic[SLOTTYPE.Supply_Build].actionButtonArr[8] += () => { SlotType = SLOTTYPE.SupplyUnit; };
-
 
         //(넥서스, 생산빌딩 액션은 종족에 따라 다른유닛 생산함달라짐)
         ///////////////////////////////////////////////////////
@@ -214,27 +208,51 @@ public class SlotManager : SingleTon<SlotManager>
         SlotType = SLOTTYPE.None;
     }
 
+    void BuildingProductAction(SLOTTYPE slotType, int buttonIndex, int popIndex)
+    {
+        slotsDic[slotType].actionButtonArr[buttonIndex] += () =>
+        {
+            Building targetBuilding = (GameManager.Instance.buildingObjectPool.Peek(popIndex).GetComponent<Building>());
 
+            if (targetBuilding.cost > GameManager.Instance.Mine)
+                return;
+
+            slotArr[buttonIndex].targetObj = GameManager.Instance.buildingObjectPool.Pop(popIndex);
+            slotArr[buttonIndex].isBuildClicked = true;
+            slotArr[buttonIndex].meshRenderer = slotArr[buttonIndex].targetObj.GetComponent<MeshRenderer>();
+
+            GameManager.Instance.Mine -= targetBuilding.cost;
+        };
+
+    }
     void UnitProductAction(SLOTTYPE slotType, int buttonIndex, int popIndex)
     {
         slotsDic[slotType].actionButtonArr[buttonIndex] += () =>
         {
             Building ownerBuilding = GameManager.Instance.rtsController.SelectBuilding.GetComponent<Building>();
+            Unit targetUnit = (GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>());
 
-
-            //5개만 대기열 조정
-            
-            if(ownerBuilding.unitCoolTimeCos.Count >= 5)  
+            //5개의 대기열일때
+            if (ownerBuilding.unitCoolTimeCos.Count >= 5)  
+                return;
+            //비용모자랄때
+            if (targetUnit.cost > GameManager.Instance.Mine)
+                return;
+            //
+            if (GameManager.Instance.MaxPopulation <= GameManager.Instance.Population)
                 return;
 
             Transform selectBuildingTf = GameManager.Instance.rtsController.SelectBuilding.gameObject.transform;
             
             //여기 문제없음 선택된 애 리스트에 추가해야함
-            // 이부분이 위로 올라가서
-            ownerBuilding.spawnList.Add(GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>());
+            //이부분이 위로 올라가서
+            ownerBuilding.spawnList.Add(targetUnit);
 
             ownerBuilding.unitCoolTimeCos.Add(UnitCoolTimeCo(popIndex, selectBuildingTf, ownerBuilding));
 
+            //돈 타겟 유닛만큼 깎기
+            GameManager.Instance.Mine -= targetUnit.cost;
+            GameManager.Instance.Population++;
         };
     }
 

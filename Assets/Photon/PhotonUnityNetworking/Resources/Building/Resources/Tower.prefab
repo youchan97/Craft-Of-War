@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 3
-  cost: 0
+  cost: 75
   buildingName: "\uBC29\uC5B4\uBE4C\uB529"
 --- !u!114 &24807163973417876
 MonoBehaviour:

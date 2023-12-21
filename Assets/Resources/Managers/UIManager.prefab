@@ -86,7 +86,7 @@ MonoBehaviour:
   aosUI: {fileID: 598484850840094498}
   rtsUI: {fileID: 598484852175152592}
   transitionSystem: {fileID: 0}
-  treeText: {fileID: 4127010997529893840}
+  mineText: {fileID: 4127010997529893840}
   goldText: {fileID: 3605048505407836018}
   PopulationText: {fileID: 9222720332189752497}
   shopUI: {fileID: 598484852017019380}
@@ -1214,6 +1214,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 598484851078459184}
     m_Modifications:
+    - target: {fileID: 651594338036177575, guid: f5d3a7cdbbe38c5438f463d083b58bae,
+        type: 3}
+      propertyPath: m_Name
+      value: Text_Mine
+      objectReference: {fileID: 0}
     - target: {fileID: 3082935879157009232, guid: f5d3a7cdbbe38c5438f463d083b58bae,
         type: 3}
       propertyPath: m_RootOrder
@@ -1334,6 +1339,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Top
       objectReference: {fileID: 0}
+    - target: {fileID: 4944133816859986011, guid: f5d3a7cdbbe38c5438f463d083b58bae,
+        type: 3}
+      propertyPath: m_Name
+      value: Img_Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803898787868429400, guid: f5d3a7cdbbe38c5438f463d083b58bae,
+        type: 3}
+      propertyPath: m_Name
+      value: Icon_Mine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5d3a7cdbbe38c5438f463d083b58bae, type: 3}
 --- !u!224 &598484851603730020 stripped
@@ -1437,9 +1452,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
+      propertyPath: orcNexusIconArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: orcNexusIconArr.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 09fa7fa9038634c40a1c63a4fe4e663c,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: orcNexusIconArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3642d3de672399d4c88f7e54a00433da,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
       propertyPath: armyMoveModeIconArr.Array.size
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1bc14d05961d9c04183cad9b15af8bcf,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: humanNexusIconArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9c2401eb5c5030c408cf3a4ab0c6966a,
+        type: 3}
     - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}
       propertyPath: armyMoveModeIconArr.Array.data[0]
@@ -1457,6 +1506,76 @@ PrefabInstance:
       propertyPath: armyMoveModeIconArr.Array.data[2]
       value: 
       objectReference: {fileID: 21300000, guid: 7ac7df5ac790879419d01d02007c2125,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 14205814a2082ff499ef022f131ab8a5,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: ca79b034bca9cee48aacf16541001038,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 41ba704f36515e941a0667063637ba0d,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3fe316b3fd21c69459dab55710189a0c,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: orcProductBuildingIconArr.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 297f185c6bbd8b2419f9e8cf006c508b,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1e5b34e78a1fc6049a6a0f42f7316a33,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 56d520278f0b133469d627740ed47c2c,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 84bcafe6c22696b449f12aa9b11f9e05,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: a97a0483392a83346b1d2edb79c41e61,
+        type: 3}
+    - target: {fileID: 1327198445740067647, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
+        type: 3}
+      propertyPath: humanProductBuildingIconArr.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3f794436f6ddd984a99e3653441e95a5,
         type: 3}
     - target: {fileID: 1539407453318596668, guid: 1f3cac8021970b24a99771d1c2b6ffb7,
         type: 3}

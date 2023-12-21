@@ -14,7 +14,7 @@ public class UIManager : SingleTon<UIManager>
     [Header("모드 전환 오브젝트")]
     public ModTransitionSystem transitionSystem;
     [Header("자원 UI 오브젝트")]
-    public TextMeshProUGUI treeText;
+    public TextMeshProUGUI mineText;
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI PopulationText;
     [Header("상점 관련 UI")]
@@ -77,16 +77,8 @@ public class UIManager : SingleTon<UIManager>
             }
         }
     }
-
-    public void ResourcesUpdate()
-    {
-        treeText.text = GameManager.Instance.Mine.ToString();
-        goldText.text = GameManager.Instance.Gold.ToString();
-        PopulationText.text = GameManager.Instance.Population.ToString();
-    }
     void Update()
     {
-        ResourcesUpdate();
         ChangeMod();
         if (GameManager.Instance.playMode == PLAY_MODE.AOS_MODE)
             heroImg.sprite = GameManager.Instance.PlayerHero.HeroImage;

@@ -25,7 +25,7 @@ public class UnitList : List<Unit>
 public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
 {
     PhotonView pv;
-    //���� Ŀ���� �ڷᱸ��, �ְ� ���� �̺�Ʈ �߻��� ����
+    //커스텀 자료구조
     public UnitList spawnList;
     public List<IEnumerator> unitCoolTimeCos;
 
@@ -59,7 +59,7 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
     {
         pv = GetComponent<PhotonView>();
         pv.RPC("BuildLayer", RpcTarget.AllBuffered);
-        //������ �ڷᱸ���� �ֽ�ȭ�ϱ� �ʱ�ȭ �κ�
+
         spawnList = new UnitList();
         spawnList.OnAddUnit += (Unit unit) => UIMatch();
         spawnList.OnRemoveUnit += (int index) => UIMatch();
@@ -73,7 +73,6 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
         base.OnDisable();
         StopCoroutine(unitProductManagerCo);
     }
-    //���� ��⿭ �˻����ִ� �ڷ�ƾ
 
     IEnumerator UnitProductManagerCo()
     {

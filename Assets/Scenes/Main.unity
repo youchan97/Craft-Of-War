@@ -3998,6 +3998,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
         type: 3}
+      propertyPath: maxPopulation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761918933575942986, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
+        type: 3}
       propertyPath: monPoints.Array.size
       value: 9
       objectReference: {fileID: 0}

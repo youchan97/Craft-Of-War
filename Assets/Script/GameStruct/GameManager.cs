@@ -19,7 +19,7 @@ public enum Tribe
 public class GameManager : SingleTon<GameManager>
 {
     public PLAY_MODE playMode = PLAY_MODE.RTS_MODE;
-    public Transform[] heroPoints= new Transform[2];
+    public Transform[] heroPoints = new Transform[2];
     public Transform[] buildPoints = new Transform[2];
     public Tribe tribe;
 
@@ -42,24 +42,50 @@ public class GameManager : SingleTon<GameManager>
     //public UniversalRendererData urData; //기능 봉인
 
     public RTSController rtsController;
+    [SerializeField]
     private int mine;
     public int Mine
     {
         get { return mine; }
-        set { mine = value; }
+        set 
+        { 
+            mine = value;
+            UIManager.Instance.mineText.text = mine.ToString();
+        }
     }
+    [SerializeField]
     private int gold;
     public int Gold
     {
         get { return gold; }
-        set { gold = value; }
+        set 
+        {
+            gold = value;
+            UIManager.Instance.goldText.text = gold.ToString();
+        }
     }
+    [SerializeField]
     private int population;
 
     public int Population
     {
         get { return population; }
-        set { population = value; }
+        set 
+        {
+            population = value;
+            UIManager.Instance.PopulationText.text = (population + " / " + maxPopulation);
+        }
+    }
+    [SerializeField]
+    private int maxPopulation;
+    public int MaxPopulation
+    {
+        get { return maxPopulation; }
+        set
+        {
+            maxPopulation = value;
+            UIManager.Instance.PopulationText.text = (population + " / " + maxPopulation);
+        }
     }
 
     //Player 관련
@@ -72,7 +98,7 @@ public class GameManager : SingleTon<GameManager>
     //씬관련
     private void LoadedsceneEvent(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == "Main")
+        if (scene.name == "Main")
         {
             onRoundStart();
         }
@@ -80,6 +106,18 @@ public class GameManager : SingleTon<GameManager>
         {
             onRoundEnd();
         }
+    }
+
+    public void EventInit()
+    {
+        //초기 세팅비용 게임들어갈때,
+        onRoundStart += () =>
+        {
+            Mine = 40;
+            Population = 0;
+            Gold = 0;
+            MaxPopulation = 5;
+        };
     }
     protected override void Awake()
     {
@@ -128,7 +166,12 @@ public class GameManager : SingleTon<GameManager>
         }
 
         SceneManager.sceneLoaded += LoadedsceneEvent;
-
+        //게임매니저를 메인메뉴로 빼야하는데
+        //이미 많은분들이 하드참조를 해놔서
+        //씬이동시에 초기화가 힘들어보임 
+        //그래서 게임매니저를 메인게임에 그냥 둘거임
+        EventInit();
+        onRoundStart();
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
