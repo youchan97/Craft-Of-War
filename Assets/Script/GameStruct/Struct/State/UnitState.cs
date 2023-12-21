@@ -60,7 +60,10 @@ public class UnitMoveState : UnitState
         {
             if (owner.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
             {
-                return;
+                if (owner.agent.velocity == Vector3.zero)
+                    sm.SetState((int)UNIT_STATE.Idle);
+                else
+                    sm.SetState((int)UNIT_STATE.Move);
             }
             else
                 sm.SetState((int)UNIT_STATE.Attack);
