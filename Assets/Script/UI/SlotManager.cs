@@ -158,7 +158,7 @@ public class SlotManager : SingleTon<SlotManager>
         for (int i = 0; i < 4; i++)//빌딩 갯수
         {
             int index = i;
-            BuildingProductAction(SLOTTYPE.SupplyUnit, index, index);
+            BuildingProductAction(SLOTTYPE.Supply_Build, index, index);
         }
         //뒤로가기 처음 메뉴로
         slotsDic[SLOTTYPE.Supply_Build].actionButtonArr[8] += () => { SlotType = SLOTTYPE.SupplyUnit; };

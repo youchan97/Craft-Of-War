@@ -158,12 +158,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52ee5a9f9c10e946a8e52109bc9b811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectiveRadius: 20
-  unitLayer:
+  detectiveRadius: 25
+  masterHeroLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 131072
+  userHeroLayer:
+    serializedVersion: 2
+    m_Bits: 262144
   shopAvailability: 0
-  shopController: {fileID: 0}
+  shopController: {fileID: 3515702388852665838}
 --- !u!54 &8847709793757071156
 Rigidbody:
   m_ObjectHideFlags: 0

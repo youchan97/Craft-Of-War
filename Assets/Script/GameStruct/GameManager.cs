@@ -113,7 +113,7 @@ public class GameManager : SingleTon<GameManager>
         //초기 세팅비용 게임들어갈때,
         onRoundStart += () =>
         {
-            Mine = 40;
+            Mine = 1000;//디버깅용
             Population = 0;
             Gold = 0;
             MaxPopulation = 5;
