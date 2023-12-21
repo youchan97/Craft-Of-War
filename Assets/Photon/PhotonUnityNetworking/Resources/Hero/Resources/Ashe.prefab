@@ -1557,17 +1557,19 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: IsMove
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: AttackBasic
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: QSkill
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
 --- !u!114 &8503490434865028344
 MonoBehaviour:
   m_ObjectHideFlags: 0
