@@ -150,7 +150,7 @@ public class GameManager : SingleTon<GameManager>
         }
         else
         {
-            GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
+            GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
 
             GameObject firstNexus = this.buildingObjectPool.Pop();
