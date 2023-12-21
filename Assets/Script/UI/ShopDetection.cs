@@ -8,7 +8,9 @@ public class ShopDetection : MonoBehaviour
     [SerializeField]
     private float detectiveRadius; // 히어로 탐지 범위
     [SerializeField]
-    private LayerMask unitLayer; // 유닛 레이어
+    private LayerMask masterHeroLayer; // 유닛 레이어
+    [SerializeField]
+    private LayerMask userHeroLayer;
     [SerializeField]
     private bool shopAvailability; // 상점을 이용가는한지 여부
     public bool ShopAvailability
@@ -48,19 +50,28 @@ public class ShopDetection : MonoBehaviour
     {
 
         ShopAvailability = (IsDetection() && shopController.ShopStop && GameManager.Instance.playMode == PLAY_MODE.AOS_MODE);
+        Debug.Log(GameManager.Instance.playMode);
+        Debug.Log(shopController.ShopStop);
     }
     public bool IsDetection()
     {
-        Collider[] cols = Physics.OverlapSphere(transform.position, detectiveRadius, unitLayer);
+        Collider[] cols = Physics.OverlapSphere(transform.position, detectiveRadius, masterHeroLayer | userHeroLayer);
         if (cols.Length > 0)
         {
             if (cols[0].gameObject.tag == ("PlayerHero"))
-                return true;
+            {
+                return true;               
+            }
             else
+            {
                 return false;
+
+            }
         }
         else
+        {
             return false;
+        }
     }
     private void OnDrawGizmos()
     {
