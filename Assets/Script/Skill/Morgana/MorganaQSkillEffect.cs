@@ -36,10 +36,9 @@ public class MorganaQSkillEffect : MonoBehaviour
             if(character != owner)
             {
                 other.GetComponent<IHitAble>().Hit(owner);
-
                 Destroy(this.gameObject);
                 GameObject hit = Instantiate(hitEffect,other.gameObject.transform.position + new Vector3(0,2f,0),transform.rotation);
-               
+
             }
         }
     }

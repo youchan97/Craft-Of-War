@@ -18,8 +18,8 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     
     [SerializeField] private float detectiveRange; // 감지 범위(시야보다 클 수 없음)
 
-    public PriorityQueue<string, int> AdaptpriorityQueue;
-    public IPrioxyQueue<string, int> priorityQueue;
+    public PriorityQueue<GameObject, int> AdaptpriorityQueue;
+    public IPrioxyQueue<GameObject, int> priorityQueue;
 
     public Vector3 LastDetectivePos // 감지된 오브젝트 위치
     {  get; private set; }
@@ -30,12 +30,11 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        AdaptpriorityQueue = new PriorityQueue<string, int>();
-        priorityQueue = AdaptpriorityQueue;
         PriorityQueueInit();
         pv = GetComponent<PhotonView>();
         if(isCutomTargetLayer)
         {
+            //빌딩,히어로,유닛 탐지
             targetLayer = (1 << 17) | (1 << 18);
         }
         else
@@ -71,28 +70,26 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     public void PriorityQueueInit()
     {
-        priorityQueue.Enqueue("", 1);
-        priorityQueue.Enqueue("", 2);
-        priorityQueue.Enqueue("", 3);
-        priorityQueue.Enqueue("", 4);
-        priorityQueue.Dequeue();
+        AdaptpriorityQueue = new PriorityQueue<GameObject, int>();
+        priorityQueue = AdaptpriorityQueue;
     }
 
     public void AttackMethod()
     {
-        for (int i = 0; i < cols.Length; i++)
-        {
-            //priorityQueue.Enqueue();
-        }
-
         if (cols.Length <= 0)
             return;
-        if (cols[0].GetComponent<IHitAble>() != null)
+
+        for (int i = 0; i < cols.Length; i++)
         {
-            cols[0].GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
-            Debug.Log(cols[0].GetComponent<IHitAble>().Hp); 
-            Debug.Log("때렸다");
+            if(cols[i].gameObject.GetComponent<IHitAble>() != null)
+            {
+                priorityQueue.Enqueue(cols[i].gameObject, cols[i].gameObject.GetComponent<IHitAble>().Priority);
+            }
         }
+
+        priorityQueue.Dequeue().GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
+
+        priorityQueue.Clear();
     }
     
     public void HealMethod()

@@ -10,7 +10,7 @@ public class MorganaQSkill : ActiveSkill
     {
         base.SkillInit();
         CoolTime = 5f;
-        
+        durationTime = 3f;
     }
 
     public override void Active()

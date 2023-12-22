@@ -65,7 +65,11 @@ public abstract class Hero : Character, IControllable
         //info.onChangeAtk += () => { UIManager.Instance.heroAtkText.text = Atk.ToString(); };
         sm.AddState((int)HERO_STATE.IDLE, new HeroIdleState());
         sm.AddState((int)HERO_STATE.MOVE, new HeroMoveState());
+        sm.AddState((int)HERO_STATE.STUN, new HeroStunState());
+
         sm.SetState((int)HERO_STATE.IDLE);
+
+        priority = 4;
     }
     public virtual void Update()
     {

@@ -75,6 +75,7 @@ public interface IPrioxyQueue<T1, T2>
 {
     public void Enqueue(T1 item, T2 priority);
     public T1 Dequeue();
+    public void Clear();
 }
 public class PriorityQueue<T1, T2> : MinHeap<T2>, IPrioxyQueue<T1, T2> where T2 : IComparable//T2가 우선순위여서 T2만 비교가능
 {
@@ -91,5 +92,11 @@ public class PriorityQueue<T1, T2> : MinHeap<T2>, IPrioxyQueue<T1, T2> where T2 
     public T1 Dequeue()
     {
         return dic[Remove()];
+    }
+
+    public void Clear()
+    {
+        array.Clear();
+        dic.Clear();
     }
 }
