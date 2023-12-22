@@ -52,11 +52,7 @@ public class ClickMoveController : MonoBehaviour
         anim = GetComponent<Animator>();
         path = new NavMeshPath();
     }
-    private void Start()
-    {
-        
-        shopDetection = FindObjectOfType<ShopDetection>();
-    }
+
 
     private void FixedUpdate()
     {
@@ -113,7 +109,7 @@ public class ClickMoveController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-
+            shopDetection = FindObjectOfType<ShopDetection>();
             if (shopDetection.ShopAvailability)
             {
                 RaycastHit hit;
