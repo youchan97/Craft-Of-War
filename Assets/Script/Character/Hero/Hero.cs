@@ -66,6 +66,8 @@ public abstract class Hero : Character, IControllable
         sm.AddState((int)HERO_STATE.IDLE, new HeroIdleState());
         sm.AddState((int)HERO_STATE.MOVE, new HeroMoveState());
         sm.SetState((int)HERO_STATE.IDLE);
+
+        priority = 4;
     }
     public virtual void Update()
     {

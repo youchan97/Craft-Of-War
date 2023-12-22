@@ -45,6 +45,9 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
             }
         }
     }
+    public int priority;
+    public int Priority { get => priority; set => priority = value; }
+
     public int cost;
 
 
@@ -70,6 +73,8 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
         unitCoolTimeCos = new List<IEnumerator>();
 
         unitProductManagerCo = UnitProductManagerCo();
+
+        priority = 5;
     }
 
 

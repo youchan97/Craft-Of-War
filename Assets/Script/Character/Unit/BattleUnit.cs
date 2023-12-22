@@ -29,7 +29,7 @@ public class MeleeUnitStragy : BattleUnitStragy
 
     public override void Init()
     {
-        
+        owner.priority = 3;
     }
 
     public override void Proceed()
@@ -54,6 +54,7 @@ public class RangeUnitStragy : BattleUnitStragy
 
     public override void Init()
     {
+        owner.priority = 2;
     }
 
     public override void Proceed()
@@ -78,6 +79,7 @@ public class HealerStragy : BattleUnitStragy
 
     public override void Init()
     {
+        owner.priority = 1;
     }
 
     public override void Proceed()

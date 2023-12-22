@@ -42,6 +42,8 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
     [SerializeField]
     protected DetectiveComponent detectiveComponent;
 
+    public int priority;
+    public int Priority { get => priority; set => priority = value; }
 
     public DetectiveComponent DetectiveComponent { get { return detectiveComponent; } }
     public virtual void Awake()
