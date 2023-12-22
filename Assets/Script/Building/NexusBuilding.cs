@@ -16,4 +16,15 @@ public class NexusBuilding : Building, IProductAble
     public void Production()
     {
     }
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        GameManager.Instance.NexusCount++;
+    }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        GameManager.Instance.NexusCount--;
+    }
 }
