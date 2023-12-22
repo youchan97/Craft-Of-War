@@ -18,8 +18,8 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     
     [SerializeField] private float detectiveRange; // 감지 범위(시야보다 클 수 없음)
 
-    public PriorityQueue<GameObject, int> AdaptpriorityQueue;
-    public IPrioxyQueue<GameObject, int> priorityQueue;
+    public PriorityQueue<string, int> AdaptpriorityQueue;
+    public IPrioxyQueue<string, int> priorityQueue;
 
     public Vector3 LastDetectivePos // 감지된 오브젝트 위치
     {  get; private set; }
@@ -70,7 +70,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     public void PriorityQueueInit()
     {
-        AdaptpriorityQueue = new PriorityQueue<GameObject, int>();
+        AdaptpriorityQueue = new PriorityQueue<string, int>();
         priorityQueue = AdaptpriorityQueue;
     }
 
@@ -79,15 +79,24 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         if (cols.Length <= 0)
             return;
 
+        List<GameObject> monsters = new List<GameObject> ();
         for (int i = 0; i < cols.Length; i++)
         {
             if(cols[i].gameObject.GetComponent<IHitAble>() != null)
             {
-                priorityQueue.Enqueue(cols[i].gameObject, cols[i].gameObject.GetComponent<IHitAble>().Priority);
+                priorityQueue.Enqueue(cols[i].gameObject.name, cols[i].gameObject.GetComponent<IHitAble>().Priority);
+                monsters.Add(cols[i].gameObject);   
             }
         }
-
-        priorityQueue.Dequeue().GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
+        string name = priorityQueue.Dequeue();
+        foreach (GameObject monster in monsters)
+        {
+            if(monster.name == name)
+            {
+                monster.GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
+                break;
+            }
+        }
 
         priorityQueue.Clear();
     }

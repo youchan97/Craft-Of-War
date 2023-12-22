@@ -130,7 +130,7 @@ public class MouseClick : MonoBehaviourPunCallbacks
 
     IEnumerator WaitForEffectCo(GameObject gameObject)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }
