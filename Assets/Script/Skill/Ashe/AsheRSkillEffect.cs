@@ -8,7 +8,6 @@ public class AsheRSkillEffect : MonoBehaviour
     [SerializeField] float radius;
     [SerializeField] private Vector3 direction;
     [SerializeField] GameObject hitEffect;
-    Rigidbody rb;
     public Ashe owner;
     public Vector3 Direction
     {
@@ -20,19 +19,14 @@ public class AsheRSkillEffect : MonoBehaviour
     }
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         radius = gameObject.GetComponent<SphereCollider>().radius;
         owner = (Ashe)GameManager.Instance.PlayerHero;
         
     }
 
-    
-
-
     private void Update()
     {
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime, Space.Self);
-      //  rb.MovePosition(transform.position + Direction * moveSpeed * Time.deltaTime);
         
     }
 
