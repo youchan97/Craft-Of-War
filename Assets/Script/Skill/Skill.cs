@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public abstract class Skill : MonoBehaviour
 {
+    public int damage;
     public Hero owner;
     public Sprite img;
     [SerializeField]private float coolTime;
@@ -12,6 +13,8 @@ public abstract class Skill : MonoBehaviour
     public float speed;
     public float CoolTime { get => coolTime; set => coolTime = value; }
     public bool isActive;
+    public float durationTime;
+
 
     private void Start()
     {
