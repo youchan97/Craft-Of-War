@@ -673,6 +673,7 @@ MonoBehaviour:
   agent: {fileID: -7254532494351539966}
   pv: {fileID: 0}
   detectiveComponent: {fileID: 0}
+  priority: 0
   dropGold: 0
   dropExp: 0
   originPos: {x: 0, y: 0, z: 0}

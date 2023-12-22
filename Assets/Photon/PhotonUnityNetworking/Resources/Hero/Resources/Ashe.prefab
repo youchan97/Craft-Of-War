@@ -47,12 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbbafa7b30fcc046bc418677081c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: de9025ddab2d9364c9894839f8960f37, type: 3}
   coolTime: 5
   range: 30
   speed: 30
   isActive: 0
+  durationTime: 0
 --- !u!1 &1485256928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1508,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   pv: {fileID: 0}
   detectiveComponent: {fileID: 0}
+  priority: 0
   level: 0
   curExp: 0
   aimExp: 0
@@ -1782,12 +1785,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c57e904da17ee4da1cc8bcb8b6ed9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 3de1a0eeeddf7204f8c324e2fcdd8c6f, type: 3}
   coolTime: 0
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 1
   attackAngle: 120
   attackRadius: 22
@@ -2390,12 +2395,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb493868da521124fbda75fec46b484e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 9c811f672800a6e429308eae7fc81429, type: 3}
   coolTime: 0
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 1
   skillEffect: {fileID: 6209623319924203570, guid: c56ae9658baa25149a2ba0ee9b8835ed,
     type: 3}
@@ -4122,12 +4129,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f4e6732861f9c4f820cff740056175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: d197d11c0d40de340a6e11a279c5c8a0, type: 3}
   coolTime: 30
   range: 10
   speed: 20
   isActive: 0
+  durationTime: 0
   level: 1
 --- !u!1 &8738861965054772413
 GameObject:

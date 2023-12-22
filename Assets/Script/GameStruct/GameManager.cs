@@ -18,6 +18,18 @@ public enum Tribe
 
 public class GameManager : SingleTon<GameManager>
 {
+    public int nexusCount;
+    public int NexusCount
+    {
+        get { return nexusCount; }
+        set { nexusCount = value; }
+    }
+
+    public bool isDefeat
+    {
+        get { return nexusCount <= 0; }
+    }
+
     public PLAY_MODE playMode = PLAY_MODE.RTS_MODE;
     public Transform[] heroPoints = new Transform[2];
     public Transform[] buildPoints = new Transform[2];

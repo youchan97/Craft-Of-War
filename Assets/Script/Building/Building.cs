@@ -24,6 +24,8 @@ public class UnitList : List<Unit>
 }
 public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
 {
+    public Image hpCan; 
+
     PhotonView pv;
     //커스텀 자료구조
     public UnitList spawnList;
@@ -43,8 +45,11 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
                 this.gameObject.GetComponent<Collider>().enabled = false;
                 GameManager.Instance.buildingObjectPool.ReturnPool(this.gameObject, this.index);
             }
+            hpCan.fillAmount = hp / maxHp;
         }
     }
+
+    public int maxHp;
     public int priority;
     public int Priority { get => priority; set => priority = value; }
 
@@ -155,7 +160,8 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
     [PunRPC]
     public void BuildingInitialize()
     {
-        this.Hp = 300;
+        this.maxHp = 300;
+        this.hp = maxHp;
         this.gameObject.GetComponent<Collider>().enabled = true;
     }
 }
