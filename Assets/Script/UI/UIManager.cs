@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class UIManager : SingleTon<UIManager>
 {
+    [Header("결과 UI")]
+    public GameObject result;
+    public GameObject win;
+    public GameObject defeat;
     [Header("모드 UI 오브젝트")]
     public GameObject aosUI;
     public GameObject rtsUI;
@@ -96,6 +100,11 @@ public class UIManager : SingleTon<UIManager>
         {
             aosHeroHp.fillAmount = (float)GameManager.Instance.PlayerHero.info.CurentHp / (float)GameManager.Instance.PlayerHero.info.MaxHp;
         }
+    }
+
+    public void ResultExit()
+    {
+        //결과 창 버튼
     }
 
     public void CloseShop()

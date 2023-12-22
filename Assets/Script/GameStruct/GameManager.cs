@@ -22,7 +22,25 @@ public class GameManager : SingleTon<GameManager>
     public int NexusCount
     {
         get { return nexusCount; }
-        set { nexusCount = value; }
+        set 
+        { 
+            nexusCount = value;
+            if(nexusCount <= 0 )
+            {
+                if(GetComponent<PhotonView>().IsMine)
+                {
+                    UIManager.Instance.result.SetActive(true);
+                    UIManager.Instance.defeat.SetActive(true);
+                }
+                else
+                {
+                    UIManager.Instance.result.SetActive(true);
+                    UIManager.Instance.win.SetActive(true);
+
+                }
+
+            }
+        }
     }
 
     public bool isDefeat
