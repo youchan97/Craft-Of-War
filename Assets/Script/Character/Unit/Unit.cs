@@ -34,6 +34,12 @@ public abstract class Unit : Character
     {
         pv.RPC("Initialize", RpcTarget.AllBuffered);
     }
+
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        GameManager.Instance.Population--;
+    }
     public virtual void Update()
     {
         sm.UpdateState();
