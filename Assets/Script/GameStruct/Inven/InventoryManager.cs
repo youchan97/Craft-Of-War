@@ -66,6 +66,7 @@ public class InventoryManager : SingleTon<InventoryManager>
         {
             inven.slots[0].item = Instantiate(item, inven.slots[0].transform).GetComponent<InventoryItem>();
             inven.curItemCount++;
+            ItemApplication(addItem);
             return;
         }
         else                                            //아이템 슬룻에 아이템이 있을때
@@ -88,6 +89,7 @@ public class InventoryManager : SingleTon<InventoryManager>
                 {
                     inven.slots[s].item = Instantiate(item, inven.slots[s].transform).GetComponent<InventoryItem>();
                     inven.curItemCount++;
+                    ItemApplication(addItem);
                     return;
                 }
             }        
@@ -100,20 +102,28 @@ public class InventoryManager : SingleTon<InventoryManager>
             switch (item.itemData.equipableItemType)
             {
                 case EquipableItemType.BOTTOM:
+                    GameManager.Instance.playerHero.info.Def += (int)item.itemData.value;
                     break;
                 case EquipableItemType.TOP:
+                    GameManager.Instance.playerHero.info.MaxHp += (int)item.itemData.value;
                     break;
                 case EquipableItemType.SHOOSE:
+                    GameManager.Instance.playerHero.MoveSpeed += (int)item.itemData.value;
                     break;
                 case EquipableItemType.HAT:
+                    GameManager.Instance.playerHero.info.SightRange += (int)item.itemData.value;
                     break;
                 case EquipableItemType.HAND:
+                    GameManager.Instance.playerHero.info.Atk += (int)item.itemData.value;
                     break;
                 case EquipableItemType.EARRING:
+                    GameManager.Instance.playerHero.MaxMp += (int)item.itemData.value;
                     break;
                 case EquipableItemType.RING:
+                    GameManager.Instance.playerHero.info.AtkSpeed += (int)item.itemData.value;
                     break;
                 case EquipableItemType.NECKLE:
+                    GameManager.Instance.playerHero.info.AtkRange += (int)item.itemData.value;
                     break;
             }
         }
