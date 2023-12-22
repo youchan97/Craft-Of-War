@@ -76,14 +76,16 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     public void AttackMethod()
     {
-        if (cols.Length <= 0)
-            return;
+
         StartCoroutine(AttackCO());
     }
 
     IEnumerator AttackCO()
     {
         yield return new WaitForSeconds(0.5f);
+
+        if (cols.Length <= 0)
+            yield break;
 
         List<GameObject> monsters = new List<GameObject>();
         for (int i = 0; i < cols.Length; i++)
