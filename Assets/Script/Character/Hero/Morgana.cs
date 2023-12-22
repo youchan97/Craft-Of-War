@@ -24,7 +24,10 @@ public class Morgana : Hero
 
         foreach (var keyValue in skillDic)
         {
-            keyValue.Value.SetOwner(this);
+            if(GetComponent<PhotonView>().IsMine)
+            {
+                keyValue.Value.SetOwner(this);
+            }
         }
 
         //for (int i = 0; i < UIManager.Instance.skillSlots.Length; i++)
@@ -39,8 +42,8 @@ public class Morgana : Hero
         base.Update();
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (this.gameObject.GetComponent<PhotonView>().IsMine)
-                this.gameObject.GetComponent<PhotonView>().RPC("QSkill", RpcTarget.AllBuffered);
+            if (GetComponent<PhotonView>().IsMine)
+                GetComponent<PhotonView>().RPC("QSkill", RpcTarget.AllBuffered);
             //UseSkill(SKILL_TYPE.QSkill);
         }
         if (Input.GetKeyDown(KeyCode.W))
@@ -78,6 +81,7 @@ public class Morgana : Hero
     public override void UseSkill(SKILL_TYPE skillType)
     {
         UIManager.Instance.skillSlots[(int)skillType].TrySkillActive();
+        Debug.Log("½ú´Ù");
     }
 
 
@@ -106,6 +110,6 @@ public class Morgana : Hero
     [PunRPC]
     public void QSkill()
     {
-        UseSkill(SKILL_TYPE.QSkill);
+            UseSkill(SKILL_TYPE.QSkill);
     }
 }

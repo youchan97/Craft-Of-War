@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbbafa7b30fcc046bc418677081c326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: de9025ddab2d9364c9894839f8960f37, type: 3}
   coolTime: 5
@@ -1568,6 +1567,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: QSkill
+  - Type: 9
+    SynchronizeType: 0
+    Name: DieTrigger
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsStun
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -1785,7 +1790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c57e904da17ee4da1cc8bcb8b6ed9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 3de1a0eeeddf7204f8c324e2fcdd8c6f, type: 3}
   coolTime: 0
@@ -2395,7 +2399,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb493868da521124fbda75fec46b484e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 9c811f672800a6e429308eae7fc81429, type: 3}
   coolTime: 0
@@ -4129,7 +4132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f4e6732861f9c4f820cff740056175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: d197d11c0d40de340a6e11a279c5c8a0, type: 3}
   coolTime: 30

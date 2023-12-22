@@ -144,13 +144,13 @@ public class GameManager : SingleTon<GameManager>
     public void EventInit()
     {
         //초기 세팅비용 게임들어갈때,
-        onRoundStart += () =>
+        /*onRoundStart += () =>
         {
             Mine = 1000;//디버깅용
             Population = 0;
             Gold = 0;
             MaxPopulation = 5;
-        };
+        };*/
     }
     protected override void Awake()
     {
@@ -173,15 +173,16 @@ public class GameManager : SingleTon<GameManager>
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
-            playerHero = playerObj.GetComponent<Hero>();
-
-            GameObject firstNexus = this.buildingObjectPool.Pop();
-            firstNexus.transform.position = buildPoints[MatchManager.masterIndexPoint].position;
             Mine = 1000;//디버깅용
             Population = 0;
             Gold = 0;
             MaxPopulation = 5;
+            GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
+            playerHero = playerObj.GetComponent<Hero>();
+            playerObj.name = "master";
+
+            GameObject firstNexus = this.buildingObjectPool.Pop();
+            firstNexus.transform.position = buildPoints[MatchManager.masterIndexPoint].position;
             PhotonNetwork.Instantiate("Shop", shopPoint.position, shopPoint.rotation); //상점 생정 
 
             for (int i = 0; i < monsterSpawnPoints.Length; i++)
@@ -201,12 +202,14 @@ public class GameManager : SingleTon<GameManager>
         }
         else
         {
+
             Mine = 1000;//디버깅용
             Population = 0;
             Gold = 0;
             MaxPopulation = 5;
             GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
+            playerObj.name = "nomMaster";
 
             GameObject firstNexus = this.buildingObjectPool.Pop();
             firstNexus.transform.position = buildPoints[MatchManager.userIndexPoint].position;
