@@ -84,9 +84,9 @@ public class UIManager : SingleTon<UIManager>
             heroImg.sprite = GameManager.Instance.PlayerHero.HeroImage;
     }
 
-    public void CloseStore()
+    public void CloseShop()
     {
-        if (shopAvailability == false)
+        if(shopAvailability == false)
         {
             shopMessage.SetActive(false);
             shopUI.SetActive(false);
@@ -95,6 +95,10 @@ public class UIManager : SingleTon<UIManager>
         {
             shopMessage.SetActive(false);
         }
+    }
+    public void ExitShop()
+    {
+        shopUI.SetActive(false);
     }
 
 

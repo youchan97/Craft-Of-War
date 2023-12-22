@@ -11,7 +11,7 @@ public class ShopController: MonoBehaviour
     private NavMeshAgent shopAgent;
     public Transform[] shopMovePoint;
     [SerializeField]
-    private const float leavingShopTime = 120f;
+    private const float leavingShopTime = 300f;
     private float curCoolTime;
     public float CurCoolTime
     {

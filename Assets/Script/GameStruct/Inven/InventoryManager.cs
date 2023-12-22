@@ -42,10 +42,6 @@ public class InventoryManager : SingleTon<InventoryManager>
             UIManager.Instance.shopMessageText.text = addItem.itemData.name + "을(를) 구매 할 골드가 부족합니다.";
             return;
         }
-        else
-        {
-            GameManager.Instance.Gold -= addItem.itemData.price;
-        }
         if (inven.curItemCount == inven.maxSlotCount)   //아이템 슬룻이 꽉차 있을때
         {
             for (int k = 0; k < inven.slots.Length; k++)//아이템 슬룻에 스택이 가능할때
@@ -56,6 +52,7 @@ public class InventoryManager : SingleTon<InventoryManager>
                     {   //같은 아이템이 있을경우
                         inven.slots[k].item.Count++;
                         inven.slots[k].item.RefreshCount();
+                        GameManager.Instance.Gold -= addItem.itemData.price;
                         return;
                     }
                 }
@@ -64,6 +61,7 @@ public class InventoryManager : SingleTon<InventoryManager>
             UIManager.Instance.shopMessageText.text = "인벤토리 공간이 부족합니다.";
             return;
         }
+        GameManager.Instance.Gold -= addItem.itemData.price;
         if (inven.curItemCount == 0)                    //아이템 슬룻에 아이템이 없을때
         {
             inven.slots[0].item = Instantiate(item, inven.slots[0].transform).GetComponent<InventoryItem>();
