@@ -13,6 +13,7 @@ public class MorganaRSkill : ActiveSkill
         base.SkillInit();
         CoolTime = 10;
         range = 10;
+        ReqMp = 30;
     }
 
     public override void Active()
@@ -22,7 +23,7 @@ public class MorganaRSkill : ActiveSkill
         Collider[] cols = Physics.OverlapSphere(owner.transform.position, range,targetLayer);
         if(cols.Length > 0 )
         {
-
+            
         }
     }
 

@@ -22,7 +22,25 @@ public class GameManager : SingleTon<GameManager>
     public int NexusCount
     {
         get { return nexusCount; }
-        set { nexusCount = value; }
+        set 
+        { 
+            nexusCount = value;
+            if(nexusCount <= 0 )
+            {
+                if(GetComponent<PhotonView>().IsMine)
+                {
+                    UIManager.Instance.result.SetActive(true);
+                    UIManager.Instance.defeat.SetActive(true);
+                }
+                else
+                {
+                    UIManager.Instance.result.SetActive(true);
+                    UIManager.Instance.win.SetActive(true);
+
+                }
+
+            }
+        }
     }
 
     public bool isDefeat
@@ -161,6 +179,7 @@ public class GameManager : SingleTon<GameManager>
             MaxPopulation = 5;
             GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
+            playerObj.name = "master";
 
             GameObject firstNexus = this.buildingObjectPool.Pop();
             firstNexus.transform.position = buildPoints[MatchManager.masterIndexPoint].position;
@@ -183,12 +202,14 @@ public class GameManager : SingleTon<GameManager>
         }
         else
         {
+
             Mine = 1000;//µð¹ö±ë¿ë
             Population = 0;
             Gold = 0;
             MaxPopulation = 5;
             GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
+            playerObj.name = "nomMaster";
 
             GameObject firstNexus = this.buildingObjectPool.Pop();
             firstNexus.transform.position = buildPoints[MatchManager.userIndexPoint].position;

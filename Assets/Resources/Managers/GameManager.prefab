@@ -101,7 +101,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2181074273310818813}
-  sceneViewId: 0
+  sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &2181074273310818813
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 6233114513030335640}
   - component: {fileID: 4771978972321015404}
   m_Layer: 0
-  m_Name: MonsterSpawnPoints
+  m_Name: MonsterSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,19 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3675225d6666864479b9883ab5add583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 5339197392279621305}
-  - {fileID: 4421156608801569430}
-  - {fileID: 5900147554926325776}
-  - {fileID: 9160826481345487266}
-  - {fileID: 5835710953225579645}
-  - {fileID: 1419972899184273883}
-  - {fileID: 4582103464040628554}
-  - {fileID: 3893306439232465615}
-  - {fileID: 2318631154513825624}
-  monsterPrefab:
-  - {fileID: 4784227611126084669, guid: 595d06b0cb4a29342bba15d85e20074f, type: 3}
-  - {fileID: 4341038371074976723, guid: 0173e15049b06db4aa03759e9da2f19e, type: 3}
 --- !u!114 &6233114513030335640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +350,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4771978972321015404}
-  sceneViewId: 0
+  sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &4771978972321015404
@@ -473,6 +460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abc4930e3ce7d14c93b4190b8a9dde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickEffect: {fileID: 2164325960557665799, guid: 9473dac1a7616ac4f8e1f7a0d0b798ef,
+    type: 3}
   layerGround:
     serializedVersion: 2
     m_Bits: 16384
@@ -622,7 +611,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 7761918932395369036}
-  sceneViewId: 0
+  sceneViewId: 3
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &7761918933575942984
@@ -635,6 +624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7761918933575942987}
   - component: {fileID: 7761918933575942986}
+  - component: {fileID: 291879374}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -676,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf77225ec4c26647b9a4b3023370dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nexusCount: 0
   playMode: 0
   heroPoints:
   - {fileID: 0}
@@ -683,11 +674,60 @@ MonoBehaviour:
   buildPoints:
   - {fileID: 0}
   - {fileID: 0}
+  monster:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  monsterSpawnPoints:
+  - {fileID: 5339197392279621305}
+  - {fileID: 4421156608801569430}
+  - {fileID: 5900147554926325776}
+  - {fileID: 9160826481345487266}
+  - {fileID: 5835710953225579645}
+  - {fileID: 1419972899184273883}
+  - {fileID: 4582103464040628554}
+  - {fileID: 3893306439232465615}
+  - {fileID: 2318631154513825624}
+  tribe: 0
+  shopPoint: {fileID: 0}
   pv: {fileID: 0}
   unitObjectPool: {fileID: 7761918934345454505}
   buildingObjectPool: {fileID: 7761918933342080110}
   monsterObjectPool: {fileID: 7761918932395369035}
   rtsController: {fileID: 7761918933120702300}
+  mine: 0
+  gold: 0
+  population: 0
+  maxPopulation: 0
+  playerHero: {fileID: 0}
+--- !u!114 &291879374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7761918933575942984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 6
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7761918934345454487
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +782,13 @@ MonoBehaviour:
   - {fileID: 4956073739007431384, guid: 2a1105ae3e4319c4aac40fd1a9032606, type: 3}
   - {fileID: 1234759034580599769, guid: 566b61585b9f97e4fbe47c3b42e4f038, type: 3}
   - {fileID: 8136913503570933307, guid: b195cc747fbbeb74b8ecc14d00fa8bec, type: 3}
+  - {fileID: 518109775088081841, guid: 326aa0b204da3e740b604364e6219ec3, type: 3}
+  - {fileID: 6808943230117525116, guid: 2f1a82388d47e3d4088a121aae18f44a, type: 3}
+  - {fileID: 3880000736108573682, guid: a6143a7143b9c6f48a2f3edc0ab2d74b, type: 3}
+  - {fileID: 5833755455673379213, guid: a5766183496fe1c42902fb38a28ecf80, type: 3}
+  - {fileID: 7899153867614673127, guid: 9504350c69b8bea4996333b8ede51978, type: 3}
+  - {fileID: 2227561248473582332, guid: e6de266e685b217408364a00f4b91b64, type: 3}
+  - {fileID: 4113703306187733924, guid: 738d6971852e6664985446c112240df8, type: 3}
   initSize: 10
 --- !u!114 &7761918932395369038
 MonoBehaviour:
@@ -763,7 +810,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 7761918932395369039}
-  sceneViewId: 0
+  sceneViewId: 4
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &7761918932395369039
