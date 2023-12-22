@@ -3347,6 +3347,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   pv: {fileID: 0}
   detectiveComponent: {fileID: 0}
+  priority: 0
   obpId: 6
   faceSprite: {fileID: 21300000, guid: 9c2401eb5c5030c408cf3a4ab0c6966a, type: 3}
   coolTime: 3

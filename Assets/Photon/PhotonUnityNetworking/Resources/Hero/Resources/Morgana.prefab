@@ -1545,6 +1545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4240d2a5459b7a4e995375bbf74a8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: cb1680d0891e39f42b36289b7398ed6c, type: 3}
   coolTime: 0
@@ -2752,6 +2753,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   pv: {fileID: 0}
   detectiveComponent: {fileID: 0}
+  priority: 0
   level: 1
   curExp: 0
   aimExp: 0
@@ -3004,6 +3006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ac16dc2c6e2e24d9afb3a1add1fecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: a46b1409c1990d643b69a19dcd0470ec, type: 3}
   coolTime: 0
@@ -3640,6 +3643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae4c34bee2910f479348cc7e5f1f85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 51987898dadd9ab42a79103a203ebac7, type: 3}
   coolTime: 0
@@ -4204,6 +4208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da43fd499db1a3e42ac7fa2522178dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 0878838d3996a0a41b835bc6a2888d86, type: 3}
   coolTime: 5

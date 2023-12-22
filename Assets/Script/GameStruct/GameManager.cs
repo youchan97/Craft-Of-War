@@ -18,6 +18,18 @@ public enum Tribe
 
 public class GameManager : SingleTon<GameManager>
 {
+    public int nexusCount;
+    public int NexusCount
+    {
+        get { return nexusCount; }
+        set { nexusCount = value; }
+    }
+
+    public bool isDefeat
+    {
+        get { return nexusCount <= 0; }
+    }
+
     public PLAY_MODE playMode = PLAY_MODE.RTS_MODE;
     public Transform[] heroPoints = new Transform[2];
     public Transform[] buildPoints = new Transform[2];
@@ -148,6 +160,10 @@ public class GameManager : SingleTon<GameManager>
 
             GameObject firstNexus = this.buildingObjectPool.Pop();
             firstNexus.transform.position = buildPoints[MatchManager.masterIndexPoint].position;
+            Mine = 1000;//디버깅용
+            Population = 0;
+            Gold = 0;
+            MaxPopulation = 5;
 
             for (int i = 0; i < monsterSpawnPoints.Length; i++)
             {
@@ -159,8 +175,7 @@ public class GameManager : SingleTon<GameManager>
                 {
                     monster[i] = this.monsterObjectPool.Pop(0);
                 }
-                monster[i].transform.position = monsterSpawnPoints[i].position;
-                pv.RPC("OriginPos", RpcTarget.AllBuffered);
+                monster[i].GetComponent<Monster>().photonView.RPC("Enable", RpcTarget.AllBuffered, i);
             }
 
             //PhotonNetwork.Instantiate("ShopObj", shopPoint.position, shopPoint.rotation); //상점 생정 
@@ -168,6 +183,10 @@ public class GameManager : SingleTon<GameManager>
         }
         else
         {
+            Mine = 1000;//디버깅용
+            Population = 0;
+            Gold = 0;
+            MaxPopulation = 5;
             GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
 

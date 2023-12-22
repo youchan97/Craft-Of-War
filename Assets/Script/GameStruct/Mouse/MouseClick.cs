@@ -10,6 +10,8 @@ public class MouseClick : MonoBehaviourPunCallbacks
 {
     public GameObject clickEffect;
 
+    GameObject effect;
+
     private LayerMask layerUnit;
     [SerializeField] private LayerMask layerGround;
     private LayerMask layerBuilding;
@@ -114,14 +116,21 @@ public class MouseClick : MonoBehaviourPunCallbacks
             RaycastHit hit;
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             Debug.Log("클릭");
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~(1 << 8)))//FOV 안찍히게 전달하기위함
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 14))//FOV 안찍히게 전달하기위함
             {
-                GameObject effect = Instantiate(clickEffect);
-                effect.transform.position = hit.transform.position;
+                effect = Instantiate(clickEffect, transform);
+                effect.transform.position = hit.point;
+                StartCoroutine(WaitForEffectCo(effect));
+
                 Debug.Log("땅을 찍음");
                 controller.MoveSelectedUnits(hit);
             }
         }
+    }
 
+    IEnumerator WaitForEffectCo(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
 }

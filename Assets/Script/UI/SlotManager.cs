@@ -142,9 +142,9 @@ public class SlotManager : SingleTon<SlotManager>
                 Building ownerBuilding = GameManager.Instance.rtsController.SelectBuilding.GetComponent<Building>();
 
                 ownerBuilding.unitCoolTimeCos.RemoveAt(index);
-
                 //여기 문제없음 선택된 애 리스트에 지워져야함
                 ownerBuilding.spawnList.RemoveAt(index);
+                GameManager.Instance.Population--;
             });
         }
         UIManager.Instance.unitProductModeUI.SetActive(false);

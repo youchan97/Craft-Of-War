@@ -9,6 +9,8 @@ public interface IHitAble
 {
     int Hp
     { get; set; }
+    int Priority
+    { get; set; }
     void Hit(IAttackAble attacker);
     void Die();
 }
