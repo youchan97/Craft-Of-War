@@ -629,7 +629,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4341038371074976723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 5
@@ -673,6 +673,7 @@ MonoBehaviour:
   agent: {fileID: -7254532494351539966}
   pv: {fileID: 0}
   detectiveComponent: {fileID: 0}
+  priority: 0
   dropGold: 0
   dropExp: 0
   originPos: {x: 0, y: 0, z: 0}
@@ -752,8 +753,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsMove
+  - Type: 9
+    SynchronizeType: 0
+    Name: DeathTrigger
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &4405860556270878388
 GameObject:
   m_ObjectHideFlags: 0

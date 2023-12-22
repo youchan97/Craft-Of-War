@@ -96,8 +96,10 @@ public class Monster : Character
     }
 
     [PunRPC]
-    public void NavMeshEnable()
+    public void Enable(int index)
     {
+        this.gameObject.transform.position = GameManager.Instance.monsterSpawnPoints[index].position;
+        OriginPos = GameManager.Instance.monsterSpawnPoints[index].position;
         this.gameObject.GetComponent<NavMeshAgent>().enabled = true;
     }
 }

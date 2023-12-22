@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -38,6 +39,12 @@ public class FieldOfView : MonoBehaviour
     //    viewMeshFilter.mesh = viewMesh;
     //}
     // y축 오일러 각을 3차원 방향 벡터로 변환한다.
+    private void Awake()
+    {
+        if (this.gameObject.GetComponent<PhotonView>().IsMine == false)
+            realMeshSize = 0;
+    }
+
 
     private void Start()
     {

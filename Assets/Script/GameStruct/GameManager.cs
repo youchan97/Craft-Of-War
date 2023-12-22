@@ -163,8 +163,7 @@ public class GameManager : SingleTon<GameManager>
                 {
                     monster[i] = this.monsterObjectPool.Pop(0);
                 }
-                monster[i].transform.position = monsterSpawnPoints[i].position;
-                pv.RPC("OriginPos", RpcTarget.AllBuffered);
+                monster[i].GetComponent<Monster>().photonView.RPC("Enable", RpcTarget.AllBuffered, i);
             }
 
             //PhotonNetwork.Instantiate("ShopObj", shopPoint.position, shopPoint.rotation); //상점 생정 
