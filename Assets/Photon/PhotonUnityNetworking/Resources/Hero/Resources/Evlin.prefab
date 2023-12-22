@@ -112,6 +112,7 @@ MonoBehaviour:
   range: 5
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 0
 --- !u!1 &526052566814943053
 GameObject:
@@ -1719,6 +1720,7 @@ MonoBehaviour:
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 0
 --- !u!1 &4216885562041621216
 GameObject:
@@ -2775,6 +2777,7 @@ MonoBehaviour:
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 0
 --- !u!1 &6278987755257151768
 GameObject:
@@ -2945,6 +2948,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   pv: {fileID: 0}
   detectiveComponent: {fileID: 0}
+  priority: 0
   level: 1
   curExp: 0
   aimExp: 0
@@ -2983,7 +2987,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6278987755257151768}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dbe6e99a9a556a47807dfdce26d01f5, type: 3}
   m_Name: 
@@ -3017,6 +3021,12 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: AttackBasic
+  - Type: 9
+    SynchronizeType: 0
+    Name: DieTrigger
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsStun
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -3845,6 +3855,7 @@ MonoBehaviour:
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 0
 --- !u!1 &7718626614844077672
 GameObject:

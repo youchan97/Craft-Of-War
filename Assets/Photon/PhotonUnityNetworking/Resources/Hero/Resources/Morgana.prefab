@@ -1545,7 +1545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4240d2a5459b7a4e995375bbf74a8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: cb1680d0891e39f42b36289b7398ed6c, type: 3}
   coolTime: 0
@@ -1554,6 +1553,10 @@ MonoBehaviour:
   isActive: 0
   durationTime: 0
   level: 0
+  skillEffect: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3265325452955473604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2733,7 +2736,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsMove
+  - Type: 9
+    SynchronizeType: 0
+    Name: DieTrigger
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsStun
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -2776,7 +2788,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4900984655732441078}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dbe6e99a9a556a47807dfdce26d01f5, type: 3}
   m_Name: 
@@ -3006,7 +3018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ac16dc2c6e2e24d9afb3a1add1fecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: a46b1409c1990d643b69a19dcd0470ec, type: 3}
   coolTime: 0
@@ -3643,7 +3654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae4c34bee2910f479348cc7e5f1f85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 51987898dadd9ab42a79103a203ebac7, type: 3}
   coolTime: 0
@@ -4208,7 +4218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da43fd499db1a3e42ac7fa2522178dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   owner: {fileID: 0}
   img: {fileID: 21300000, guid: 0878838d3996a0a41b835bc6a2888d86, type: 3}
   coolTime: 5
