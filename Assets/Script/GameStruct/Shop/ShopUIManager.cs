@@ -30,6 +30,41 @@ public class ShopUIManager : SingleTon<ShopUIManager>
             Destroy(item.gameObject);
             InventoryManager.Instance.inven.curItemCount--;
         }
-        GameManager.Instance.Gold += item.itemData.price; 
+        ItemDeApplication(item);
+        GameManager.Instance.Gold += item.itemData.price * (7/10); 
+    }
+
+    public void ItemDeApplication(Item item)
+    {
+        if (item.itemData.type == EItemType.EQUIPABLE)
+        {
+            switch (item.itemData.equipableItemType)
+            {
+                case EquipableItemType.BOTTOM:
+                    GameManager.Instance.playerHero.info.Def -= (int)item.itemData.value;
+                    break;
+                case EquipableItemType.TOP:
+                    GameManager.Instance.playerHero.info.MaxHp -= (int)item.itemData.value;
+                    break;
+                case EquipableItemType.SHOOSE:
+                    GameManager.Instance.playerHero.MoveSpeed -= (int)item.itemData.value;
+                    break;
+                case EquipableItemType.HAT:
+                    GameManager.Instance.playerHero.info.SightRange -= (int)item.itemData.value;
+                    break;
+                case EquipableItemType.HAND:
+                    GameManager.Instance.playerHero.info.Atk -= (int)item.itemData.value;
+                    break;
+                case EquipableItemType.EARRING:
+                    GameManager.Instance.playerHero.MaxMp -= (int)item.itemData.value;
+                    break;
+                case EquipableItemType.RING:
+                    GameManager.Instance.playerHero.info.AtkSpeed -= (int)item.itemData.value;
+                    break;
+                case EquipableItemType.NECKLE:
+                    GameManager.Instance.playerHero.info.AtkRange -= (int)item.itemData.value;
+                    break;
+            }
+        }
     }
 }

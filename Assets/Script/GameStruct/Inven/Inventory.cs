@@ -19,7 +19,11 @@ public class Inventory : MonoBehaviour
     public void UseItem(InventoryItem item)
     {
         if (!item.Stackable) return;
-        
+
+        if (item.itemData.ID == 1)
+            GameManager.Instance.PlayerHero.Hp += (int)item.itemData.value;
+        if (item.itemData.ID == 2)
+            GameManager.Instance.PlayerHero.CurMp += (int)item.itemData.value;
         Debug.Log("사용 되었음");
         if(item.Count > 1)
         {

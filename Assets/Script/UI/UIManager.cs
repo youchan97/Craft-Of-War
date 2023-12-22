@@ -45,6 +45,12 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI heroNameText;
     public TextMeshProUGUI heroAtkText;
     public TextMeshProUGUI heroShieldText;
+    [Header("AOS ¿µ¿õ À¯´Ö Á¤º¸UI")]
+    public Image aosHeroHp;
+    public TextMeshProUGUI aosHeroHpText;
+    public Image aosHeroMp;
+    public TextMeshProUGUI aosHeroMpText;
+
 
     //ºôµåÀ¯´Ö º¯¼ö
     [Header("ºôµå À¯´Ö °ü·Ã")]
@@ -82,6 +88,14 @@ public class UIManager : SingleTon<UIManager>
         ChangeMod();
         if (GameManager.Instance.playMode == PLAY_MODE.AOS_MODE)
             heroImg.sprite = GameManager.Instance.PlayerHero.HeroImage;
+        AosHeroInfo();
+    }
+    public void AosHeroInfo()
+    {
+        if(GameManager.Instance.playMode == PLAY_MODE.AOS_MODE)
+        {
+            aosHeroHp.fillAmount = (float)GameManager.Instance.PlayerHero.info.CurentHp / (float)GameManager.Instance.PlayerHero.info.MaxHp;
+        }
     }
 
     public void CloseShop()
