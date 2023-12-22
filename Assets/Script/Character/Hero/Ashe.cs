@@ -179,12 +179,21 @@ public class Ashe : Hero
 
     public override void Die()
     {
-        
+        curState = HERO_STATE.DIE;
+        animator.SetTrigger("DieTrigger");
+
     }
 
     public override void Hit(IAttackAble attacker)
     {
-        
+        if (curState == HERO_STATE.DIE) { return; }
+
+        info.CurentHp -= attacker.Atk;
+        if(info.CurentHp <= 0 )
+        {
+            Die();
+        }
+
     }
 
     IEnumerator AttackDelayCo()

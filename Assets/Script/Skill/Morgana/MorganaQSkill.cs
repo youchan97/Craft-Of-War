@@ -11,6 +11,14 @@ public class MorganaQSkill : ActiveSkill
         base.SkillInit();
         CoolTime = 5f;
         durationTime = 3f;
+        range = 20f;
+    }
+    private void Update()
+    {
+        if(Vector3.Distance(transform.position, skillEffect.transform.position) > range)
+        {
+            Destroy(skillEffect);
+        }
     }
 
     public override void Active()

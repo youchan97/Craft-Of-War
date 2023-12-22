@@ -1551,6 +1551,7 @@ MonoBehaviour:
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 0
 --- !u!1 &3265325452955473604
 GameObject:
@@ -3009,6 +3010,7 @@ MonoBehaviour:
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 0
 --- !u!1 &5618349699750070702
 GameObject:
@@ -3644,6 +3646,7 @@ MonoBehaviour:
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 0
   skillEffect: {fileID: 1392116369519108692, guid: 6063670b48aea4d46884eeb6efe3fe5a,
     type: 3}
@@ -4207,6 +4210,7 @@ MonoBehaviour:
   range: 5
   speed: 5
   isActive: 0
+  durationTime: 0
   level: 1
   skillEffect: {fileID: 8303313567575359583, guid: cec6dd0edffa06d43833e474ac782624,
     type: 3}

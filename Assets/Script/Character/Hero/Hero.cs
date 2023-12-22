@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.AI;
 using Photon.Pun;
+using System.Reflection;
 
 public enum SKILL_TYPE
 {  QSkill, WSkill, ESkill, RSkill}
@@ -73,6 +74,23 @@ public abstract class Hero : Character, IControllable
     {
         sm.UpdateState();
         pv.RPC("HeroLayer", RpcTarget.AllBuffered);
+
+        //종민
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Die") && animator.GetCurrentAnimatorStateInfo(0).length > 0.9f)
+        {
+            StartCoroutine(SpawnCo());
+        }
+    }
+
+    IEnumerator SpawnCo()
+    {
+        info.curentHp = info.MaxHp;
+        Vector3 vec = new Vector3(0, 0, 0);//스폰위치
+        gameObject.transform.position = vec;
+        sm.SetState((int)(HERO_STATE.IDLE));
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(true);
     }
 
     public override void InitStats() 

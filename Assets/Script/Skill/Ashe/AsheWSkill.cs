@@ -30,6 +30,14 @@ public class AsheWSkill : ActiveSkill
         attackPoints = new List<Vector3>();
     }
 
+    public override void SkillInit()
+    {
+        base.SkillInit();
+        CoolTime = 7f;
+
+    }
+
+
     public override void Active()
     {
         base.Active();

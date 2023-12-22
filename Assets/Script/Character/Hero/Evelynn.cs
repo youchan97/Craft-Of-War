@@ -100,12 +100,17 @@ public class Evelynn : Hero
 
     public override void Die()
     {
-
+        curState = HERO_STATE.DIE;
+        animator.SetTrigger("DieTrigger");
     }
 
     public override void Hit(IAttackAble attacker)
     {
-        this.Hp -= attacker.Atk;
+        info.CurentHp -= attacker.Atk;
+        if(info.CurentHp <= 0)
+        {
+            Die();
+        }
     }
 
     public override void Attack(IHitAble target, Transform targetTrans)

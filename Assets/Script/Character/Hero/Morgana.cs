@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +39,9 @@ public class Morgana : Hero
         base.Update();
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            UseSkill(SKILL_TYPE.QSkill);
+            if (this.gameObject.GetComponent<PhotonView>().IsMine)
+                this.gameObject.GetComponent<PhotonView>().RPC("QSkill", RpcTarget.AllBuffered);
+            //UseSkill(SKILL_TYPE.QSkill);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -80,16 +83,29 @@ public class Morgana : Hero
 
     public override void Die()
     {
-
+        curState = HERO_STATE.DIE;
+        animator.SetTrigger("DieTrigger");
     }
 
     public override void Hit(IAttackAble attacker)
     {
+        if (curState == HERO_STATE.DIE) { return; }
 
+        info.CurentHp -= attacker.Atk;
+        if (info.CurentHp <= 0)
+        {
+            Die();
+        }
     }
 
     public override void Attack(IHitAble target, Transform targetTrans)
     {
         //throw new System.NotImplementedException();
+    }
+
+    [PunRPC]
+    public void QSkill()
+    {
+        UseSkill(SKILL_TYPE.QSkill);
     }
 }

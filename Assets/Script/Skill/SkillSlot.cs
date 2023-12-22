@@ -37,9 +37,9 @@ public class SkillSlot : MonoBehaviour
 
     public void TrySkillActive()
     {
-        //if (skillCoolImg.fillAmount > 0) return;
+        if (skillCoolImg.fillAmount > 0) return;
         skill.Active();
-        //StartCoroutine(skillCoolCo());
+        StartCoroutine(skillCoolCo());
     }
 
     IEnumerator skillCoolCo()

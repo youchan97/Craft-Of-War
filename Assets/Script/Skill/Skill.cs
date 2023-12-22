@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public abstract class Skill : MonoBehaviour
 {
-    public int damage;
     public Hero owner;
     public Sprite img;
     [SerializeField]private float coolTime;

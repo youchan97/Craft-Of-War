@@ -53,6 +53,7 @@ MonoBehaviour:
   range: 30
   speed: 30
   isActive: 0
+  durationTime: 0
 --- !u!1 &1485256928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,6 +1789,7 @@ MonoBehaviour:
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 1
   attackAngle: 120
   attackRadius: 22
@@ -2396,6 +2398,7 @@ MonoBehaviour:
   range: 0
   speed: 0
   isActive: 0
+  durationTime: 0
   level: 1
   skillEffect: {fileID: 6209623319924203570, guid: c56ae9658baa25149a2ba0ee9b8835ed,
     type: 3}
@@ -4128,6 +4131,7 @@ MonoBehaviour:
   range: 10
   speed: 20
   isActive: 0
+  durationTime: 0
   level: 1
 --- !u!1 &8738861965054772413
 GameObject:

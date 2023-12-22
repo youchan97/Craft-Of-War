@@ -12,7 +12,6 @@ public class AsheRSkill : ActiveSkill
         base.SkillInit();
         CoolTime = 10f;
         durationTime = 5f;
-        damage = 100;
     }
     public override void Active()
     {
