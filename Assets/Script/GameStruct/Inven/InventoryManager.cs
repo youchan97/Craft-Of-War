@@ -60,6 +60,8 @@ public class InventoryManager : SingleTon<InventoryManager>
                     }
                 }
             }
+            UIManager.Instance.shopMessage.SetActive(true);
+            UIManager.Instance.shopMessageText.text = "인벤토리 공간이 부족합니다.";
             return;
         }
         if (inven.curItemCount == 0)                    //아이템 슬룻에 아이템이 없을때
@@ -91,6 +93,31 @@ public class InventoryManager : SingleTon<InventoryManager>
                     return;
                 }
             }        
+        }
+    }
+    public void ItemApplication(Item item)
+    {
+        if(item.itemData.type == EItemType.EQUIPABLE)
+        {
+            switch (item.itemData.equipableItemType)
+            {
+                case EquipableItemType.BOTTOM:
+                    break;
+                case EquipableItemType.TOP:
+                    break;
+                case EquipableItemType.SHOOSE:
+                    break;
+                case EquipableItemType.HAT:
+                    break;
+                case EquipableItemType.HAND:
+                    break;
+                case EquipableItemType.EARRING:
+                    break;
+                case EquipableItemType.RING:
+                    break;
+                case EquipableItemType.NECKLE:
+                    break;
+            }
         }
     }
 
