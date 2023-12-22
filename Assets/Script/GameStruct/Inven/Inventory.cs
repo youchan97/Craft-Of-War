@@ -6,14 +6,12 @@ using static UnityEngine.UI.GridLayoutGroup;
 
 public class Inventory : MonoBehaviour
 {
-    public ClickMoveController owner;
     public DragableSlot[] slots;
     public int maxSlotCount = 6;
     public int curItemCount = 0;
 
     private void Start()
     {
-        owner = GameManager.Instance.PlayerHero.GetComponent<ClickMoveController>();
         slots = GetComponentsInChildren<DragableSlot>();
     }
     public void UseItem(InventoryItem item)

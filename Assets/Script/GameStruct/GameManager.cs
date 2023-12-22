@@ -208,7 +208,7 @@ public class GameManager : SingleTon<GameManager>
         //씬이동시에 초기화가 힘들어보임 
         //그래서 게임매니저를 메인게임에 그냥 둘거임
         EventInit();
-        onRoundStart();
+        //onRoundStart();
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
