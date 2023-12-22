@@ -107,7 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e24318101d4f746b95753ba9ab49f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpCan: {fileID: 6487445564893535366}
   index: 2
+  maxHp: 0
+  priority: 0
   cost: 20
   buildingName: "\uC778\uAD6C\uBE4C\uB529"
   addPopulation: 0
@@ -626,3 +629,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8453861094064381904}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6487445564893535366 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3412088602112967510, guid: 795d408f094dc0a44abd2561ecaf7b9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8453861094064381904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
