@@ -76,6 +76,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     public void AttackMethod()
     {
+
         if (cols.Length <= 0)
             return;
 
@@ -85,6 +86,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
             if(cols[i].gameObject.GetComponent<IHitAble>() != null)
             {
                 priorityQueue.Enqueue(cols[i].gameObject.name, cols[i].gameObject.GetComponent<IHitAble>().Priority);
+                Debug.LogError(cols[i].gameObject.name + " µð¹ö±× "+ cols[i].gameObject.GetComponent<IHitAble>().Priority);
                 monsters.Add(cols[i].gameObject);   
             }
         }
@@ -97,7 +99,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
                 break;
             }
         }
-
+        Debug.LogError("Èå¸§");
         priorityQueue.Clear();
     }
     

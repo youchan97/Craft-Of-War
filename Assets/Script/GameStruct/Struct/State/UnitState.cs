@@ -25,7 +25,7 @@ public class UnitIdleState : UnitState
             sm.SetState((int)UNIT_STATE.Move);
         if (owner.DetectiveComponent.IsRangeDetection)
         {
-            if(owner.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
+            if(owner.gameObject.GetComponent<BattleUnit>()?.unitType == BATTLE_UNIT.Healer)
             {
                 for(int i = 0; i< owner.DetectiveComponent.cols.Length; i++)
                 {
@@ -56,7 +56,7 @@ public class UnitMoveState : UnitState
             sm.SetState((int)UNIT_STATE.Idle);
         if (owner.DetectiveComponent.IsRangeDetection)
         {
-            if (owner.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
+            if (owner.gameObject.GetComponent<BattleUnit>()?.unitType == BATTLE_UNIT.Healer)
             {
                 if (owner.agent.velocity == Vector3.zero)
                     sm.SetState((int)UNIT_STATE.Idle);
@@ -88,7 +88,7 @@ public class UnitAttackState : UnitState
         /*if (owner.agent.velocity != Vector3.zero)
             sm.SetState((int)UNIT_STATE.Move);*/
         //((BattleUnit)owner).battleStragy.Proceed();
-        if (owner.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
+        if (owner.gameObject.GetComponent<BattleUnit>()?.unitType == BATTLE_UNIT.Healer)
         {
             if (owner.DetectiveComponent.IsRangeDetection == false)
                 sm.SetState((int)UNIT_STATE.Idle);

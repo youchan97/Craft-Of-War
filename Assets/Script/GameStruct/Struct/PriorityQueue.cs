@@ -97,6 +97,7 @@ public class PriorityQueue<T1, T2> : MinHeap<T2>, IPrioxyQueue<T1, T2> where T2 
     public void Clear()
     {
         array.Clear();
+        array.Add(default(T2));
         dic.Clear();
     }
 }

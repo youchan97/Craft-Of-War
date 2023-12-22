@@ -17,7 +17,7 @@ public class MorganaQSkill : ActiveSkill
     {
         if(Vector3.Distance(transform.position, skillEffect.transform.position) > range)
         {
-            Destroy(skillEffect);
+            //Destroy(skillEffect);
         }
     }
 
