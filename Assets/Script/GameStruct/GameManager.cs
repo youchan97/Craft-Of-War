@@ -164,6 +164,7 @@ public class GameManager : SingleTon<GameManager>
             Population = 0;
             Gold = 0;
             MaxPopulation = 5;
+            PhotonNetwork.Instantiate("Shop", shopPoint.position, shopPoint.rotation); //상점 생정 
 
             for (int i = 0; i < monsterSpawnPoints.Length; i++)
             {
@@ -178,7 +179,6 @@ public class GameManager : SingleTon<GameManager>
                 monster[i].GetComponent<Monster>().photonView.RPC("Enable", RpcTarget.AllBuffered, i);
             }
 
-            //PhotonNetwork.Instantiate("ShopObj", shopPoint.position, shopPoint.rotation); //상점 생정 
             //PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.masterIndexPoint].position, buildPoints[MatchManager.masterIndexPoint].rotation, 0);
         }
         else
