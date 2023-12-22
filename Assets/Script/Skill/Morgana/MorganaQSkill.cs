@@ -15,7 +15,7 @@ public class MorganaQSkill : ActiveSkill
     }
     private void Update()
     {
-        if(Vector3.Distance(transform.position, skillEffect.transform.position) > range)
+        if(Vector3.Distance(owner.transform.position, skillEffect.transform.position) > range)
         {
             //Destroy(skillEffect);
         }
@@ -29,6 +29,7 @@ public class MorganaQSkill : ActiveSkill
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
         {
+
             MorganaQSkillEffect effect = Instantiate(skillEffect, owner.transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity).GetComponent<MorganaQSkillEffect>();
             effect.Direction = hit.point - owner.transform.position;
             effect.transform.forward = effect.Direction;

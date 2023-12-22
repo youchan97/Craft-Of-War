@@ -157,6 +157,7 @@ public class GameManager : SingleTon<GameManager>
         {
             GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
+            playerObj.name = "master";
 
             GameObject firstNexus = this.buildingObjectPool.Pop();
             firstNexus.transform.position = buildPoints[MatchManager.masterIndexPoint].position;
@@ -183,12 +184,14 @@ public class GameManager : SingleTon<GameManager>
         }
         else
         {
+
             Mine = 1000;//µð¹ö±ë¿ë
             Population = 0;
             Gold = 0;
             MaxPopulation = 5;
             GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
+            playerObj.name = "nomMaster";
 
             GameObject firstNexus = this.buildingObjectPool.Pop();
             firstNexus.transform.position = buildPoints[MatchManager.userIndexPoint].position;
