@@ -76,24 +76,29 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     public void AttackMethod()
     {
-
         if (cols.Length <= 0)
             return;
+        StartCoroutine(AttackCO());
+    }
 
-        List<GameObject> monsters = new List<GameObject> ();
+    IEnumerator AttackCO()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        List<GameObject> monsters = new List<GameObject>();
         for (int i = 0; i < cols.Length; i++)
         {
-            if(cols[i].gameObject.GetComponent<IHitAble>() != null)
+            if (cols[i].gameObject.GetComponent<IHitAble>() != null)
             {
                 priorityQueue.Enqueue(cols[i].gameObject.name, cols[i].gameObject.GetComponent<IHitAble>().Priority);
-                Debug.LogError(cols[i].gameObject.name + " 디버그 "+ cols[i].gameObject.GetComponent<IHitAble>().Priority);
-                monsters.Add(cols[i].gameObject);   
+                Debug.LogError(cols[i].gameObject.name + " 디버그 " + cols[i].gameObject.GetComponent<IHitAble>().Priority);
+                monsters.Add(cols[i].gameObject);
             }
         }
         string name = priorityQueue.Dequeue();
         foreach (GameObject monster in monsters)
         {
-            if(monster.name == name)
+            if (monster.name == name)
             {
                 monster.GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
                 break;

@@ -38,7 +38,6 @@ public abstract class Unit : Character
     public override void OnDisable()
     {
         base.OnDisable();
-        GameManager.Instance.Population--;
     }
     public virtual void Update()
     {
