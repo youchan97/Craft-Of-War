@@ -22,6 +22,7 @@ public class ActiveSkill : Skill
     public override void Active()
     {
         if (owner.CurMp < ReqMp || owner.curState == HERO_STATE.STUN || owner.curState == HERO_STATE.DIE) return;
+        owner.CurMp -= ReqMp;
         
     }
 
