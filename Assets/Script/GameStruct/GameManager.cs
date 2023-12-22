@@ -211,11 +211,6 @@ public class GameManager : SingleTon<GameManager>
         onRoundStart();
     }
 
-    public override void OnPlayerLeftRoom(Player otherPlayer)
-    {
-        PhotonNetwork.CurrentRoom.IsOpen = true;
-    }
-
     [PunRPC]
     public void OriginPos()
     {

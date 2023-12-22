@@ -55,7 +55,14 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
         detectiveComponent = GetComponent<DetectiveComponent>();
     }
     public int Atk { get => info.Atk; set => info.Atk = value; }
-    public int Hp { get => info.CurentHp; set => info.CurentHp = value; }
+    public int Hp { get => info.CurentHp; 
+        set
+        {
+            info.CurentHp = value;
+            if(info.CurentHp > 100)
+                info.CurentHp = 100;
+        }
+    }
     public abstract void InitStats();
     public abstract void Attack(IHitAble target);
     public abstract void Hit(IAttackAble attacker);

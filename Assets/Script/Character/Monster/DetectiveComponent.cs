@@ -111,10 +111,11 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     }
     
     public void HealMethod()
-    {   
+    {
+        Debug.Log("¾Ö´Ï¸ÞÀÌ¼Ç Èú È£Ãâ");
         for(int i = 0; i< cols.Length; i++)
         {
-            if (cols[i].GetComponent<Character>() != null && cols[i].GetComponent<Character>().Hp < 50)
+            if (cols[i].GetComponent<Character>() != null)
             {
                 cols[i].GetComponent<Character>().Hp += this.gameObject.GetComponent<IAttackAble>().Atk;
                 Debug.Log(cols[i].name + cols[i].GetComponent<Character>().Hp + "Èú");
