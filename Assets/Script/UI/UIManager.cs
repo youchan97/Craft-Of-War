@@ -54,6 +54,11 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI aosHeroHpText;
     public Image aosHeroMp;
     public TextMeshProUGUI aosHeroMpText;
+    public TextMeshProUGUI aosHeroLvText;
+    public Image aosHeroExp;
+    public TextMeshProUGUI aosHeroExpText;
+    public TextMeshProUGUI aosHeroAtkText;
+    public TextMeshProUGUI aosHeroShieldText;
 
 
     //빌드유닛 변수
@@ -96,12 +101,20 @@ public class UIManager : SingleTon<UIManager>
     }
     public void AosHeroInfo()
     {
-        if(GameManager.Instance.playMode == PLAY_MODE.AOS_MODE)
+        if (GameManager.Instance.playMode == PLAY_MODE.AOS_MODE)
         {
             aosHeroHp.fillAmount = (float)GameManager.Instance.PlayerHero.info.CurentHp / (float)GameManager.Instance.PlayerHero.info.MaxHp;
+            aosHeroHpText.text = (float)GameManager.Instance.PlayerHero.info.CurentHp + "/" + (float)GameManager.Instance.PlayerHero.info.MaxHp;
+            aosHeroMp.fillAmount = (float)GameManager.Instance.PlayerHero.CurMp / (float)GameManager.Instance.PlayerHero.MaxMp;
+            aosHeroMpText.text = (float)GameManager.Instance.PlayerHero.CurMp+ "/" +(float)GameManager.Instance.PlayerHero.MaxMp;
+            aosHeroExpText.text = GameManager.Instance.PlayerHero.CurExp + "/" + GameManager.Instance.PlayerHero.AimExp;
+            aosHeroExp.fillAmount = GameManager.Instance.playerHero.CurExp / GameManager.Instance.playerHero.AimExp;
+            aosHeroLvText.text = GameManager.Instance.playerHero.Level.ToString();
+            aosHeroAtkText.text = GameManager.Instance.playerHero.info.Atk.ToString();
+            aosHeroShieldText.text = GameManager.Instance.playerHero.info.Def.ToString();
+
         }
     }
-
     public void ResultExit()
     {
         //결과 창 버튼

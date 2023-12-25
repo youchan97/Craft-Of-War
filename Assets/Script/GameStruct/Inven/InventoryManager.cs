@@ -106,6 +106,7 @@ public class InventoryManager : SingleTon<InventoryManager>
                     break;
                 case EquipableItemType.TOP:
                     GameManager.Instance.playerHero.info.MaxHp += (int)item.itemData.value;
+                    GameManager.Instance.playerHero.info.CurentHp += (int)item.itemData.value;
                     break;
                 case EquipableItemType.SHOOSE:
                     GameManager.Instance.playerHero.MoveSpeed += (int)item.itemData.value;
@@ -118,6 +119,7 @@ public class InventoryManager : SingleTon<InventoryManager>
                     break;
                 case EquipableItemType.EARRING:
                     GameManager.Instance.playerHero.MaxMp += (int)item.itemData.value;
+                    GameManager.Instance.playerHero.info.CurentHp += (int)item.itemData.value;
                     break;
                 case EquipableItemType.RING:
                     GameManager.Instance.playerHero.info.AtkSpeed += (int)item.itemData.value;
