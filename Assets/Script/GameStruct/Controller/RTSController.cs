@@ -86,6 +86,7 @@ public class RTSController : MonoBehaviour
                 UIManager.Instance.heroLvText.text = heroStat.Level.ToString();
                 UIManager.Instance.heroAtkText.text = heroStat.info.Atk.ToString();
                 UIManager.Instance.heroShieldText.text = heroStat.info.Def.ToString();
+                UIManager.Instance.rtsUnitFace.sprite = heroStat.HeroImage;
             }
             else
             {
@@ -94,6 +95,7 @@ public class RTSController : MonoBehaviour
                 UIManager.Instance.unitHpText.text = selectedUnitList[0].unit.Hp + "/" + 100;
                 UIManager.Instance.unitAtkText.text = selectedUnitList[0].unit.info.Atk.ToString();
                 UIManager.Instance.unitShieldText.text = selectedUnitList[0].unit.info.Def.ToString();
+                UIManager.Instance.rtsUnitFace.sprite = selectedUnitList[0].unit.faceSprite;
             }
         }
         else
@@ -110,6 +112,17 @@ public class RTSController : MonoBehaviour
                     {
                         UIManager.Instance.characterSlotHp[i].fillAmount = (float)selectedUnitList[i].unit.Hp / (float)100;
                     }
+                }
+            }
+            if (selectedUnitList.Count > 1)
+            {
+                if (selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
+                {
+                    UIManager.Instance.rtsUnitFace.sprite = GameManager.Instance.PlayerHero.HeroImage;
+                }
+                else
+                {
+                    UIManager.Instance.rtsUnitFace.sprite = selectedUnitList[0].unit.faceSprite;
                 }
             }
         }

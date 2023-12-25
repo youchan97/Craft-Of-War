@@ -59,6 +59,8 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI aosHeroExpText;
     public TextMeshProUGUI aosHeroAtkText;
     public TextMeshProUGUI aosHeroShieldText;
+    [Header("RTS À¯´Ö Face")]
+    public Image rtsUnitFace;
 
 
     //ºôµåÀ¯´Ö º¯¼ö
@@ -160,6 +162,7 @@ public class UIManager : SingleTon<UIManager>
     {
         if (controller.selectedUnitList.Count == 1)
         {
+            characterSlot.gameObject.SetActive(false);
             if (controller.selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
             {
                 heroStatUI.SetActive(true);
@@ -180,6 +183,7 @@ public class UIManager : SingleTon<UIManager>
         {
             heroStatUI.SetActive(false);
             unitStatUI.SetActive(false);
+            characterSlot.gameObject.SetActive(true);
             for (int i = 0; i < controller.selectedUnitList.Count; i++)
             {
                 if(controller.selectedUnitList[i].gameObject == GameManager.Instance.PlayerHero.gameObject)
@@ -193,7 +197,7 @@ public class UIManager : SingleTon<UIManager>
                 if (controller.selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
                 {
                     Hero hero = controller.selectedUnitList[0].GetComponent<Hero>();
-                    characterSlot.faceImage[0].sprite = hero.HeroImage;
+                    characterSlot.faceImage[i].sprite = GameManager.Instance.PlayerHero.HeroImage;
                 }
                 else
                 {
