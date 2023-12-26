@@ -61,6 +61,11 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI aosHeroShieldText;
     [Header("RTS À¯´Ö Face")]
     public Image rtsUnitFace;
+    [Header("ºôµù ÀÌ¹ÌÁö")]
+    public Sprite nexusSprite;
+    public Sprite populationSprite;
+    public Sprite productSprite;
+    public Sprite towerSprite;
 
 
     //ºôµåÀ¯´Ö º¯¼ö
