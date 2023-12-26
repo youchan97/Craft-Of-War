@@ -12,7 +12,7 @@ public enum ARMYMOVEMODE
     None,
     Horizontal,
     Vertical,
-    Square,
+    Square, 
 }
 
 public class RTSController : MonoBehaviour
@@ -34,8 +34,17 @@ public class RTSController : MonoBehaviour
             {
                 UIManager.Instance.unitProductModeUI.SetActive(false);
                 SlotManager.Instance.SlotType = SLOTTYPE.None;
+                UIManager.Instance.rtsUnitFace.sprite = UIManager.Instance.defaultFace;
                 return;
             }
+            if (SelectBuilding.TryGetComponent(out NexusBuilding nexusBuilding))
+                UIManager.Instance.rtsUnitFace.sprite = UIManager.Instance.nexusSprite;
+            if (SelectBuilding.TryGetComponent(out PopulationBuilding populationBuilding))
+                UIManager.Instance.rtsUnitFace.sprite = UIManager.Instance.populationSprite;
+            if (SelectBuilding.TryGetComponent(out ProductBuilding productBuilding))
+                UIManager.Instance.rtsUnitFace.sprite = UIManager.Instance.productSprite;
+            if (SelectBuilding.TryGetComponent(out DefenseBuilding defenseBuilding))
+                UIManager.Instance.rtsUnitFace.sprite = UIManager.Instance.towerSprite;
 
             if (selectBuilding.TryGetComponent(out IProductAble building))
             {
@@ -48,6 +57,8 @@ public class RTSController : MonoBehaviour
             UIManager.Instance.buildProgressCountText.text = null;
             UIManager.Instance.buildProgressFill.fillAmount = 0;
             SelectBuilding.GetComponent<Building>().UIMatch();
+
+
 
         }
     }
@@ -73,6 +84,8 @@ public class RTSController : MonoBehaviour
 
     public void SelectUnitUI()
     {
+        if(selectedUnitList.Count == 0 && SelectBuilding == null)
+            UIManager.Instance.rtsUnitFace.sprite = UIManager.Instance.defaultFace;
         if (selectedUnitList.Count == 1)
         {
             if (selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
@@ -112,17 +125,6 @@ public class RTSController : MonoBehaviour
                     {
                         UIManager.Instance.characterSlotHp[i].fillAmount = (float)selectedUnitList[i].unit.Hp / (float)100;
                     }
-                }
-            }
-            if (selectedUnitList.Count > 1)
-            {
-                if (selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
-                {
-                    UIManager.Instance.rtsUnitFace.sprite = GameManager.Instance.PlayerHero.HeroImage;
-                }
-                else
-                {
-                    UIManager.Instance.rtsUnitFace.sprite = selectedUnitList[0].unit.faceSprite;
                 }
             }
         }
