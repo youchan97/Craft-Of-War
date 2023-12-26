@@ -43,8 +43,7 @@ public class Monster : Character
         stateMachine.SetState((int)MONSTER_STATE.IDLE);
         monState = MONSTER_STATE.IDLE;
         OriginPos = transform.position;
-        pv.RPC("InitStats", RpcTarget.AllBuffered);
-        
+        pv.RPC("InitStats", RpcTarget.AllBuffered);       
     }
 
     private void Update()
@@ -56,7 +55,7 @@ public class Monster : Character
     [PunRPC]
     public override void InitStats()
     {
-        info.MaxHp = 500;
+        info.MaxHp = 100;
         info.CurentHp = info.MaxHp;
         info.Atk = 50;
         info.Def = 10;
@@ -76,7 +75,8 @@ public class Monster : Character
     {
         if(Hp < 0)
         {
-            ((Hero)attacker).info.Gold += dropGold;
+            //((Hero)attacker).info.Gold += dropGold;
+            GameManager.Instance.Gold += info.Gold;
             ((Hero)attacker).CurExp += dropExp;
             Die();
         }
@@ -85,11 +85,17 @@ public class Monster : Character
         Hp -= damage;
     }
 
+    public void DieActive()
+    {
+        Destroy(this.gameObject);
+    }
+
     public override void Die()
     {
-
         monState = MONSTER_STATE.DIE;
-        anim.SetTrigger("DeathTrigger");
+        Debug.LogWarning("ав╬З╢ы");
+        anim.Play("Death");
+        this.gameObject.GetComponent<Collider>().enabled = false;
     }
 
     [PunRPC]
