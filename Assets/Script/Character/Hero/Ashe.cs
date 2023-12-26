@@ -70,11 +70,18 @@ public class Ashe : Hero
 
                     if (hitInfo.transform.gameObject.TryGetComponent<Character>(out Character target))
                     {
-                        clickTarget = target;
+                        clickTarget = target ;
                         curState = HERO_STATE.ATTACK;
                         agent.isStopped = true;
                         UseSkill(SKILL_TYPE.QSkill);
                         Debug.Log("Q 스킬 사용됌");
+                    }
+                    if (hitInfo.transform.gameObject.TryGetComponent<Building>(out Building buildTarget))
+                    {
+                        clickBuilding = buildTarget;
+                        curState = HERO_STATE.ATTACK;
+                        agent.isStopped = true;
+                        UseSkill(SKILL_TYPE.QSkill);
                     }
                 }
             }
@@ -104,6 +111,14 @@ public class Ashe : Hero
                     curState = HERO_STATE.ATTACK;
                     agent.isStopped = true;
                     Attack(target, target.transform);
+                }
+                if (hitInfo.transform.gameObject.TryGetComponent<Building>(out Building buildTarget))
+                {
+                    if (buildTarget == this) return;
+                    clickBuilding = buildTarget;
+                    curState = HERO_STATE.ATTACK;
+                    agent.isStopped = true;
+                    Attack(buildTarget, buildTarget.transform);
                 }
             }
         }
@@ -187,6 +202,8 @@ public class Ashe : Hero
     public override void Hit(IAttackAble attacker)
     {
         if (curState == HERO_STATE.DIE) { return; }
+
+        if(attacker == null) { return; }    
 
         info.CurentHp -= attacker.Atk;
         if(info.CurentHp <= 0 )

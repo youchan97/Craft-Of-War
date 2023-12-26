@@ -22,7 +22,7 @@ public class UnitList : List<Unit>
         OnRemoveUnit?.Invoke(index);
     }
 }
-public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
+public abstract class Building : MonoBehaviourPunCallbacks, IHitAble, IPunObservable
 {
     public Image hpCan; 
 
@@ -164,5 +164,17 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
         this.maxHp = 300;
         this.hp = maxHp;
         this.gameObject.GetComponent<Collider>().enabled = true;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(Hp);
+        }
+        else
+        {
+            this.Hp = (int)stream.ReceiveNext();
+        }
     }
 }
