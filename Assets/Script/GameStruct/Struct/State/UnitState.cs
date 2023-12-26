@@ -127,7 +127,7 @@ public class UnitDieState : UnitState
     }
     public override void Update()
     {
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             GameManager.Instance.Population--;
             GameManager.Instance.unitObjectPool.ReturnPool(owner.gameObject, owner.obpId);//¿Œµ¶Ω∫πŸ≤„æﬂ«‘

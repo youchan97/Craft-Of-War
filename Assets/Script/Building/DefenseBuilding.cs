@@ -37,6 +37,7 @@ public class DefenseBuilding : Building, IAttackAble
     public IEnumerator CheckUnitRange()
     {
         IHitAble target;
+        float coolTime = 1.5f;
         while (true) 
         {
             if(detectiveCompo.cols.Length > 0)
@@ -47,7 +48,7 @@ public class DefenseBuilding : Building, IAttackAble
                     {
                         Debug.LogError(detectiveCompo.cols.Length);
                         target = tg;
-                        yield return new WaitForSeconds(0.5f);
+                        yield return new WaitForSeconds(coolTime);
                         Attack(target);
                         break;
                     }
