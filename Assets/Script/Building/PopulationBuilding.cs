@@ -12,6 +12,7 @@ public class PopulationBuilding : Building
     }
     public override void Die()
     {
+        GameManager.Instance.MaxPopulation -= addPopulation;
     }
 
     public override void Hit()
@@ -22,11 +23,5 @@ public class PopulationBuilding : Building
     {
         base.OnEnable();
         GameManager.Instance.MaxPopulation += addPopulation;
-    }
-
-    public override void OnDisable()
-    {
-        base.OnDisable();
-        GameManager.Instance.MaxPopulation -= addPopulation;
     }
 }
