@@ -133,11 +133,17 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         {
             if(PhotonNetwork.IsMasterClient)
             {
-                targetLayer = 1 << 7;
+                if (pv.IsMine)
+                    targetLayer = 1 << 7;
+                else
+                    targetLayer = 1 << 6;
             }
             else
             {
-                targetLayer = 1 << 6;
+                if (pv.IsMine)
+                    targetLayer = 1 << 6;
+                else
+                    targetLayer = 1 << 7;
             }
             return;
         }

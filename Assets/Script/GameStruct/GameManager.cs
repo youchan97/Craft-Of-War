@@ -152,10 +152,6 @@ public class GameManager : SingleTon<GameManager>
     }
     protected override void Awake()
     {
-        Mine = 1000;//디버깅용
-        Population = 0;
-        Gold = 1000;
-        MaxPopulation = 5;
 
         base.Awake();
         if (DropDownManager.selectTribe == "Human")
@@ -170,7 +166,7 @@ public class GameManager : SingleTon<GameManager>
         playMode = PLAY_MODE.RTS_MODE;
         //캐릭터 출현 정보를 배열에 저장
         //캐릭터, 넥서스 랜덤 포인트에 생성
-
+        pv.RPC("Init", RpcTarget.AllBuffered);
     }
     void Start()
     {
@@ -247,4 +243,12 @@ public class GameManager : SingleTon<GameManager>
 
     }
 
+    [PunRPC]
+    public void Init()
+    {
+        Mine = 1000;//디버깅용
+        Population = 0;
+        Gold = 1000;
+        MaxPopulation = 5;
+    }
 }
