@@ -20,7 +20,7 @@ public class DefenseBuilding : Building, IAttackAble
     {
         base.Awake();
         atk = 10;
-        detectiveCompo = new DetectiveComponent();
+        detectiveCompo = GetComponent<DetectiveComponent>();
     }
 
     private void Start()
@@ -41,7 +41,7 @@ public class DefenseBuilding : Building, IAttackAble
         {
             yield return null;
 
-            if (detectiveCompo.cols[0] == null)
+            if (detectiveCompo.cols.Length <= 0)
                 continue;
 
             foreach (var col in detectiveCompo.cols)

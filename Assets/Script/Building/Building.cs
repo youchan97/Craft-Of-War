@@ -46,7 +46,7 @@ public abstract class Building : MonoBehaviourPunCallbacks, IHitAble
                 GameManager.Instance.buildingObjectPool.ReturnPool(this.gameObject, this.index);
                 Die();
             }
-            hpCan.fillAmount = float.Parse((hp / maxHp).ToString());
+            hpCan.fillAmount = (float)hp/(float)maxHp;
         }
     }
 
