@@ -2568,6 +2568,7 @@ GameObject:
   - component: {fileID: 7831997416926603495}
   - component: {fileID: 985111255144957130}
   - component: {fileID: 6096148733592823572}
+  - component: {fileID: -4416597916328674558}
   m_Layer: 12
   m_Name: Morgana
   m_TagString: Untagged
@@ -2815,6 +2816,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitMaker: {fileID: 1106575440380621051}
   unit: {fileID: 0}
+--- !u!114 &-4416597916328674558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4900984655732441078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  firstIndex: 0
+  isCutomTargetLayer: 0
+  cols: []
+  detectiveRange: 5
 --- !u!1 &4931730597332954316
 GameObject:
   m_ObjectHideFlags: 0

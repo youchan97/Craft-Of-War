@@ -43,15 +43,17 @@ public class Monster : Character
         stateMachine.SetState((int)MONSTER_STATE.IDLE);
         monState = MONSTER_STATE.IDLE;
         OriginPos = transform.position;
-        InitStats();
+        pv.RPC("InitStats", RpcTarget.AllBuffered);
+        
     }
 
     private void Update()
     {
         stateMachine.UpdateState();
+
     }
 
-
+    [PunRPC]
     public override void InitStats()
     {
         info.MaxHp = 500;
@@ -64,6 +66,7 @@ public class Monster : Character
         info.Gold = 55;
         info.MoveSpeed = 5f;
     }
+
     public override void Attack(IHitAble target) // 연결 우찌하지 이거 
     {
         target.Hit(this);

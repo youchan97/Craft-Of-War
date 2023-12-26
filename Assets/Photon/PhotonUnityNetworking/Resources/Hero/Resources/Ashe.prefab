@@ -1361,6 +1361,7 @@ GameObject:
   - component: {fileID: 2886699389699310332}
   - component: {fileID: 8503490434865028344}
   - component: {fileID: -6940899680310872533}
+  - component: {fileID: -8457763168301807397}
   m_Layer: 12
   m_Name: Ashe
   m_TagString: PlayerHero
@@ -1619,6 +1620,26 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-8457763168301807397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825458743726631146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  firstIndex: 0
+  isCutomTargetLayer: 0
+  cols: []
+  detectiveRange: 5
 --- !u!1 &3072501341786832875
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
 using UnityEngine.AI;
 using UnityEngine;
+using Photon.Pun;
+
 public class MonsterMoveState : MonsterState
 {
     public override void Enter()
@@ -31,4 +33,6 @@ public class MonsterMoveState : MonsterState
     {
         monster.Anim.SetBool("IsMove", false);
     }
+
+        
 }

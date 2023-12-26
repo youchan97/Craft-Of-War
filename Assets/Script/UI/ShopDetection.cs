@@ -55,7 +55,6 @@ public class ShopDetection : MonoBehaviour
     }
     public bool IsDetection()
     {
-        Debug.Log("들어왔다");
         Collider[] cols = Physics.OverlapSphere(transform.position, detectiveRadius, masterHeroLayer | userHeroLayer);
         if (cols.Length > 0)
         {

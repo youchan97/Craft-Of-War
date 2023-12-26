@@ -2799,6 +2799,7 @@ GameObject:
   - component: {fileID: 5040449015076859756}
   - component: {fileID: 7061765141853963662}
   - component: {fileID: -5581114907872445068}
+  - component: {fileID: 4584522263005125014}
   m_Layer: 12
   m_Name: Evlin
   m_TagString: PlayerHero
@@ -3071,6 +3072,26 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &4584522263005125014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278987755257151768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0954fc3eaf8c44ad893985e89b93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isRangeDetection: 0
+  firstIndex: 0
+  isCutomTargetLayer: 0
+  cols: []
+  detectiveRange: 5
 --- !u!1 &6545384847419414690
 GameObject:
   m_ObjectHideFlags: 0

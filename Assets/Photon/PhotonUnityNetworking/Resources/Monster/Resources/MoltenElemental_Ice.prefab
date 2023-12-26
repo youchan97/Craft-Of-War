@@ -1005,7 +1005,7 @@ MonoBehaviour:
   firstIndex: 0
   isCutomTargetLayer: 1
   cols: []
-  detectiveRange: 0
+  detectiveRange: 14
 --- !u!114 &1995702431255385956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,10 +1063,10 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: IsMove
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: DeathTrigger
   m_SynchronizeLayers:
   - SynchronizeType: 0
