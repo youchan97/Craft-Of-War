@@ -117,21 +117,15 @@ public class MouseClick : MonoBehaviourPunCallbacks
             RaycastHit hit;
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             Debug.Log("클릭");
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, (1 << 14 | 1 << 15)))//FOV 안찍히게 전달하기위함
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity,  ~(1 << 8)))//FOV 안찍히게 전달하기위함
             {
-                effect = Instantiate(clickEffect, transform);
-                effect.transform.position = hit.point;
-                StartCoroutine(WaitForEffectCo(effect));
+                //effect = Instantiate(clickEffect, transform);
+                //effect.transform.position = hit.point;
+                //StartCoroutine(GameManager.Instance.WaitForEffectCo(effect));
 
                 Debug.Log("땅을 찍음");
                 controller.MoveSelectedUnits(hit);
             }
         }
-    }
-
-    IEnumerator WaitForEffectCo(GameObject gameObject)
-    {
-        yield return new WaitForSeconds(1);
-        Destroy(gameObject);
     }
 }

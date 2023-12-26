@@ -232,8 +232,13 @@ public class GameManager : SingleTon<GameManager>
     }
     IEnumerator WaitCo()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         UIManager.Instance.result.SetActive(false);
+    }
+    public IEnumerator WaitForEffectCo(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
     [PunRPC]
     public void OriginPos()
