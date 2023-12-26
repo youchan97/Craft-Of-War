@@ -89,7 +89,6 @@ public class SupplyUnit : Unit
             //리소스에서 도착했을때
             if (Vector3.Distance(transform.position, mineTf) <= 5f && isMineEnd == false)
             {
-                Debug.LogError("Sdsdsds");
                 agent.ResetPath();
                 sm.SetState((int)UNIT_STATE.Work);
                 curCool -= Time.deltaTime;

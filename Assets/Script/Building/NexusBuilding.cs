@@ -8,6 +8,16 @@ public class NexusBuilding : Building, IProductAble
 
     public override void Die()
     {
+        if (photonView.IsMine)
+        {
+            UIManager.Instance.result.SetActive(true);
+            UIManager.Instance.defeat.SetActive(true);
+        }
+        else
+        {
+            UIManager.Instance.result.SetActive(true);
+            UIManager.Instance.win.SetActive(true);
+        }
     }
 
     public override void Hit()
@@ -27,15 +37,5 @@ public class NexusBuilding : Building, IProductAble
     {
         base.OnDisable();
         GameManager.Instance.NexusCount--;
-        //if(photonView.IsMine)
-        //{
-        //    UIManager.Instance.result.SetActive(true);
-        //    UIManager.Instance.defeat.SetActive(true);
-        //}
-        //else
-        //{
-        //    UIManager.Instance.result.SetActive(true);
-        //    UIManager.Instance.win.SetActive(true);
-        //}
     }
 }
