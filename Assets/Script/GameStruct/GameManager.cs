@@ -108,7 +108,7 @@ public class GameManager : SingleTon<GameManager>
         }
     }
     [SerializeField]
-    private int maxPopulation;
+    private int maxPopulation = 5;
     public int MaxPopulation
     {
         get { return maxPopulation; }
@@ -152,6 +152,11 @@ public class GameManager : SingleTon<GameManager>
     }
     protected override void Awake()
     {
+        Mine = 1000;//디버깅용
+        Population = 0;
+        Gold = 1000;
+        MaxPopulation = 5;
+
         base.Awake();
         if (DropDownManager.selectTribe == "Human")
             tribe = Tribe.HUMAN;
@@ -169,12 +174,10 @@ public class GameManager : SingleTon<GameManager>
     }
     void Start()
     {
+
         if (PhotonNetwork.IsMasterClient)
         {
-            Mine = 1000;//디버깅용
-            Population = 0;
-            Gold = 0;
-            MaxPopulation = 5;
+
             GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
             playerObj.name = "master";
@@ -200,11 +203,6 @@ public class GameManager : SingleTon<GameManager>
         }
         else
         {
-
-            Mine = 1000;//디버깅용
-            Population = 0;
-            Gold = 0;
-            MaxPopulation = 5;
             GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
             playerObj.name = "nomMaster";
@@ -213,13 +211,7 @@ public class GameManager : SingleTon<GameManager>
             firstNexus.transform.position = buildPoints[MatchManager.userIndexPoint].position;
             //PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.userIndexPoint].position, buildPoints[MatchManager.userIndexPoint].rotation, 0);
         }
-        //StartCoroutine(PlayerInitCo());
 
-
-        for (int i = 0; i < 4; i++)
-        {
-            //Debug.Log(priorityQueue.Dequeue());
-        }
 
         SceneManager.sceneLoaded += LoadedsceneEvent;
         //게임매니저를 메인메뉴로 빼야하는데

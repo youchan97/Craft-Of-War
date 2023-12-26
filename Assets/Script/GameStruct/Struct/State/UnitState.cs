@@ -119,6 +119,7 @@ public class UnitDieState : UnitState
 {
     public override void Enter()
     {
+        owner.GetComponent<Collider>().enabled = false;
     }
     public override void Exit()
     {
@@ -126,10 +127,6 @@ public class UnitDieState : UnitState
     }
     public override void Update()
     {
-        if(owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
-        {
-            owner.GetComponent<Collider>().enabled = false;
-        }
         if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             GameManager.Instance.Population--;

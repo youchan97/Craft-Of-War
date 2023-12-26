@@ -704,7 +704,7 @@ MonoBehaviour:
   mine: 0
   gold: 0
   population: 0
-  maxPopulation: 0
+  maxPopulation: 5
   playerHero: {fileID: 0}
 --- !u!114 &291879374
 MonoBehaviour:

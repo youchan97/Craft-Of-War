@@ -57,9 +57,12 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         if (isRangeDetection)
         {
             RaycastHit hit;
-
             Vector3 dir = ((cols[firstIndex].transform.position) - transform.position).normalized;
-            transform.forward = dir;
+
+            if (TryGetComponent(out DefenseBuilding defense) == false)
+            {
+                transform.forward = dir;
+            }
             if (Physics.Raycast(transform.position, dir, out hit, detectiveRange))
             {
                 LastDetectivePos = hit.transform.position;
@@ -126,6 +129,19 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     [PunRPC]
     public void DetectLayer()
     {
+        if(TryGetComponent(out DefenseBuilding def))
+        {
+            if(PhotonNetwork.IsMasterClient)
+            {
+                targetLayer = 1 << 7;
+            }
+            else
+            {
+                targetLayer = 1 << 6;
+            }
+            return;
+        }
+
         if (this.gameObject.layer == 6)
         {
             if (this.gameObject.GetComponent<BattleUnit>() != null && this.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)

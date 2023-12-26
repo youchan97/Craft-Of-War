@@ -114,6 +114,7 @@ MonoBehaviour:
   priority: 0
   cost: 75
   buildingName: "\uBC29\uC5B4\uBE4C\uB529"
+  detectiveCompo: {fileID: 0}
 --- !u!114 &24807163973417876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +208,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: -2575729211322307869}
   - {fileID: -4397734525619143325}
   sceneViewId: 0
   InstantiationId: 0
@@ -241,12 +243,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 0
   isRangeDetection: 0
   firstIndex: 0
   isCutomTargetLayer: 0
   cols: []
-  detectiveRange: 0
+  detectiveRange: 10
 --- !u!1001 &356938576226020348
 PrefabInstance:
   m_ObjectHideFlags: 0

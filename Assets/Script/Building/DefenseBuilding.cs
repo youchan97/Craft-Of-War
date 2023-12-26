@@ -14,7 +14,7 @@ public class DefenseBuilding : Building, IAttackAble
             atk = value;
         }
     }
-    DetectiveComponent detectiveCompo;
+    public DetectiveComponent detectiveCompo;
 
     public override void Awake()
     {
@@ -39,21 +39,21 @@ public class DefenseBuilding : Building, IAttackAble
         IHitAble target;
         while (true) 
         {
-            yield return null;
-
-            if (detectiveCompo.cols.Length <= 0)
-                continue;
-
-            foreach (var col in detectiveCompo.cols)
+            if(detectiveCompo.cols.Length > 0)
             {
-                if (col.gameObject.TryGetComponent(out IHitAble tg) && col.gameObject.GetComponent<PhotonView>().IsMine == false)
+                foreach (var col in detectiveCompo.cols)
                 {
-                    target = tg;
-                    yield return new WaitForSeconds(3f);
-                    Attack(target);
-                    break;
+                    if (col.gameObject.TryGetComponent(out IHitAble tg))
+                    {
+                        Debug.LogError(detectiveCompo.cols.Length);
+                        target = tg;
+                        yield return new WaitForSeconds(0.5f);
+                        Attack(target);
+                        break;
+                    }
                 }
             }
+            yield return null;
         }
     }
 

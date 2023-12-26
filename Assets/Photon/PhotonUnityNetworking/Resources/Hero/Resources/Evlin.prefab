@@ -2958,6 +2958,7 @@ MonoBehaviour:
   heroImage: {fileID: 21300000, guid: daf6d125a9b17b24bbd2262100d31007, type: 3}
   curState: 0
   clickTarget: {fileID: 0}
+  clickBuilding: {fileID: 0}
   clickPos: {x: 0, y: 0, z: 0}
   attackRange: 8
   skillList:
@@ -3023,10 +3024,10 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: AttackBasic
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: DieTrigger
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: IsStun
   m_SynchronizeLayers:
   - SynchronizeType: 0

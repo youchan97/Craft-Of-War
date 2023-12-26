@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -102,7 +103,16 @@ public class MouseDrag : MonoBehaviour
             if(dragRect.Contains(mainCamera.WorldToScreenPoint(unit.transform.position)))
             {
                 controller.DragSelectUnit(unit);
-                SlotManager.Instance.SlotType = SLOTTYPE.ArmySelect;
+                //생산유닛 클릭 했을때
+                if (unit.TryGetComponent(out SupplyUnit supplyUnit))
+                {
+                    SlotManager.Instance.SlotType = SLOTTYPE.SupplyUnit;
+                    SlotManager.Instance.selectedSupplyUnit = supplyUnit;
+                }
+                if (GameManager.Instance.rtsController.selectedUnitList.Count > 1)
+                {
+                    SlotManager.Instance.SlotType = SLOTTYPE.ArmySelect;
+                }
             }
         }
 
