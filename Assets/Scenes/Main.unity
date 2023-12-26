@@ -1190,34 +1190,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 265869561}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &291879373 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7761918933575942984, guid: 2385f02c4b3d09e49ba5217e3a8cbabb,
-    type: 3}
-  m_PrefabInstance: {fileID: 7761918932395369033}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &291879374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291879373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 6
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1001 &309966576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3280,7 +3252,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 291879374, guid: 2385f02c4b3d09e49ba5217e3a8cbabb, type: 3}
+    - target: {fileID: 0}
       propertyPath: sceneViewId
       value: 5
       objectReference: {fileID: 0}

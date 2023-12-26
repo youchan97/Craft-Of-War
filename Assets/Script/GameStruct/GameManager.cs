@@ -54,8 +54,6 @@ public class GameManager : SingleTon<GameManager>
     public Tribe tribe;
     public Transform shopPoint;
 
-    public PhotonView pv;
-
     //옵저버
     public event Action onRoundStart;
     public event Action onRoundEnd;
@@ -159,18 +157,19 @@ public class GameManager : SingleTon<GameManager>
         else if (DropDownManager.selectTribe == "Orc")
             tribe = Tribe.ORC;
 
-        pv = GetComponent<PhotonView>();
         //Player 찾기
         //--- 몇가지 문제가 있어 보인다. 적이랑 같은 태그에 같은 스크립트일텐데 이렇게 찾는게 맞을까?
         //playerHero = Instance. new Ashe();
         playMode = PLAY_MODE.RTS_MODE;
         //캐릭터 출현 정보를 배열에 저장
         //캐릭터, 넥서스 랜덤 포인트에 생성
-        pv.RPC("Init", RpcTarget.AllBuffered);
     }
     void Start()
     {
-
+        Mine = 1000;//디버깅용
+        Population = 0;
+        Gold = 1000;
+        MaxPopulation = 5;
         if (PhotonNetwork.IsMasterClient)
         {
 
@@ -243,12 +242,4 @@ public class GameManager : SingleTon<GameManager>
 
     }
 
-    [PunRPC]
-    public void Init()
-    {
-        Mine = 1000;//디버깅용
-        Population = 0;
-        Gold = 1000;
-        MaxPopulation = 5;
-    }
 }
