@@ -11,7 +11,6 @@ public class CanvasFront : MonoBehaviour
     Unit unit = null;
     Hero hero = null;
     Monster monster = null;
-    Building building = null;
     Image unitHp;
     private void Start()
     {
@@ -35,12 +34,6 @@ public class CanvasFront : MonoBehaviour
             this.monster = monster;
         }
 
-        if (GetComponentInParent<Building>() != null)
-        {
-            Building building = GetComponentInParent<Building>();
-            this.building = building;
-        }
-
         unitHp = GetComponentInChildren<Image>();
     }
     private void Update()
@@ -49,11 +42,9 @@ public class CanvasFront : MonoBehaviour
         mainCamera.transform.rotation* Vector3.up );
         if(unit != null)
             unitHp.fillAmount = (float)unit.Hp / (float)100; // 烙矫 贸规
-        if (hero != null)
+        if(hero != null)
             unitHp.fillAmount = (float)hero.info.curentHp / (float)hero.info.MaxHp;
         if(monster != null)
             unitHp.fillAmount = (float)monster.info.curentHp / (float)monster.info.MaxHp;
-        if (building != null)
-            unitHp.fillAmount = (float)building.Hp / (float)100; // 烙矫 贸规
     }
 }
