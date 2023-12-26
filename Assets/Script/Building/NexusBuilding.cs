@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,5 +27,15 @@ public class NexusBuilding : Building, IProductAble
     {
         base.OnDisable();
         GameManager.Instance.NexusCount--;
+        if(photonView.IsMine)
+        {
+            UIManager.Instance.result.SetActive(true);
+            UIManager.Instance.defeat.SetActive(true);
+        }
+        else
+        {
+            UIManager.Instance.result.SetActive(true);
+            UIManager.Instance.win.SetActive(true);
+        }
     }
 }

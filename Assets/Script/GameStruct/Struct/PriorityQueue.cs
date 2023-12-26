@@ -86,8 +86,11 @@ public class PriorityQueue<T1, T2> : MinHeap<T2>, IPrioxyQueue<T1, T2> where T2 
     }
     public void Enqueue(T1 item, T2 priority)
     {
-        dic.Add(priority, item);
-        Add(priority);
+        if (!dic.ContainsKey(priority))
+        {
+            dic.Add(priority, item);
+            Add(priority);
+        }
     }
     public T1 Dequeue()
     {
