@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: ProjectRTS
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 56da57e7de9003c468f4dfa9df8a065e, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
