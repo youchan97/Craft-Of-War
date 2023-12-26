@@ -87,7 +87,7 @@ public class SupplyUnit : Unit
         while (true)
         {
             //리소스에서 도착했을때
-            if (Vector3.Distance(transform.position, mineTf) <= 3f && isMineEnd == false)
+            if (Vector3.Distance(transform.position, mineTf) <= 5f && isMineEnd == false)
             {
                 agent.ResetPath();
                 sm.SetState((int)UNIT_STATE.Work);

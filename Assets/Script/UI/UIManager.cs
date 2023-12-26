@@ -61,6 +61,12 @@ public class UIManager : SingleTon<UIManager>
     public TextMeshProUGUI aosHeroShieldText;
     [Header("RTS À¯´Ö Face")]
     public Image rtsUnitFace;
+    public Sprite defaultFace;
+    [Header("ºôµù ÀÌ¹ÌÁö")]
+    public Sprite nexusSprite;
+    public Sprite populationSprite;
+    public Sprite productSprite;
+    public Sprite towerSprite;
 
 
     //ºôµåÀ¯´Ö º¯¼ö
@@ -194,10 +200,10 @@ public class UIManager : SingleTon<UIManager>
             for (int i = 0; i < controller.selectedUnitList.Count; i++)
             {
                 characterSlot.faceSlot[i].SetActive(true);
-                if (controller.selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
+                if (i == 0  && controller.selectedUnitList[0].gameObject == GameManager.Instance.PlayerHero.gameObject)
                 {
                     Hero hero = controller.selectedUnitList[0].GetComponent<Hero>();
-                    characterSlot.faceImage[i].sprite = GameManager.Instance.PlayerHero.HeroImage;
+                    characterSlot.faceImage[0].sprite = GameManager.Instance.PlayerHero.HeroImage;
                 }
                 else
                 {
