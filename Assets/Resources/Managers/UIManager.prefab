@@ -139,6 +139,7 @@ MonoBehaviour:
   aosHeroAtkText: {fileID: 390797639859820973}
   aosHeroShieldText: {fileID: 6544742224683252367}
   rtsUnitFace: {fileID: 157563903829538317}
+  defaultFace: {fileID: 21300000, guid: 5400b3660dbfb1a49abeebe98a31f733, type: 3}
   nexusSprite: {fileID: 21300000, guid: c95e60782b4fa0b49a93f1261de1de1c, type: 3}
   populationSprite: {fileID: 21300000, guid: d233130be1b1e674abd0be61f50e6aaf, type: 3}
   productSprite: {fileID: 21300000, guid: fbd5efdd8c0e891468b8923bf2024e21, type: 3}

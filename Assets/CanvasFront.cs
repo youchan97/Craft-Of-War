@@ -11,19 +11,29 @@ public class CanvasFront : MonoBehaviour
     Unit unit = null;
     Hero hero = null;
     Monster monster = null;
-    Building building = null;
     Image unitHp;
     private void Start()
     {
         mainCamera = Camera.main;
-        if(TryGetComponent(out Unit unit))
+
+        if (GetComponentInParent<Unit>() != null)
+        {
+            Unit unit = GetComponentInParent<Unit>();
             this.unit = unit;
-        if(TryGetComponent(out Hero hero))
+        }
+
+        if (GetComponentInParent<Hero>() != null)
+        {
+            Hero hero = GetComponentInParent<Hero>();
             this.hero = hero;
-        if(TryGetComponent(out Monster monster))
+        }
+
+        if (GetComponentInParent<Monster>() != null)
+        {
+            Monster monster = GetComponentInParent<Monster>();
             this.monster = monster;
-        if(TryGetComponent(out Building building))
-            this.building = building;
+        }
+
         unitHp = GetComponentInChildren<Image>();
     }
     private void Update()
@@ -32,11 +42,9 @@ public class CanvasFront : MonoBehaviour
         mainCamera.transform.rotation* Vector3.up );
         if(unit != null)
             unitHp.fillAmount = (float)unit.Hp / (float)100; // 烙矫 贸规
-        if (hero != null)
+        if(hero != null)
             unitHp.fillAmount = (float)hero.info.curentHp / (float)hero.info.MaxHp;
         if(monster != null)
             unitHp.fillAmount = (float)monster.info.curentHp / (float)monster.info.MaxHp;
-        if (building != null)
-            unitHp.fillAmount = (float)building.Hp / (float)100; // 烙矫 贸规
     }
 }

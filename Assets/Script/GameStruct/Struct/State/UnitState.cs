@@ -130,7 +130,7 @@ public class UnitDieState : UnitState
         {
             owner.GetComponent<Collider>().enabled = false;
         }
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
+        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             GameManager.Instance.Population--;
             GameManager.Instance.unitObjectPool.ReturnPool(owner.gameObject, owner.obpId);//¿Œµ¶Ω∫πŸ≤„æﬂ«‘
