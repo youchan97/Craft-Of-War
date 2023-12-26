@@ -18,14 +18,27 @@ public enum UNIT_STATE
 public abstract class Unit : Character
 {
     public int obpId;
-
+    public SkinnedMeshRenderer skinMeshRenderer;
     public Sprite faceSprite;
-
+    MaterialPropertyBlock mpb;
     public float coolTime;
     public int cost;
+
+    private void SetMPB(string propertyName, Color color)
+    {
+        if (skinMeshRenderer != null)
+        {
+            skinMeshRenderer.GetPropertyBlock(mpb);
+            mpb.SetColor(propertyName, color);
+            skinMeshRenderer.SetPropertyBlock(mpb);
+        }
+        else
+            return;
+    }
     public override void Awake()
     {
         base.Awake();
+        mpb = new MaterialPropertyBlock();
         pv.RPC("UnitLayer", RpcTarget.AllBuffered);
         InitSm();
     }
@@ -33,6 +46,10 @@ public abstract class Unit : Character
     public override void OnEnable()
     {
         pv.RPC("Initialize", RpcTarget.AllBuffered);
+        if (pv.IsMine)
+            SetMPB("_PlayerColor", Color.green);
+        else
+            SetMPB("_PlayerColor", Color.red);
     }
 
     public override void OnDisable()

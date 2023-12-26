@@ -2288,6 +2288,7 @@ MonoBehaviour:
   detectiveComponent: {fileID: 0}
   priority: 0
   obpId: 1
+  skinMeshRenderer: {fileID: 4573984351708408420}
   faceSprite: {fileID: 21300000, guid: 56d520278f0b133469d627740ed47c2c, type: 3}
   coolTime: 3
   cost: 50
