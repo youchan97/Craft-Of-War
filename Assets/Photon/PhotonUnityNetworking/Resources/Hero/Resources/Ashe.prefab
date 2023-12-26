@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbe6e99a9a556a47807dfdce26d01f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camSpeed: 0
+  camSpeed: 150
   isMove: 0
   lineRenderer: {fileID: 444519048294955580}
   anim: {fileID: 0}
