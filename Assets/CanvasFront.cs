@@ -16,14 +16,31 @@ public class CanvasFront : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        if(TryGetComponent(out Unit unit))
+
+        if (GetComponentInParent<Unit>() != null)
+        {
+            Unit unit = GetComponentInParent<Unit>();
             this.unit = unit;
-        if(TryGetComponent(out Hero hero))
+        }
+
+        if (GetComponentInParent<Hero>() != null)
+        {
+            Hero hero = GetComponentInParent<Hero>();
             this.hero = hero;
-        if(TryGetComponent(out Monster monster))
+        }
+
+        if (GetComponentInParent<Monster>() != null)
+        {
+            Monster monster = GetComponentInParent<Monster>();
             this.monster = monster;
-        if(TryGetComponent(out Building building))
+        }
+
+        if (GetComponentInParent<Building>() != null)
+        {
+            Building building = GetComponentInParent<Building>();
             this.building = building;
+        }
+
         unitHp = GetComponentInChildren<Image>();
     }
     private void Update()
