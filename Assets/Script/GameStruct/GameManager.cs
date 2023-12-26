@@ -36,9 +36,7 @@ public class GameManager : SingleTon<GameManager>
                 //{
                 //    //UIManager.Instance.result.SetActive(true);
                 //    //UIManager.Instance.win.SetActive(true);
-
                 //}
-
             }
         }
     }
@@ -230,8 +228,18 @@ public class GameManager : SingleTon<GameManager>
         //그래서 게임매니저를 메인게임에 그냥 둘거임
         EventInit();
         //onRoundStart();
+        StartCoroutine(WaitCo());
     }
-
+    IEnumerator WaitCo()
+    {
+        yield return new WaitForSeconds(0.1f);
+        UIManager.Instance.result.SetActive(false);
+    }
+    public IEnumerator WaitForEffectCo(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
     [PunRPC]
     public void OriginPos()
     {

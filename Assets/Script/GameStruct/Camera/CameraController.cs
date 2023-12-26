@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
             if ((mainCam.transform.position.x > 20))
                 mainCam.transform.Translate(-speed * Time.fixedDeltaTime * 100, 0, 0, Space.World);
         }
-        if (x > Screen.width - movePointSize)
+        if (x > Screen.width - (movePointSize+10))
         {
             if ((mainCam.transform.position.x < 480))
                 mainCam.transform.Translate(speed * Time.fixedDeltaTime * 100, 0, 0, Space.World);
