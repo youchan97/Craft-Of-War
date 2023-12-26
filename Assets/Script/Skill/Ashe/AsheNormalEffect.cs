@@ -31,7 +31,7 @@ public class AsheNormalEffect : MonoBehaviour
     {
         if (other.TryGetComponent(out Character component)) //null ¿¡·¯ ³²
         {
-            if (component == this.owner) return;
+            if (component == owner) return;
             component.Hit(owner);
             isHit = true;
         }

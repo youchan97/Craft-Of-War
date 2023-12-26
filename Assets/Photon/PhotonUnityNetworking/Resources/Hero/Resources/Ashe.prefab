@@ -1517,6 +1517,7 @@ MonoBehaviour:
   heroImage: {fileID: 21300000, guid: 96a85b1ad3aa2fd4aa8715f4fa00318d, type: 3}
   curState: 0
   clickTarget: {fileID: 0}
+  clickBuilding: {fileID: 0}
   clickPos: {x: 0, y: 0, z: 0}
   concentraction: 0
   skillList:
