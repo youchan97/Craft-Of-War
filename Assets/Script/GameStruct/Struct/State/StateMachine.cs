@@ -52,7 +52,6 @@ public class StateMachine<T> : IStateMachine where T : class
         curState.Enter();
         //현재 스테이트 int를 반환
         stateEnumInt = stateDic.FirstOrDefault(x => x.Value == curState).Key;
-      
     }
 
     public void AddState(int name, State state)

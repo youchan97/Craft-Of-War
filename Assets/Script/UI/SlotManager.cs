@@ -71,14 +71,14 @@ public class SlotManager : SingleTon<SlotManager>
         set 
         {
             //다른슬롯으로 전환시에 초기화해줌
-            for (int i = 0; i < slotsCount; i++)//스프라이트 전달
+            for (int i = 0; i < slotsCount; i++)
             {
-                slotArr[i].imageCompo.sprite = null;//+1은 부모오브젝트 이미지 컴포넌트 제외하기위해
+                slotArr[i].imageCompo.sprite = null;
                 slotArr[i].slotAction = null;
             }
             
             slotType = value;
-            for (int i = 0; i < slotsCount; i++)//스프라이트 전달
+            for (int i = 0; i < slotsCount; i++)//액션과 내용 전달
             {
                 if(slotsDic[slotType].spriteArr[i] != null)
                 slotArr[i].imageCompo.sprite = slotsDic[slotType].spriteArr[i];

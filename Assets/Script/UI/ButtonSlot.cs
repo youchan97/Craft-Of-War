@@ -35,10 +35,9 @@ public class ButtonSlot : MonoBehaviour
     //그래픽
     public MeshRenderer meshRenderer;
     MaterialPropertyBlock mpb;
-    public void BTN()//빌딩생산 먼저 테스트, 지정자
+    public void BTN()//지정자
     {
-        if (slotAction != null)
-            slotAction();
+        slotAction?.Invoke();
     }
 
     //그래픽
