@@ -120,7 +120,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         {
             if (cols[i].GetComponent<Character>() != null)
             {
-                cols[i].GetComponent<Character>().Hp += this.gameObject.GetComponent<IAttackAble>().Atk;
+                cols[i].GetComponent<Character>().Hp += 5;
                 Debug.Log(cols[i].name + cols[i].GetComponent<Character>().Hp + "Èú");
             }
         }
