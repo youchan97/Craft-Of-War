@@ -94,10 +94,10 @@ public class SlotManager : SingleTon<SlotManager>
     public void Init()//µÒº≈≥ ∏Æ √ ±‚»≠øÕ ¿ÃπÃ¡ˆ,±‚¥… ø¨∞·∫Œ
     {
         unitProductProgressFaceSlots = new List<GameObject>();
+        slotArr = new ButtonSlot[slotsCount];
         slotArr = GetComponentsInChildren<ButtonSlot>();
 
         slotsDic = new Dictionary<SLOTTYPE, SlotArg>();
-        slotArr = new ButtonSlot[slotsCount];
         //ΩΩ∑‘µÒº≈≥ ∏Æ∫Œ
         slotsDic.Add(SLOTTYPE.None, new SlotArg(new Sprite[9], new Action[slotsCount]));//∫Û ¿Øæ∆¿Ã
         slotsDic.Add(SLOTTYPE.SupplyUnit, new SlotArg(supplyUnitIconArr, new Action[slotsCount]));
