@@ -37,8 +37,8 @@ public struct SlotArg//슬롯에 전달할 이미지와 기능
 }
 public class SlotManager : SingleTon<SlotManager>
 {
-    private Dictionary<SLOTTYPE, SlotArg> slotsDic = new Dictionary<SLOTTYPE, SlotArg>();
-    private ButtonSlot[] slotArr = new ButtonSlot[slotsCount];
+    private Dictionary<SLOTTYPE, SlotArg> slotsDic;
+    private ButtonSlot[] slotArr;
     //9칸으로 구성된 배열이여야함
     //버튼 아이콘 스프라이트들
     public Sprite[] supply_BuildIconArr;
@@ -94,8 +94,10 @@ public class SlotManager : SingleTon<SlotManager>
     public void Init()//딕셔너리 초기화와 이미지,기능 연결부
     {
         unitProductProgressFaceSlots = new List<GameObject>();
+        slotArr = new ButtonSlot[slotsCount];
         slotArr = GetComponentsInChildren<ButtonSlot>();
 
+        slotsDic = new Dictionary<SLOTTYPE, SlotArg>();
         //슬롯딕셔너리부
         slotsDic.Add(SLOTTYPE.None, new SlotArg(new Sprite[9], new Action[slotsCount]));//빈 유아이
         slotsDic.Add(SLOTTYPE.SupplyUnit, new SlotArg(supplyUnitIconArr, new Action[slotsCount]));
