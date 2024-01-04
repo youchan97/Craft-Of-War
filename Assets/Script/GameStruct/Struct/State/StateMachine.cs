@@ -40,15 +40,15 @@ public class StateMachine<T> : IStateMachine where T : class
         return owner;
     }
 
-    public void SetState(int stateName)
+    public void SetState(int stateEnum)
     {
-        if (!stateDic.ContainsKey(stateName))
+        if (!stateDic.ContainsKey(stateEnum))
             return;
 
         if (curState != null)
             curState.Exit();
 
-        curState = stateDic[stateName];
+        curState = stateDic[stateEnum];
         curState.Enter();
         //현재 스테이트 int를 반환
         stateEnumInt = stateDic.FirstOrDefault(x => x.Value == curState).Key;
