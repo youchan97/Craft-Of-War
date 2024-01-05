@@ -48,7 +48,7 @@ public abstract class Character : MonoBehaviourPunCallbacks, IAttackAble, IHitAb
     public DetectiveComponent DetectiveComponent { get { return detectiveComponent; } }
     public virtual void Awake()
     {
-        sm = new StateMachine<Character>(this);
+        sm = new StateMachine<Character>(this,animator);
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         pv = GetComponent<PhotonView>();

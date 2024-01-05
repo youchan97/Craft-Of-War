@@ -29,7 +29,7 @@ public class SupplyUnit : Unit
     {
     }
 
-    public new void Update()
+    public override void Update()
     {
         base.Update();
         btRootNode.Evaluate();
@@ -38,7 +38,6 @@ public class SupplyUnit : Unit
     //채굴루틴 행동트리
     public void MiningBTInit()
     {
-
         btRootNode = new SequenceNode();
 
         ActionNode miningReadyCheckAction = new ActionNode();
@@ -56,7 +55,6 @@ public class SupplyUnit : Unit
             return BTNode.State.FAIL;
         };
 
-        //한번만 들어오고 루틴이 끝날때까지 반복안해줘야함
         miningAction.action = () =>
         {
             isMineClicked = false;
@@ -74,20 +72,17 @@ public class SupplyUnit : Unit
             StartCoroutine(mineCo);
             return BTNode.State.RUN;
         };
-
     }
 
     public IEnumerator MiningCo()
     {
-
-        //isRunMineCoroutine = true;
         float curCool = miningCool;
-
-        //여기 루틴 수정해야됌
-        while (true)
+        float checkDis = 7f;
+        int mindGold = 10;
+        while (isMineClicked == false)
         {
             //리소스에서 도착했을때
-            if (Vector3.Distance(transform.position, mineTf) <= 5f && isMineEnd == false)
+            if (Vector3.Distance(transform.position, mineTf) <= checkDis && isMineEnd == false)
             {
                 agent.ResetPath();
                 sm.SetState((int)UNIT_STATE.Work);
@@ -102,22 +97,13 @@ public class SupplyUnit : Unit
             }
 
             //넥서스에 도착했을때
-            if (Vector3.Distance(transform.position, nexusTf) <= 8f && isMineEnd == true)
+            if (Vector3.Distance(transform.position, nexusTf) <= checkDis && isMineEnd == true)
             {
                 agent.ResetPath();
                 agent.SetDestination(mineTf);
-                GameManager.Instance.Mine += 10;
+                GameManager.Instance.Mine += mindGold;
                 isMineEnd = false;
-                //디버깅용
             }
-
-            ////목적지가 둘다가 아니게 되면
-            //if (agent.pathEndPosition != nexusTf && agent.pathEndPosition != mineTf)
-            //{
-            //    sm.SetState((int)UNIT_STATE.Move);
-            //    isRunMineCoroutine = false;
-            //    break;
-            //}
             yield return null;
         }
     }
@@ -141,8 +127,5 @@ public class SupplyUnit : Unit
     {
         throw new NotImplementedException();
     }
-
-
-
 }
 

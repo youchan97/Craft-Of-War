@@ -59,7 +59,6 @@ public abstract class Unit : Character
     public virtual void Update()
     {
         sm.UpdateState();
-        animator.SetInteger("State", sm.stateEnumInt);
     }
 
     private void InitSm()

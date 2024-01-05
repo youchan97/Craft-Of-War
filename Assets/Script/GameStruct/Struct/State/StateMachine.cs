@@ -27,12 +27,24 @@ public class StateMachine<T> : IStateMachine where T : class
 
     public State curState;
     private T owner;
-    public int stateEnumInt;
+    private int stateEnumInt;
+    public int StateEnumInt
+    {
+        get => stateEnumInt;
+        set
+        {
+            stateEnumInt = value;
+            if (animator != null)
+                animator.SetInteger("State", stateEnumInt);
+        }
+    }
+    private Animator animator;
 
-    public StateMachine(T owner)
+    public StateMachine(T owner,Animator animator = null)
     {
         stateDic = new Dictionary<int, State>();
         this.owner = owner;
+        this.animator = animator;
     }
 
     public object GetOwner()

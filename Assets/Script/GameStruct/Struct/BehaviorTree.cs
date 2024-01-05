@@ -92,7 +92,7 @@ public class SequenceNode : BTNode
     }
 }
 
-public class BehaivorTree
+public class BehaviorTree
 {
 
 }

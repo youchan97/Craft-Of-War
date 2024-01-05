@@ -90,26 +90,24 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         if (cols.Length <= 0)
             yield break;
 
-        List<GameObject> monsters = new List<GameObject>();
+        List<GameObject> targetList = new List<GameObject>();
         for (int i = 0; i < cols.Length; i++)
         {
             if (cols[i].gameObject.GetComponent<IHitAble>() != null)
             {
                 priorityQueue.Enqueue(cols[i].gameObject.name, cols[i].gameObject.GetComponent<IHitAble>().Priority);
-                Debug.LogError(cols[i].gameObject.name + " µð¹ö±× " + cols[i].gameObject.GetComponent<IHitAble>().Priority);
-                monsters.Add(cols[i].gameObject);
+                targetList.Add(cols[i].gameObject);
             }
         }
         string name = priorityQueue.Dequeue();
-        foreach (GameObject monster in monsters)
+        foreach (GameObject target in targetList)
         {
-            if (monster.name == name)
+            if (target.name == name)
             {
-                monster.GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
+                target.GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
                 break;
             }
         }
-        Debug.LogError("Èå¸§");
         priorityQueue.Clear();
     }
     
