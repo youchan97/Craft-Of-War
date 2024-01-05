@@ -13,13 +13,10 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
     public int firstIndex;
 
     public bool isCutomTargetLayer;
-    public Collider[] cols;
+    public Collider[] targetCols;
 
     
     [SerializeField] private float detectiveRange; // 감지 범위(시야보다 클 수 없음)
-
-    public PriorityQueue<string, int> AdaptpriorityQueue;
-    public IPrioxyQueue<string, int> priorityQueue;
 
     public Vector3 LastDetectivePos // 감지된 오브젝트 위치
     {  get; private set; }
@@ -30,7 +27,6 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        PriorityQueueInit();
         pv = GetComponent<PhotonView>();
         if(isCutomTargetLayer)
         {
@@ -47,17 +43,22 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        cols = Physics.OverlapSphere(transform.position, detectiveRange, targetLayer);
+        Detect();
+    }
+
+    void Detect()
+    {
+        targetCols = Physics.OverlapSphere(transform.position, detectiveRange, targetLayer);
         if (this.gameObject.GetComponent<BattleUnit>() != null && this.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
             firstIndex = 1;
         else
             firstIndex = 0;
 
-        isRangeDetection = (bool)(cols.Length > firstIndex);
+        isRangeDetection = (bool)(targetCols.Length > firstIndex);
         if (isRangeDetection)
         {
             RaycastHit hit;
-            Vector3 dir = ((cols[firstIndex].transform.position) - transform.position).normalized;
+            Vector3 dir = ((targetCols[firstIndex].transform.position) - transform.position).normalized;
 
             if (TryGetComponent(out DefenseBuilding defense) == false)
             {
@@ -69,61 +70,6 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
             }
         }
     }
-
-
-    public void PriorityQueueInit()
-    {
-        AdaptpriorityQueue = new PriorityQueue<string, int>();
-        priorityQueue = AdaptpriorityQueue;
-    }
-
-    public void AttackMethod()
-    {
-
-        StartCoroutine(AttackCO());
-    }
-
-    IEnumerator AttackCO()
-    {
-        yield return new WaitForSeconds(0.5f);
-
-        if (cols.Length <= 0)
-            yield break;
-
-        List<GameObject> targetList = new List<GameObject>();
-        for (int i = 0; i < cols.Length; i++)
-        {
-            if (cols[i].gameObject.GetComponent<IHitAble>() != null)
-            {
-                priorityQueue.Enqueue(cols[i].gameObject.name, cols[i].gameObject.GetComponent<IHitAble>().Priority);
-                targetList.Add(cols[i].gameObject);
-            }
-        }
-        string name = priorityQueue.Dequeue();
-        foreach (GameObject target in targetList)
-        {
-            if (target.name == name)
-            {
-                target.GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
-                break;
-            }
-        }
-        priorityQueue.Clear();
-    }
-    
-    public void HealMethod()
-    {
-        Debug.Log("애니메이션 힐 호출");
-        for(int i = 0; i< cols.Length; i++)
-        {
-            if (cols[i].GetComponent<Character>() != null)
-            {
-                cols[i].GetComponent<Character>().Hp += 5;
-                Debug.Log(cols[i].name + cols[i].GetComponent<Character>().Hp + "힐");
-            }
-        }
-    }
-
     [PunRPC]
     public void DetectLayer()
     {

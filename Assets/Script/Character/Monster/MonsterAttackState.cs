@@ -42,7 +42,7 @@ public class MonsterAttackState : MonsterState
 
             if (curTime > monster.CharInfo.AtkSpeed)
             {
-                monster.Attack(monster.DetectiveComponent.cols[0].GetComponent<IHitAble>());
+                monster.Attack(monster.DetectiveComponent.targetCols[0].GetComponent<IHitAble>());
                 monster.Anim.Play("Attack");
                 curTime = 0;
             }

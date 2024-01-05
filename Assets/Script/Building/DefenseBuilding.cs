@@ -40,13 +40,13 @@ public class DefenseBuilding : Building, IAttackAble
         float coolTime = 1.5f;
         while (true) 
         {
-            if(detectiveCompo.cols.Length > 0)
+            if(detectiveCompo.targetCols.Length > 0)
             {
-                foreach (var col in detectiveCompo.cols)
+                foreach (var col in detectiveCompo.targetCols)
                 {
                     if (col.gameObject.TryGetComponent(out IHitAble tg))
                     {
-                        Debug.LogError(detectiveCompo.cols.Length);
+                        Debug.LogError(detectiveCompo.targetCols.Length);
                         target = tg;
                         yield return new WaitForSeconds(coolTime);
                         Attack(target);

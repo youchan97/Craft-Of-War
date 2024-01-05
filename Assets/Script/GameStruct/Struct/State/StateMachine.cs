@@ -34,8 +34,10 @@ public class StateMachine<T> : IStateMachine where T : class
         set
         {
             stateEnumInt = value;
-            if (animator != null)
-                animator.SetInteger("State", stateEnumInt);
+            if (animator == null)
+                return;
+
+            animator.SetInteger("State", stateEnumInt);
         }
     }
     private Animator animator;
@@ -63,7 +65,7 @@ public class StateMachine<T> : IStateMachine where T : class
         curState = stateDic[stateEnum];
         curState.Enter();
         //현재 스테이트 int를 반환
-        stateEnumInt = stateDic.FirstOrDefault(x => x.Value == curState).Key;
+        StateEnumInt = stateDic.FirstOrDefault(x => x.Value == curState).Key;
     }
 
     public void AddState(int name, State state)

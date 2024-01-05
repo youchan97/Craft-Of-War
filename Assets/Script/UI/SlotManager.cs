@@ -199,13 +199,11 @@ public class SlotManager : SingleTon<SlotManager>
                 break;
         }
 
-
         //부대지정 행동 액션
         slotsDic[SLOTTYPE.ArmySelect].actionButtonArr[0] += () => { RTSController.armyMode = ARMYMOVEMODE.Horizontal; };
         slotsDic[SLOTTYPE.ArmySelect].actionButtonArr[1] += () => { RTSController.armyMode = ARMYMOVEMODE.Vertical; };
         slotsDic[SLOTTYPE.ArmySelect].actionButtonArr[2] += () => { RTSController.armyMode = ARMYMOVEMODE.Square; };
 
-        //마지막 부분
         //게임시작에는 행동슬롯으로 고정
         SlotType = SLOTTYPE.None;
     }

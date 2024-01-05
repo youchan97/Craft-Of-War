@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BattleUnitStragy
+public abstract class BattleUnitStrategy : MonoBehaviour
 {
-    public Unit owner;
-    public bool isAttack;
-    public bool isHeal;
-    public BattleUnitStragy(Unit owner)
+    protected BattleUnit owner;
+
+    public BattleUnitStrategy(BattleUnit owner)
     {
         this.owner = owner;
-        isAttack = false;
-        isHeal = false;
     }
 
     public abstract void Proceed();//공격이나,힐
@@ -19,12 +16,10 @@ public abstract class BattleUnitStragy
     public abstract void Init();//초기화
 }
 
-public class MeleeUnitStragy : BattleUnitStragy
+public class MeleeUnitStrategy : BattleUnitStrategy
 {
-    public MeleeUnitStragy(Unit owner) : base(owner)
+    public MeleeUnitStrategy(BattleUnit owner) : base(owner)
     {
-
-
     }
 
     public override void Init()
@@ -34,21 +29,47 @@ public class MeleeUnitStragy : BattleUnitStragy
 
     public override void Proceed()
     {
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == false)
+        MeleeAttackMethod();
+    }
+
+    public void MeleeAttackMethod()
+    {
+        StartCoroutine(AttackCO());
+    }
+
+    IEnumerator AttackCO()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Collider[] cols = owner.detectCompo.targetCols;
+
+        if (cols.Length <= 0)
+            yield break;
+
+        List<GameObject> targetList = new List<GameObject>();
+        for (int i = 0; i < cols.Length; i++)
         {
-            owner.DetectiveComponent.AttackMethod();
-            isAttack = true;
+            if (cols[i].gameObject.GetComponent<IHitAble>() != null)
+            {
+                owner.priorityQueue.Enqueue(cols[i].gameObject.name, cols[i].gameObject.GetComponent<IHitAble>().Priority);
+                targetList.Add(cols[i].gameObject);
+            }
         }
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == true)
+        string name = owner.priorityQueue.Dequeue();
+        foreach (GameObject target in targetList)
         {
-            isAttack = false;
+            if (target.name == name)
+            {
+                target.GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
+                break;
+            }
         }
+        owner.priorityQueue.Clear();
     }
 }
 
-public class RangeUnitStragy : BattleUnitStragy
+public class RangeUnitStrategy : BattleUnitStrategy
 {
-    public RangeUnitStragy(Unit owner) : base(owner)
+    public RangeUnitStrategy(BattleUnit owner) : base(owner)
     {
     }
 
@@ -59,21 +80,46 @@ public class RangeUnitStragy : BattleUnitStragy
 
     public override void Proceed()
     {
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == false)
+        RangeAttackMethod();
+    }
+    public void RangeAttackMethod()
+    {
+        StartCoroutine(AttackCO());
+    }
+
+    IEnumerator AttackCO()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Collider[] cols = owner.detectCompo.targetCols;
+
+        if (cols.Length <= 0)
+            yield break;
+
+        List<GameObject> targetList = new List<GameObject>();
+        for (int i = 0; i < cols.Length; i++)
         {
-            owner.DetectiveComponent.AttackMethod();
-            isAttack = true;
+            if (cols[i].gameObject.GetComponent<IHitAble>() != null)
+            {
+                owner.priorityQueue.Enqueue(cols[i].gameObject.name, cols[i].gameObject.GetComponent<IHitAble>().Priority);
+                targetList.Add(cols[i].gameObject);
+            }
         }
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") && isAttack == true)
+        string name = owner.priorityQueue.Dequeue();
+        foreach (GameObject target in targetList)
         {
-            isAttack = false;
+            if (target.name == name)
+            {
+                target.GetComponent<IHitAble>().Hp -= this.gameObject.GetComponent<IAttackAble>().Atk;
+                break;
+            }
         }
+        owner.priorityQueue.Clear();
     }
 }
 
-public class HealerStragy : BattleUnitStragy
+public class HealerStrategy : BattleUnitStrategy
 {
-    public HealerStragy(Unit owner) : base(owner)
+    public HealerStrategy(BattleUnit owner) : base(owner)
     {
     }
 
@@ -84,14 +130,17 @@ public class HealerStragy : BattleUnitStragy
 
     public override void Proceed()
     {
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Heal") && isHeal == false)
+        HealMethod();
+    }
+    public void HealMethod()
+    {
+        Collider[] cols = owner.detectCompo.targetCols;
+        for (int i = 0; i < cols.Length; i++)
         {
-            owner.DetectiveComponent.HealMethod();
-            isHeal = true;
-        }
-        if (owner.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f && owner.animator.GetCurrentAnimatorStateInfo(0).IsName("Heal") && isHeal == true)
-        {
-            isHeal = false;
+            if (cols[i].GetComponent<Character>() != null)
+            {
+                cols[i].GetComponent<Character>().Hp += 5;
+            }
         }
     }
 }
@@ -106,13 +155,19 @@ public enum BATTLE_UNIT
 
 public class BattleUnit : Unit
 {
-    public BattleUnitStragy battleStragy;
+    public BattleUnitStrategy battleStragy;
     public BATTLE_UNIT unitType;
-    public Dictionary<BATTLE_UNIT, BattleUnitStragy> stragyDic;
+    private Dictionary<BATTLE_UNIT, BattleUnitStrategy> stragyDic;
 
+    //추가부
+    public DetectiveComponent detectCompo;
+    public PriorityQueue<string, int> AdaptpriorityQueue;
+    public IPrioxyQueue<string, int> priorityQueue;
     private void Start()
     {
-        StragyInit();
+        detectCompo = GetComponent<DetectiveComponent>();
+        PriorityQueueInit();
+        StrategyInit();
     }
 
     public void Proceed()
@@ -120,16 +175,22 @@ public class BattleUnit : Unit
         battleStragy.Proceed();
     }
 
-    void StragyInit()//전략 연결
+    void StrategyInit()//전략 연결
     {
-        stragyDic = new Dictionary<BATTLE_UNIT, BattleUnitStragy>()
+        stragyDic = new Dictionary<BATTLE_UNIT, BattleUnitStrategy>()
         {
-            { BATTLE_UNIT.Melee, new MeleeUnitStragy (this) },
-            { BATTLE_UNIT.Range, new RangeUnitStragy (this) },
-            { BATTLE_UNIT.Healer, new HealerStragy (this) },
+            { BATTLE_UNIT.Melee, new MeleeUnitStrategy (this) },
+            { BATTLE_UNIT.Range, new RangeUnitStrategy (this) },
+            { BATTLE_UNIT.Healer, new HealerStrategy (this) },
         };
         battleStragy = stragyDic[unitType];
         battleStragy.Init();
+    }
+
+    public void PriorityQueueInit()
+    {
+        AdaptpriorityQueue = new PriorityQueue<string, int>();
+        priorityQueue = AdaptpriorityQueue;
     }
 
     public override void InitStats()

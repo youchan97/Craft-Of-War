@@ -27,9 +27,9 @@ public class UnitIdleState : UnitState
         {
             if(owner.gameObject.GetComponent<BattleUnit>()?.unitType == BATTLE_UNIT.Healer)
             {
-                for(int i = 0; i< owner.DetectiveComponent.cols.Length; i++)
+                for(int i = 0; i< owner.DetectiveComponent.targetCols.Length; i++)
                 {
-                    if (owner.DetectiveComponent.cols[i].gameObject.GetComponent<Character>().Hp < 50)
+                    if (owner.DetectiveComponent.targetCols[i].gameObject.GetComponent<Character>().Hp < 50)
                         sm.SetState((int)UNIT_STATE.Attack);
                 }
             }
@@ -95,12 +95,12 @@ public class UnitAttackState : UnitState
             else
             {
                 int unitCount = 0;
-                for (int i = 0; i < owner.DetectiveComponent.cols.Length; i++)
+                for (int i = 0; i < owner.DetectiveComponent.targetCols.Length; i++)
                 {
-                    if (owner.DetectiveComponent.cols[i].gameObject.GetComponent<Character>().Hp > 80)
+                    if (owner.DetectiveComponent.targetCols[i].gameObject.GetComponent<Character>().Hp > 80)
                     {
                         unitCount++;
-                        if (unitCount == owner.DetectiveComponent.cols.Length)
+                        if (unitCount == owner.DetectiveComponent.targetCols.Length)
                             sm.SetState((int)UNIT_STATE.Idle);
                     }
                 }
