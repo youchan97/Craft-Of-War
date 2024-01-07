@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 public interface IControllable
 {
@@ -24,5 +27,9 @@ public interface IAttackAble
 
 public interface IProductAble
 {
-    void Production();
+    IEnumerator UnitProductManagerCo();
+    IEnumerator UnitCoolTimeCo(int popIndex, Transform selectBuildingTf, Building building);
+    //생산 호출 함수
+    public void Production(int popIndex, Transform selectBuildingTf, Unit targetUnit);
+    void ProductUIMatch();
 }

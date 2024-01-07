@@ -56,7 +56,7 @@ public class RTSController : MonoBehaviour
             buildInfoTexts[1].text = null;
             UIManager.Instance.buildProgressCountText.text = null;
             UIManager.Instance.buildProgressFill.fillAmount = 0;
-            SelectBuilding.GetComponent<Building>().UIMatch();
+            SelectBuilding.GetComponent<ProductBuilding>().ProductUIMatch();
 
 
 

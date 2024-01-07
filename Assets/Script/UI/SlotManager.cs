@@ -141,7 +141,7 @@ public class SlotManager : SingleTon<SlotManager>
             int index = i;
             unitProductProgressFaceSlots[index].GetComponentInParent<Button>().onClick.AddListener(() => 
             {
-                Building ownerBuilding = GameManager.Instance.rtsController.SelectBuilding.GetComponent<Building>();
+                ProductBuilding ownerBuilding = GameManager.Instance.rtsController.SelectBuilding.GetComponent<ProductBuilding>();
 
                 ownerBuilding.unitCoolTimeCos.RemoveAt(index);
                 //여기 문제없음 선택된 애 리스트에 지워져야함
@@ -229,76 +229,11 @@ public class SlotManager : SingleTon<SlotManager>
     {
         slotsDic[slotType].actionButtonArr[buttonIndex] += () =>
         {
-            Building ownerBuilding = GameManager.Instance.rtsController.SelectBuilding.GetComponent<Building>();
+            IProductAble ownerBuilding = GameManager.Instance.rtsController.SelectBuilding.GetComponent<IProductAble>();
             Unit targetUnit = (GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>());
-
-            //5개의 대기열일때
-            if (ownerBuilding.unitCoolTimeCos.Count >= 5)  
-                return;
-            //비용모자랄때
-            if (targetUnit.cost > GameManager.Instance.Mine)
-                return;
-            //
-            if (GameManager.Instance.MaxPopulation <= GameManager.Instance.Population)
-                return;
-
             Transform selectBuildingTf = GameManager.Instance.rtsController.SelectBuilding.gameObject.transform;
-            
-            //여기 문제없음 선택된 애 리스트에 추가해야함
-            //이부분이 위로 올라가서
-            ownerBuilding.spawnList.Add(targetUnit);
 
-            ownerBuilding.unitCoolTimeCos.Add(UnitCoolTimeCo(popIndex, selectBuildingTf, ownerBuilding));
-
-            //돈 타겟 유닛만큼 깎기
-            GameManager.Instance.Mine -= targetUnit.cost;
-            GameManager.Instance.Population++;
+            ownerBuilding.Production(popIndex, selectBuildingTf,targetUnit);
         };
-    }
-
-
-
-
-    IEnumerator UnitCoolTimeCo(int popIndex, Transform selectBuildingTf,Building building)
-    {
-        float cool = GameManager.Instance.unitObjectPool.Peek(popIndex).GetComponent<Unit>().coolTime;
-
-        //쿨타임동안 다른걸 선택할수 있어 미리 위치받음
-        TextMeshProUGUI[] buildInfoTexts  = UIManager.Instance.unitProductModeUI.GetComponentsInChildren<TextMeshProUGUI>();
-        //진행도
-        //유닛생산 쿨타임
-        while (cool > 0f)
-        {
-            cool -= Time.fixedDeltaTime;
-
-            if(GameManager.Instance.rtsController.SelectBuilding != null)
-            {
-                if(building == GameManager.Instance.rtsController.SelectBuilding.GetComponent<Building>())
-                {
-                    buildInfoTexts[1].text = "생산중";
-                    UIManager.Instance.buildProgressCountText.text = cool.ToString();
-                    UIManager.Instance.buildProgressFill.fillAmount = (1 / cool) - cool/10;
-                }
-            }
-            yield return new WaitForFixedUpdate();
-        }
-        buildInfoTexts[1].text = null;
-        UIManager.Instance.buildProgressCountText.text = null;
-        UIManager.Instance.buildProgressFill.fillAmount = 0;
-
-        //생산부 유닛
-        GameObject unit = GameManager.Instance.unitObjectPool.Pop(popIndex).gameObject;
-        GameManager.Instance.rtsController.fieldUnitList.Add(unit.GetComponent<UnitController>());
-        unit.transform.position = selectBuildingTf.position;
-        unit.transform.Translate(new Vector3(0, 0, -6), Space.Self);
-        unit.GetComponent<NavMeshAgent>().enabled = true;
-
-
-        //유닛뽑고 겹치지 않기 위해 이동,
-        unit.GetComponent<NavMeshAgent>().SetDestination(unit.transform.position + new Vector3(0, 0, -3));
-        yield return null;
-        
-        unit.GetComponent<NavMeshAgent>().ResetPath();
-
     }
 }
