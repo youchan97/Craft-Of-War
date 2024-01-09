@@ -3870,7 +3870,9 @@ MonoBehaviour:
   faceSprite: {fileID: 21300000, guid: 297f185c6bbd8b2419f9e8cf006c508b, type: 3}
   coolTime: 3
   cost: 55
+  battleStragy: {fileID: 0}
   unitType: 3
+  detectCompo: {fileID: 0}
 --- !u!195 &-611815418453801225
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3973,7 +3975,7 @@ MonoBehaviour:
   isRangeDetection: 0
   firstIndex: 0
   isCutomTargetLayer: 0
-  cols: []
+  targetCols: []
   detectiveRange: 7
 --- !u!136 &7754993242395625255
 CapsuleCollider:

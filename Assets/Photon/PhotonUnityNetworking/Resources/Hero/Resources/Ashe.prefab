@@ -1639,7 +1639,7 @@ MonoBehaviour:
   isRangeDetection: 0
   firstIndex: 0
   isCutomTargetLayer: 0
-  cols: []
+  targetCols: []
   detectiveRange: 5
 --- !u!1 &3072501341786832875
 GameObject:

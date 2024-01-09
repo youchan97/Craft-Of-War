@@ -3104,7 +3104,7 @@ MonoBehaviour:
   isRangeDetection: 0
   firstIndex: 0
   isCutomTargetLayer: 0
-  cols: []
+  targetCols: []
   detectiveRange: 0
 --- !u!136 &-7772529671539818081
 CapsuleCollider:

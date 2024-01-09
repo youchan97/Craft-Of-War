@@ -98,6 +98,7 @@ public class SlotManager : SingleTon<SlotManager>
         slotArr = GetComponentsInChildren<ButtonSlot>();
 
         slotsDic = new Dictionary<SLOTTYPE, SlotArg>();
+
         //½½·Ôµñ¼Å³Ê¸®ºÎ
         slotsDic.Add(SLOTTYPE.None, new SlotArg(new Sprite[9], new Action[slotsCount]));//ºó À¯¾ÆÀÌ
         slotsDic.Add(SLOTTYPE.SupplyUnit, new SlotArg(supplyUnitIconArr, new Action[slotsCount]));

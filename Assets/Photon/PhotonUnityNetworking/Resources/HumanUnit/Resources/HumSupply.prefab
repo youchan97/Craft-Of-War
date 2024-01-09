@@ -3375,7 +3375,7 @@ MonoBehaviour:
   isRangeDetection: 0
   firstIndex: 0
   isCutomTargetLayer: 0
-  cols: []
+  targetCols: []
   detectiveRange: 3
 --- !u!195 &-1934131999187091146
 NavMeshAgent:

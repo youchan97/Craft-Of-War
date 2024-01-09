@@ -23,6 +23,7 @@ public class RTSController : MonoBehaviour
 
     public List<UnitController> selectedUnitList; // 플레이어가 클릭 혹은 드래그로 선택한 유닛
     public List<UnitController> fieldUnitList = new List<UnitController>();
+    [SerializeField]
     private BuildingController selectBuilding;
     public BuildingController SelectBuilding
     {
@@ -56,10 +57,9 @@ public class RTSController : MonoBehaviour
             buildInfoTexts[1].text = null;
             UIManager.Instance.buildProgressCountText.text = null;
             UIManager.Instance.buildProgressFill.fillAmount = 0;
-            SelectBuilding.GetComponent<ProductBuilding>().ProductUIMatch();
 
-
-
+            if(selectBuilding is IProductAble)
+            SelectBuilding.GetComponent<IProductAble>().ProductUIMatch();
         }
     }
     UnitController hero;

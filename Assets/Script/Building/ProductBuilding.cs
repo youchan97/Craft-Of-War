@@ -34,6 +34,7 @@ public class ProductBuilding : Building,IProductAble
     public IEnumerator unitProductManagerCo;
     public override void Awake()
     {
+        base.Awake();
         Init();
     }
 

@@ -696,7 +696,7 @@ MonoBehaviour:
   isRangeDetection: 0
   firstIndex: 0
   isCutomTargetLayer: 1
-  cols: []
+  targetCols: []
   detectiveRange: 14
 --- !u!114 &8295115186381736605
 MonoBehaviour:

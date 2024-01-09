@@ -32,19 +32,22 @@ public class NexusBuilding : Building, IProductAble
     {
     }
 
-    public override void OnEnable()
+    public new void OnEnable()
     {
         base.OnEnable();
+        StartCoroutine(unitProductManagerCo);
         GameManager.Instance.NexusCount++;
     }
 
     public override void OnDisable()
     {
         base.OnDisable();
+        StopCoroutine(unitProductManagerCo);
         GameManager.Instance.NexusCount--;
     }
     public override void Awake()
     {
+        base.Awake();
         Init();
     }
     private void Init()

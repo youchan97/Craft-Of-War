@@ -166,23 +166,22 @@ public class GameManager : SingleTon<GameManager>
     }
     void Start()
     {
-        Mine = 1000;//디버깅용
-        Population = 0;
-        Gold = 1000;
-        MaxPopulation = 5;
         if (PhotonNetwork.IsMasterClient)
         {
-
-            GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.masterIndexPoint].position, heroPoints[MatchManager.masterIndexPoint].rotation, 0);
-            playerHero = playerObj.GetComponent<Hero>();
+            Mine = 1000;
+            Gold = 1000;
+            // 플레이어가 선택한 영웅을 포톤을 통해 생성(동기화) - MatchManager에서 받은 스폰 지점에서 생성
+            GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName,
+                heroPoints[MatchManager.masterIndexPoint].position,
+                heroPoints[MatchManager.masterIndexPoint].rotation, 0);
+            playerHero = playerObj.GetComponent<Hero>(); //영웅 정보를 받기위한 Hero 컴포넌트 할당
             playerObj.name = "master";
 
-            GameObject firstNexus = this.buildingObjectPool.Pop();
+            GameObject firstNexus = this.buildingObjectPool.Pop(); // 첫 넥서스 오브젝트 풀로 인해 생성
             firstNexus.transform.position = buildPoints[MatchManager.masterIndexPoint].position;
-            PhotonNetwork.Instantiate("Shop", shopPoint.position, shopPoint.rotation); //상점 생정 
-
+            PhotonNetwork.Instantiate("Shop", shopPoint.position, shopPoint.rotation); //상점 생정
             for (int i = 0; i < monsterSpawnPoints.Length; i++)
-            {
+            {   //몬스터는 마스터 클라이언트만 생성해 준다.
                 if(i >= 5)
                 {
                     monster[i] = this.monsterObjectPool.Pop(1);
@@ -191,20 +190,22 @@ public class GameManager : SingleTon<GameManager>
                 {
                     monster[i] = this.monsterObjectPool.Pop(0);
                 }
+                //몬스터의 초기화 정보들을 RPC를 통해 넘겨줌
                 monster[i].GetComponent<Monster>().photonView.RPC("Enable", RpcTarget.AllBuffered, i);
             }
-
-            //PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.masterIndexPoint].position, buildPoints[MatchManager.masterIndexPoint].rotation, 0);
         }
         else
-        {
-            GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName, heroPoints[MatchManager.userIndexPoint].position, heroPoints[MatchManager.userIndexPoint].rotation, 0);
+        {   //마스터 클라이언트가 아닐 경우 몬스터와 상점을 제외하고 똑같이 생성해준다. (스폰 지점만 다름)
+            Mine = 1000;
+            Gold = 1000;
+            GameObject playerObj = PhotonNetwork.Instantiate(DropDownManager.selectHeroName,
+                heroPoints[MatchManager.userIndexPoint].position,
+                heroPoints[MatchManager.userIndexPoint].rotation, 0);
             playerHero = playerObj.GetComponent<Hero>();
             playerObj.name = "nomMaster";
 
             GameObject firstNexus = this.buildingObjectPool.Pop();
             firstNexus.transform.position = buildPoints[MatchManager.userIndexPoint].position;
-            //PhotonNetwork.Instantiate("Nexus", buildPoints[MatchManager.userIndexPoint].position, buildPoints[MatchManager.userIndexPoint].rotation, 0);
         }
 
 

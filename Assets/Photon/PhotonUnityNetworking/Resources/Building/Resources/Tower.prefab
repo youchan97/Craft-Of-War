@@ -247,7 +247,7 @@ MonoBehaviour:
   isRangeDetection: 0
   firstIndex: 0
   isCutomTargetLayer: 0
-  cols: []
+  targetCols: []
   detectiveRange: 10
 --- !u!1001 &356938576226020348
 PrefabInstance:
