@@ -28,7 +28,7 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
         if(isCutomTargetLayer) //몬스터
         {
             //빌딩,히어로,유닛 탐지
-            targetLayer = (1 << 17) | (1 << 18);
+            targetLayer = Layers.HeroLayer;
         }
         else
         {
@@ -80,34 +80,32 @@ public class DetectiveComponent : MonoBehaviourPunCallbacks
             if(PhotonNetwork.IsMasterClient)
             {
                 if (pv.IsMine)
-                    targetLayer = 1 << 7;
+                    targetLayer = Layers.userUnit;
                 else
-                    targetLayer = 1 << 6;
+                    targetLayer = Layers.masterUnit;
             }
             else
             {
                 if (pv.IsMine)
-                    targetLayer = 1 << 6;
+                    targetLayer = Layers.masterUnit;
                 else
-                    targetLayer = 1 << 7;
+                    targetLayer = Layers.userUnit;
             }
             return;
         }
         if (this.gameObject.layer == 6) // 마스터 와 일반 유저의 타겟레이어 설정 (상대의 소유들)
         {
-            if (this.gameObject.GetComponent<BattleUnit>() != null && 
-                this.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer) //힐러는 자신의 유닛만 탐지한다.
-                targetLayer = 1 << 6;
+            if (TryGetComponent(out BattleUnit battleUnit) && battleUnit.unitType == BATTLE_UNIT.Healer) //힐러는 자신의 유닛만 탐지한다.
+                targetLayer = Layers.masterUnit;
             else
-                targetLayer = (1 << 7) | (1 << 13) | (1 << 18);
+                targetLayer = Layers.userLayer;
         }
         else
         {
-            if (this.gameObject.GetComponent<BattleUnit>() != null && 
-                this.gameObject.GetComponent<BattleUnit>().unitType == BATTLE_UNIT.Healer)
-                targetLayer = 1 << 7;
+            if (TryGetComponent(out BattleUnit battleUnit) && battleUnit.unitType == BATTLE_UNIT.Healer)
+                targetLayer = Layers.userUnit;
             else
-                targetLayer = (1 << 6) | (1 << 12) | (1 << 17);
+                targetLayer = Layers.masterLayer;
         }
     }
 
