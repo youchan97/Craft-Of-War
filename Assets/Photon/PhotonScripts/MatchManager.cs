@@ -101,6 +101,7 @@ public class MatchManager : MonoBehaviourPunCallbacks
             // RPC 함수 호출로 나머지 사람의 스폰 포인트 할당
             pv.RPC("SpawnIndex", RpcTarget.AllBuffered, masterIndexPoint);
         }
+        Debug.Log($"{PhotonNetwork.LocalPlayer.NickName} / {PhotonNetwork.CurrentRoom.PlayerCount}");
         UpdatePlayerCounts(); //방 인원 수 증가
 
         loadingObj.SetActive(true);
